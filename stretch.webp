@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+<title>Gomai</title>
+<rect width="512" height="512" rx="112" fill="#FFC107"/>
+<path d="M128 210c8-82 62-132 128-132s120 50 128 132h24v30H104v-30h24Z" fill="#111"/>
+<path d="M240 78h32v90h-32zM163 108h30l14 60h-32zM319 108h30l-12 60h-32z" fill="#FFC107"/>
+<path d="M126 236c0 94 55 168 150 168 64 0 113-29 136-79v-76H276v62h63c-15 28-39 43-69 43-57 0-90-46-90-111 0-66 34-112 93-112 36 0 62 14 80 43l52-35C376 91 330 66 272 66c-91 0-146 72-146 170Z" fill="#111"/>
+</svg>

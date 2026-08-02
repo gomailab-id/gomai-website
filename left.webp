@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" role="img" aria-labelledby="title">
+<title>Gomai</title>
+<g transform="translate(20,12)">
+<path d="M70 124c6-61 47-98 96-98s90 37 96 98h18v22H52v-22h18Z" fill="#FFC107"/>
+<path d="M154 26h24v66h-24zM96 48h22l10 44h-24zM214 48h22l-9 44h-24z" fill="#fff"/>
+<path d="M52 145c0 70 41 125 112 125 48 0 84-21 101-59v-57H164v46h47c-11 21-29 32-51 32-43 0-67-34-67-83s25-84 69-84c27 0 46 10 60 32l39-26C239 35 205 16 162 16 94 16 52 70 52 145Z" fill="#FFC107"/>
+<text x="310" y="190" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="138" fill="#111">Gomai</text>
+<circle cx="1117" cy="66" r="17" fill="#FFC107"/>
+<text x="315" y="248" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="30" letter-spacing="6" fill="#222">SEMUA KEBUTUHAN, SATU TEMPAT.</text>
+</g>
+</svg>
