@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Detail Produk | Gomai</title>
+
+    <meta
+        name="description"
+        content="Lihat detail produk, warna, ukuran, harga, dan informasi pemesanan melalui Gomai."
+    >
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+
+        <a
+            href="../index.html"
+            class="logo"
+            aria-label="Kembali ke beranda Gomai"
+        >
+            <strong class="logo-text">Gomai</strong>
+        </a>
+
+        <div class="header-actions">
+
+            <div
+                class="language-switch"
+                aria-label="Pilih bahasa"
+            >
+                <button
+                    type="button"
+                    data-language="id"
+                >
+                    ID
+                </button>
+
+                <button
+                    type="button"
+                    data-language="zh"
+                >
+                    中文
+                </button>
+            </div>
+
+            <a
+                href="#wechat"
+                class="btn btn-primary"
+            >
+                WeChat
+            </a>
+
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="section">
+        <div class="container">
+
+            <nav
+                class="breadcrumb"
+                aria-label="Breadcrumb"
+            >
+                <a
+                    href="../index.html"
+                    data-lang="nav_home"
+                >
+                    Beranda
+                </a>
+
+                <span>/</span>
+
+                <a
+                    href="products.html"
+                    data-lang="nav_products"
+                >
+                    Produk
+                </a>
+
+                <span>/</span>
+
+                <span id="breadcrumb-product-name">
+                    Detail Produk
+                </span>
+            </nav>
+
+            <section
+                id="product-detail"
+                class="product-detail"
+                aria-live="polite"
+            >
+                <div class="empty-state">
+                    <p data-lang="loading_products">
+                        Memuat produk...
+                    </p>
+                </div>
+            </section>
+
+            <section
+                id="product-description"
+                class="product-description hidden"
+            >
+                <h2 data-lang="description">
+                    Deskripsi
+                </h2>
+
+                <p id="product-description-text"></p>
+            </section>
+
+            <section
+                id="related-products"
+                class="related-products hidden"
+            >
+                <h2 data-lang="related_products">
+                    Produk Terkait
+                </h2>
+
+                <div
+                    id="related-product-grid"
+                    class="products-grid"
+                ></div>
+            </section>
+
+        </div>
+    </section>
+
+</main>
+
+<footer
+    class="footer"
+    id="wechat"
+>
+    <div class="container footer-grid">
+
+        <div>
+            <h3>Gomai</h3>
+
+            <p data-lang="footer_about">
+                Semua kebutuhan pekerja Morowali dalam satu tempat.
+            </p>
+        </div>
+
+        <div>
+            <h4 data-lang="services_title">
+                Layanan
+            </h4>
+
+            <ul>
+                <li>Gomai Express</li>
+                <li>Official Order</li>
+                <li>WeChat Customer Service</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 data-lang="nav_information">
+                Informasi
+            </h4>
+
+            <ul>
+                <li>
+                    <a
+                        href="how-to-buy.html"
+                        data-lang="nav_how_to_buy"
+                    >
+                        Cara Membeli
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="about.html"
+                        data-lang="nav_about"
+                    >
+                        Tentang Kami
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="faq.html"
+                        data-lang="nav_faq"
+                    >
+                        FAQ
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 data-lang="nav_contact">
+                Kontak
+            </h4>
+
+            <p>WeChat: Gomai</p>
+
+            <a
+                href="contact.html"
+                class="btn btn-outline"
+                data-lang="contact_us"
+            >
+                Hubungi Kami
+            </a>
+        </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+
+        <p data-lang="copyright">
+            © 2026 Gomai. Semua Hak Dilindungi.
+        </p>
+
+        <div class="language-switch">
+
+            <button
+                type="button"
+                data-language="id"
+            >
+                Indonesia
+            </button>
+
+            <button
+                type="button"
+                data-language="zh"
+            >
+                中文
+            </button>
+
+        </div>
+
+    </div>
+</footer>
+
+<script src="../js/utils.js"></script>
+<script src="../js/language.js"></script>
+<script src="../js/products.js"></script>
+<script src="../js/product-detail.js"></script>
+
+</body>
+
+</html>

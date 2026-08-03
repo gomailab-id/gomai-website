@@ -1,0 +1,19 @@
+@media(max-width:992px){
+
+section{
+
+padding:70px 0;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.container{
+
+width:calc(100% - 28px);
+
+}
+
+}

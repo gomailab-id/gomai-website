@@ -1,0 +1,39 @@
+{
+  "site_name": "Gomai",
+
+  "nav_home": "Beranda",
+  "nav_brand": "Merek",
+  "nav_products": "Produk",
+  "nav_about": "Tentang Kami",
+  "nav_contact": "Kontak",
+  "nav_how_to_buy": "Cara Membeli",
+  "nav_faq": "FAQ",
+
+  "hero_title": "Belanja Produk Olahraga Original",
+  "hero_subtitle": "Temukan berbagai produk olahraga berkualitas dari berbagai merek terpercaya.",
+
+  "featured_products": "Produk Unggulan",
+  "all_products": "Semua Produk",
+  "all_brands": "Semua Merek",
+
+  "search_placeholder": "Cari produk...",
+
+  "stock_available": "Tersedia",
+  "stock_empty": "Stok Habis",
+
+  "color": "Warna",
+  "size": "Ukuran",
+
+  "price": "Harga",
+
+  "buy_wechat": "Hubungi via WeChat",
+  "buy_whatsapp": "Hubungi via WhatsApp",
+
+  "description": "Deskripsi",
+
+  "related_products": "Produk Terkait",
+
+  "footer_about": "Gomai menyediakan produk olahraga original dengan kualitas terbaik.",
+
+  "copyright": "© 2026 Gomai. Semua Hak Dilindungi."
+}

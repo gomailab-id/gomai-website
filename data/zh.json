@@ -1,0 +1,39 @@
+{
+  "site_name": "Gomai",
+
+  "nav_home": "首页",
+  "nav_brand": "品牌",
+  "nav_products": "产品",
+  "nav_about": "关于我们",
+  "nav_contact": "联系我们",
+  "nav_how_to_buy": "购买方式",
+  "nav_faq": "常见问题",
+
+  "hero_title": "购买正品运动用品",
+  "hero_subtitle": "探索来自值得信赖品牌的优质运动产品。",
+
+  "featured_products": "精选产品",
+  "all_products": "所有产品",
+  "all_brands": "所有品牌",
+
+  "search_placeholder": "搜索产品...",
+
+  "stock_available": "有现货",
+  "stock_empty": "缺货",
+
+  "color": "颜色",
+  "size": "尺寸",
+
+  "price": "价格",
+
+  "buy_wechat": "通过微信联系",
+  "buy_whatsapp": "通过 WhatsApp 联系",
+
+  "description": "产品描述",
+
+  "related_products": "相关产品",
+
+  "footer_about": "Gomai 提供来自可信品牌的正品运动用品。",
+
+  "copyright": "© 2026 Gomai. 版权所有。"
+}

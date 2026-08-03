@@ -1,0 +1,386 @@
+/* ==========================================================
+   GOMAI COMPONENTS
+========================================================== */
+
+/* ===========================
+   SECTION TITLE
+=========================== */
+
+.section-title{
+    text-align:center;
+    margin-bottom:48px;
+}
+
+.section-title h2{
+    font-size:2.4rem;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:var(--text-secondary);
+    max-width:650px;
+    margin:auto;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:12px 24px;
+
+    border-radius:var(--radius-md);
+
+    font-weight:600;
+
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ===========================
+   SEARCH BOX
+=========================== */
+
+.search-box{
+    display:flex;
+    align-items:center;
+
+    border:1px solid var(--border-color);
+
+    border-radius:var(--radius-lg);
+
+    overflow:hidden;
+
+    background:#fff;
+}
+
+.search-box input{
+
+    flex:1;
+
+    padding:14px 18px;
+
+    border:none;
+
+    background:none;
+}
+
+.search-box button{
+
+    padding:14px 20px;
+
+    background:var(--primary);
+
+    color:#fff;
+}
+
+/* ===========================
+   LANGUAGE SWITCH
+=========================== */
+
+.language-switch{
+
+    display:flex;
+
+    border:1px solid var(--border-color);
+
+    border-radius:999px;
+
+    overflow:hidden;
+}
+
+.language-switch button{
+
+    padding:10px 16px;
+
+    background:white;
+}
+
+.language-switch button.active{
+
+    background:var(--primary);
+
+    color:white;
+}
+
+/* ===========================
+   BRAND CARD
+=========================== */
+
+.brand-card{
+
+    background:white;
+
+    border-radius:var(--radius-lg);
+
+    border:1px solid var(--border-color);
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    transition:.3s;
+}
+
+.brand-card:hover{
+
+    box-shadow:var(--shadow-md);
+
+    transform:translateY(-6px);
+}
+
+.brand-card img{
+
+    width:120px;
+
+    margin:auto auto 20px;
+}
+
+.brand-card h3{
+
+    margin-bottom:10px;
+}
+
+/* ===========================
+   PRODUCT CARD
+=========================== */
+
+.product-card{
+
+    background:white;
+
+    border-radius:var(--radius-lg);
+
+    overflow:hidden;
+
+    border:1px solid var(--border-color);
+
+    transition:.3s;
+}
+
+.product-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-lg);
+}
+
+.product-image{
+
+    aspect-ratio:1/1;
+
+    background:#fafafa;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.product-image img{
+
+    max-width:90%;
+}
+
+.product-body{
+
+    padding:22px;
+}
+
+.product-brand{
+
+    color:var(--primary);
+
+    font-size:.9rem;
+
+    margin-bottom:8px;
+}
+
+.product-name{
+
+    font-weight:700;
+
+    margin-bottom:12px;
+}
+
+.product-price{
+
+    font-size:1.25rem;
+
+    color:var(--primary);
+
+    font-weight:700;
+}
+
+/* ===========================
+   BADGE
+=========================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:.85rem;
+
+    font-weight:600;
+}
+
+.badge-success{
+
+    background:#eaf8ef;
+
+    color:#1b8c4a;
+}
+
+.badge-warning{
+
+    background:#fff6e8;
+
+    color:#d97d00;
+}
+
+.badge-danger{
+
+    background:#ffecec;
+
+    color:#cf2d2d;
+}
+
+/* ===========================
+   INPUT
+=========================== */
+
+.input{
+
+    width:100%;
+
+    padding:14px 18px;
+
+    border-radius:var(--radius-md);
+
+    border:1px solid var(--border-color);
+
+    background:white;
+}
+
+/* ===========================
+   SELECT
+=========================== */
+
+.select{
+
+    width:100%;
+
+    padding:14px 18px;
+
+    border-radius:var(--radius-md);
+
+    border:1px solid var(--border-color);
+
+    background:white;
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+.empty-state{
+
+    text-align:center;
+
+    padding:80px 20px;
+}
+
+.empty-state img{
+
+    width:160px;
+
+    margin:auto auto 20px;
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
+.skeleton{
+
+    background:#ececec;
+
+    border-radius:10px;
+
+    animation:pulse 1.3s infinite;
+}
+
+@keyframes pulse{
+
+    0%{opacity:.4;}
+
+    50%{opacity:1;}
+
+    100%{opacity:.4;}
+}
+
+/* ===========================
+   BREADCRUMB
+=========================== */
+
+.breadcrumb{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:24px;
+
+    color:var(--text-secondary);
+
+    font-size:.95rem;
+}
+
+/* ===========================
+   PAGINATION
+=========================== */
+
+.pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:60px;
+}
+
+.pagination button{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid var(--border-color);
+}
+
+.pagination button.active{
+
+    background:var(--primary);
+
+    color:white;
+}

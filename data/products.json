@@ -1,0 +1,118 @@
+{
+  "brands": [
+    {
+      "id": "atalon",
+      "name": "Atalon",
+      "logo": "assets/brand/atalon/logo.png",
+      "description": {
+        "id": "Pakaian olahraga premium untuk performa terbaik.",
+        "zh": "高品质运动服饰，为最佳表现而设计。"
+      }
+    },
+    {
+      "id": "specs",
+      "name": "Specs",
+      "logo": "assets/brand/specs/logo.png",
+      "description": {
+        "id": "Perlengkapan olahraga berkualitas tinggi.",
+        "zh": "高品质运动装备。"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "atalon-critical-running-tshirt",
+      "brand": "atalon",
+      "category": "running",
+      "name": {
+        "id": "Critical Running T-Shirt",
+        "zh": "Critical 跑步T恤"
+      },
+      "price": 299000,
+      "currency": "IDR",
+      "stock": true,
+      "featured": true,
+      "colors": [
+        {
+          "id": "black",
+          "name": {
+            "id": "Hitam",
+            "zh": "黑色"
+          },
+          "images": [
+  "assets/products/atalon/critical-running-tshirt/black/right.webp",
+  "assets/products/atalon/critical-running-tshirt/black/back-detail.webp",
+  "assets/products/atalon/critical-running-tshirt/black/fabric.webp"
+]
+        },
+        {
+          "id": "green",
+          "name": {
+            "id": "Hijau",
+            "zh": "绿色"
+          },
+          "images": [
+            "assets/products/atalon/critical-running-tshirt/green/front.webp",
+            "assets/products/atalon/critical-running-tshirt/green/back.webp",
+            "assets/products/atalon/critical-running-tshirt/green/detail.webp"
+          ]
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "description": {
+        "id": "Kaos lari ringan dengan material breathable untuk aktivitas olahraga harian.",
+        "zh": "采用透气面料的轻量跑步T恤，适合日常运动。"
+      }
+    },
+    {
+      "id": "atalon-fundamental-pants",
+      "brand": "atalon",
+      "category": "pants",
+      "name": {
+        "id": "Fundamental Pants",
+        "zh": "Fundamental 长裤"
+      },
+      "price": 349000,
+      "currency": "IDR",
+      "stock": true,
+      "featured": false,
+      "colors": [
+        {
+          "id": "black",
+          "name": {
+            "id": "Hitam",
+            "zh": "黑色"
+          },
+          "images": [
+            "assets/products/atalon/fundamental-pants/black/front.webp"
+          ]
+        },
+        {
+          "id": "green",
+          "name": {
+            "id": "Hijau",
+            "zh": "绿色"
+          },
+          "images": [
+            "assets/products/atalon/fundamental-pants/green/front.webp"
+          ]
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "description": {
+        "id": "Celana olahraga ringan untuk aktivitas harian.",
+        "zh": "适合日常运动的轻量运动长裤。"
+      }
+    }
+  ]
+}
