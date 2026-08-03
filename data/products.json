@@ -1,24 +1,4 @@
 {
-  "brands": [
-    {
-      "id": "atalon",
-      "name": "Atalon",
-      "logo": "assets/brand/atalon/logo.png",
-      "description": {
-        "id": "Pakaian olahraga premium untuk performa terbaik.",
-        "zh": "高品质运动服饰，为最佳表现而设计。"
-      }
-    },
-    {
-      "id": "specs",
-      "name": "Specs",
-      "logo": "assets/brand/specs/logo.png",
-      "description": {
-        "id": "Perlengkapan olahraga berkualitas tinggi.",
-        "zh": "高品质运动装备。"
-      }
-    }
-  ],
   "products": [
     {
       "id": "atalon-critical-running-tshirt",
@@ -40,10 +20,10 @@
             "zh": "黑色"
           },
           "images": [
-  "assets/products/atalon/critical-running-tshirt/black/right.webp",
-  "assets/products/atalon/critical-running-tshirt/black/back-detail.webp",
-  "assets/products/atalon/critical-running-tshirt/black/fabric.webp"
-]
+            "assets/products/atalon/critical-running-tshirt/black/right.webp",
+            "assets/products/atalon/critical-running-tshirt/black/back-detail.webp",
+            "assets/products/atalon/critical-running-tshirt/black/fabric.webp"
+          ]
         },
         {
           "id": "green",

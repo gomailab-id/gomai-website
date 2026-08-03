@@ -1,0 +1,693 @@
+/* ==========================================================
+   BRAND PAGE
+   Gomai Website
+========================================================== */
+
+
+/* ==========================================================
+   BRAND VARIABLES
+========================================================== */
+
+:root {
+    --brand-primary: #111111;
+    --brand-accent: #ffffff;
+}
+
+
+/* ==========================================================
+   BREADCRUMB
+========================================================== */
+
+.brand-breadcrumb-section {
+    padding: 24px 0;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    font-size: 0.95rem;
+    color: var(--text-light, #6b7280);
+}
+
+.breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary, #f5ad00);
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--text, #111111);
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   BRAND HERO
+========================================================== */
+
+.brand-hero-section {
+    padding: 32px 0 56px;
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7f8fa 100%
+        );
+}
+
+.brand-hero {
+    position: relative;
+    min-height: 620px;
+    overflow: hidden;
+
+    border-radius: 30px;
+    background: var(--brand-primary);
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+.brand-hero-media {
+    position: absolute;
+    inset: 0;
+}
+
+.brand-hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.54) 42%,
+            rgba(0, 0, 0, 0.10) 72%,
+            rgba(0, 0, 0, 0.03) 100%
+        );
+}
+
+#brand-hero-image {
+    width: 100%;
+    height: 100%;
+    min-height: 620px;
+
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.brand-hero-placeholder {
+    width: 100%;
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+    text-align: center;
+
+    color: var(--brand-accent);
+    background:
+        linear-gradient(
+            135deg,
+            var(--brand-primary),
+            #2a2a2a
+        );
+}
+
+.brand-hero-overlay {
+    position: relative;
+    z-index: 2;
+
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 70px;
+}
+
+.brand-hero-content {
+    width: min(100%, 590px);
+    color: #ffffff;
+}
+
+.brand-logo-box {
+    width: 150px;
+    min-height: 96px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 28px;
+    padding: 16px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+.brand-logo-box img {
+    display: block;
+    width: 100%;
+    max-height: 72px;
+    object-fit: contain;
+}
+
+.brand-hero-content .badge {
+    margin-bottom: 22px;
+}
+
+.brand-hero-content h1 {
+    margin: 0 0 20px;
+
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+
+    color: #ffffff;
+}
+
+.brand-hero-content p {
+    max-width: 560px;
+    margin: 0 0 34px;
+
+    font-size: 1.12rem;
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.brand-hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.brand-hero-actions .btn {
+    min-height: 52px;
+}
+
+.brand-hero-actions .btn-outline {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+.brand-hero-actions .btn-outline:hover {
+    color: #111111;
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+
+/* ==========================================================
+   BRAND INTRODUCTION
+========================================================== */
+
+.brand-introduction {
+    padding-bottom: 28px;
+}
+
+.brand-introduction .section-title {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================
+   PRODUCTS TOOLBAR
+========================================================== */
+
+.brand-products-section {
+    padding-top: 38px;
+}
+
+.brand-products-toolbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+
+    margin-bottom: 34px;
+    padding-bottom: 24px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.brand-products-toolbar h2 {
+    margin: 0 0 8px;
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: -0.025em;
+}
+
+.brand-products-toolbar .muted {
+    margin: 0;
+    color: var(--text-light, #6b7280);
+}
+
+.brand-product-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filter-select {
+    min-width: 180px;
+    min-height: 48px;
+
+    padding: 0 42px 0 16px;
+
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+
+    color: var(--text, #111111);
+    background-color: #ffffff;
+
+    font: inherit;
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.filter-select:hover {
+    border-color: rgba(0, 0, 0, 0.28);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary, #f5ad00);
+    box-shadow:
+        0 0 0 4px rgba(245, 173, 0, 0.14);
+}
+
+
+/* ==========================================================
+   PRODUCT GRID
+========================================================== */
+
+.brand-products-section .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.brand-products-section .product-card {
+    overflow: hidden;
+
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
+
+    background: #ffffff;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.055);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.brand-products-section .product-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0, 0, 0, 0.14);
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.11);
+}
+
+.brand-products-section .product-image {
+    position: relative;
+
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+
+    background: #f4f5f7;
+}
+
+.brand-products-section .product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+.brand-products-section .product-card:hover
+.product-image img {
+    transform: scale(1.045);
+}
+
+.brand-products-section .product-body {
+    padding: 22px;
+}
+
+.brand-products-section .product-brand {
+    margin: 0 0 8px;
+
+    color: var(--primary, #f5ad00);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.brand-products-section .product-name {
+    margin: 0 0 14px;
+
+    font-size: 1.08rem;
+    line-height: 1.45;
+}
+
+.brand-products-section .product-name a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand-products-section .product-name a:hover {
+    color: var(--primary, #f5ad00);
+}
+
+.brand-products-section .product-price {
+    margin: 0 0 16px;
+
+    color: var(--primary, #f5ad00);
+
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   WHY GOMAI ON BRAND PAGE
+========================================================== */
+
+.brand-products-section + .why-gomai {
+    margin-top: 40px;
+}
+
+.brand-products-section + .why-gomai .service-card {
+    height: 100%;
+}
+
+
+/* ==========================================================
+   WECHAT CTA
+========================================================== */
+
+.brand-products-section ~ .section .wechat-cta {
+    position: relative;
+    overflow: hidden;
+
+    padding: 44px 48px;
+
+    color: #ffffff;
+    border: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--brand-primary),
+            #242424
+        );
+}
+
+.brand-products-section ~ .section .wechat-cta::after {
+    content: "";
+
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -80px;
+    top: -90px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.brand-products-section ~ .section .wechat-cta > * {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-products-section ~ .section .wechat-cta h2 {
+    margin: 18px 0 12px;
+    color: #ffffff;
+}
+
+.brand-products-section ~ .section .wechat-cta p {
+    max-width: 680px;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* ==========================================================
+   EMPTY / ERROR STATE
+========================================================== */
+
+.brand-products-section .empty-state,
+#brand-not-found .empty-state {
+    grid-column: 1 / -1;
+
+    padding: 72px 28px;
+
+    text-align: center;
+
+    border: 1px dashed rgba(0, 0, 0, 0.14);
+    border-radius: 22px;
+    background: #fafafa;
+}
+
+#brand-not-found .empty-state {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+#brand-not-found .empty-state h1 {
+    margin-bottom: 16px;
+}
+
+#brand-not-found .empty-state p {
+    max-width: 560px;
+    margin: 0 auto 28px;
+    color: var(--text-light, #6b7280);
+}
+
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+.visually-hidden {
+    position: absolute !important;
+
+    width: 1px !important;
+    height: 1px !important;
+
+    padding: 0 !important;
+    margin: -1px !important;
+
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+
+    border: 0 !important;
+}
+
+
+/* ==========================================================
+   RESPONSIVE — LAPTOP
+========================================================== */
+
+@media (max-width: 1200px) {
+
+    .brand-products-section .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — TABLET
+========================================================== */
+
+@media (max-width: 992px) {
+
+    .brand-hero {
+        min-height: 560px;
+    }
+
+    #brand-hero-image,
+    .brand-hero-placeholder,
+    .brand-hero-overlay {
+        min-height: 560px;
+    }
+
+    .brand-hero-overlay {
+        padding: 54px;
+    }
+
+    .brand-products-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .brand-product-controls {
+        width: 100%;
+    }
+
+    .filter-select {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .brand-products-section .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .brand-breadcrumb-section {
+        padding: 18px 0;
+    }
+
+    .breadcrumb {
+        font-size: 0.87rem;
+    }
+
+    .brand-hero-section {
+        padding: 18px 0 42px;
+    }
+
+    .brand-hero {
+        min-height: 610px;
+        border-radius: 22px;
+    }
+
+    #brand-hero-image,
+    .brand-hero-placeholder,
+    .brand-hero-overlay {
+        min-height: 610px;
+    }
+
+    .brand-hero-media::after {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.12) 0%,
+                rgba(0, 0, 0, 0.64) 52%,
+                rgba(0, 0, 0, 0.92) 100%
+            );
+    }
+
+    #brand-hero-image {
+        object-position: center top;
+    }
+
+    .brand-hero-overlay {
+        align-items: flex-end;
+        padding: 32px 26px;
+    }
+
+    .brand-logo-box {
+        width: 120px;
+        min-height: 80px;
+        margin-bottom: 20px;
+    }
+
+    .brand-hero-content h1 {
+        font-size: clamp(2.6rem, 13vw, 4rem);
+    }
+
+    .brand-hero-content p {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    .brand-hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .brand-hero-actions .btn {
+        width: 100%;
+    }
+
+    .brand-product-controls {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .filter-select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .brand-products-section .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .brand-products-section .product-body {
+        padding: 16px;
+    }
+
+    .brand-products-section .product-name {
+        font-size: 0.96rem;
+    }
+
+    .brand-products-section .product-price {
+        font-size: 1.12rem;
+    }
+
+    .brand-products-section ~ .section .wechat-cta {
+        padding: 34px 26px;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .brand-products-section .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-products-section .product-image {
+        aspect-ratio: 1 / 1.12;
+    }
+
+}

@@ -1,0 +1,100 @@
+{
+  "brands": [
+    {
+      "id": "atalon",
+      "name": "Atalon",
+      "slug": "atalon",
+      "logo": "assets/brands/atalon/logo.png",
+      "hero": "assets/brands/atalon/hero.webp",
+      "primaryColor": "#111111",
+      "accentColor": "#d4af37",
+      "website": "",
+      "featured": true,
+      "sortOrder": 1,
+      "description": {
+        "id": "Pakaian olahraga premium untuk performa terbaik.",
+        "zh": "高品质运动服饰，为最佳表现而设计。"
+      }
+    },
+    {
+      "id": "specs",
+      "name": "Specs",
+      "slug": "specs",
+      "logo": "assets/brands/specs/logo.png",
+      "hero": "assets/brands/specs/hero.webp",
+      "primaryColor": "#d6001c",
+      "accentColor": "#ffffff",
+      "website": "",
+      "featured": true,
+      "sortOrder": 2,
+      "description": {
+        "id": "Perlengkapan olahraga berkualitas tinggi.",
+        "zh": "高品质运动装备。"
+      }
+    },
+    {
+      "id": "erspo",
+      "name": "Erspo",
+      "slug": "erspo",
+      "logo": "assets/brands/erspo/logo.png",
+      "hero": "assets/brands/erspo/hero.webp",
+      "primaryColor": "#111111",
+      "accentColor": "#ffffff",
+      "website": "",
+      "featured": true,
+      "sortOrder": 3,
+      "description": {
+        "id": "Sportswear modern untuk aktivitas dan performa.",
+        "zh": "现代运动服饰。"
+      }
+    },
+    {
+      "id": "ortuseight",
+      "name": "Ortuseight",
+      "slug": "ortuseight",
+      "logo": "assets/brands/ortuseight/logo.png",
+      "hero": "assets/brands/ortuseight/hero.webp",
+      "primaryColor": "#1b1b1b",
+      "accentColor": "#f5f5f5",
+      "website": "",
+      "featured": true,
+      "sortOrder": 4,
+      "description": {
+        "id": "Sepatu dan apparel olahraga berkualitas.",
+        "zh": "高品质运动鞋与服饰。"
+      }
+    },
+    {
+      "id": "decathlon",
+      "name": "Decathlon",
+      "slug": "decathlon",
+      "logo": "assets/brands/decathlon/logo.png",
+      "hero": "assets/brands/decathlon/hero.webp",
+      "primaryColor": "#0072ce",
+      "accentColor": "#ffffff",
+      "website": "",
+      "featured": true,
+      "sortOrder": 5,
+      "description": {
+        "id": "Perlengkapan olahraga dan outdoor untuk semua aktivitas.",
+        "zh": "运动与户外用品。"
+      }
+    },
+    {
+      "id": "whittaker",
+      "name": "Whittaker",
+      "slug": "whittaker",
+      "logo": "assets/brands/whittaker/logo.png",
+      "hero": "assets/brands/whittaker/hero.webp",
+      "primaryColor": "#2f4f4f",
+      "accentColor": "#ffffff",
+      "website": "",
+      "featured": true,
+      "sortOrder": 6,
+      "description": {
+        "id": "Perlengkapan outdoor dan petualangan.",
+        "zh": "户外探险装备。"
+      }
+    }
+  ]
+}

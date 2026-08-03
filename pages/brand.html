@@ -1,36 +1,899 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brands | Gomai</title>
 
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Brand | Gomai</title>
+
+    <meta
+        id="page-description"
+        name="description"
+        content="Jelajahi koleksi brand pilihan yang tersedia melalui Gomai."
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
 </head>
+
 <body>
 
-<header id="header"></header>
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="header">
+
+    <div class="container header-inner">
+
+        <a
+            href="../index.html"
+            class="logo"
+            aria-label="Gomai Beranda"
+        >
+            <strong class="logo-text">
+                Gomai
+            </strong>
+        </a>
+
+        <form
+            class="search-box"
+            id="search-form"
+            role="search"
+        >
+            <input
+                id="search-input"
+                type="search"
+                autocomplete="off"
+                data-lang-placeholder="search_placeholder"
+                placeholder="Cari produk atau brand..."
+                aria-label="Cari produk atau brand"
+            >
+
+            <button
+                type="submit"
+                aria-label="Cari"
+            >
+                🔍
+            </button>
+        </form>
+
+        <div class="header-actions">
+
+            <div
+                class="language-switch"
+                aria-label="Pilih bahasa"
+            >
+                <button
+                    type="button"
+                    data-language="id"
+                >
+                    ID
+                </button>
+
+                <button
+                    type="button"
+                    data-language="zh"
+                >
+                    中文
+                </button>
+            </div>
+
+            <a
+                href="#wechat"
+                class="btn btn-primary"
+            >
+                WeChat
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ==================================================
+     MAIN CONTENT
+================================================== -->
 
 <main>
 
-<section class="page-header">
-    <h1 data-lang="brands_title">Brands</h1>
-    <p data-lang="brands_desc"></p>
-</section>
 
-<section id="brand-list"></section>
+    <!-- ==============================================
+         BREADCRUMB
+    =============================================== -->
+
+    <section class="brand-breadcrumb-section">
+
+        <div class="container">
+
+            <nav
+                class="breadcrumb"
+                aria-label="Breadcrumb"
+            >
+                <a href="../index.html">
+                    Beranda
+                </a>
+
+                <span aria-hidden="true">
+                    /
+                </span>
+
+                <a href="../index.html#brands">
+                    Brand
+                </a>
+
+                <span aria-hidden="true">
+                    /
+                </span>
+
+                <span
+                    id="breadcrumb-brand-name"
+                    aria-current="page"
+                >
+                    Memuat...
+                </span>
+            </nav>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         BRAND HERO
+    =============================================== -->
+
+    <section
+        class="brand-hero-section"
+        id="brand-hero-section"
+    >
+
+        <div class="container">
+
+            <article class="brand-hero">
+
+                <div class="brand-hero-media">
+
+                    <img
+                        id="brand-hero-image"
+                        src=""
+                        alt=""
+                        hidden
+                    >
+
+                    <div
+                        id="brand-hero-placeholder"
+                        class="brand-hero-placeholder"
+                    >
+                        <p>
+                            Memuat informasi brand...
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="brand-hero-overlay">
+
+                    <div class="brand-hero-content">
+
+                        <div class="brand-logo-box">
+
+                            <img
+                                id="brand-logo"
+                                src=""
+                                alt=""
+                                hidden
+                            >
+
+                        </div>
+
+                        <span class="badge badge-warning">
+                            Official Brand Collection
+                        </span>
+
+                        <h1 id="brand-name">
+                            Memuat brand...
+                        </h1>
+
+                        <p id="brand-description">
+                            Silakan tunggu, informasi brand sedang dimuat.
+                        </p>
+
+                        <div class="brand-hero-actions">
+
+                            <a
+                                href="#brand-products"
+                                class="btn btn-primary"
+                            >
+                                Jelajahi Produk
+                            </a>
+
+                            <a
+                                href="#wechat"
+                                class="btn btn-outline"
+                            >
+                                Hubungi WeChat
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         BRAND HIGHLIGHTS
+    =============================================== -->
+
+    <section class="brand-highlights">
+
+        <div class="container">
+
+            <div class="brand-highlights-grid">
+
+                <article class="brand-highlight-item">
+
+                    <span class="brand-highlight-icon">
+                        ✓
+                    </span>
+
+                    <div>
+                        <h3>
+                            Produk Original
+                        </h3>
+
+                        <p>
+                            Bersumber dari toko resmi atau penjual terpercaya.
+                        </p>
+                    </div>
+
+                </article>
+
+                <article class="brand-highlight-item">
+
+                    <span class="brand-highlight-icon">
+                        ◇
+                    </span>
+
+                    <div>
+                        <h3>
+                            Koleksi Pilihan
+                        </h3>
+
+                        <p>
+                            Produk dipilih berdasarkan fungsi dan kualitas.
+                        </p>
+                    </div>
+
+                </article>
+
+                <article class="brand-highlight-item">
+
+                    <span class="brand-highlight-icon">
+                        💬
+                    </span>
+
+                    <div>
+                        <h3>
+                            Konsultasi WeChat
+                        </h3>
+
+                        <p>
+                            Tanyakan stok, warna, ukuran, dan detail produk.
+                        </p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         BRAND INTRODUCTION
+    =============================================== -->
+
+    <section class="section brand-introduction">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span class="badge badge-success">
+                    Koleksi Brand
+                </span>
+
+                <h2 id="brand-collection-title">
+                    Produk Pilihan
+                </h2>
+
+                <p id="brand-collection-description">
+                    Temukan produk yang tersedia dari brand ini.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         BRAND PRODUCTS
+    =============================================== -->
+
+    <section
+        class="section brand-products-section"
+        id="brand-products"
+    >
+
+        <div class="container">
+
+            <div class="brand-products-toolbar">
+
+                <div class="brand-products-heading">
+
+                    <span class="brand-products-label">
+                        Katalog Brand
+                    </span>
+
+                    <h2>
+                        Semua Produk
+                    </h2>
+
+                    <p
+                        id="brand-product-count"
+                        class="muted"
+                    >
+                        Memuat produk...
+                    </p>
+
+                </div>
+
+                <div class="brand-product-controls">
+
+                    <div class="filter-field">
+
+                        <label for="brand-category-filter">
+                            Kategori
+                        </label>
+
+                        <select
+                            id="brand-category-filter"
+                            class="filter-select"
+                        >
+                            <option value="all">
+                                Semua Kategori
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="filter-field">
+
+                        <label for="brand-sort">
+                            Urutkan
+                        </label>
+
+                        <select
+                            id="brand-sort"
+                            class="filter-select"
+                        >
+                            <option value="default">
+                                Urutan Default
+                            </option>
+
+                            <option value="price-low">
+                                Harga Terendah
+                            </option>
+
+                            <option value="price-high">
+                                Harga Tertinggi
+                            </option>
+
+                            <option value="name-asc">
+                                Nama A–Z
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+                id="brand-product-grid"
+                class="products-grid"
+                aria-live="polite"
+            >
+                <div class="empty-state">
+
+                    <p>
+                        Memuat produk brand...
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         HOW IT WORKS
+    =============================================== -->
+
+    <section class="section brand-shopping-flow">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span class="badge badge-warning">
+                    Belanja melalui Gomai
+                </span>
+
+                <h2>
+                    Mudah dari Memilih hingga Menerima Pesanan
+                </h2>
+
+                <p>
+                    Gomai membantu proses pencarian, konsultasi,
+                    pemesanan, hingga pengantaran produk.
+                </p>
+
+            </div>
+
+            <div class="grid grid-4">
+
+                <article class="card step-card">
+
+                    <span class="badge badge-warning">
+                        1
+                    </span>
+
+                    <h3>
+                        Pilih Produk
+                    </h3>
+
+                    <p>
+                        Buka detail produk dan tentukan warna serta ukuran.
+                    </p>
+
+                </article>
+
+                <article class="card step-card">
+
+                    <span class="badge badge-warning">
+                        2
+                    </span>
+
+                    <h3>
+                        Periksa Stok
+                    </h3>
+
+                    <p>
+                        Hubungi Gomai untuk memastikan ketersediaan produk.
+                    </p>
+
+                </article>
+
+                <article class="card step-card">
+
+                    <span class="badge badge-warning">
+                        3
+                    </span>
+
+                    <h3>
+                        Konfirmasi Pesanan
+                    </h3>
+
+                    <p>
+                        Kirim detail pilihan Anda melalui WeChat.
+                    </p>
+
+                </article>
+
+                <article class="card step-card">
+
+                    <span class="badge badge-warning">
+                        4
+                    </span>
+
+                    <h3>
+                        Kami Antar
+                    </h3>
+
+                    <p>
+                        Pesanan diproses dan dikirim sesuai jadwal.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         WHY GOMAI
+    =============================================== -->
+
+    <section class="section why-gomai">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <span class="badge badge-success">
+                    Layanan Gomai
+                </span>
+
+                <h2>
+                    Pengalaman Belanja yang Lebih Nyaman
+                </h2>
+
+                <p>
+                    Kami membantu Anda mendapatkan informasi produk
+                    dengan proses pemesanan yang sederhana.
+                </p>
+
+            </div>
+
+            <div class="grid grid-4">
+
+                <article class="card service-card">
+
+                    <div class="category-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        Sumber Terpercaya
+                    </h3>
+
+                    <p>
+                        Produk dibeli melalui toko resmi atau sumber
+                        yang telah diperiksa.
+                    </p>
+
+                </article>
+
+                <article class="card service-card">
+
+                    <div class="category-icon">
+                        🔍
+                    </div>
+
+                    <h3>
+                        Detail Transparan
+                    </h3>
+
+                    <p>
+                        Informasi harga, ukuran, warna, dan stok dapat
+                        diperiksa sebelum memesan.
+                    </p>
+
+                </article>
+
+                <article class="card service-card">
+
+                    <div class="category-icon">
+                        💬
+                    </div>
+
+                    <h3>
+                        Bantuan Langsung
+                    </h3>
+
+                    <p>
+                        Konsultasikan kebutuhan Anda melalui layanan
+                        pelanggan WeChat Gomai.
+                    </p>
+
+                </article>
+
+                <article class="card service-card">
+
+                    <div class="category-icon">
+                        🚚
+                    </div>
+
+                    <h3>
+                        Pengantaran
+                    </h3>
+
+                    <p>
+                        Produk dikirim sesuai layanan dan jadwal
+                        yang telah disepakati.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         WECHAT CTA
+    =============================================== -->
+
+    <section class="section brand-wechat-section">
+
+        <div class="container">
+
+            <div class="card service-card wechat-cta">
+
+                <div>
+
+                    <span class="badge badge-warning">
+                        Customer Service
+                    </span>
+
+                    <h2>
+                        Belum Menemukan Produk yang Dicari?
+                    </h2>
+
+                    <p>
+                        Kirim nama, tautan, atau foto produk melalui
+                        WeChat. Gomai akan membantu memeriksa informasi,
+                        harga, dan ketersediaannya.
+                    </p>
+
+                </div>
+
+                <a
+                    href="#wechat"
+                    class="btn btn-primary"
+                >
+                    Hubungi via WeChat
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================================
+         NOT FOUND
+    =============================================== -->
+
+    <section
+        id="brand-not-found"
+        class="section"
+        hidden
+    >
+
+        <div class="container">
+
+            <div class="empty-state">
+
+                <h1>
+                    Brand Tidak Ditemukan
+                </h1>
+
+                <p>
+                    Brand yang Anda cari belum tersedia atau alamat
+                    halaman tidak valid.
+                </p>
+
+                <a
+                    href="../index.html#brands"
+                    class="btn btn-primary"
+                >
+                    Lihat Semua Brand
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
 
 </main>
 
-<footer id="footer"></footer>
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer
+    class="footer"
+    id="wechat"
+>
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <h3>
+                Gomai
+            </h3>
+
+            <p>
+                Belanja mudah untuk kebutuhan olahraga,
+                outdoor, fashion, dan kebutuhan harian.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h4>
+                Brand
+            </h4>
+
+            <ul>
+
+                <li>
+                    <a href="brand.html?id=atalon">
+                        Atalon
+                    </a>
+                </li>
+
+                <li>
+                    <a href="brand.html?id=specs">
+                        Specs
+                    </a>
+                </li>
+
+                <li>
+                    <a href="brand.html?id=erspo">
+                        Erspo
+                    </a>
+                </li>
+
+                <li>
+                    <a href="brand.html?id=ortuseight">
+                        Ortuseight
+                    </a>
+                </li>
+
+                <li>
+                    <a href="brand.html?id=decathlon">
+                        Decathlon
+                    </a>
+                </li>
+
+                <li>
+                    <a href="brand.html?id=whittaker">
+                        Whittaker
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h4 data-lang="nav_information">
+                Informasi
+            </h4>
+
+            <ul>
+
+                <li>
+                    <a
+                        href="how-to-buy.html"
+                        data-lang="nav_how_to_buy"
+                    >
+                        Cara Membeli
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="about.html"
+                        data-lang="nav_about"
+                    >
+                        Tentang Kami
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="faq.html"
+                        data-lang="nav_faq"
+                    >
+                        FAQ
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h4 data-lang="nav_contact">
+                Kontak
+            </h4>
+
+            <p>
+                WeChat: Gomai
+            </p>
+
+            <a
+                href="contact.html"
+                class="btn btn-outline"
+                data-lang="contact_us"
+            >
+                Hubungi Kami
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+
+        <p data-lang="copyright">
+            © 2026 Gomai. Semua Hak Dilindungi.
+        </p>
+
+        <div
+            class="language-switch"
+            aria-label="Pilih bahasa"
+        >
+            <button
+                type="button"
+                data-language="id"
+            >
+                Indonesia
+            </button>
+
+            <button
+                type="button"
+                data-language="zh"
+            >
+                中文
+            </button>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
 
 <script src="../js/utils.js"></script>
 <script src="../js/language.js"></script>
-<script src="../js/app.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/brand.js"></script>
 
 </body>
+
 </html>
