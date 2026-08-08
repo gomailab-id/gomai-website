@@ -1,19 +1,758 @@
-@media(max-width:992px){
+/* ==========================================================
+   GOMAI RESPONSIVE
+   responsive.css
 
-section{
+   Tanggung jawab:
+   - Penyesuaian global lintas halaman
+   - Perlindungan layout pada layar sangat kecil
+   - Tampilan mobile landscape
+   - Konten panjang Mandarin dan Indonesia
+   - Media responsif
+   - Aksesibilitas sistem
 
-padding:70px 0;
+   Catatan:
+   Breakpoint utama setiap komponen tetap berada di file
+   pemiliknya agar aturan tidak saling bertabrakan.
+
+   Prinsip:
+   - Mobile-first
+   - Mandarin-first
+   - Tidak menyembunyikan kesalahan overflow secara global
+========================================================== */
+
+
+/* ==========================================================
+   GLOBAL RESPONSIVE SAFETY
+========================================================== */
+
+html,
+body {
+    width: 100%;
+    min-width: 0;
+}
+
+main,
+section,
+article,
+aside,
+header,
+footer,
+nav,
+form,
+fieldset {
+    min-width: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a,
+button,
+label,
+summary,
+span {
+    max-width: 100%;
+}
+
+a,
+button,
+.btn,
+.badge,
+.option-btn,
+.color-option,
+.size-option {
+    overflow-wrap: anywhere;
+}
+
+pre,
+code {
+    max-width: 100%;
+}
+
+pre {
+    overflow-x: auto;
+
+    overscroll-behavior-inline:
+        contain;
+
+    -webkit-overflow-scrolling:
+        touch;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+    max-width: 100%;
+}
+
+
+/* ==========================================================
+   RESPONSIVE EMBED
+========================================================== */
+
+.responsive-embed {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+    background:
+        var(--bg-muted, #f5f5f5);
+
+    border-radius:
+        var(--radius-lg, 16px);
+}
+
+.responsive-embed::before {
+    display: block;
+
+    padding-top:
+        var(--embed-ratio, 56.25%);
+
+    content: "";
+}
+
+.responsive-embed > iframe,
+.responsive-embed > video,
+.responsive-embed > img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================================
+   RESPONSIVE OVERFLOW AREA
+
+   Digunakan hanya pada elemen yang memang membutuhkan
+   pengguliran horizontal, bukan pada seluruh halaman.
+========================================================== */
+
+.responsive-overflow {
+    width: 100%;
+    min-width: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    overscroll-behavior-inline:
+        contain;
+
+    scrollbar-width:
+        thin;
+
+    -webkit-overflow-scrolling:
+        touch;
+}
+
+.responsive-overflow > * {
+    min-width:
+        var(--responsive-overflow-min, 560px);
+}
+
+
+/* ==========================================================
+   RESPONSIVE ACTIONS
+========================================================== */
+
+.responsive-actions {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--space-3, 12px);
+
+    width: 100%;
+    min-width: 0;
+}
+
+.responsive-actions > .btn,
+.responsive-actions > button,
+.responsive-actions > a {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   MOBILE CARD SCROLLER
+
+   Dapat digunakan untuk rekomendasi atau kategori ringkas
+   tanpa membuat kartu terlalu sempit.
+========================================================== */
+
+.mobile-card-scroll {
+    display: grid;
+
+    grid-auto-columns:
+        min(
+            82vw,
+            320px
+        );
+
+    grid-auto-flow:
+        column;
+
+    gap:
+        var(--space-4, 16px);
+
+    width: 100%;
+
+    padding-bottom:
+        var(--space-2, 8px);
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type:
+        x mandatory;
+
+    overscroll-behavior-inline:
+        contain;
+
+    scrollbar-width:
+        thin;
+
+    -webkit-overflow-scrolling:
+        touch;
+}
+
+.mobile-card-scroll > * {
+    min-width: 0;
+
+    scroll-snap-align:
+        start;
+}
+
+
+/* ==========================================================
+   TOUCH DEVICE ADJUSTMENTS
+========================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    a,
+    button,
+    summary,
+    select,
+    label {
+        -webkit-tap-highlight-color:
+            var(
+                --tap-highlight,
+                rgba(245, 180, 0, 0.2)
+            );
+    }
+
+    .btn,
+    .option-btn,
+    .color-option,
+    .size-option,
+    .pagination a,
+    .pagination button {
+        min-height:
+            var(--touch-target-min, 44px);
+    }
+
+    .card-hover,
+    .brand-card,
+    .product-card {
+        transform: none;
+    }
 
 }
 
+
+/* ==========================================================
+   LAYAR SANGAT KECIL
+   Target: sekitar 320px sampai 359px
+========================================================== */
+
+@media (max-width: 359px) {
+
+    :root {
+        --container-gutter: 12px;
+
+        --section-space-sm: 28px;
+        --section-space: 40px;
+        --section-space-lg: 52px;
+
+        --space-mobile-tight: 10px;
+    }
+
+    .container,
+    .container-narrow,
+    .container-reading,
+    .container-fluid {
+        padding-left:
+            max(
+                var(--container-gutter, 12px),
+                var(--safe-area-left, 0px)
+            );
+
+        padding-right:
+            max(
+                var(--container-gutter, 12px),
+                var(--safe-area-right, 0px)
+            );
+    }
+
+    .section-header,
+    .section-title {
+        margin-bottom:
+            var(--space-6, 24px);
+    }
+
+    .page-header h1 {
+        font-size:
+            clamp(
+                1.625rem,
+                9vw,
+                2rem
+            );
+    }
+
+    .page-header p {
+        margin-top:
+            var(--space-3, 12px);
+
+        line-height:
+            var(--line-height-body, 1.7);
+    }
+
+    .btn {
+        padding-inline:
+            var(--space-4, 16px);
+    }
+
+    .btn-lg {
+        padding-inline:
+            var(--space-5, 20px);
+    }
+
+    .card-body,
+    .card-header,
+    .card-footer {
+        padding:
+            var(--space-4, 16px);
+    }
+
+    .brand-card-content {
+        padding:
+            var(--space-4, 16px);
+    }
+
+    .toolbar-surface {
+        padding:
+            var(--space-3, 12px);
+    }
+
+    .cta-banner {
+        padding:
+            var(--space-5, 20px);
+    }
+
+    .alert,
+    .information-note {
+        padding:
+            var(--space-3, 12px);
+    }
+
+    .empty-state,
+    .gomai-empty-state {
+        padding:
+            var(--space-6, 24px)
+            var(--space-3, 12px);
+    }
+
+    .breadcrumb [aria-current="page"] {
+        max-width:
+            190px;
+    }
+
+    .responsive-overflow > * {
+        min-width:
+            var(--responsive-overflow-min-small, 480px);
+    }
+
 }
 
-@media(max-width:768px){
 
-.container{
+/* ==========================================================
+   HANDPHONE UMUM
+========================================================== */
 
-width:calc(100% - 28px);
+@media (min-width: 360px) {
+
+    .responsive-actions {
+        gap:
+            var(--space-3, 12px);
+    }
 
 }
+
+
+/* ==========================================================
+   HANDPHONE BESAR
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .responsive-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        width: auto;
+    }
+
+    .responsive-actions > .btn,
+    .responsive-actions > button,
+    .responsive-actions > a {
+        width: auto;
+        min-width: 140px;
+    }
+
+    .mobile-card-scroll {
+        grid-auto-columns:
+            min(
+                68vw,
+                340px
+            );
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .mobile-card-scroll {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        grid-auto-columns:
+            auto;
+
+        grid-auto-flow:
+            row;
+
+        overflow: visible;
+
+        scroll-snap-type: none;
+    }
+
+    .responsive-actions {
+        justify-content:
+            flex-start;
+    }
+
+    .responsive-overflow > * {
+        min-width: 100%;
+    }
+
+}
+
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .mobile-card-scroll {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            var(--space-6, 24px);
+    }
+
+}
+
+
+/* ==========================================================
+   DESKTOP LEBAR
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .mobile-card-scroll {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE LANDSCAPE
+
+   Mengurangi tinggi Header agar konten tidak tertutup
+   terlalu banyak pada layar handphone yang pendek.
+========================================================== */
+
+@media (
+    max-width: 767px
+) and (
+    orientation: landscape
+) and (
+    max-height: 540px
+) {
+
+    :root {
+        --promo-bar-height: 32px;
+        --header-height: 56px;
+    }
+
+    .promo-bar-inner {
+        font-size:
+            0.6875rem;
+    }
+
+    .mobile-navigation-inner {
+        padding-top:
+            var(--space-2, 8px);
+
+        padding-bottom:
+            calc(
+                var(--space-5, 20px) +
+                var(--safe-area-bottom, 0px)
+            );
+    }
+
+    .mobile-navigation-inner
+    > a:not(.btn) {
+        min-height: 48px;
+    }
+
+    .search-panel,
+    .gomai-search-panel {
+        padding:
+            var(--space-2, 8px);
+    }
+
+    .search-panel-suggestions {
+        border-radius:
+            var(--radius-md, 12px);
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE LANDSCAPE SANGAT PENDEK
+========================================================== */
+
+@media (
+    max-width: 767px
+) and (
+    orientation: landscape
+) and (
+    max-height: 420px
+) {
+
+    .promo-bar {
+        display: none;
+    }
+
+    .site-header,
+    .header,
+    .home-header,
+    .shared-header {
+        --shared-header-offset:
+            calc(
+                var(--safe-area-top, 0px) +
+                var(--header-height, 56px)
+            );
+    }
+
+}
+
+
+/* ==========================================================
+   HIGH RESOLUTION IMAGE RENDERING
+========================================================== */
+
+@media (min-resolution: 2dppx) {
+
+    img {
+        image-rendering:
+            auto;
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mobile-card-scroll {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED TRANSPARENCY
+========================================================== */
+
+@media (prefers-reduced-transparency: reduce) {
+
+    .header-search-panel-host,
+    .overlay,
+    .modal-overlay {
+        background:
+            rgba(17, 17, 17, 0.86);
+    }
+
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST / FORCED COLORS
+========================================================== */
+
+@media (forced-colors: active) {
+
+    .btn,
+    .badge,
+    .card,
+    .brand-card,
+    .product-card,
+    .input,
+    .select,
+    .textarea,
+    .filter-select,
+    .option-btn,
+    .color-option,
+    .size-option,
+    .quantity-control,
+    .alert,
+    .information-note {
+        border:
+            1px solid
+            CanvasText;
+    }
+
+    .btn-primary,
+    .badge-primary,
+    .badge-warning,
+    .language-switch
+    button[aria-pressed="true"] {
+        color:
+            ButtonText;
+
+        background:
+            ButtonFace;
+
+        border-color:
+            ButtonText;
+    }
+
+    .loading-spinner {
+        border-color:
+            CanvasText;
+
+        border-top-color:
+            Highlight;
+    }
+
+}
+
+
+/* ==========================================================
+   PRINT
+========================================================== */
+
+@media print {
+
+    .site-header,
+    .header,
+    .home-header,
+    .shared-header,
+    .footer,
+    .shared-footer,
+    .mobile-navigation,
+    .header-search-panel-host,
+    .responsive-actions,
+    .pagination {
+        display: none !important;
+    }
+
+    body {
+        display: block;
+
+        color: #000000;
+        background: #ffffff;
+    }
+
+    main,
+    #main-content {
+        display: block;
+    }
+
+    .container,
+    .container-narrow,
+    .container-reading,
+    .container-fluid {
+        width: 100%;
+        max-width: none;
+
+        padding: 0;
+    }
+
+    .section,
+    .section-sm,
+    .section-lg {
+        padding-block:
+            24px;
+    }
+
+    .card,
+    .brand-card,
+    .product-card,
+    .alert,
+    .information-note {
+        break-inside: avoid;
+
+        box-shadow: none;
+    }
+
+    a {
+        color: #000000;
+        text-decoration: underline;
+    }
 
 }

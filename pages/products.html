@@ -1,42 +1,508 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Products | Gomai</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="../css/variables.css">
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/layout.css">
-<link rel="stylesheet" href="../css/components.css">
-<link rel="stylesheet" href="../css/product.css">
-<link rel="stylesheet" href="../css/responsive.css">
+    <title>Semua Produk | Gomai</title>
 
+    <meta
+        id="page-description"
+        name="description"
+        content="Jelajahi berbagai produk olahraga, outdoor, fashion, dan kebutuhan harian melalui Gomai."
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
 </head>
 
-<body>
+<body data-page="products">
 
-<header id="header"></header>
+    <!-- ==================================================
+         SHARED HEADER
+         Dirender oleh HeaderComponent.
+    ================================================== -->
 
-<main>
+    <header id="site-header"></header>
 
-<section class="page-header">
-<h1 data-lang="products_title"></h1>
-<p data-lang="products_desc"></p>
-</section>
 
-<section id="product-grid"></section>
+    <!-- ==================================================
+         MAIN CONTENT
+    ================================================== -->
 
-</main>
+    <main
+        id="products-page"
+        class="products-page"
+    >
 
-<footer id="footer"></footer>
+        <!-- ==============================================
+             PAGE INTRO
+        =============================================== -->
 
-<script src="../js/utils.js"></script>
-<script src="../js/language.js"></script>
-<script src="../js/products.js"></script>
-<script src="../js/search.js"></script>
-<script src="../js/app.js"></script>
+        <section class="section products-page-header">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <span
+                        class="badge badge-warning"
+                        data-lang="common.products"
+                    >
+                        Produk
+                    </span>
+
+                    <h1
+                        id="products-title"
+                        data-lang="common.allProducts"
+                    >
+                        Semua Produk
+                    </h1>
+
+                    <p
+                        id="products-description"
+                        data-lang="productsPage.meta.description"
+                    >
+                        Jelajahi berbagai produk olahraga, outdoor,
+                        fashion, dan kebutuhan harian melalui Gomai.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             PRODUCT CATALOG
+        =============================================== -->
+
+        <section
+            class="section products-catalog-section"
+            id="product-catalog"
+        >
+
+            <div class="container">
+
+                <!-- ======================================
+                     SEARCH
+                ======================================= -->
+
+                <form
+                    id="products-search-form"
+                    class="products-search-form"
+                    role="search"
+                >
+
+                    <div class="filter-field">
+
+                        <label
+                            for="products-search-input"
+                            data-lang="common.search"
+                        >
+                            Cari
+                        </label>
+
+                        <div class="products-search-control">
+
+                            <input
+                                id="products-search-input"
+                                class="products-search-input"
+                                type="search"
+                                name="q"
+                                autocomplete="off"
+                                placeholder="Cari produk atau brand..."
+                                data-lang-placeholder="navigation.searchPlaceholder"
+                            >
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                data-lang="navigation.searchButton"
+                            >
+                                Cari
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+
+                <!-- ======================================
+                     FILTER TOOLBAR
+                ======================================= -->
+
+                <div class="products-toolbar">
+
+                    <div class="products-filter-controls">
+
+
+                        <!-- BRAND -->
+
+                        <div class="filter-field">
+
+                            <label
+                                for="products-brand-filter"
+                                data-lang="productsPage.filter.brandLabel"
+                            >
+                                Brand
+                            </label>
+
+                            <select
+                                id="products-brand-filter"
+                                class="filter-select"
+                                name="brand"
+                            >
+                                <option
+                                    value="all"
+                                    data-lang="productsPage.filter.allBrands"
+                                >
+                                    Semua Brand
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <!-- CATEGORY -->
+
+                        <div class="filter-field">
+
+                            <label
+                                for="products-category-filter"
+                                data-lang="productsPage.filter.categoryLabel"
+                            >
+                                Kategori
+                            </label>
+
+                            <select
+                                id="products-category-filter"
+                                class="filter-select"
+                                name="category"
+                            >
+                                <option
+                                    value="all"
+                                    data-lang="productsPage.filter.allCategories"
+                                >
+                                    Semua Kategori
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <!-- STOCK -->
+
+                        <div class="filter-field">
+
+                            <label
+                                for="products-stock-filter"
+                                data-lang="productsPage.filter.stockLabel"
+                            >
+                                Stok
+                            </label>
+
+                            <select
+                                id="products-stock-filter"
+                                class="filter-select"
+                                name="stock"
+                            >
+                                <option
+                                    value="all"
+                                    data-lang="productsPage.filter.allStock"
+                                >
+                                    Semua Status Stok
+                                </option>
+
+                                <option
+                                    value="available"
+                                    data-lang="common.available"
+                                >
+                                    Tersedia
+                                </option>
+
+                                <option
+                                    value="out-of-stock"
+                                    data-lang="common.outOfStock"
+                                >
+                                    Stok Habis
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <!-- SORT -->
+
+                        <div class="filter-field">
+
+                            <label
+                                for="products-sort"
+                                data-lang="productsPage.filter.sortLabel"
+                            >
+                                Urutkan
+                            </label>
+
+                            <select
+                                id="products-sort"
+                                class="filter-select"
+                                name="sort"
+                            >
+
+                                <option
+                                    value="default"
+                                    data-lang="productsPage.filter.default"
+                                >
+                                    Urutan Default
+                                </option>
+
+                                <option
+                                    value="price-low"
+                                    data-lang="productsPage.filter.priceLow"
+                                >
+                                    Harga Terendah
+                                </option>
+
+                                <option
+                                    value="price-high"
+                                    data-lang="productsPage.filter.priceHigh"
+                                >
+                                    Harga Tertinggi
+                                </option>
+
+                                <option
+                                    value="name-asc"
+                                    data-lang="productsPage.filter.nameAscending"
+                                >
+                                    Nama A–Z
+                                </option>
+
+                                <option
+                                    value="name-desc"
+                                    data-lang="productsPage.filter.nameDescending"
+                                >
+                                    Nama Z–A
+                                </option>
+
+                                <option
+                                    value="featured"
+                                    data-lang="productsPage.filter.featured"
+                                >
+                                    Produk Unggulan
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESET -->
+
+                    <button
+                        id="products-reset-button"
+                        type="button"
+                        class="btn btn-outline"
+                        data-lang="productsPage.empty.resetButton"
+                    >
+                        Hapus Filter
+                    </button>
+
+                </div>
+
+
+                <!-- ======================================
+                     RESULT INFORMATION
+                ======================================= -->
+
+                <div class="products-result-information">
+
+                    <p
+                        id="products-result-count"
+                        class="muted"
+                        aria-live="polite"
+                    >
+                        Memuat produk...
+                    </p>
+
+
+                    <div
+                        id="products-active-filters"
+                        class="products-active-filters"
+                        aria-label="Filter aktif"
+                        hidden
+                    ></div>
+
+                </div>
+
+
+                <!-- ======================================
+                     PRODUCT GRID
+                     Isi sepenuhnya oleh ProductsController
+                     melalui ProductCardComponent.
+                ======================================= -->
+
+                <div
+                    id="products-grid"
+                    class="product-grid products-grid products-page-grid"
+                    aria-live="polite"
+                    aria-busy="true"
+                >
+
+                    <div class="empty-state">
+
+                        <p data-lang="productsPage.loading">
+                            Memuat produk...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             WECHAT CTA
+        =============================================== -->
+
+        <section
+            class="section products-wechat-section"
+            id="wechat"
+        >
+
+            <div class="container">
+
+                <div class="home-wechat-cta">
+
+                    <div>
+
+                        <span
+                            class="badge badge-warning"
+                            data-lang="wechat.label"
+                        >
+                            Layanan Pelanggan Gomai
+                        </span>
+
+                        <h2 data-lang="wechat.title">
+                            Butuh Bantuan Menemukan Produk?
+                        </h2>
+
+                        <p data-lang="wechat.description">
+                            Kirim nama, foto, atau tautan produk melalui
+                            WeChat. Gomai akan membantu memeriksa detail
+                            dan ketersediaannya.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="contact.html"
+                        class="btn btn-primary"
+                        data-lang="wechat.button"
+                    >
+                        Hubungi via WeChat
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         SHARED FOOTER
+         Dirender oleh FooterComponent.
+    ================================================== -->
+
+    <footer id="site-footer"></footer>
+
+
+    <!-- ==================================================
+         JAVASCRIPT — GOMAI FRAMEWORK
+    ================================================== -->
+
+
+    <!-- ==================================================
+         1. FOUNDATION
+    ================================================== -->
+
+    <script src="../js/config.js"></script>
+    <script src="../js/core/utils.js"></script>
+    <script src="../js/language.js"></script>
+
+
+    <!-- ==================================================
+         2. CORE FOUNDATION
+    ================================================== -->
+
+    <script src="../js/core/component-core.js"></script>
+
+    <script src="../js/core/model-registry.js"></script>
+    <script src="../js/core/component-registry.js"></script>
+    <script src="../js/core/controller-registry.js"></script>
+
+
+    <!-- ==================================================
+         3. MODELS
+    ================================================== -->
+
+    <script src="../js/models/brands.js"></script>
+    <script src="../js/models/products.js"></script>
+
+
+    <!-- ==================================================
+         4. COMPONENTS
+    ================================================== -->
+
+    <script src="../js/components/loading.js"></script>
+    <script src="../js/components/empty-state.js"></script>
+
+    <script src="../js/components/product-card.js"></script>
+    <script src="../js/components/brand-card.js"></script>
+    <script src="../js/components/search-panel.js"></script>
+
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+
+
+    <!-- ==================================================
+         5. PAGE CONTROLLER
+    ================================================== -->
+
+    <script src="../js/products.js"></script>
+
+
+    <!-- ==================================================
+         6. GOMAI CORE
+    ================================================== -->
+
+    <script src="../js/core/gomai.js"></script>
+
+
+    <!-- ==================================================
+         7. APPLICATION BOOTSTRAPPER
+         app.js WAJIB MENJADI SCRIPT TERAKHIR.
+    ================================================== -->
+
+    <script src="../js/app.js"></script>
 
 </body>
 </html>

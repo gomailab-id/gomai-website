@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
@@ -11,244 +12,421 @@
     <title>Detail Produk | Gomai</title>
 
     <meta
+        id="page-description"
         name="description"
-        content="Lihat detail produk, warna, ukuran, harga, dan informasi pemesanan melalui Gomai."
+        content="Lihat informasi lengkap produk, pilihan warna, ukuran, harga, stok, dan detail pemesanan melalui Gomai."
     >
 
-    <link rel="stylesheet" href="../css/styles.css">
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
 </head>
 
-<body>
+<body data-page="productDetail">
 
-<header class="header">
-    <div class="container header-inner">
+    <!-- ==================================================
+         SHARED HEADER
+         Dirender oleh HeaderComponent.
+    ================================================== -->
 
-        <a
-            href="../index.html"
-            class="logo"
-            aria-label="Kembali ke beranda Gomai"
-        >
-            <strong class="logo-text">Gomai</strong>
-        </a>
+    <header id="site-header"></header>
 
-        <div class="header-actions">
 
-            <div
-                class="language-switch"
-                aria-label="Pilih bahasa"
-            >
-                <button
-                    type="button"
-                    data-language="id"
+    <!-- ==================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main
+        id="product-detail-page"
+        class="product-detail-page"
+    >
+
+        <!-- ==============================================
+             BREADCRUMB
+        =============================================== -->
+
+        <section class="product-breadcrumb-section">
+
+            <div class="container">
+
+                <nav
+                    class="breadcrumb"
+                    aria-label="Breadcrumb"
                 >
-                    ID
-                </button>
 
-                <button
-                    type="button"
-                    data-language="zh"
-                >
-                    中文
-                </button>
+                    <a
+                        href="../index.html"
+                        data-lang="common.home"
+                    >
+                        Beranda
+                    </a>
+
+                    <span aria-hidden="true">
+                        /
+                    </span>
+
+                    <a
+                        href="products.html"
+                        data-lang="productDetail.breadcrumbProducts"
+                    >
+                        Produk
+                    </a>
+
+                    <span aria-hidden="true">
+                        /
+                    </span>
+
+                    <span
+                        id="breadcrumb-product-name"
+                        aria-current="page"
+                        data-lang="product.loading"
+                    >
+                        Memuat produk...
+                    </span>
+
+                </nav>
+
             </div>
 
-            <a
-                href="#wechat"
-                class="btn btn-primary"
-            >
-                WeChat
-            </a>
+        </section>
 
-        </div>
 
-    </div>
-</header>
+        <!-- ==============================================
+             PRODUCT DETAIL
 
-<main>
+             Gallery, informasi produk, pilihan warna,
+             ukuran, quantity, stok, harga, dan tombol
+             pemesanan dibangun oleh ProductDetailController.
+        =============================================== -->
 
-    <section class="section">
-        <div class="container">
+        <section class="section product-detail-section">
 
-            <nav
-                class="breadcrumb"
-                aria-label="Breadcrumb"
-            >
-                <a
-                    href="../index.html"
-                    data-lang="nav_home"
-                >
-                    Beranda
-                </a>
-
-                <span>/</span>
-
-                <a
-                    href="products.html"
-                    data-lang="nav_products"
-                >
-                    Produk
-                </a>
-
-                <span>/</span>
-
-                <span id="breadcrumb-product-name">
-                    Detail Produk
-                </span>
-            </nav>
-
-            <section
-                id="product-detail"
-                class="product-detail"
-                aria-live="polite"
-            >
-                <div class="empty-state">
-                    <p data-lang="loading_products">
-                        Memuat produk...
-                    </p>
-                </div>
-            </section>
-
-            <section
-                id="product-description"
-                class="product-description hidden"
-            >
-                <h2 data-lang="description">
-                    Deskripsi
-                </h2>
-
-                <p id="product-description-text"></p>
-            </section>
-
-            <section
-                id="related-products"
-                class="related-products hidden"
-            >
-                <h2 data-lang="related_products">
-                    Produk Terkait
-                </h2>
+            <div class="container">
 
                 <div
-                    id="related-product-grid"
-                    class="products-grid"
+                    id="product-detail"
+                    class="product-detail"
+                    aria-live="polite"
+                    aria-busy="true"
+                >
+
+                    <div class="empty-state">
+
+                        <p data-lang="product.loading">
+                            Memuat produk...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             PRODUCT DESCRIPTION
+        =============================================== -->
+
+        <section
+            id="product-description"
+            class="section product-description-section"
+            hidden
+        >
+
+            <div class="container">
+
+                <div class="product-information-block">
+
+                    <div class="section-title">
+
+                        <h2
+                            id="product-description-title"
+                            data-lang="productDetail.descriptionTitle"
+                        >
+                            Deskripsi Produk
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="product-description-text"
+                        class="product-description-text"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             PRODUCT SPECIFICATIONS
+        =============================================== -->
+
+        <section
+            id="product-specification"
+            class="section product-specification-section"
+            hidden
+        >
+
+            <div class="container">
+
+                <div class="product-information-block">
+
+                    <div class="section-title">
+
+                        <h2
+                            id="product-specification-title"
+                            data-lang="productDetail.specificationTitle"
+                        >
+                            Spesifikasi
+                        </h2>
+
+                    </div>
+
+                    <dl
+                        id="product-specification-list"
+                        class="product-specification-list"
+                    ></dl>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             RELATED PRODUCTS
+
+             ProductDetailController + ProductCardComponent
+             mengisi grid ini dari ProductsModel.
+        =============================================== -->
+
+        <section
+            id="related-products"
+            class="section related-products-section"
+            hidden
+        >
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <span
+                        class="badge badge-warning"
+                        data-lang="common.products"
+                    >
+                        Produk
+                    </span>
+
+                    <h2
+                        id="related-products-title"
+                        data-lang="productDetail.relatedTitle"
+                    >
+                        Produk Serupa
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="related-products-grid"
+                    class="product-grid products-grid related-products-grid"
+                    aria-live="polite"
                 ></div>
-            </section>
 
-        </div>
-    </section>
+            </div>
 
-</main>
+        </section>
 
-<footer
-    class="footer"
-    id="wechat"
->
-    <div class="container footer-grid">
 
-        <div>
-            <h3>Gomai</h3>
+        <!-- ==============================================
+             ORDER / WECHAT CTA
 
-            <p data-lang="footer_about">
-                Semua kebutuhan pekerja Morowali dalam satu tempat.
-            </p>
-        </div>
+             Tombol order produk yang dibuat controller
+             menuju #wechat.
+        =============================================== -->
 
-        <div>
-            <h4 data-lang="services_title">
-                Layanan
-            </h4>
+        <section
+            id="wechat"
+            class="section product-wechat-section"
+        >
 
-            <ul>
-                <li>Gomai Express</li>
-                <li>Official Order</li>
-                <li>WeChat Customer Service</li>
-            </ul>
-        </div>
+            <div class="container">
 
-        <div>
-            <h4 data-lang="nav_information">
-                Informasi
-            </h4>
+                <div class="home-wechat-cta">
 
-            <ul>
-                <li>
+                    <div>
+
+                        <span
+                            class="badge badge-warning"
+                            data-lang="wechat.label"
+                        >
+                            Layanan Pelanggan Gomai
+                        </span>
+
+                        <h2 data-lang="wechat.title">
+                            Butuh Bantuan sebelum Memesan?
+                        </h2>
+
+                        <p data-lang="wechat.description">
+                            Hubungi Gomai melalui WeChat untuk
+                            mengonfirmasi produk, warna, ukuran,
+                            stok, harga, dan proses pemesanan.
+                        </p>
+
+                        <p>
+                            <span data-lang="footer.wechatTemplate">
+                                WeChat: Gomai
+                            </span>
+                        </p>
+
+                    </div>
+
+
                     <a
-                        href="how-to-buy.html"
-                        data-lang="nav_how_to_buy"
+                        href="contact.html"
+                        class="btn btn-primary"
+                        data-lang="common.contactWechat"
                     >
-                        Cara Membeli
+                        Hubungi WeChat
                     </a>
-                </li>
 
-                <li>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             PRODUCT NOT FOUND
+        =============================================== -->
+
+        <section
+            id="product-not-found"
+            class="section product-not-found"
+            hidden
+        >
+
+            <div class="container">
+
+                <div class="empty-state">
+
+                    <h1
+                        id="product-not-found-title"
+                        data-lang="productDetail.notFound.title"
+                    >
+                        Produk Tidak Ditemukan
+                    </h1>
+
+                    <p
+                        id="product-not-found-description"
+                        data-lang="productDetail.notFound.description"
+                    >
+                        Produk yang Anda cari belum tersedia atau
+                        alamat halaman tidak valid.
+                    </p>
+
                     <a
-                        href="about.html"
-                        data-lang="nav_about"
+                        id="product-not-found-button"
+                        href="products.html"
+                        class="btn btn-primary"
+                        data-lang="productDetail.notFound.button"
                     >
-                        Tentang Kami
+                        Lihat Semua Produk
                     </a>
-                </li>
 
-                <li>
-                    <a
-                        href="faq.html"
-                        data-lang="nav_faq"
-                    >
-                        FAQ
-                    </a>
-                </li>
-            </ul>
-        </div>
+                </div>
 
-        <div>
-            <h4 data-lang="nav_contact">
-                Kontak
-            </h4>
+            </div>
 
-            <p>WeChat: Gomai</p>
+        </section>
 
-            <a
-                href="contact.html"
-                class="btn btn-outline"
-                data-lang="contact_us"
-            >
-                Hubungi Kami
-            </a>
-        </div>
+    </main>
 
-    </div>
 
-    <div class="container footer-bottom">
+    <!-- ==================================================
+         SHARED FOOTER
+         Dirender oleh FooterComponent.
+    ================================================== -->
 
-        <p data-lang="copyright">
-            © 2026 Gomai. Semua Hak Dilindungi.
-        </p>
+    <footer id="site-footer"></footer>
 
-        <div class="language-switch">
 
-            <button
-                type="button"
-                data-language="id"
-            >
-                Indonesia
-            </button>
+    <!-- ==================================================
+         JAVASCRIPT — GOMAI FRAMEWORK
+    ================================================== -->
 
-            <button
-                type="button"
-                data-language="zh"
-            >
-                中文
-            </button>
 
-        </div>
+    <!-- ==================================================
+         1. FOUNDATION
+    ================================================== -->
 
-    </div>
-</footer>
+    <script src="../js/config.js"></script>
+    <script src="../js/core/utils.js"></script>
+    <script src="../js/language.js"></script>
 
-<script src="../js/utils.js"></script>
-<script src="../js/language.js"></script>
-<script src="../js/products.js"></script>
-<script src="../js/product-detail.js"></script>
+
+    <!-- ==================================================
+         2. CORE FOUNDATION
+    ================================================== -->
+
+    <script src="../js/core/component-core.js"></script>
+
+    <script src="../js/core/model-registry.js"></script>
+    <script src="../js/core/component-registry.js"></script>
+    <script src="../js/core/controller-registry.js"></script>
+
+
+    <!-- ==================================================
+         3. MODELS
+    ================================================== -->
+
+    <script src="../js/models/brands.js"></script>
+    <script src="../js/models/products.js"></script>
+
+
+    <!-- ==================================================
+         4. COMPONENTS
+    ================================================== -->
+
+    <script src="../js/components/loading.js"></script>
+    <script src="../js/components/empty-state.js"></script>
+
+    <script src="../js/components/product-card.js"></script>
+    <script src="../js/components/brand-card.js"></script>
+    <script src="../js/components/search-panel.js"></script>
+
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+
+
+    <!-- ==================================================
+         5. PAGE CONTROLLER
+    ================================================== -->
+
+    <script src="../js/product-detail.js"></script>
+
+
+    <!-- ==================================================
+         6. GOMAI CORE
+    ================================================== -->
+
+    <script src="../js/core/gomai.js"></script>
+
+
+    <!-- ==================================================
+         7. APPLICATION BOOTSTRAPPER
+         app.js WAJIB MENJADI SCRIPT TERAKHIR.
+    ================================================== -->
+
+    <script src="../js/app.js"></script>
 
 </body>
-
 </html>

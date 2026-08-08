@@ -1,226 +1,1198 @@
 /* ==========================================================
    GOMAI LAYOUT
+   layout.css
+
+   Tanggung jawab:
+   - Struktur halaman global
+   - Container
+   - Section spacing
+   - Utility layout
+   - Grid global
+   - Grid brand dan produk
+   - Sticky layout
+   - Footer global
+
+   Prinsip:
+   - Mobile-first
+   - Mandarin-first
+   - Tidak menduplikasi tombol, card, form, atau badge
+   - Tidak bergantung pada hover
 ========================================================== */
 
-/* Container */
 
-.container{
-    width:min(1200px, calc(100% - 48px));
-    margin-inline:auto;
+/* ==========================================================
+   PAGE SHELL
+========================================================== */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 100vh;
 }
 
-/* Section */
+@supports (min-height: 100dvh) {
 
-.section{
-    padding:80px 0;
+    body {
+        min-height: 100dvh;
+    }
+
 }
 
-.section-sm{
-    padding:48px 0;
+#site-header,
+#site-footer {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
 }
 
-.section-lg{
-    padding:120px 0;
+main,
+#main-content {
+    flex: 1 0 auto;
+    width: 100%;
+    min-width: 0;
 }
 
-/* Header */
-
-.header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(12px);
-
-    border-bottom:1px solid var(--border-color);
+.page-shell {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
 }
 
-.header-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
 
-    height:76px;
+/* ==========================================================
+   CONTAINER
+========================================================== */
+
+.container {
+    width: 100%;
+    max-width:
+        calc(
+            var(--container-width, 1200px) +
+            (
+                var(--container-gutter, 16px) *
+                2
+            )
+        );
+
+    margin-inline: auto;
+
+    padding-inline:
+        var(--container-gutter, 16px);
 }
 
-/* Logo */
+@supports (
+    padding-left:
+        max(16px, env(safe-area-inset-left))
+) {
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
+    .container {
+        padding-left:
+            max(
+                var(--container-gutter, 16px),
+                var(--safe-area-left, 0px)
+            );
+
+        padding-right:
+            max(
+                var(--container-gutter, 16px),
+                var(--safe-area-right, 0px)
+            );
+    }
+
 }
 
-.logo img{
-    width:44px;
-    height:44px;
-    object-fit:contain;
+.container-narrow {
+    width: 100%;
+    max-width:
+        calc(
+            var(--container-narrow, 760px) +
+            (
+                var(--container-gutter, 16px) *
+                2
+            )
+        );
+
+    margin-inline: auto;
+
+    padding-inline:
+        var(--container-gutter, 16px);
 }
 
-.logo-text{
-    font-size:1.25rem;
-    font-weight:700;
+.container-reading {
+    width: 100%;
+    max-width:
+        calc(
+            var(--container-reading, 680px) +
+            (
+                var(--container-gutter, 16px) *
+                2
+            )
+        );
+
+    margin-inline: auto;
+
+    padding-inline:
+        var(--container-gutter, 16px);
 }
 
-/* Navigation */
-
-.nav{
-    display:flex;
-    align-items:center;
-    gap:28px;
+.container-fluid {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline:
+        var(--container-gutter, 16px);
 }
 
-.nav a{
-    color:var(--text-secondary);
-    transition:.25s;
+.container > *,
+.container-narrow > *,
+.container-reading > *,
+.container-fluid > * {
+    min-width: 0;
 }
 
-.nav a:hover{
-    color:var(--primary);
+
+/* ==========================================================
+   FULL BLEED
+========================================================== */
+
+.full-bleed {
+    width: 100vw;
+
+    margin-left:
+        calc(
+            50% -
+            50vw
+        );
 }
 
-/* Actions */
 
-.header-actions{
-    display:flex;
-    align-items:center;
-    gap:16px;
+/* ==========================================================
+   SECTION
+========================================================== */
+
+.section {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+
+    padding-block:
+        var(--section-space, 48px);
 }
 
-/* Buttons */
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:10px;
-
-    padding:12px 22px;
-
-    border-radius:var(--radius-md);
-
-    font-weight:600;
-
-    transition:.25s;
+.section-sm,
+.section-compact {
+    padding-block:
+        var(--section-space-sm, 32px);
 }
 
-.btn-primary{
-    background:var(--primary);
-    color:#fff;
+.section-lg,
+.section-spacious {
+    padding-block:
+        var(--section-space-lg, 64px);
 }
 
-.btn-primary:hover{
-    background:var(--primary-dark);
+.section-no-top {
+    padding-top: 0;
 }
 
-.btn-outline{
-    border:1px solid var(--border-color);
+.section-no-bottom {
+    padding-bottom: 0;
 }
 
-.btn-outline:hover{
-    background:#f5f5f5;
+.section-muted {
+    background:
+        var(--bg-muted, #f5f5f5);
 }
 
-/* Hero */
-
-.hero{
-    padding:120px 0 80px;
+.section-soft {
+    background:
+        var(--bg-soft, #fafafa);
 }
 
-.hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
+.section-dark {
+    color:
+        var(--text-white, #ffffff);
+
+    background:
+        var(--bg-dark, #111111);
 }
 
-.hero-content h1{
-    font-size:3.2rem;
-    margin-bottom:20px;
+.section-anchor {
+    display: block;
+    width: 100%;
+    height: 0;
+
+    scroll-margin-top:
+        calc(
+            var(--header-stack-height, 100px) +
+            var(--space-4, 16px)
+        );
 }
 
-.hero-content p{
-    max-width:560px;
-    color:var(--text-secondary);
-    margin-bottom:32px;
+
+/* ==========================================================
+   SECTION HEADER LAYOUT
+
+   Typography dan komponen visual tetap di components.css.
+========================================================== */
+
+.section-header,
+.section-title {
+    width: 100%;
+    max-width:
+        var(--content-width-md, 720px);
+
+    margin-bottom:
+        var(--space-8, 32px);
 }
 
-.hero-image img{
-    width:100%;
+.section-header-centered,
+.section-title-centered {
+    margin-inline: auto;
+    text-align: center;
 }
 
-/* Grid */
+.section-heading-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap:
+        var(--space-4, 16px);
 
-.grid{
-    display:grid;
-    gap:32px;
+    width: 100%;
+
+    margin-bottom:
+        var(--space-8, 32px);
 }
 
-.grid-2{
-    grid-template-columns:repeat(2,1fr);
+.section-heading-row > * {
+    min-width: 0;
 }
 
-.grid-3{
-    grid-template-columns:repeat(3,1fr);
+.section-heading-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap:
+        var(--space-3, 12px);
 }
 
-.grid-4{
-    grid-template-columns:repeat(4,1fr);
+
+/* ==========================================================
+   FLOW LAYOUT
+
+   Memberikan jarak vertikal konsisten tanpa menambahkan
+   margin pada setiap elemen secara manual.
+========================================================== */
+
+.flow > * + * {
+    margin-top:
+        var(--flow-space, var(--space-4, 16px));
 }
 
-/* Card */
-
-.card{
-    background:#fff;
-    border:1px solid var(--border-color);
-    border-radius:var(--radius-lg);
-    overflow:hidden;
-    transition:.3s;
+.flow-sm {
+    --flow-space:
+        var(--space-2, 8px);
 }
 
-.card:hover{
-    transform:translateY(-4px);
-    box-shadow:var(--shadow-md);
+.flow-md {
+    --flow-space:
+        var(--space-4, 16px);
 }
 
-/* Page Header */
-
-.page-header{
-    padding:90px 0 60px;
-    text-align:center;
+.flow-lg {
+    --flow-space:
+        var(--space-6, 24px);
 }
 
-.page-header h1{
-    margin-bottom:18px;
+.flow-xl {
+    --flow-space:
+        var(--space-8, 32px);
 }
 
-.page-header p{
-    max-width:700px;
-    margin:auto;
-    color:var(--text-secondary);
+
+/* ==========================================================
+   STACK
+========================================================== */
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap:
+        var(--stack-gap, var(--space-4, 16px));
+
+    min-width: 0;
 }
 
-/* Footer */
-
-.footer{
-    border-top:1px solid var(--border-color);
-    padding:50px 0;
+.stack-sm {
+    --stack-gap:
+        var(--space-2, 8px);
 }
 
-.footer-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:40px;
+.stack-md {
+    --stack-gap:
+        var(--space-4, 16px);
 }
 
-.footer-bottom{
-    margin-top:40px;
-    padding-top:24px;
-    border-top:1px solid var(--border-color);
+.stack-lg {
+    --stack-gap:
+        var(--space-6, 24px);
+}
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.stack-xl {
+    --stack-gap:
+        var(--space-8, 32px);
+}
+
+
+/* ==========================================================
+   CLUSTER
+========================================================== */
+
+.cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap:
+        var(--cluster-gap, var(--space-3, 12px));
+
+    min-width: 0;
+}
+
+.cluster-between {
+    justify-content: space-between;
+}
+
+.cluster-center {
+    justify-content: center;
+}
+
+
+/* ==========================================================
+   SPLIT LAYOUT
+========================================================== */
+
+.split {
+    display: flex;
+    flex-direction: column;
+    gap:
+        var(--space-6, 24px);
+
+    min-width: 0;
+}
+
+.split > * {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   GENERIC GRID
+========================================================== */
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--grid-gap, var(--space-5, 20px));
+
+    width: 100%;
+    min-width: 0;
+}
+
+.grid > * {
+    min-width: 0;
+}
+
+.grid-sm {
+    --grid-gap:
+        var(--space-3, 12px);
+}
+
+.grid-md {
+    --grid-gap:
+        var(--space-5, 20px);
+}
+
+.grid-lg {
+    --grid-gap:
+        var(--space-8, 32px);
+}
+
+.grid-2,
+.grid-3,
+.grid-4 {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--grid-gap, var(--space-5, 20px));
+
+    width: 100%;
+    min-width: 0;
+}
+
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > * {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   BRAND GRID
+
+   Satu kolom menjadi dasar agar hero brand dan teks Mandarin
+   tidak terlalu sempit pada handphone.
+========================================================== */
+
+.brand-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--space-5, 20px);
+
+    width: 100%;
+    min-width: 0;
+}
+
+.brand-grid > * {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   PRODUCT GRID
+
+   - Layar sangat kecil: satu kolom
+   - Handphone umum: dua kolom
+   - Tablet: tiga kolom
+   - Desktop lebar: empat kolom
+========================================================== */
+
+.product-grid,
+.products-grid,
+.related-products-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--space-4, 16px);
+
+    width: 100%;
+    min-width: 0;
+}
+
+.product-grid > *,
+.products-grid > *,
+.related-products-grid > * {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   AUTO GRID
+
+   Digunakan ketika jumlah kolom tidak perlu ditentukan
+   secara manual.
+========================================================== */
+
+.auto-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                min(
+                    100%,
+                    var(--auto-grid-min, 240px)
+                ),
+                1fr
+            )
+        );
+
+    gap:
+        var(--auto-grid-gap, var(--space-5, 20px));
+
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   CONTENT WITH SIDEBAR
+========================================================== */
+
+.sidebar-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--space-6, 24px);
+
+    width: 100%;
+    min-width: 0;
+}
+
+.sidebar-layout > * {
+    min-width: 0;
+}
+
+.sidebar {
+    min-width: 0;
+}
+
+.sidebar-content {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   TOOLBAR LAYOUT
+========================================================== */
+
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap:
+        var(--space-4, 16px);
+
+    width: 100%;
+    min-width: 0;
+}
+
+.toolbar > * {
+    min-width: 0;
+}
+
+.toolbar-filters,
+.toolbar-actions {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--space-3, 12px);
+
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   STICKY TOOLBAR
+
+   Offset mengikuti tinggi promo dan Header.
+========================================================== */
+
+.sticky-toolbar,
+.toolbar-sticky {
+    position: sticky;
+
+    top:
+        calc(
+            var(--header-stack-height, 100px) +
+            var(--space-2, 8px)
+        );
+
+    z-index:
+        var(--z-sticky, 100);
+}
+
+
+/* ==========================================================
+   MOBILE HORIZONTAL SCROLLER
+
+   Berguna untuk kategori, filter ringkas, atau pilihan lain.
+========================================================== */
+
+.horizontal-scroll {
+    display: flex;
+    gap:
+        var(--space-3, 12px);
+
+    width: 100%;
+
+    padding-bottom:
+        var(--space-2, 8px);
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type:
+        x proximity;
+
+    overscroll-behavior-inline:
+        contain;
+
+    scrollbar-width:
+        thin;
+
+    -webkit-overflow-scrolling:
+        touch;
+}
+
+.horizontal-scroll > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+
+/* ==========================================================
+   CENTERED CONTENT
+========================================================== */
+
+.centered-content {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    min-height:
+        var(--centered-min-height, 240px);
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   READING CONTENT
+
+   Membatasi panjang baris agar paragraf Mandarin maupun
+   Indonesia tetap nyaman dibaca.
+========================================================== */
+
+.reading-content {
+    width: 100%;
+    max-width:
+        var(--container-reading, 680px);
+
+    margin-inline: auto;
+}
+
+.reading-content > * {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   MEDIA LAYOUT
+========================================================== */
+
+.media-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--space-6, 24px);
+
+    width: 100%;
+    min-width: 0;
+}
+
+.media-layout > * {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   SAFE BOTTOM SPACING
+
+   Digunakan pada halaman dengan tombol sticky mobile.
+========================================================== */
+
+.has-sticky-action {
+    padding-bottom:
+        calc(
+            var(--control-height-lg, 54px) +
+            var(--space-8, 32px) +
+            var(--safe-area-bottom, 0px)
+        );
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer,
+.shared-footer {
+    width: 100%;
+    min-width: 0;
+
+    color:
+        var(--text-white, #ffffff);
+
+    background:
+        var(--bg-dark, #111111);
+}
+
+.footer-grid,
+.shared-footer-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr);
+
+    gap:
+        var(--space-8, 32px);
+
+    padding-top:
+        var(--section-space, 48px);
+
+    padding-bottom:
+        var(--space-8, 32px);
+}
+
+.footer-column {
+    min-width: 0;
+}
+
+.footer-brand-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:
+        var(--space-4, 16px);
+}
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+
+    min-height:
+        var(--touch-target-min, 44px);
+}
+
+.footer-logo h3 {
+    color:
+        var(--text-white, #ffffff);
+}
+
+.footer-brand-column > p {
+    max-width:
+        34rem;
+
+    color:
+        var(--gray-300, #d4d4d4);
+}
+
+.footer-column h4 {
+    margin-bottom:
+        var(--space-4, 16px);
+
+    color:
+        var(--text-white, #ffffff);
+}
+
+.footer-column ul {
+    display: flex;
+    flex-direction: column;
+    gap:
+        var(--space-2, 8px);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.footer-column li {
+    min-width: 0;
+}
+
+.footer-column li a {
+    display: inline-flex;
+    align-items: center;
+
+    min-height:
+        var(--touch-target-min, 44px);
+
+    color:
+        var(--gray-300, #d4d4d4);
+
+    transition:
+        color var(--transition-fast, 0.15s ease);
+}
+
+.footer-contact-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:
+        var(--space-3, 12px);
+}
+
+.footer-contact-column p {
+    color:
+        var(--gray-300, #d4d4d4);
+}
+
+.footer-wechat-button {
+    width: 100%;
+    max-width:
+        320px;
+}
+
+.footer-bottom,
+.shared-footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:
+        var(--space-4, 16px);
+
+    padding-top:
+        var(--space-5, 20px);
+
+    padding-bottom:
+        calc(
+            var(--space-5, 20px) +
+            var(--safe-area-bottom, 0px)
+        );
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.14);
+}
+
+.footer-bottom > p {
+    color:
+        var(--gray-400, #a3a3a3);
+}
+
+.footer-bottom-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:
+        var(--space-3, 12px);
+
+    width: 100%;
+}
+
+.footer-version {
+    color:
+        var(--gray-500, #737373);
+
+    font-size:
+        var(--text-xs, 0.75rem);
+}
+
+.footer-language-switch {
+    flex: 0 0 auto;
+}
+
+
+/* ==========================================================
+   INTERACTION STATES
+========================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .footer-column li a:hover {
+        color:
+            var(--primary-light, #ffd54d);
+    }
+
+}
+
+
+/* ==========================================================
+   HANDPHONE UMUM
+========================================================== */
+
+@media (min-width: 360px) {
+
+    .product-grid,
+    .products-grid,
+    .related-products-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+/* ==========================================================
+   HANDPHONE BESAR
+========================================================== */
+
+@media (min-width: 480px) {
+
+    .toolbar-filters,
+    .toolbar-actions {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+    .footer-wechat-button {
+        width: auto;
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (min-width: 640px) {
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+    .brand-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            var(--space-6, 24px);
+    }
+
+    .section-heading-row {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .section-heading-actions {
+        flex: 0 0 auto;
+        justify-content: flex-end;
+    }
+
+    .split {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .split > * {
+        flex: 1 1 0;
+    }
+
+    .footer-grid,
+    .shared-footer-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+    .footer-brand-column {
+        grid-column:
+            1 / -1;
+    }
+
+    .footer-bottom,
+    .shared-footer-bottom {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer-bottom-actions {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        width: auto;
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET BESAR
+========================================================== */
+
+@media (min-width: 768px) {
+
+    .product-grid,
+    .products-grid,
+    .related-products-grid {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            var(--space-5, 20px);
+    }
+
+    .toolbar {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .toolbar-filters,
+    .toolbar-actions {
+        width: auto;
+    }
+
+    .toolbar-filters {
+        flex: 1 1 auto;
+    }
+
+    .toolbar-actions {
+        flex: 0 0 auto;
+    }
+
+    .media-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        align-items: center;
+
+        gap:
+            var(--space-8, 32px);
+    }
+
+}
+
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (min-width: 992px) {
+
+    .grid-3 {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+    }
+
+    .grid-4 {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+
+    .brand-grid {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            var(--space-8, 32px);
+    }
+
+    .sidebar-layout {
+        grid-template-columns:
+            minmax(220px, 280px)
+            minmax(0, 1fr);
+
+        align-items: start;
+
+        gap:
+            var(--space-8, 32px);
+    }
+
+    .sidebar-layout.sidebar-right {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(220px, 280px);
+    }
+
+    .footer-grid,
+    .shared-footer-grid {
+        grid-template-columns:
+            minmax(260px, 1.4fr)
+            repeat(
+                3,
+                minmax(150px, 1fr)
+            );
+
+        align-items: start;
+    }
+
+    .footer-brand-column {
+        grid-column:
+            auto;
+    }
+
+}
+
+
+/* ==========================================================
+   DESKTOP LEBAR
+========================================================== */
+
+@media (min-width: 1200px) {
+
+    .product-grid,
+    .products-grid {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            var(--space-6, 24px);
+    }
+
+    .related-products-grid {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .footer-column li a {
+        transition: none;
+    }
+
+    .horizontal-scroll {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+    }
+
 }

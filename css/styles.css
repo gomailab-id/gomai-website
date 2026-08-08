@@ -1,7 +1,43 @@
-@import url("reset.css");
+/* ==========================================================
+   GOMAI GLOBAL STYLES
+   styles.css
+
+   File ini hanya memuat CSS global yang digunakan
+   oleh seluruh halaman.
+
+   CSS khusus halaman tidak dimuat di sini agar:
+   - halaman tidak mengunduh CSS yang tidak dibutuhkan;
+   - tampilan mobile lebih ringan;
+   - aturan antarhalaman tidak saling bertabrakan;
+   - error akibat file khusus halaman yang belum ada hilang.
+========================================================== */
+
+
+/* ==========================================================
+   DESIGN TOKENS
+========================================================== */
+
 @import url("variables.css");
+
+
+/* ==========================================================
+   GLOBAL FOUNDATION
+========================================================== */
+
+@import url("reset.css");
 @import url("layout.css");
 @import url("components.css");
-@import url("product.css");
+
+
+/* ==========================================================
+   SHARED HEADER AND SEARCH
+========================================================== */
+
+@import url("header.css");
+
+
+/* ==========================================================
+   GLOBAL RESPONSIVE ADJUSTMENTS
+========================================================== */
+
 @import url("responsive.css");
-@import url("home.css");

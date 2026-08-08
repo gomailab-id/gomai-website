@@ -2,40 +2,503 @@
 <html lang="id">
 
 <head>
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Contact Gomai</title>
+    <title>Hubungi Gomai | Gomai</title>
 
-<link rel="stylesheet" href="../css/variables.css">
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/layout.css">
-<link rel="stylesheet" href="../css/components.css">
-<link rel="stylesheet" href="../css/responsive.css">
+    <meta
+        id="page-description"
+        name="description"
+        content="Hubungi Gomai untuk bantuan produk, pemesanan, informasi stok, dan layanan pengantaran."
+    >
 
+    <link
+        rel="stylesheet"
+        href="../css/styles.css"
+    >
 </head>
 
-<body>
+<body
+    data-page="information"
+    data-information-page="contact"
+>
 
-<header id="header"></header>
+    <!-- ==================================================
+         SHARED HEADER
+         Dirender oleh HeaderComponent.
+    ================================================== -->
 
-<main>
+    <header id="site-header"></header>
 
-<section class="page-header">
-<h1 data-lang="contact_title"></h1>
-<p data-lang="contact_desc"></p>
-</section>
 
-<section id="contact-content"></section>
+    <!-- ==================================================
+         MAIN CONTENT
+    ================================================== -->
 
-</main>
+    <main
+        class="information-page contact-page"
+        data-information-page-root
+    >
 
-<footer id="footer"></footer>
+        <!-- ==============================================
+             PAGE HERO
+        =============================================== -->
 
-<script src="../js/utils.js"></script>
-<script src="../js/language.js"></script>
-<script src="../js/app.js"></script>
+        <section class="section information-hero">
+            <div class="container">
+
+                <div class="section-title">
+
+                    <span
+                        class="badge badge-warning"
+                        data-lang="contactPage.hero.badge"
+                    >
+                        Hubungi Gomai
+                    </span>
+
+                    <h1 data-lang="contactPage.hero.title">
+                        Kami Siap Membantu Kebutuhan Belanja Anda
+                    </h1>
+
+                    <p data-lang="contactPage.hero.description">
+                        Hubungi Gomai untuk menanyakan produk,
+                        ketersediaan stok, ukuran, harga, proses
+                        pemesanan, atau pengantaran.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================================
+             PRIMARY CONTACT
+        =============================================== -->
+
+        <section
+            class="section"
+            id="wechat"
+        >
+            <div class="container">
+
+                <div class="grid grid-2">
+
+                    <!-- WECHAT -->
+
+                    <article class="card service-card">
+
+                        <span
+                            class="badge badge-success"
+                            data-lang="contactPage.wechat.badge"
+                        >
+                            Kontak Utama
+                        </span>
+
+                        <h2 data-lang="contactPage.wechat.title">
+                            Hubungi Gomai melalui WeChat
+                        </h2>
+
+                        <p data-lang="contactPage.wechat.description">
+                            WeChat merupakan salah satu kanal utama untuk
+                            konsultasi produk dan proses pemesanan melalui
+                            Gomai.
+                        </p>
+
+                        <div class="contact-detail">
+
+                            <span
+                                data-lang="contactPage.wechat.label"
+                            >
+                                WeChat ID
+                            </span>
+
+                            <strong>
+                                Gomai
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- WHAT TO SEND -->
+
+                    <article class="card service-card">
+
+                        <span
+                            class="badge badge-warning"
+                            data-lang="contactPage.prepare.badge"
+                        >
+                            Agar Lebih Cepat
+                        </span>
+
+                        <h2 data-lang="contactPage.prepare.title">
+                            Siapkan Detail Produk yang Anda Cari
+                        </h2>
+
+                        <p data-lang="contactPage.prepare.description">
+                            Semakin lengkap informasi yang dikirim,
+                            semakin mudah tim Gomai membantu memeriksa
+                            produk yang Anda butuhkan.
+                        </p>
+
+                        <ul class="information-list">
+
+                            <li data-lang="contactPage.prepare.item1">
+                                Nama atau jenis produk
+                            </li>
+
+                            <li data-lang="contactPage.prepare.item2">
+                                Foto atau tautan produk jika tersedia
+                            </li>
+
+                            <li data-lang="contactPage.prepare.item3">
+                                Warna dan ukuran yang diinginkan
+                            </li>
+
+                            <li data-lang="contactPage.prepare.item4">
+                                Jumlah produk
+                            </li>
+
+                        </ul>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================================
+             WHAT WE CAN HELP
+        =============================================== -->
+
+        <section class="section">
+            <div class="container">
+
+                <div class="section-title">
+
+                    <span
+                        class="badge badge-success"
+                        data-lang="contactPage.services.badge"
+                    >
+                        Bantuan Gomai
+                    </span>
+
+                    <h2 data-lang="contactPage.services.title">
+                        Apa yang Bisa Kami Bantu?
+                    </h2>
+
+                    <p data-lang="contactPage.services.description">
+                        Hubungi Gomai sebelum melakukan pemesanan jika
+                        Anda memerlukan informasi tambahan.
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-4">
+
+                    <article class="card service-card">
+
+                        <span class="badge badge-warning">
+                            01
+                        </span>
+
+                        <h3 data-lang="contactPage.services.product.title">
+                            Cari Produk
+                        </h3>
+
+                        <p data-lang="contactPage.services.product.description">
+                            Tanyakan produk yang sedang Anda cari atau
+                            kirim foto sebagai referensi.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card service-card">
+
+                        <span class="badge badge-warning">
+                            02
+                        </span>
+
+                        <h3 data-lang="contactPage.services.stock.title">
+                            Periksa Stok
+                        </h3>
+
+                        <p data-lang="contactPage.services.stock.description">
+                            Konfirmasikan ketersediaan produk, warna,
+                            ukuran, dan varian.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card service-card">
+
+                        <span class="badge badge-warning">
+                            03
+                        </span>
+
+                        <h3 data-lang="contactPage.services.order.title">
+                            Bantuan Pemesanan
+                        </h3>
+
+                        <p data-lang="contactPage.services.order.description">
+                            Dapatkan bantuan untuk memastikan detail
+                            pesanan sebelum diproses.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card service-card">
+
+                        <span class="badge badge-warning">
+                            04
+                        </span>
+
+                        <h3 data-lang="contactPage.services.delivery.title">
+                            Informasi Pengantaran
+                        </h3>
+
+                        <p data-lang="contactPage.services.delivery.description">
+                            Tanyakan pilihan layanan dan informasi
+                            pengantaran pesanan.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================================
+             CONTACT FLOW
+        =============================================== -->
+
+        <section class="section">
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2 data-lang="contactPage.flow.title">
+                        Cara Menghubungi Gomai
+                    </h2>
+
+                    <p data-lang="contactPage.flow.description">
+                        Tiga langkah sederhana untuk mendapatkan bantuan.
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-3">
+
+                    <article class="card service-card">
+
+                        <span class="badge badge-warning">
+                            01
+                        </span>
+
+                        <h3 data-lang="contactPage.flow.step1.title">
+                            Buka WeChat
+                        </h3>
+
+                        <p data-lang="contactPage.flow.step1.description">
+                            Buka aplikasi WeChat pada perangkat Anda.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card service-card">
+
+                        <span class="badge badge-warning">
+                            02
+                        </span>
+
+                        <h3 data-lang="contactPage.flow.step2.title">
+                            Cari Gomai
+                        </h3>
+
+                        <p data-lang="contactPage.flow.step2.description">
+                            Cari WeChat ID Gomai dan buka percakapan.
+                        </p>
+
+                    </article>
+
+
+                    <article class="card service-card">
+
+                        <span class="badge badge-warning">
+                            03
+                        </span>
+
+                        <h3 data-lang="contactPage.flow.step3.title">
+                            Kirim Kebutuhan Anda
+                        </h3>
+
+                        <p data-lang="contactPage.flow.step3.description">
+                            Kirim detail produk atau pertanyaan yang
+                            ingin Anda konsultasikan.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================================
+             USEFUL LINKS
+        =============================================== -->
+
+        <section class="section">
+            <div class="container">
+
+                <div class="home-wechat-cta">
+
+                    <div>
+
+                        <span
+                            class="badge badge-success"
+                            data-lang="contactPage.links.badge"
+                        >
+                            Informasi Lainnya
+                        </span>
+
+                        <h2 data-lang="contactPage.links.title">
+                            Ingin Melihat Informasi Sebelum Menghubungi Kami?
+                        </h2>
+
+                        <p data-lang="contactPage.links.description">
+                            Pelajari cara belanja atau lihat pertanyaan
+                            yang sering diajukan melalui halaman informasi
+                            Gomai.
+                        </p>
+
+                    </div>
+
+
+                    <div class="header-actions">
+
+                        <a
+                            href="how-to-buy.html"
+                            class="btn btn-outline"
+                            data-route="howToBuy"
+                            data-lang="contactPage.links.howToBuy"
+                        >
+                            Cara Membeli
+                        </a>
+
+                        <a
+                            href="faq.html"
+                            class="btn btn-primary"
+                            data-route="faq"
+                            data-lang="contactPage.links.faq"
+                        >
+                            Lihat FAQ
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         SHARED FOOTER
+         Dirender oleh FooterComponent.
+    ================================================== -->
+
+    <footer id="site-footer"></footer>
+
+
+    <!-- ==================================================
+         JAVASCRIPT — GOMAI FRAMEWORK
+    ================================================== -->
+
+
+    <!-- ==================================================
+         1. FOUNDATION
+    ================================================== -->
+
+    <script src="../js/config.js"></script>
+    <script src="../js/core/utils.js"></script>
+    <script src="../js/language.js"></script>
+
+
+    <!-- ==================================================
+         2. CORE FOUNDATION
+    ================================================== -->
+
+    <script src="../js/core/component-core.js"></script>
+
+    <script src="../js/core/model-registry.js"></script>
+    <script src="../js/core/component-registry.js"></script>
+    <script src="../js/core/controller-registry.js"></script>
+
+
+    <!-- ==================================================
+         3. MODELS
+    ================================================== -->
+
+    <script src="../js/models/brands.js"></script>
+    <script src="../js/models/products.js"></script>
+
+
+    <!-- ==================================================
+         4. COMPONENTS
+    ================================================== -->
+
+    <script src="../js/components/loading.js"></script>
+    <script src="../js/components/empty-state.js"></script>
+
+    <script src="../js/components/product-card.js"></script>
+    <script src="../js/components/brand-card.js"></script>
+    <script src="../js/components/search-panel.js"></script>
+
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+
+
+    <!-- ==================================================
+         5. PAGE CONTROLLER
+    ================================================== -->
+
+    <script src="../js/information.js"></script>
+
+
+    <!-- ==================================================
+         6. GOMAI CORE
+    ================================================== -->
+
+    <script src="../js/core/gomai.js"></script>
+
+
+    <!-- ==================================================
+         7. APPLICATION BOOTSTRAPPER
+         app.js WAJIB MENJADI SCRIPT TERAKHIR.
+    ================================================== -->
+
+    <script src="../js/app.js"></script>
 
 </body>
 </html>

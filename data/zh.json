@@ -1,39 +1,695 @@
 {
-  "site_name": "Gomai",
-
-  "nav_home": "首页",
-  "nav_brand": "品牌",
-  "nav_products": "产品",
-  "nav_about": "关于我们",
-  "nav_contact": "联系我们",
-  "nav_how_to_buy": "购买方式",
-  "nav_faq": "常见问题",
-
-  "hero_title": "购买正品运动用品",
-  "hero_subtitle": "探索来自值得信赖品牌的优质运动产品。",
-
-  "featured_products": "精选产品",
-  "all_products": "所有产品",
-  "all_brands": "所有品牌",
-
-  "search_placeholder": "搜索产品...",
-
-  "stock_available": "有现货",
-  "stock_empty": "缺货",
-
-  "color": "颜色",
-  "size": "尺寸",
-
-  "price": "价格",
-
-  "buy_wechat": "通过微信联系",
-  "buy_whatsapp": "通过 WhatsApp 联系",
-
-  "description": "产品描述",
-
-  "related_products": "相关产品",
-
-  "footer_about": "Gomai 提供来自可信品牌的正品运动用品。",
-
-  "copyright": "© 2026 Gomai. 版权所有。"
+  "common": {
+    "wechat": "WeChat",
+    "search": "搜索",
+    "close": "关闭",
+    "back": "返回",
+    "home": "首页",
+    "brand": "品牌",
+    "products": "产品",
+    "allProducts": "全部产品",
+    "viewAll": "查看全部",
+    "viewMore": "查看更多",
+    "viewBrand": "查看品牌 →",
+    "viewCollection": "查看系列",
+    "contactWechat": "联系 WeChat",
+    "loading": "加载中...",
+    "available": "有货",
+    "outOfStock": "缺货",
+    "noData": "暂无数据",
+    "currency": "印尼盾",
+    "featured": "精选"
+  },
+  "announcement": {
+    "text": "轻松购物，我们送到。",
+    "link": "查看购物方式"
+  },
+  "navigation": {
+    "mainLabel": "主导航",
+    "mobileLabel": "移动端导航",
+    "allProducts": "全部产品",
+    "openSearch": "打开搜索",
+    "closeSearch": "关闭搜索",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "languageSelector": "选择语言",
+    "searchPlaceholder": "搜索产品或品牌...",
+    "searchButton": "搜索"
+  },
+  "hero": {
+    "sectionLabel": "精选品牌",
+    "badge": "正品品牌系列",
+    "titleTemplate": "探索 {{brand}} 系列",
+    "imageAltTemplate": "{{brand}} 系列",
+    "logoAltTemplate": "{{brand}} 标志",
+    "viewCollection": "查看系列",
+    "contactWechat": "联系 WeChat",
+    "previousBrand": "上一个品牌",
+    "nextBrand": "下一个品牌",
+    "chooseBrand": "选择品牌轮播",
+    "showBrandTemplate": "显示 {{brand}}",
+    "explore": "探索",
+    "scrollLabel": "继续查看品牌列表"
+  },
+  "brands": {
+    "badge": "精选品牌",
+    "title": "找到您喜欢的品牌",
+    "description": "进入品牌页面，查看系列、产品信息、颜色、尺码、价格和库存情况。",
+    "loading": "正在加载品牌...",
+    "emptyTitle": "暂无品牌",
+    "emptyDescription": "品牌数据可用后将显示在这里。",
+    "errorTitle": "品牌数据加载失败",
+    "errorDescription": "加载品牌数据时发生错误，请重试。",
+    "viewBrand": "查看品牌 →",
+    "ariaViewBrandTemplate": "查看 {{brand}} 品牌"
+  },
+  "categories": {
+    "overline": "按活动分类",
+    "title": "探索分类",
+    "description": "按活动和产品类型查找所需商品。",
+    "viewAllProducts": "查看全部产品 →",
+    "running": {
+      "name": "跑步",
+      "description": "跑步鞋和运动服饰。"
+    },
+    "football": {
+      "name": "足球",
+      "description": "精选足球装备。"
+    },
+    "futsal": {
+      "name": "五人制足球",
+      "description": "五人制足球鞋和相关用品。"
+    },
+    "outdoor": {
+      "name": "户外",
+      "description": "运动与户外探险装备。"
+    },
+    "apparel": {
+      "name": "服饰",
+      "description": "运动服饰和日常活动用品。"
+    },
+    "pants": {
+      "name": "裤装",
+      "description": "适合训练和日常活动的运动裤。"
+    },
+    "training": {
+      "name": "训练",
+      "description": "训练与健身用品。"
+    },
+    "lifestyle": {
+      "name": "生活方式",
+      "description": "适合日常穿搭与生活的运动产品。"
+    },
+    "safety": {
+      "name": "安全防护",
+      "description": "工作活动所需的安全防护用品。"
+    },
+    "freshMarket": {
+      "name": "生鲜市场",
+      "description": "精选生鲜和日常所需商品。"
+    }
+  },
+  "services": {
+    "badge": "Gomai 服务",
+    "title": "找到产品。咨询确认。我们送到。",
+    "description": "从您喜欢的品牌中选择产品，然后通过 WeChat 联系 Gomai，确认库存、尺码、价格和配送信息。",
+    "button": "了解购物方式",
+    "trustedProducts": {
+      "title": "可靠产品",
+      "description": "来自官方门店或经过核实的卖家。"
+    },
+    "wechatConsultation": {
+      "title": "WeChat 咨询",
+      "description": "下单前获取帮助与确认。"
+    },
+    "delivery": {
+      "title": "我们送到",
+      "description": "订单将根据所选服务和配送时间进行处理。"
+    }
+  },
+  "shopping": {
+    "badge": "购物方式",
+    "title": "四个简单步骤",
+    "description": "从选择品牌到收到订单，流程简单清晰。",
+    "step1": {
+      "title": "选择品牌",
+      "description": "进入您想浏览的品牌页面。"
+    },
+    "step2": {
+      "title": "选择产品",
+      "description": "确定所需产品、颜色、尺码和数量。"
+    },
+    "step3": {
+      "title": "联系 Gomai",
+      "description": "通过 WeChat 发送您的选择详情。"
+    },
+    "step4": {
+      "title": "我们送到",
+      "description": "订单确认后按约定处理并配送。"
+    },
+    "viewFullGuide": "查看完整指南"
+  },
+  "wechat": {
+    "label": "Gomai 客服",
+    "title": "需要帮助寻找产品？",
+    "description": "通过 WeChat 发送产品名称、照片或链接。Gomai 将帮助您核对产品详情和库存情况。",
+    "button": "通过 WeChat 联系"
+  },
+  "brandPage": {
+    "breadcrumbHome": "首页",
+    "breadcrumbBrand": "品牌",
+    "loadingBrand": "正在加载品牌...",
+    "loadingInformation": "正在加载品牌信息...",
+    "loadingDescription": "请稍候，正在加载品牌信息。",
+    "loadingProducts": "正在加载产品...",
+    "heroBadge": "官方品牌系列",
+    "exploreProducts": "探索产品",
+    "contactWechat": "联系 WeChat",
+    "highlights": {
+      "original": {
+        "title": "正品商品",
+        "description": "来自官方门店或可靠卖家。"
+      },
+      "collection": {
+        "title": "精选系列",
+        "description": "根据功能和品质精选产品。"
+      },
+      "consultation": {
+        "title": "WeChat 咨询",
+        "description": "咨询库存、颜色、尺码和产品详情。"
+      }
+    },
+    "collectionBadge": "品牌系列",
+    "collectionTitleTemplate": "{{brand}} 系列",
+    "collectionDescriptionTemplate": "探索 Gomai 提供的 {{brand}} 产品。",
+    "catalogLabel": "品牌目录",
+    "allProducts": "全部产品",
+    "showingProductsTemplate": "显示 {{count}} 件产品",
+    "filter": {
+      "categoryLabel": "分类",
+      "allCategories": "全部分类",
+      "sortLabel": "排序",
+      "default": "默认排序",
+      "priceLow": "价格从低到高",
+      "priceHigh": "价格从高到低",
+      "nameAscending": "名称 A–Z",
+      "nameDescending": "名称 Z–A",
+      "featured": "精选产品"
+    },
+    "emptyProductsTitle": "暂无产品",
+    "emptyProductsDescription": "该品牌或分类暂时没有可显示的产品。",
+    "shoppingFlow": {
+      "badge": "通过 Gomai 购物",
+      "title": "从挑选到收货都更轻松",
+      "description": "Gomai 协助您完成查找、咨询、下单和配送流程。",
+      "step1": {
+        "title": "选择产品",
+        "description": "打开产品详情并确定颜色和尺码。"
+      },
+      "step2": {
+        "title": "确认库存",
+        "description": "联系 Gomai 确认产品是否有货。"
+      },
+      "step3": {
+        "title": "确认订单",
+        "description": "通过 WeChat 发送您的选择详情。"
+      },
+      "step4": {
+        "title": "我们送到",
+        "description": "订单将按确认的时间安排配送。"
+      }
+    },
+    "notFound": {
+      "title": "未找到品牌",
+      "description": "您查找的品牌暂未提供，或页面地址无效。",
+      "button": "查看全部品牌"
+    }
+  },
+  "productsPage": {
+    "loading": "正在加载产品...",
+    "resultCountTemplate": "显示 {{visible}} / {{total}} 件产品",
+    "meta": {
+      "title": "全部产品 | Gomai",
+      "description": "通过 Gomai 探索运动、户外、时尚和日常所需的多种产品。"
+    },
+    "filter": {
+      "allBrands": "全部品牌",
+      "allCategories": "全部分类",
+      "allStock": "全部库存状态",
+      "brandLabel": "品牌",
+      "categoryLabel": "分类",
+      "stockLabel": "库存",
+      "sortLabel": "排序",
+      "default": "默认排序",
+      "priceLow": "价格从低到高",
+      "priceHigh": "价格从高到低",
+      "nameAscending": "名称 A–Z",
+      "nameDescending": "名称 Z–A",
+      "featured": "精选产品"
+    },
+    "card": {
+      "viewProductTemplate": "查看产品 {{product}}"
+    },
+    "empty": {
+      "title": "未找到产品",
+      "description": "没有符合当前搜索或筛选条件的产品。",
+      "resetButton": "清除筛选"
+    },
+    "error": {
+      "title": "产品数据加载失败",
+      "description": "加载产品时发生错误，请重试。"
+    }
+  },
+  "product": {
+    "loading": "正在加载产品...",
+    "brand": "品牌",
+    "category": "分类",
+    "price": "价格",
+    "stock": "库存",
+    "color": "颜色",
+    "size": "尺码",
+    "quantity": "数量",
+    "description": "产品描述",
+    "specification": "规格",
+    "relatedProducts": "相关产品",
+    "selectColor": "选择颜色",
+    "selectSize": "选择尺码",
+    "orderWechat": "通过 WeChat 下单",
+    "imageUnavailable": "暂无图片",
+    "notFoundTitle": "未找到产品",
+    "notFoundDescription": "您查找的产品暂未提供，或页面地址无效。"
+  },
+  "productDetail": {
+    "breadcrumbProducts": "产品",
+    "available": "有货",
+    "outOfStock": "缺货",
+    "colorLabel": "选择颜色",
+    "sizeLabel": "选择尺码",
+    "quantityLabel": "数量",
+    "orderButton": "通过 WeChat 下单",
+    "contactButton": "联系 Gomai",
+    "descriptionTitle": "产品描述",
+    "specificationTitle": "规格",
+    "relatedTitle": "相关产品",
+    "imageAltTemplate": "{{product}} 产品图片",
+    "viewImageTemplate": "查看 {{product}} 的第 {{number}} 张图片",
+    "notFound": {
+      "title": "未找到产品",
+      "description": "您查找的产品暂未提供，或页面地址无效。",
+      "button": "查看全部产品"
+    },
+    "error": {
+      "title": "产品加载失败",
+      "description": "加载产品时发生错误，请重试。"
+    }
+  },
+  "search": {
+    "title": "搜索结果",
+    "placeholder": "搜索产品或品牌...",
+    "emptyTitle": "未找到产品",
+    "emptyDescription": "请尝试使用其他搜索关键词。",
+    "resultCountTemplate": "找到 {{count}} 个结果"
+  },
+  "searchPanel": {
+    "ariaLabel": "Gomai 搜索",
+    "suggestionsLabel": "搜索建议",
+    "loading": "搜索中...",
+    "resultCount": "找到 {{count}} 个结果",
+    "noSuggestions": "暂无搜索建议。",
+    "placeholder": "搜索产品或品牌...",
+    "searchButton": "搜索",
+    "clearButton": "清除搜索",
+    "closeButton": "关闭搜索"
+  },
+  "emptyState": {
+    "noProducts": {
+      "title": "暂无产品",
+      "description": "目前没有可显示的产品。",
+      "primaryButton": "查看全部产品"
+    },
+    "noBrands": {
+      "title": "暂无品牌",
+      "description": "目前暂无品牌。",
+      "primaryButton": "查看品牌"
+    },
+    "noSearch": {
+      "title": "未找到结果",
+      "description": "没有与您的搜索相符的结果。",
+      "primaryButton": "清除搜索"
+    },
+    "noCategory": {
+      "title": "暂无产品",
+      "description": "所选分类中暂无产品。",
+      "primaryButton": "清除筛选"
+    },
+    "noFavorite": {
+      "title": "暂无收藏",
+      "description": "您还没有收藏任何产品。",
+      "primaryButton": "查看产品"
+    },
+    "error": {
+      "title": "发生错误",
+      "description": "加载数据时发生错误，请重试。",
+      "primaryButton": "重试"
+    },
+    "networkError": {
+      "title": "网络连接异常",
+      "description": "请检查网络连接后重试。",
+      "primaryButton": "重试"
+    },
+    "notFound": {
+      "title": "页面未找到",
+      "description": "您查找的页面不存在。",
+      "primaryButton": "返回首页",
+      "secondaryButton": "查看产品"
+    },
+    "maintenance": {
+      "title": "正在维护",
+      "description": "该服务暂时不可用。",
+      "primaryButton": "返回首页"
+    },
+    "comingSoon": {
+      "title": "即将上线",
+      "description": "该功能正在准备中。",
+      "primaryButton": "返回首页"
+    }
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "关于 Gomai | Gomai",
+      "description": "了解 Gomai，以及我们如何让购物流程更加简单。"
+    },
+    "hero": {
+      "badge": "关于 Gomai",
+      "title": "与 Gomai 一起轻松购物",
+      "description": "Gomai 帮助您寻找产品、确认详情，并更简单地安排配送流程。"
+    },
+    "identity": {
+      "badge": "我们是谁",
+      "title": "Gomai 帮助连接您的需求与产品",
+      "description": "我们致力于打造简单、清晰、易于使用的购物体验。",
+      "point1": {
+        "title": "更容易找到",
+        "description": "品牌和产品经过整理，方便您快速查找。"
+      },
+      "point2": {
+        "title": "更容易确认",
+        "description": "产品和订单详情可通过 Gomai 官方渠道确认。"
+      },
+      "point3": {
+        "title": "更容易收货",
+        "description": "配送将根据已确认的服务、地点和时间进行安排。"
+      }
+    },
+    "promise": {
+      "badge": "我们的承诺",
+      "title": "订单处理前确认重要信息",
+      "description": "在订单处理前，Gomai 会协助确认产品详情、库存、付款和配送信息。",
+      "product": {
+        "title": "产品详情",
+        "description": "下单前确认产品、颜色、尺码和数量。"
+      },
+      "communication": {
+        "title": "清晰沟通",
+        "description": "订单信息通过 Gomai 官方渠道进行确认。"
+      },
+      "delivery": {
+        "title": "协调配送",
+        "description": "收货地点和时间将与订单一起确认。"
+      }
+    },
+    "process": {
+      "badge": "我们如何协助",
+      "title": "从选择产品到完成配送",
+      "description": "流程简单清晰，让您随时知道下一步该做什么。",
+      "step1": {
+        "title": "选择产品",
+        "description": "浏览 Gomai 提供的品牌和产品。"
+      },
+      "step2": {
+        "title": "确认详情",
+        "description": "通过 Gomai 官方渠道发送您的选择和需求。"
+      },
+      "step3": {
+        "title": "处理订单",
+        "description": "详情和付款确认后，订单将进入处理流程。"
+      },
+      "step4": {
+        "title": "我们送到",
+        "description": "订单将根据已确认的服务和时间进行配送。"
+      }
+    },
+    "values": {
+      "badge": "Gomai 原则",
+      "title": "简单、清晰、值得信赖",
+      "description": "我们重视从浏览到收货都容易理解的购物体验。",
+      "simple": {
+        "title": "简单",
+        "description": "购物流程精简，容易操作。"
+      },
+      "clear": {
+        "title": "清晰",
+        "description": "订单处理前确认所有重要信息。"
+      },
+      "trusted": {
+        "title": "可靠",
+        "description": "沟通和下单流程均通过 Gomai 官方渠道完成。"
+      }
+    },
+    "cta": {
+      "badge": "开始购物",
+      "title": "找到您需要的产品",
+      "description": "浏览产品目录；如需帮助，可直接联系 Gomai。",
+      "products": "查看产品",
+      "contact": "联系 Gomai"
+    }
+  },
+  "contactPage": {
+    "meta": {
+      "title": "联系 Gomai | Gomai",
+      "description": "联系 Gomai 获取产品、库存、下单、付款和配送方面的帮助。"
+    },
+    "hero": {
+      "badge": "联系 Gomai",
+      "title": "需要帮助？联系我们",
+      "description": "通过 Gomai 官方渠道告诉我们您的需求，我们将协助您核对产品和订单详情。"
+    },
+    "wechat": {
+      "badge": "WeChat",
+      "title": "通过 WeChat 联系 Gomai",
+      "description": "可通过 WeChat 咨询产品、库存、尺码、价格、下单和配送。",
+      "label": "WeChat：",
+      "button": "通过 WeChat 联系"
+    },
+    "prepare": {
+      "badge": "联系前准备",
+      "title": "请准备所需信息",
+      "description": "信息越完整，我们就能越快为您确认。",
+      "product": {
+        "title": "产品",
+        "description": "发送产品名称、照片或链接。"
+      },
+      "variant": {
+        "title": "规格",
+        "description": "请注明所需颜色、尺码和数量。"
+      },
+      "delivery": {
+        "title": "收货信息",
+        "description": "请提供收货地点和期望收货时间。"
+      }
+    },
+    "services": {
+      "badge": "Gomai 帮助",
+      "title": "我们可以帮您什么？",
+      "description": "如有以下需求，可联系 Gomai。",
+      "product": {
+        "title": "产品信息",
+        "description": "咨询产品详情、规格和库存。"
+      },
+      "order": {
+        "title": "下单",
+        "description": "订单处理前确认所有订单详情。"
+      },
+      "delivery": {
+        "title": "配送",
+        "description": "确认收货地点、服务方式和时间。"
+      }
+    },
+    "flow": {
+      "badge": "服务流程",
+      "title": "发送详情，等待确认，然后继续下单",
+      "description": "我们会协助检查您提供的信息。",
+      "step1": {
+        "title": "发送需求",
+        "description": "告诉我们您需要的产品或帮助。"
+      },
+      "step2": {
+        "title": "我们核对",
+        "description": "Gomai 检查相关详情和必要信息。"
+      },
+      "step3": {
+        "title": "确认",
+        "description": "订单处理前确认下一步所需信息。"
+      }
+    },
+    "links": {
+      "title": "实用信息",
+      "description": "查看购物指南或常见问题。",
+      "howToBuy": {
+        "title": "购物方式",
+        "description": "了解如何通过 Gomai 下单。",
+        "button": "查看购物方式"
+      },
+      "faq": {
+        "title": "常见问题",
+        "description": "查看常见问题的答案。",
+        "button": "查看常见问题"
+      }
+    }
+  },
+  "faqPage": {
+    "meta": {
+      "title": "常见问题 | Gomai",
+      "description": "查看有关 Gomai 产品、下单、付款和配送的常见问题。"
+    },
+    "hero": {
+      "badge": "常见问题",
+      "title": "常见问题",
+      "description": "快速了解 Gomai 的产品、下单、付款和配送流程。"
+    },
+    "items": {
+      "whatIsGomai": {
+        "question": "Gomai 是什么？",
+        "answer": "Gomai 帮助您寻找产品、确认订单详情，并安排配送流程。"
+      },
+      "howToOrder": {
+        "question": "如何下单？",
+        "answer": "选择您需要的产品，准备颜色、尺码和数量等详情，然后联系 Gomai 进行确认。"
+      },
+      "stock": {
+        "question": "网站上的产品都会一直有货吗？",
+        "answer": "库存可能随时变化。订单处理前请通过 Gomai 确认库存。"
+      },
+      "requestProduct": {
+        "question": "如果网站上没有我想要的产品怎么办？",
+        "answer": "将产品名称、照片或链接发送给 Gomai，我们会帮助确认该需求是否可以处理。"
+      },
+      "payment": {
+        "question": "如何付款？",
+        "answer": "订单处理时，付款详情会通过 Gomai 官方渠道进行确认。"
+      },
+      "delivery": {
+        "question": "配送流程是怎样的？",
+        "answer": "配送将根据订单确认的服务类型、收货地点和时间进行安排。"
+      },
+      "contact": {
+        "question": "如果我还需要帮助怎么办？",
+        "answer": "可通过 WeChat 或联系页面联系 Gomai 获取进一步帮助。"
+      }
+    },
+    "links": {
+      "shopping": {
+        "badge": "购物方式",
+        "title": "了解如何购买",
+        "description": "查看从选择产品到收到订单的完整步骤。",
+        "button": "查看指南"
+      },
+      "contact": {
+        "badge": "需要帮助？",
+        "title": "联系 Gomai",
+        "description": "如果您的问题尚未解决，可通过 WeChat 联系 Gomai。",
+        "wechatLabel": "WeChat：",
+        "button": "联系 Gomai"
+      }
+    }
+  },
+  "howToBuyPage": {
+    "meta": {
+      "title": "购物方式 | Gomai",
+      "description": "了解如何通过 Gomai 选择产品、确认订单、完成付款并接收商品。"
+    },
+    "hero": {
+      "badge": "购物方式",
+      "title": "通过 Gomai 四步完成购物",
+      "description": "选择所需产品，与 Gomai 确认详情，完成付款，然后等待订单处理和配送。"
+    },
+    "steps": {
+      "badge": "下单流程",
+      "title": "四个简单步骤",
+      "description": "从选择产品到收到订单。",
+      "step1": {
+        "title": "选择产品",
+        "description": "浏览 Gomai 网站上的品牌和产品，确定所需产品、颜色、尺码和数量。",
+        "button": "查看产品"
+      },
+      "step2": {
+        "title": "联系 Gomai",
+        "description": "通过 Gomai 官方渠道发送您的选择详情，以确认库存、规格、价格和订单信息。"
+      },
+      "step3": {
+        "title": "确认并付款",
+        "description": "订单详情确认后，按照 Gomai 提供的官方付款方式完成支付。"
+      },
+      "step4": {
+        "title": "我们送到",
+        "description": "订单将根据已确认的服务、收货地点和时间进行处理和配送。"
+      }
+    },
+    "prepare": {
+      "title": "准备订单详情",
+      "description": "提供完整信息可以加快确认流程，并减少订单错误。",
+      "product": {
+        "badge": "产品",
+        "title": "产品名称或链接",
+        "description": "发送您想购买的产品名称、照片或产品页面链接。"
+      },
+      "variant": {
+        "badge": "规格",
+        "title": "颜色、尺码和数量",
+        "description": "注明所需规格，以便 Gomai 准确确认库存。"
+      },
+      "delivery": {
+        "badge": "配送",
+        "title": "收货地点和时间",
+        "description": "提供收货地点和期望收货时间，以便确认配送安排。"
+      }
+    },
+    "payment": {
+      "badge": "付款",
+      "title": "使用 Gomai 官方付款方式",
+      "description": "付款前请确认价格和付款方式。仅按照 Gomai 官方渠道提供的付款信息进行交易。"
+    },
+    "delivery": {
+      "badge": "配送",
+      "title": "配送时间与订单一起确认",
+      "description": "配送时间取决于订单类型、收货地点和所选服务。最终安排会在订单处理前确认。"
+    },
+    "cta": {
+      "badge": "准备下单？",
+      "title": "查找产品或联系 Gomai",
+      "description": "先浏览产品。如需帮助，请在下单前联系 Gomai 进行确认。",
+      "wechatLabel": "WeChat：",
+      "products": "查看产品",
+      "contact": "联系 Gomai"
+    }
+  },
+  "footer": {
+    "description": "轻松购买运动、户外、时尚和日常所需商品。",
+    "brandTitle": "品牌",
+    "informationTitle": "信息",
+    "contactTitle": "联系我们",
+    "howToBuy": "购物方式",
+    "about": "关于我们",
+    "faq": "常见问题",
+    "contactUs": "联系我们",
+    "wechatTemplate": "WeChat：{{wechatId}}",
+    "copyright": "© 2026 Gomai。保留所有权利。"
+  },
+  "errors": {
+    "bootstrap": {
+      "title": "Gomai 无法启动",
+      "description": "应用启动时发生错误。请查看 Console 获取详细信息。",
+      "reload": "重新加载"
+    }
+  }
 }

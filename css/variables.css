@@ -1,154 +1,467 @@
 /* ==========================================================
    GOMAI DESIGN SYSTEM
    variables.css
+
+   Prinsip utama:
+   - Mobile-first
+   - Mandarin-first
+   - Area sentuh ramah handphone
+   - Kontras warna mudah dibaca
+   - Kompatibel dengan file CSS lama selama proses revisi
 ========================================================== */
 
-:root{
+:root {
+
+    color-scheme: light;
+
+    /* ======================================================
+       BRAND COLORS
+    ====================================================== */
+
+    --primary: #F5B400;
+    --primary-dark: #D99C00;
+    --primary-darker: #B88000;
+    --primary-light: #FFD54D;
+    --primary-soft: #FFF4CC;
+
+    --on-primary: #111111;
+
+    --secondary: #111111;
+    --secondary-light: #2A2A2A;
+    --secondary-soft: #3A3A3A;
+
+    --on-secondary: #FFFFFF;
+
+    /* ======================================================
+       SEMANTIC COLORS
+    ====================================================== */
+
+    --success: #15803D;
+    --success-dark: #166534;
+    --success-soft: #DCFCE7;
+    --success-text: #166534;
+    --on-success: #FFFFFF;
+
+    --warning: #B45309;
+    --warning-dark: #92400E;
+    --warning-soft: #FEF3C7;
+    --warning-text: #92400E;
+    --on-warning: #FFFFFF;
+
+    --danger: #B91C1C;
+    --danger-dark: #991B1B;
+    --danger-soft: #FEE2E2;
+    --danger-text: #991B1B;
+    --on-danger: #FFFFFF;
+
+    --info: #1D4ED8;
+    --info-dark: #1E40AF;
+    --info-soft: #DBEAFE;
+    --info-text: #1E40AF;
+    --on-info: #FFFFFF;
+
+    /* ======================================================
+       NEUTRAL COLORS
+    ====================================================== */
+
+    --white: #FFFFFF;
+    --black: #000000;
+
+    --gray-50: #FAFAFA;
+    --gray-100: #F5F5F5;
+    --gray-200: #E5E5E5;
+    --gray-300: #D4D4D4;
+    --gray-400: #A3A3A3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+
+    /* ======================================================
+       BACKGROUNDS
+    ====================================================== */
+
+    --bg-body: #FAFAFA;
+    --bg-card: #FFFFFF;
+    --bg-elevated: #FFFFFF;
+    --bg-muted: #F5F5F5;
+    --bg-soft: #FAFAFA;
+    --bg-dark: #111111;
+    --bg-overlay: rgba(17, 17, 17, 0.64);
+
+    /* ======================================================
+       TEXT COLORS
+    ====================================================== */
+
+    --text-primary: #111111;
+    --text-secondary: #525252;
+    --text-muted: #737373;
+    --text-light: #A3A3A3;
+    --text-disabled: #A3A3A3;
+    --text-white: #FFFFFF;
+    --text-link: #8A6400;
+
+    /* ======================================================
+       BORDER COLORS
+    ====================================================== */
+
+    --border-color: #E5E5E5;
+    --border-muted: #F0F0F0;
+    --border-strong: #D4D4D4;
+    --border-dark: #404040;
+    --border-focus: #F5B400;
+
+    /* ======================================================
+       FONT FAMILY
+
+       Mandarin menjadi prioritas utama.
+       Nama brand dan teks Latin tetap dapat tampil dengan baik.
+    ====================================================== */
+
+    --font-primary:
+        "Noto Sans SC",
+        "PingFang SC",
+        "Microsoft YaHei",
+        "Hiragino Sans GB",
+        "Source Han Sans SC",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    --font-monospace:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    /* ======================================================
+       FONT WEIGHTS
+    ====================================================== */
+
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+
+    /* ======================================================
+       FONT SIZES
+
+       Ukuran dasar 16px mencegah zoom otomatis pada input
+       di sebagian besar browser handphone.
+    ====================================================== */
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.5rem;
+    --text-5xl: 3rem;
+
+    --text-display-sm: clamp(2rem, 8vw, 3rem);
+    --text-display-md: clamp(2.25rem, 7vw, 3.75rem);
+    --text-display-lg: clamp(2.5rem, 6vw, 4.5rem);
+
+    /* ======================================================
+       LINE HEIGHT
+
+       Dibuat sedikit lebih lapang agar Hanzi nyaman dibaca.
+    ====================================================== */
+
+    --line-height-tight: 1.3;
+    --line-height-compact: 1.45;
+    --line-height-normal: 1.6;
+    --line-height-body: 1.7;
+    --line-height-relaxed: 1.8;
+
+    /* ======================================================
+       LETTER SPACING
+
+       Teks Mandarin tidak menggunakan jarak huruf besar.
+    ====================================================== */
+
+    --tracking-tight: -0.01em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.04em;
+
+    /* ======================================================
+       SPACING SCALE
+    ====================================================== */
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+
+    /* Alias kompatibilitas */
+
+    --space-xs: var(--space-2);
+    --space-sm: var(--space-3);
+    --space-md: var(--space-5);
+    --space-lg: var(--space-8);
+    --space-xl: var(--space-12);
+    --space-2xl: var(--space-16);
+    --space-3xl: var(--space-24);
+
+    /* ======================================================
+       BORDER RADIUS
+    ====================================================== */
+
+    --radius-xs: 0.375rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 999px;
+
+    /* ======================================================
+       SHADOWS
+    ====================================================== */
+
+    --shadow-xs:
+        0 1px 2px rgba(17, 17, 17, 0.05);
+
+    --shadow-sm:
+        0 2px 8px rgba(17, 17, 17, 0.06);
+
+    --shadow-md:
+        0 8px 24px rgba(17, 17, 17, 0.09);
+
+    --shadow-lg:
+        0 18px 48px rgba(17, 17, 17, 0.13);
+
+    --shadow-xl:
+        0 24px 64px rgba(17, 17, 17, 0.17);
+
+    --shadow-card: var(--shadow-sm);
+    --shadow-card-hover: var(--shadow-md);
+
+    /* ======================================================
+       FOCUS
+    ====================================================== */
+
+    --focus-color: #F5B400;
+
+    --focus-outline:
+        3px solid rgba(245, 180, 0, 0.78);
+
+    --focus-ring:
+        0 0 0 4px rgba(245, 180, 0, 0.22);
+
+    --focus-offset: 3px;
+
+    /* ======================================================
+       TRANSITIONS
+    ====================================================== */
+
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.4s ease;
+
+    /* Alias kompatibilitas */
+
+    --transition: var(--transition-normal);
+
+    /* ======================================================
+       MOBILE TOUCH TARGETS
+
+       Minimal 44px mengikuti kebutuhan area sentuh mobile.
+    ====================================================== */
+
+    --touch-target-min: 44px;
+
+    --control-height-sm: 44px;
+    --control-height: 48px;
+    --control-height-lg: 54px;
+
+    --button-height: 48px;
+    --button-height-lg: 54px;
+
+    --input-height: 48px;
+
+    --icon-size-sm: 18px;
+    --icon-size: 22px;
+    --icon-size-lg: 28px;
+
+    --tap-highlight:
+        rgba(245, 180, 0, 0.2);
+
+    /* ======================================================
+       CONTAINER
+
+       Mobile menggunakan gutter 16px.
+       Nilai diperbesar pada tablet dan desktop.
+    ====================================================== */
+
+    --container-width: 1200px;
+    --container-gutter: 16px;
+
+    --container-narrow: 760px;
+    --container-reading: 680px;
+
+    /* Alias kompatibilitas */
+
+    --container: var(--container-width);
+
+    /* ======================================================
+       SECTION SPACING
+
+       Nilai dasar dibuat untuk handphone.
+    ====================================================== */
+
+    --section-space-sm: 32px;
+    --section-space: 48px;
+    --section-space-lg: 64px;
+
+    /* ======================================================
+       HEADER HEIGHT
+
+       Nilai dasar dibuat untuk handphone.
+    ====================================================== */
+
+    --promo-bar-height: 36px;
+    --header-height: 64px;
+
+    --header-stack-height:
+        calc(
+            var(--promo-bar-height) +
+            var(--header-height)
+        );
+
+    --page-top-offset:
+        var(--header-stack-height);
+
+    /* ======================================================
+       CONTENT SIZES
+    ====================================================== */
+
+    --content-width-sm: 480px;
+    --content-width-md: 720px;
+    --content-width-lg: 960px;
+
+    /* ======================================================
+       PRODUCT AND BRAND MEDIA
+    ====================================================== */
+
+    --product-image-ratio: 1 / 1.12;
+    --brand-image-ratio: 16 / 10;
+    --hero-mobile-min-height: 440px;
+    --hero-desktop-min-height: 600px;
+
+    /* ======================================================
+       LAYERS
+    ====================================================== */
+
+    --z-base: 0;
+    --z-content: 1;
+    --z-sticky: 100;
+    --z-header: 500;
+    --z-dropdown: 600;
+    --z-search: 700;
+    --z-overlay: 800;
+    --z-modal: 900;
+    --z-loading: 1000;
+    --z-toast: 1100;
+
+    /* Alias kompatibilitas */
+
+    --z-navbar: var(--z-header);
+
+    /* ======================================================
+       SAFE AREA
+
+       Digunakan untuk perangkat dengan notch atau home bar.
+    ====================================================== */
+
+    --safe-area-top:
+        env(safe-area-inset-top, 0px);
+
+    --safe-area-right:
+        env(safe-area-inset-right, 0px);
+
+    --safe-area-bottom:
+        env(safe-area-inset-bottom, 0px);
+
+    --safe-area-left:
+        env(safe-area-inset-left, 0px);
+
+    /* ======================================================
+       COMPATIBILITY ALIASES
+
+       Dipertahankan sementara agar CSS lama tidak rusak
+       sebelum seluruh file selesai direvisi.
+    ====================================================== */
+
+    --surface: var(--bg-card);
+    --surface-soft: var(--bg-soft);
+    --surface-muted: var(--bg-muted);
+
+    --text: var(--text-primary);
+    --muted: var(--text-secondary);
+
+    --border: var(--border-color);
+
+    --radius: var(--radius-md);
+}
+
 
 /* ==========================================================
-   BRAND COLORS
+   TABLET
 ========================================================== */
 
---primary:#F5B400;
---primary-dark:#D99C00;
---primary-light:#FFD54D;
+@media (min-width: 768px) {
 
---secondary:#111111;
---secondary-light:#2A2A2A;
+    :root {
 
---success:#22C55E;
---warning:#F59E0B;
---danger:#EF4444;
+        --container-gutter: 24px;
 
---white:#FFFFFF;
---black:#000000;
+        --section-space-sm: 40px;
+        --section-space: 64px;
+        --section-space-lg: 80px;
 
---gray-50:#FAFAFA;
---gray-100:#F5F5F5;
---gray-200:#E5E5E5;
---gray-300:#D4D4D4;
---gray-400:#A3A3A3;
---gray-500:#737373;
---gray-600:#525252;
---gray-700:#404040;
---gray-800:#262626;
---gray-900:#171717;
+        --promo-bar-height: 38px;
+        --header-height: 72px;
+
+        --product-image-ratio: 1 / 1.08;
+        --hero-mobile-min-height: 500px;
+    }
+
+}
 
 
 /* ==========================================================
-   BACKGROUND
+   DESKTOP
 ========================================================== */
 
---bg-body:#FAFAFA;
---bg-card:#FFFFFF;
---bg-dark:#111111;
+@media (min-width: 992px) {
 
+    :root {
 
-/* ==========================================================
-   TEXT
-========================================================== */
+        --container-gutter: 32px;
 
---text-primary:#111111;
---text-secondary:#525252;
---text-light:#737373;
---text-white:#FFFFFF;
+        --section-space-sm: 48px;
+        --section-space: 80px;
+        --section-space-lg: 96px;
 
+        --promo-bar-height: 40px;
+        --header-height: 80px;
 
-/* ==========================================================
-   BORDER
-========================================================== */
-
---border-color:#E5E5E5;
-
-
-/* ==========================================================
-   SHADOW
-========================================================== */
-
---shadow-sm:0 2px 6px rgba(0,0,0,.05);
-
---shadow-md:0 8px 20px rgba(0,0,0,.08);
-
---shadow-lg:0 20px 40px rgba(0,0,0,.12);
-
-
-/* ==========================================================
-   BORDER RADIUS
-========================================================== */
-
---radius-sm:8px;
---radius-md:12px;
---radius-lg:18px;
---radius-xl:24px;
---radius-full:999px;
-
-
-/* ==========================================================
-   SPACING
-========================================================== */
-
---space-xs:8px;
---space-sm:12px;
---space-md:20px;
---space-lg:32px;
---space-xl:48px;
---space-2xl:64px;
---space-3xl:96px;
-
-
-/* ==========================================================
-   CONTAINER
-========================================================== */
-
---container:1280px;
-
-
-/* ==========================================================
-   TRANSITION
-========================================================== */
-
---transition:.25s ease;
-
-
-/* ==========================================================
-   FONT
-========================================================== */
-
---font-primary:
-"Noto Sans SC",
-"Microsoft YaHei",
-"Poppins",
-sans-serif;
-
-
-/* ==========================================================
-   FONT SIZE
-========================================================== */
-
---text-xs:.75rem;
---text-sm:.875rem;
---text-md:1rem;
---text-lg:1.125rem;
---text-xl:1.25rem;
---text-2xl:1.5rem;
---text-3xl:2rem;
---text-4xl:2.75rem;
-
-
-/* ==========================================================
-   HEADER
-========================================================== */
-
---header-height:80px;
-
-
-/* ==========================================================
-   Z INDEX
-========================================================== */
-
---z-navbar:100;
---z-dropdown:200;
---z-modal:500;
---z-loading:999;
+        --product-image-ratio: 1 / 1.05;
+    }
 
 }
