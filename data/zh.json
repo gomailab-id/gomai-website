@@ -301,6 +301,12 @@
     "error": {
       "title": "产品加载失败",
       "description": "加载产品时发生错误，请重试。"
+    },
+    "decreaseQuantity": "减少数量",
+    "increaseQuantity": "增加数量",
+    "meta": {
+      "titleTemplate": "{{product}} | Gomai",
+      "descriptionTemplate": "通过 Gomai 查看 {{product}} 的产品详情。"
     }
   },
   "search": {

@@ -301,6 +301,12 @@
     "error": {
       "title": "Produk Gagal Dimuat",
       "description": "Terjadi kesalahan saat memuat produk. Silakan coba kembali."
+    },
+    "decreaseQuantity": "Kurangi jumlah",
+    "increaseQuantity": "Tambah jumlah",
+    "meta": {
+      "titleTemplate": "{{product}} | Gomai",
+      "descriptionTemplate": "Lihat detail produk {{product}} melalui Gomai."
     }
   },
   "search": {

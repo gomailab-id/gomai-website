@@ -973,7 +973,7 @@ const BrandCardComponent = (() => {
 
         badge.textContent =
             translate(
-                "brands.featured",
+                "common.featured",
 
                 getCurrentLanguage() ===
                     "zh"

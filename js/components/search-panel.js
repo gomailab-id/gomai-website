@@ -1813,7 +1813,7 @@ const SearchPanelComponent = (() => {
 
             showEmptySuggestion(
                 translate(
-                    "searchPanel.error",
+                    "emptyState.error.description",
                     getCurrentLanguage() ===
                         "zh"
                         ? "搜索失败，请重试。"
