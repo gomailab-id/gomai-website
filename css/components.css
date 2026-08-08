@@ -1011,6 +1011,9 @@ a.btn[aria-disabled="true"] {
 
     -webkit-line-clamp:
         3;
+
+    line-clamp:
+        3;
 }
 
 .brand-card-link {
@@ -1237,6 +1240,9 @@ a.btn[aria-disabled="true"] {
 
     -webkit-line-clamp:
         2;
+
+    line-clamp:
+        2;
 }
 
 .product-name a,
@@ -1263,6 +1269,9 @@ a.btn[aria-disabled="true"] {
         vertical;
 
     -webkit-line-clamp:
+        2;
+
+    line-clamp:
         2;
 }
 

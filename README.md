@@ -1,28 +1,37 @@
-# Gomai Website MVP
+# Gomai Website
 
-Website statis, mobile-first, dua bahasa (Indonesia dan Mandarin), siap diunggah ke GitHub dan dipasang di Vercel/GitHub Pages.
-
-## Isi
-- `index.html` — halaman utama
-- `product.html` — halaman produk pertama
-- `styles.css` — seluruh gaya responsive
-- `script.js` — pengganti bahasa, galeri, dan pilihan varian
-- `assets/` — logo dan foto produk
-- `data/products.json` — data produk awal
+Gomai adalah website belanja dua bahasa (Indonesia / 中文) dengan arsitektur data-driven untuk brand, produk, komponen bersama, dan halaman informasi.
 
 ## Menjalankan secara lokal
-Klik dua kali `index.html`, atau gunakan ekstensi Live Server di VS Code.
 
-## Upload ke GitHub
-1. Buat repository baru.
-2. Ekstrak ZIP ini.
-3. Upload seluruh isi folder `gomai-website`, bukan folder ZIP-nya.
-4. Commit perubahan.
-5. Hubungkan repository ke Vercel.
+Buka folder ini di VS Code, lalu jalankan melalui Live Server. Entry point utama adalah `index.html`.
 
-## Catatan sebelum peluncuran
-- Ganti tombol WeChat dengan tautan atau QR akun resmi.
-- Masukkan domain resmi.
-- Hubungkan keranjang, checkout, database, dan pembayaran.
-- Tambahkan Kebijakan Privasi, Syarat & Ketentuan, serta kebijakan refund.
-- Pastikan izin penggunaan foto produk dari official store/pemasok.
+## Struktur utama
+
+- `assets/` — logo, hero brand, dan gambar produk.
+- `css/` — global stylesheet dan page-specific stylesheet.
+- `data/` — data brand, produk, serta kamus bahasa ID / 中文.
+- `js/core/` — registry, component core, utilities, dan Gomai Core.
+- `js/models/` — model data brand dan produk.
+- `js/components/` — Header, Footer, SearchPanel, cards, loading, dan empty state.
+- `js/*.js` — controller halaman dan application bootstrap.
+- `pages/` — brand, products, product detail, about, contact, FAQ, dan how-to-buy.
+
+## Aturan pengembangan
+
+1. Brand dan produk baru ditambahkan melalui `data/` dan `assets/`, bukan dengan hardcode ke HTML/JS.
+2. `js/app.js` tetap menjadi application bootstrap terakhir pada setiap halaman yang memakai Gomai Core.
+3. Header dan Footer adalah shared components.
+4. Halaman informasi menggunakan satu `InformationController`.
+5. CSS global dimuat melalui `css/styles.css`; halaman kemudian memuat page-specific CSS masing-masing.
+6. Jangan mengubah file berstatus locked/static-verified tanpa incompatibility konkret.
+
+## Dokumen kontrol
+
+- `PROJECT.md`
+- `ARCHITECTURE.md`
+- `DECISIONS.md`
+- `FILE-MANIFEST.md`
+- `CHANGELOG.md`
+
+Dokumen di atas adalah sumber kontrol proyek untuk audit dan pengembangan berikutnya.

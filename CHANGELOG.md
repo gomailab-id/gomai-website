@@ -82,3 +82,14 @@ Integration Blocker #2: perbaiki enam hero asset path pada `data/brands.json` da
 ### Next Planned Change
 
 Integration Blocker #1: perbaiki **CSS page wiring** di seluruh HTML secara sistematis, lalu jalankan static verification sebelum menyentuh page CSS itu sendiri.
+
+## 2026-08-08 — Full replacement consolidation
+
+- Menggabungkan Project Control Pack, CSS page wiring, hero asset path fix, dan translation synchronization ke satu baseline repository.
+- Memperbaiki lima warning kompatibilitas `line-clamp` tanpa mengubah perilaku visual yang dimaksud.
+- Mengintegrasikan `404.html` dengan struktur CSS aktual dan menghapus referensi asset legacy yang tidak ada.
+- Menambahkan `css/not-found.css` untuk halaman 404.
+- Memperbarui `README.md` agar mencerminkan arsitektur Gomai saat ini.
+- Menambahkan `.gitattributes` untuk line-ending lintas Windows/Linux yang stabil.
+- Cleanup candidates yang tidak direferensikan runtime tetap dipertahankan sampai browser QA selesai, sesuai keputusan proyek.
+- `left.webp` dan `stretch.webp` tetap dipertahankan sebagai cleanup candidates karena tidak direferensikan current product data.

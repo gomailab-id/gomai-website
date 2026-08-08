@@ -94,3 +94,18 @@ Urutan prioritas:
 8. Git stable checkpoint.
 
 Warning kosmetik atau lint yang tidak memblokir runtime tidak boleh menggeser blocker integrasi utama.
+
+## D-012 — Full Replacement Baseline untuk Recovery
+
+**Status:** Accepted  
+**Tanggal:** 2026-08-08
+
+Untuk recovery proyek setelah workflow patch menjadi terlalu kompleks, satu paket full replacement boleh menjadi baseline canonical baru selama paket tersebut:
+
+- berasal dari snapshot repository aktual;
+- menggabungkan hanya perubahan yang sudah diaudit/terverifikasi;
+- lolos static validation;
+- mempertahankan Git repository dan remote;
+- tidak menghapus cleanup candidates sebelum browser QA kecuali ada alasan konkret.
+
+Setelah baseline replacement dipakai, perubahan berikutnya kembali mengikuti audit → validate → checkpoint.

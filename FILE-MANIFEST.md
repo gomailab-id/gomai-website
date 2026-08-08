@@ -1,191 +1,165 @@
 # Gomai File Manifest
 
-**Audit baseline:** snapshot `gomai-website.zip`, 2026-08-08.
+**Canonical baseline:** full replacement consolidation, 2026-08-08.
 
 ## Status Legend
 
-- `✅ STATIC-VERIFIED` — static/syntax/contract check saat ini tidak menemukan blocker; jangan edit tanpa incompatibility konkret.
-- `🔎 VERIFY` — file tersedia dan tampak relevan, tetapi perlu integration/browser verification.
-- `🛠 REVISE` — ada masalah konkret yang sudah teridentifikasi.
-- `🧹 CLEANUP-CANDIDATE` — tidak dipakai runtime atau obsolete; jangan hapus sebelum cleanup phase.
-- `📦 ASSET` — file asset yang ada dan tervalidasi keberadaannya.
+- `✅ STATIC-VERIFIED` — syntax/static/contract validation saat ini tidak menemukan blocker.
+- `🔎 BROWSER-QA` — static validation lolos; masih perlu verifikasi visual/interaksi di browser.
+- `🧹 CLEANUP-CANDIDATE` — tidak direferensikan runtime saat ini; dipertahankan sampai browser QA selesai.
+- `📦 ASSET` — asset tersedia dan path runtime tervalidasi.
 
 ## Root
 
 | File | Status | Catatan |
 |---|---|---|
-| `index.html` | ✅ STATIC-VERIFIED | Memuat `css/styles.css` lalu `css/home.css`; urutan page-specific CSS benar. |
-| `404.html` | 🛠 REVISE | Masih legacy; stylesheet path `styles.css` salah terhadap struktur aktual dan asset lama perlu diaudit. |
-| `README.md` | 🛠 REVISE | Isinya masih menggambarkan struktur MVP lama (`product.html`, `script.js`, satu styles file). Update setelah integration stabil. |
-| `struktur-proyek.txt` | 🧹 CLEANUP-CANDIDATE | Snapshot tree lama/UTF-16; tidak menjadi source of truth. |
+| `index.html` | ✅ STATIC-VERIFIED | `css/styles.css` lalu `css/home.css`; script order canonical dan `js/app.js` terakhir. |
+| `404.html` | ✅ STATIC-VERIFIED | Menggunakan `css/styles.css` + `css/not-found.css`; tidak memakai asset legacy yang hilang. |
+| `README.md` | ✅ STATIC-VERIFIED | Sudah mengikuti arsitektur Gomai saat ini. |
+| `.gitattributes` | ✅ STATIC-VERIFIED | Menetapkan line-ending lintas Windows/Linux secara konsisten. |
+| `struktur-proyek.txt` | 🧹 CLEANUP-CANDIDATE | Snapshot struktur lama; bukan source of truth. |
 
 ## Project Control
 
 | File | Status | Catatan |
 |---|---|---|
-| `PROJECT.md` | ✅ STATIC-VERIFIED | Scope dan workflow baseline. |
-| `ARCHITECTURE.md` | ✅ STATIC-VERIFIED | Kontrak architecture repository. |
-| `DECISIONS.md` | ✅ STATIC-VERIFIED | Locked decisions log. |
-| `FILE-MANIFEST.md` | ✅ STATIC-VERIFIED | Manifest ini; update setiap milestone. |
-| `CHANGELOG.md` | ✅ STATIC-VERIFIED | Audit/change history. |
+| `PROJECT.md` | ✅ STATIC-VERIFIED | Scope dan definition of done. |
+| `ARCHITECTURE.md` | ✅ STATIC-VERIFIED | Kontrak dependency/runtime/CSS. |
+| `DECISIONS.md` | ✅ STATIC-VERIFIED | Keputusan teknis yang dikunci. |
+| `FILE-MANIFEST.md` | ✅ STATIC-VERIFIED | Manifest canonical ini. |
+| `CHANGELOG.md` | ✅ STATIC-VERIFIED | Riwayat audit dan perubahan. |
 
-## CSS Global
+## CSS
+
+### Global
 
 | File | Status | Catatan |
 |---|---|---|
-| `css/styles.css` | ✅ STATIC-VERIFIED | Global aggregator: variables/reset/layout/components/header/responsive. Jangan import page CSS di sini. |
+| `css/styles.css` | ✅ STATIC-VERIFIED | Aggregator global. |
 | `css/variables.css` | ✅ STATIC-VERIFIED | Design tokens. |
-| `css/reset.css` | ✅ STATIC-VERIFIED | Global reset. |
-| `css/layout.css` | ✅ STATIC-VERIFIED | Global layout primitives. |
-| `css/components.css` | 🔎 VERIFY | Shared UI; runtime-relevant. Memiliki vendor `-webkit-line-clamp` warnings yang dapat dibersihkan setelah blocker utama. |
-| `css/header.css` | 🔎 VERIFY | Shared Header/SearchPanel CSS. Memiliki vendor `-webkit-line-clamp` warnings yang tidak memblokir layout homepage. |
-| `css/responsive.css` | ✅ STATIC-VERIFIED | Global responsive adjustments. |
+| `css/reset.css` | ✅ STATIC-VERIFIED | Reset global. |
+| `css/layout.css` | ✅ STATIC-VERIFIED | Layout primitives. |
+| `css/components.css` | ✅ STATIC-VERIFIED | Shared UI; standard `line-clamp` sudah dipasangkan dengan vendor property. |
+| `css/header.css` | ✅ STATIC-VERIFIED | Shared Header + SearchPanel; standard `line-clamp` sudah lengkap. |
+| `css/responsive.css` | ✅ STATIC-VERIFIED | Global responsive rules. |
 
-## CSS Page-specific
+### Page-specific
 
-| File | Status | Catatan |
+| File | Status | Dipakai oleh |
 |---|---|---|
-| `css/home.css` | 🔎 VERIFY | Ada tetapi tidak dimuat oleh `index.html`. Verify sesudah wiring. |
-| `css/brand.css` | 🔎 VERIFY | Ada tetapi tidak dimuat oleh `pages/brand.html`. |
-| `css/products.css` | 🔎 VERIFY | Ada tetapi tidak dimuat oleh `pages/products.html`. |
-| `css/product-detail.css` | 🔎 VERIFY | Ada tetapi tidak dimuat oleh `pages/product-detail.html`. |
-| `css/information.css` | 🔎 VERIFY | Ada tetapi tidak dimuat oleh 4 information pages. |
-| `css/product.css` | 🧹 CLEANUP-CANDIDATE | Tidak direferensikan HTML; audit menunjukkan dedicated `product-detail.css` tersedia. Jangan hapus sebelum cleanup. |
+| `css/home.css` | 🔎 BROWSER-QA | `index.html` |
+| `css/brand.css` | 🔎 BROWSER-QA | `pages/brand.html` |
+| `css/products.css` | 🔎 BROWSER-QA | `pages/products.html` |
+| `css/product-detail.css` | 🔎 BROWSER-QA | `pages/product-detail.html` |
+| `css/information.css` | 🔎 BROWSER-QA | about/contact/faq/how-to-buy |
+| `css/not-found.css` | 🔎 BROWSER-QA | `404.html` |
+| `css/product.css` | 🧹 CLEANUP-CANDIDATE | Tidak direferensikan HTML saat ini. |
 
 ## JavaScript Foundation / Core
 
-Seluruh 26 file JavaScript pada snapshot lolos `node --check`.
+Seluruh JavaScript runtime pada baseline ini lolos `node --check`.
 
-| File | Status | Catatan |
-|---|---|---|
-| `js/config.js` | ✅ STATIC-VERIFIED | Central configuration. |
-| `js/core/utils.js` | ✅ STATIC-VERIFIED | Shared utility/data fetch boundary. |
-| `js/language.js` | ✅ STATIC-VERIFIED | Language manager. |
-| `js/core/component-core.js` | ✅ STATIC-VERIFIED | Component lifecycle core. |
-| `js/core/model-registry.js` | ✅ STATIC-VERIFIED | Model lifecycle registry. |
-| `js/core/component-registry.js` | ✅ STATIC-VERIFIED | Component lifecycle registry. |
-| `js/core/controller-registry.js` | ✅ STATIC-VERIFIED | Controller lifecycle/page resolution. |
-| `js/core/gomai.js` | ✅ STATIC-VERIFIED | Central framework boot/registration. |
-| `js/app.js` | ✅ STATIC-VERIFIED | Single application bootstrap; uses `Gomai.boot()`. |
-| `js/core/base-component.js` | 🧹 CLEANUP-CANDIDATE | Tidak direferensikan runtime lain dan tidak dimuat HTML. Sangat besar; jangan hapus sebelum cleanup verification. |
+| File | Status |
+|---|---|
+| `js/config.js` | ✅ STATIC-VERIFIED |
+| `js/core/utils.js` | ✅ STATIC-VERIFIED |
+| `js/language.js` | ✅ STATIC-VERIFIED |
+| `js/core/component-core.js` | ✅ STATIC-VERIFIED |
+| `js/core/model-registry.js` | ✅ STATIC-VERIFIED |
+| `js/core/component-registry.js` | ✅ STATIC-VERIFIED |
+| `js/core/controller-registry.js` | ✅ STATIC-VERIFIED |
+| `js/core/gomai.js` | ✅ STATIC-VERIFIED |
+| `js/app.js` | ✅ STATIC-VERIFIED |
+| `js/core/base-component.js` | 🧹 CLEANUP-CANDIDATE |
 
 ## Models
 
 | File | Status | Catatan |
 |---|---|---|
-| `js/models/brands.js` | ✅ STATIC-VERIFIED | Brand data boundary. Current data path issue berada di JSON assets, bukan syntax model. |
+| `js/models/brands.js` | ✅ STATIC-VERIFIED | Brand data boundary. |
 | `js/models/products.js` | ✅ STATIC-VERIFIED | Product data boundary. |
-| `js/models/categories.js` | 🧹 CLEANUP-CANDIDATE | File 0 byte; `ProductsModel` tidak membutuhkan `CategoriesModel`. |
+| `js/models/categories.js` | 🧹 CLEANUP-CANDIDATE | Kosong dan tidak direferensikan runtime saat ini. |
 
-## Components
+## Shared Components
 
-| File | Status | Catatan |
-|---|---|---|
-| `js/components/loading.js` | ✅ STATIC-VERIFIED | Shared utility component. |
-| `js/components/empty-state.js` | ✅ STATIC-VERIFIED | Shared empty/error state. |
-| `js/components/product-card.js` | ✅ STATIC-VERIFIED | Reusable product renderer. |
-| `js/components/brand-card.js` | ✅ STATIC-VERIFIED | Memiliki `refreshAll()` + `refreshLanguage()` compatibility API. |
-| `js/components/search-panel.js` | ✅ STATIC-VERIFIED | Shared search UI/logic. Translation key coverage masih perlu fix di dictionary. |
-| `js/components/header.js` | ✅ STATIC-VERIFIED | Shared Header; navigation dari BrandsModel. |
-| `js/components/footer.js` | ✅ STATIC-VERIFIED | Shared Footer. |
+| File | Status |
+|---|---|
+| `js/components/loading.js` | ✅ STATIC-VERIFIED |
+| `js/components/empty-state.js` | ✅ STATIC-VERIFIED |
+| `js/components/product-card.js` | ✅ STATIC-VERIFIED |
+| `js/components/brand-card.js` | ✅ STATIC-VERIFIED |
+| `js/components/search-panel.js` | ✅ STATIC-VERIFIED |
+| `js/components/header.js` | ✅ STATIC-VERIFIED |
+| `js/components/footer.js` | ✅ STATIC-VERIFIED |
+
+`BrandCardComponent` menyediakan `refreshAll()` dan compatibility `refreshLanguage()`; tidak diperlukan perubahan Gomai Core untuk kontrak ini.
 
 ## Page Controllers
 
-| File | Status | Catatan |
+| File | Status | Page contract |
 |---|---|---|
-| `js/home.js` | ✅ STATIC-VERIFIED | `data-page="home"`. |
-| `js/brand.js` | ✅ STATIC-VERIFIED | `data-page="brand"`. |
-| `js/products.js` | ✅ STATIC-VERIFIED | `data-page="products"`. |
-| `js/product-detail.js` | ✅ STATIC-VERIFIED | `data-page="productDetail"`; beberapa translation keys belum tersedia. |
-| `js/information.js` | ✅ STATIC-VERIFIED | Satu controller untuk about/contact/faq/howToBuy. |
-| `js/search.js` | 🧹 CLEANUP-CANDIDATE | 4-line stub dan tidak dimuat halaman. |
+| `js/home.js` | ✅ STATIC-VERIFIED | `data-page="home"` |
+| `js/brand.js` | ✅ STATIC-VERIFIED | `data-page="brand"` |
+| `js/products.js` | ✅ STATIC-VERIFIED | `data-page="products"` |
+| `js/product-detail.js` | ✅ STATIC-VERIFIED | `data-page="productDetail"` |
+| `js/information.js` | ✅ STATIC-VERIFIED | Satu controller untuk 4 information pages. |
+| `js/search.js` | 🧹 CLEANUP-CANDIDATE | Stub dan tidak dimuat application pages. |
 
 ## HTML Pages
 
-Seluruh application pages saat ini memiliki canonical script order dan `app.js` berada paling akhir.
-
-| File | Status | Catatan |
+| File | Status | CSS page-specific |
 |---|---|---|
-| `pages/brand.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/brand.css`. |
-| `pages/products.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/products.css`. |
-| `pages/product-detail.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/product-detail.css`. |
-| `pages/about.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/information.css`. |
-| `pages/contact.html` | 🔎 VERIFY | CSS wiring selesai (`styles.css` + `information.css`); translation semantics masih perlu sinkronisasi. |
-| `pages/faq.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/information.css`. |
-| `pages/how-to-buy.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/information.css`. |
+| `pages/brand.html` | 🔎 BROWSER-QA | `../css/brand.css` |
+| `pages/products.html` | 🔎 BROWSER-QA | `../css/products.css` |
+| `pages/product-detail.html` | 🔎 BROWSER-QA | `../css/product-detail.css` |
+| `pages/about.html` | 🔎 BROWSER-QA | `../css/information.css` |
+| `pages/contact.html` | 🔎 BROWSER-QA | `../css/information.css` |
+| `pages/faq.html` | 🔎 BROWSER-QA | `../css/information.css` |
+| `pages/how-to-buy.html` | 🔎 BROWSER-QA | `../css/information.css` |
+
+Seluruh application pages memiliki script dependency order canonical dan `app.js` sebagai script runtime terakhir.
 
 ## Data
 
 Keempat JSON lolos parse validation.
-`id.json` dan `zh.json` masing-masing memiliki 427 leaf keys dan tree keduanya identik.
 
 | File | Status | Catatan |
 |---|---|---|
-| `data/brands.json` | ✅ STATIC-VERIFIED | Enam hero path sudah menunjuk asset aktual `hero.webp`; seluruh target asset terverifikasi ada. |
-| `data/products.json` | ✅ STATIC-VERIFIED | Product image yang direferensikan saat ini (`right.webp`) ada. |
-| `data/id.json` | 🛠 REVISE | Tree parity bagus, tetapi 17 UI keys terdeteksi belum tersedia. |
-| `data/zh.json` | 🛠 REVISE | Harus direvisi paralel dengan `id.json` agar tree tetap identik. |
+| `data/brands.json` | ✅ STATIC-VERIFIED | 6 brand; semua logo/hero path yang direferensikan tersedia. Hero memakai asset aktual `hero.webp`. |
+| `data/products.json` | ✅ STATIC-VERIFIED | Produk terverifikasi saat ini memakai image runtime yang tersedia. |
+| `data/id.json` | ✅ STATIC-VERIFIED | 431 leaf keys. |
+| `data/zh.json` | ✅ STATIC-VERIFIED | 431 leaf keys; tree identik dengan `id.json`. |
 
-### Translation Keys yang Belum Tersedia pada Static Scan
+Static translation scan tidak menemukan literal UI key yang hilang. Placeholder `{{...}}` pada key paralel ID/中文 konsisten.
 
-```text
-aboutPage.values.support.description
-aboutPage.values.support.title
-brands.featured
-contactPage.links.badge
-contactPage.links.faq
-contactPage.links.howToBuy
-contactPage.prepare.item1
-contactPage.prepare.item2
-contactPage.prepare.item3
-contactPage.prepare.item4
-contactPage.services.stock.description
-contactPage.services.stock.title
-productDetail.decreaseQuantity
-productDetail.increaseQuantity
-productDetail.meta.descriptionTemplate
-productDetail.meta.titleTemplate
-searchPanel.error
-```
+## Assets
 
-Catatan: sebelum menambah semua key secara mekanis, sinkronkan semantic structure HTML/controller dengan dictionary, terutama `contactPage.*`.
+- 6 brand memiliki `logo.png` dan `hero.webp` yang tervalidasi keberadaannya. `📦 ASSET`
+- Product image yang direferensikan `data/products.json` tersedia. `📦 ASSET`
+- `left.webp` dan `stretch.webp` dipertahankan sementara sebagai cleanup candidates karena tidak direferensikan current product data dan format internalnya tidak sesuai ekstensi.
 
-## Brand Assets
+## Static Validation Result
 
-| Asset | Status |
-|---|---|
-| `assets/brands/atalon/logo.png` | 📦 ASSET |
-| `assets/brands/atalon/hero.webp` | 📦 ASSET |
-| `assets/brands/specs/logo.png` | 📦 ASSET |
-| `assets/brands/specs/hero.webp` | 📦 ASSET |
-| `assets/brands/erspo/logo.png` | 📦 ASSET |
-| `assets/brands/erspo/hero.webp` | 📦 ASSET |
-| `assets/brands/ortuseight/logo.png` | 📦 ASSET |
-| `assets/brands/ortuseight/hero.webp` | 📦 ASSET |
-| `assets/brands/decathlon/logo.png` | 📦 ASSET |
-| `assets/brands/decathlon/hero.webp` | 📦 ASSET |
-| `assets/brands/whittaker/logo.png` | 📦 ASSET |
-| `assets/brands/whittaker/hero.webp` | 📦 ASSET |
+Baseline replacement ini telah diperiksa untuk:
 
-## Product Assets
+- JavaScript syntax (`node --check`);
+- JSON parse;
+- parity tree `id.json` ↔ `zh.json`;
+- translation placeholder parity;
+- literal translation key coverage;
+- local HTML stylesheet/script/image references;
+- duplicate HTML ids;
+- `app.js` sebagai application script terakhir;
+- CSS parse;
+- standard + vendor `line-clamp` compatibility;
+- brand/product asset references.
 
-| Asset | Status | Catatan |
-|---|---|---|
-| `.../black/right.webp` | 📦 ASSET | Valid WebP dan direferensikan data saat ini. |
-| `.../black/back-detail.webp` | 📦 ASSET | Valid WebP, belum direferensikan current product JSON. |
-| `.../black/fabric.webp` | 📦 ASSET | Valid WebP, belum direferensikan current product JSON. |
-| `.../black/left.webp` | 🔎 VERIFY | File berisi SVG walau ekstensi `.webp`; tidak direferensikan current product JSON. |
-| `.../black/stretch.webp` | 🔎 VERIFY | File berisi SVG walau ekstensi `.webp`; tidak direferensikan current product JSON. |
+Tidak ada blocker static yang tersisa pada pemeriksaan tersebut.
 
-## Current Integration Blockers — Priority Order
+## Remaining Work
 
-1. 🛠 translation key/semantic coverage untuk `id` + `zh`.
-2. 🛠 `404.html` integration.
-3. 🔎 browser QA seluruh page.
-4. 🧹 cleanup obsolete files, line endings, README, project tree.
-
-## Git Observation
-
-Snapshot Git menunjukkan banyak file `M`.
-Audit sebelumnya menunjukkan line-ending Windows/CRLF merupakan penyebab dominan, bukan bukti bahwa seluruh file mempunyai perubahan logic besar.
-Jangan mass-reset atau mass-commit sebelum baseline integration selesai dan diff dinormalisasi.
+1. 🔎 Browser QA desktop/mobile untuk seluruh halaman.
+2. 🔎 Browser QA bahasa ID / 中文 dan SearchPanel.
+3. 🔎 Verifikasi visual hero, brand cards, product cards, product detail, information pages, dan 404.
+4. 🧹 Setelah browser QA lolos, hapus cleanup candidates yang tetap terbukti tidak dipakai.
+5. ✅ Buat Git checkpoint setelah browser QA stabil.

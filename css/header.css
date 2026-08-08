@@ -1101,6 +1101,9 @@ body.header-search-open {
 
     -webkit-line-clamp:
         2;
+
+    line-clamp:
+        2;
 }
 
 .search-panel-suggestion-description {
@@ -1122,6 +1125,9 @@ body.header-search-open {
         vertical;
 
     -webkit-line-clamp:
+        2;
+
+    line-clamp:
         2;
 }
 
