@@ -121,7 +121,7 @@ Keempat JSON lolos parse validation.
 
 | File | Status | Catatan |
 |---|---|---|
-| `data/brands.json` | 🛠 REVISE | Semua 6 hero menunjuk `hero.png` yang tidak ada; repository menyimpan `hero.webp`. |
+| `data/brands.json` | ✅ STATIC-VERIFIED | Enam hero path sudah menunjuk asset aktual `hero.webp`; seluruh target asset terverifikasi ada. |
 | `data/products.json` | ✅ STATIC-VERIFIED | Product image yang direferensikan saat ini (`right.webp`) ada. |
 | `data/id.json` | 🛠 REVISE | Tree parity bagus, tetapi 17 UI keys terdeteksi belum tersedia. |
 | `data/zh.json` | 🛠 REVISE | Harus direvisi paralel dengan `id.json` agar tree tetap identik. |
@@ -179,11 +179,10 @@ Catatan: sebelum menambah semua key secara mekanis, sinkronkan semantic structur
 
 ## Current Integration Blockers — Priority Order
 
-1. 🛠 `data/brands.json` hero asset paths.
-2. 🛠 translation key/semantic coverage untuk `id` + `zh`.
-3. 🛠 `404.html` integration.
-4. 🔎 browser QA seluruh page.
-5. 🧹 cleanup obsolete files, line endings, README, project tree.
+1. 🛠 translation key/semantic coverage untuk `id` + `zh`.
+2. 🛠 `404.html` integration.
+3. 🔎 browser QA seluruh page.
+4. 🧹 cleanup obsolete files, line endings, README, project tree.
 
 ## Git Observation
 

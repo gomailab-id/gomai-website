@@ -8,7 +8,7 @@
       "sortOrder": 1,
       "assets": {
         "logo": "assets/brands/atalon/logo.png",
-        "hero": "assets/brands/atalon/hero.png"
+        "hero": "assets/brands/atalon/hero.webp"
       },
       "description": {
         "id": "Pakaian olahraga premium untuk performa terbaik.",
@@ -31,7 +31,7 @@
       "sortOrder": 2,
       "assets": {
         "logo": "assets/brands/specs/logo.png",
-        "hero": "assets/brands/specs/hero.png"
+        "hero": "assets/brands/specs/hero.webp"
       },
       "description": {
         "id": "Perlengkapan olahraga berkualitas tinggi.",
@@ -54,7 +54,7 @@
       "sortOrder": 3,
       "assets": {
         "logo": "assets/brands/erspo/logo.png",
-        "hero": "assets/brands/erspo/hero.png"
+        "hero": "assets/brands/erspo/hero.webp"
       },
       "description": {
         "id": "Pakaian olahraga untuk performa aktif.",
@@ -77,7 +77,7 @@
       "sortOrder": 4,
       "assets": {
         "logo": "assets/brands/ortuseight/logo.png",
-        "hero": "assets/brands/ortuseight/hero.png"
+        "hero": "assets/brands/ortuseight/hero.webp"
       },
       "description": {
         "id": "Perlengkapan untuk sepak bola, futsal, dan running.",
@@ -100,7 +100,7 @@
       "sortOrder": 5,
       "assets": {
         "logo": "assets/brands/decathlon/logo.png",
-        "hero": "assets/brands/decathlon/hero.png"
+        "hero": "assets/brands/decathlon/hero.webp"
       },
       "description": {
         "id": "Perlengkapan olahraga dan outdoor.",
@@ -123,7 +123,7 @@
       "sortOrder": 6,
       "assets": {
         "logo": "assets/brands/whittaker/logo.png",
-        "hero": "assets/brands/whittaker/hero.png"
+        "hero": "assets/brands/whittaker/hero.webp"
       },
       "description": {
         "id": "Produk outdoor dan lifestyle.",

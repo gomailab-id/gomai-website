@@ -2,6 +2,25 @@
 
 Semua perubahan teknis yang memengaruhi baseline proyek dicatat di sini.
 
+## 2026-08-08 — Phase 2 / Integration Blocker #2: Brand Hero Asset Paths
+
+### Changed
+
+- `data/brands.json` memperbaiki enam `assets.hero` dari `hero.png` menjadi `hero.webp`.
+- Perubahan hanya menyelaraskan data dengan asset yang benar-benar tersedia di repository.
+
+### Verified
+
+- keenam target `assets/brands/<brand>/hero.webp` benar-benar ada;
+- keenam `logo.png` tetap ada dan tidak diubah;
+- `data/brands.json` lolos JSON parse validation;
+- tidak ada `hero.png` tersisa pada `data/brands.json`;
+- tidak ada JavaScript, HTML, CSS, atau model yang diubah pada milestone ini.
+
+### Next Planned Change
+
+Integration Blocker #3: sinkronkan translation key/semantic coverage untuk `data/id.json` dan `data/zh.json`, terutama struktur `contactPage.*`, tanpa menambah key secara spekulatif.
+
 ## 2026-08-08 — Phase 2 / Integration Blocker #1: CSS Page Wiring
 
 ### Changed
