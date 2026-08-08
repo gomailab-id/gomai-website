@@ -87,10 +87,10 @@ Seluruh JavaScript runtime pada baseline ini lolos `node --check`.
 | `js/components/loading.js` | ✅ STATIC-VERIFIED |
 | `js/components/empty-state.js` | ✅ STATIC-VERIFIED |
 | `js/components/product-card.js` | ✅ STATIC-VERIFIED |
-| `js/components/brand-card.js` | ✅ STATIC-VERIFIED |
+| `js/components/brand-card.js` | ✅ STATIC-VERIFIED | Language refresh + action label diverifikasi pada browser QA; arrow hanya dirender CSS. |
 | `js/components/search-panel.js` | ✅ STATIC-VERIFIED |
 | `js/components/header.js` | ✅ STATIC-VERIFIED |
-| `js/components/footer.js` | ✅ STATIC-VERIFIED |
+| `js/components/footer.js` | ✅ STATIC-VERIFIED | Footer contact CTA memakai outline-light pada background gelap. |
 
 `BrandCardComponent` menyediakan `refreshAll()` dan compatibility `refreshLanguage()`; tidak diperlukan perubahan Gomai Core untuk kontrak ini.
 
@@ -98,7 +98,7 @@ Seluruh JavaScript runtime pada baseline ini lolos `node --check`.
 
 | File | Status | Page contract |
 |---|---|---|
-| `js/home.js` | ✅ STATIC-VERIFIED | `data-page="home"` |
+| `js/home.js` | ✅ STATIC-VERIFIED | `data-page="home"`; refresh bahasa juga me-refresh BrandCard render component. |
 | `js/brand.js` | ✅ STATIC-VERIFIED | `data-page="brand"` |
 | `js/products.js` | ✅ STATIC-VERIFIED | `data-page="products"` |
 | `js/product-detail.js` | ✅ STATIC-VERIFIED | `data-page="productDetail"` |

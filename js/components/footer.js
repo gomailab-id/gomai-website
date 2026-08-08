@@ -962,7 +962,7 @@ const FooterComponent = (() => {
         contactLink.className =
             [
                 "btn",
-                "btn-outline"
+                "btn-outline-light"
             ].join(" ");
 
         setTextTranslation(

@@ -60,7 +60,7 @@
     "emptyDescription": "Brand akan ditampilkan setelah datanya tersedia.",
     "errorTitle": "Data Brand Gagal Dimuat",
     "errorDescription": "Terjadi kesalahan saat memuat data brand. Silakan coba kembali.",
-    "viewBrand": "Lihat Brand →",
+    "viewBrand": "Lihat Brand",
     "ariaViewBrandTemplate": "Lihat brand {{brand}}"
   },
   "categories": {

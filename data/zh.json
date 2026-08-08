@@ -60,7 +60,7 @@
     "emptyDescription": "品牌数据可用后将显示在这里。",
     "errorTitle": "品牌数据加载失败",
     "errorDescription": "加载品牌数据时发生错误，请重试。",
-    "viewBrand": "查看品牌 →",
+    "viewBrand": "查看品牌",
     "ariaViewBrandTemplate": "查看 {{brand}} 品牌"
   },
   "categories": {

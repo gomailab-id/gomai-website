@@ -2069,17 +2069,13 @@ const HomeController = (() => {
         renderHero();
 
         /*
-         * Jika dipanggil manual, refresh juga BrandCard.
-         *
-         * Jika berasal dari event bahasa global,
-         * BrandCardComponent telah menerima event yang sama.
+         * BrandCardComponent merupakan render component (autoInit=false),
+         * sehingga tidak selalu menerima lifecycle refresh bahasa dari
+         * ComponentRegistry. Refresh eksplisit memastikan kartu brand
+         * mengikuti bahasa aktif setiap kali Homepage diperbarui.
          */
-        if (
-            !context?.event
-        ) {
-            getBrandCardComponent()
-                ?.refreshLanguage?.();
-        }
+        getBrandCardComponent()
+            ?.refreshLanguage?.();
 
         startHeroAutoplay();
 

@@ -93,3 +93,15 @@ Integration Blocker #1: perbaiki **CSS page wiring** di seluruh HTML secara sist
 - Menambahkan `.gitattributes` untuk line-ending lintas Windows/Linux yang stabil.
 - Cleanup candidates yang tidak direferensikan runtime tetap dipertahankan sampai browser QA selesai, sesuai keputusan proyek.
 - `left.webp` dan `stretch.webp` tetap dipertahankan sebagai cleanup candidates karena tidak direferensikan current product data.
+## 2026-08-08 — Browser QA runtime fixes
+
+### Fixed
+
+- Homepage BrandCard sekarang ikut berubah saat bahasa diganti ID ↔ 中文.
+- Label BrandCard tidak lagi menghasilkan panah ganda; panah hanya berasal dari CSS pseudo-element.
+- Tombol kontak Footer sekarang menggunakan `btn-outline-light`, sehingga teks terlihat pada background footer gelap.
+
+### Observed / Content Pending
+
+- Keenam brand masih memakai file logo dan hero placeholder yang byte-identik. Ini bukan bug runtime; asset brand asli perlu menggantikan placeholder tersebut ketika tersedia.
+

@@ -1326,8 +1326,8 @@ const BrandCardComponent = (() => {
             (
                 getCurrentLanguage() ===
                     "zh"
-                    ? "查看品牌 →"
-                    : "Lihat Brand →"
+                    ? "查看品牌"
+                    : "Lihat Brand"
             );
 
         link.href =
