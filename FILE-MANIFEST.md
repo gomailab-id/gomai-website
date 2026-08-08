@@ -14,7 +14,7 @@
 
 | File | Status | Catatan |
 |---|---|---|
-| `index.html` | 🛠 REVISE | Hanya memuat `css/styles.css`; wajib memuat `css/home.css` setelah global CSS. |
+| `index.html` | ✅ STATIC-VERIFIED | Memuat `css/styles.css` lalu `css/home.css`; urutan page-specific CSS benar. |
 | `404.html` | 🛠 REVISE | Masih legacy; stylesheet path `styles.css` salah terhadap struktur aktual dan asset lama perlu diaudit. |
 | `README.md` | 🛠 REVISE | Isinya masih menggambarkan struktur MVP lama (`product.html`, `script.js`, satu styles file). Update setelah integration stabil. |
 | `struktur-proyek.txt` | 🧹 CLEANUP-CANDIDATE | Snapshot tree lama/UTF-16; tidak menjadi source of truth. |
@@ -106,13 +106,13 @@ Seluruh application pages saat ini memiliki canonical script order dan `app.js` 
 
 | File | Status | Catatan |
 |---|---|---|
-| `pages/brand.html` | 🛠 REVISE | Tambahkan `../css/brand.css` setelah `../css/styles.css`. |
-| `pages/products.html` | 🛠 REVISE | Tambahkan `../css/products.css`. |
-| `pages/product-detail.html` | 🛠 REVISE | Tambahkan `../css/product-detail.css`. |
-| `pages/about.html` | 🛠 REVISE | Tambahkan `../css/information.css`. |
-| `pages/contact.html` | 🛠 REVISE | Tambahkan `../css/information.css`; translation semantics juga perlu sinkronisasi. |
-| `pages/faq.html` | 🛠 REVISE | Tambahkan `../css/information.css`. |
-| `pages/how-to-buy.html` | 🛠 REVISE | Tambahkan `../css/information.css`. |
+| `pages/brand.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/brand.css`. |
+| `pages/products.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/products.css`. |
+| `pages/product-detail.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/product-detail.css`. |
+| `pages/about.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/information.css`. |
+| `pages/contact.html` | 🔎 VERIFY | CSS wiring selesai (`styles.css` + `information.css`); translation semantics masih perlu sinkronisasi. |
+| `pages/faq.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/information.css`. |
+| `pages/how-to-buy.html` | ✅ STATIC-VERIFIED | Memuat `../css/styles.css` lalu `../css/information.css`. |
 
 ## Data
 
@@ -179,12 +179,11 @@ Catatan: sebelum menambah semua key secara mekanis, sinkronkan semantic structur
 
 ## Current Integration Blockers — Priority Order
 
-1. 🛠 CSS page-specific wiring di seluruh HTML.
-2. 🛠 `data/brands.json` hero asset paths.
-3. 🛠 translation key/semantic coverage untuk `id` + `zh`.
-4. 🛠 `404.html` integration.
-5. 🔎 browser QA seluruh page.
-6. 🧹 cleanup obsolete files, line endings, README, project tree.
+1. 🛠 `data/brands.json` hero asset paths.
+2. 🛠 translation key/semantic coverage untuk `id` + `zh`.
+3. 🛠 `404.html` integration.
+4. 🔎 browser QA seluruh page.
+5. 🧹 cleanup obsolete files, line endings, README, project tree.
 
 ## Git Observation
 

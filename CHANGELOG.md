@@ -2,6 +2,27 @@
 
 Semua perubahan teknis yang memengaruhi baseline proyek dicatat di sini.
 
+## 2026-08-08 — Phase 2 / Integration Blocker #1: CSS Page Wiring
+
+### Changed
+
+- `index.html` sekarang memuat `css/home.css` setelah `css/styles.css`.
+- `pages/brand.html` sekarang memuat `../css/brand.css`.
+- `pages/products.html` sekarang memuat `../css/products.css`.
+- `pages/product-detail.html` sekarang memuat `../css/product-detail.css`.
+- `pages/about.html`, `pages/contact.html`, `pages/faq.html`, dan `pages/how-to-buy.html` sekarang memuat `../css/information.css`.
+
+### Verified
+
+- seluruh page-specific stylesheet yang direferensikan benar-benar ada pada repository;
+- global stylesheet tetap dimuat lebih dulu;
+- tidak ada page-specific CSS yang dimasukkan ke `css/styles.css`;
+- tidak ada JavaScript, JSON, atau CSS rule yang diubah pada milestone ini.
+
+### Next Planned Change
+
+Integration Blocker #2: perbaiki enam hero asset path pada `data/brands.json` dari `.png` ke asset `.webp` yang benar-benar tersedia.
+
 ## 2026-08-08 — Recovery Audit Baseline
 
 ### Added
