@@ -105,3 +105,22 @@ Integration Blocker #1: perbaiki **CSS page wiring** di seluruh HTML secara sist
 
 - Keenam brand masih memakai file logo dan hero placeholder yang byte-identik. Ini bukan bug runtime; asset brand asli perlu menggantikan placeholder tersebut ketika tersedia.
 
+## 2026-08-10 — Search and All Products re-audit
+
+### Verified
+
+- Header homepage search button terhubung ke `SearchPanelComponent` secara lazy.
+- Submit pencarian membentuk route `pages/products.html?q=...`.
+- `ProductsController` membaca parameter `q`, menyinkronkan search input, dan menjalankan `ProductsModel.search()`.
+- `pages/products.html` memuat `products.css` dan seluruh control utama yang dibutuhkan controller.
+- Data produk aktif saat ini berjumlah satu item, sehingga halaman Semua Produk memang hanya menampilkan satu produk sampai katalog ditambah.
+
+### Fixed
+
+- Filter stok `Tersedia` pada halaman Semua Produk sekarang diterapkan pada hasil akhir untuk semua kombinasi query/brand/category. Sebelumnya kondisi tanpa query, brand, dan kategori mengambil `getActive()` sehingga filter `Tersedia` dapat terlewati ketika katalog nanti berisi produk stok habis.
+
+### QA Status
+
+- Search flow: static contract verified; tetap perlu satu browser click-through QA.
+- All Products: static contract verified setelah stock-filter fix; tetap perlu browser visual/interaksi QA.
+

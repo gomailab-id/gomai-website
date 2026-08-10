@@ -100,7 +100,7 @@ Seluruh JavaScript runtime pada baseline ini lolos `node --check`.
 |---|---|---|
 | `js/home.js` | ✅ STATIC-VERIFIED | `data-page="home"`; refresh bahasa juga me-refresh BrandCard render component. |
 | `js/brand.js` | ✅ STATIC-VERIFIED | `data-page="brand"` |
-| `js/products.js` | ✅ STATIC-VERIFIED | `data-page="products"` |
+| `js/products.js` | ✅ STATIC-VERIFIED | Search/filter/sort contract diverifikasi ulang; filter stok final konsisten untuk semua kombinasi state. |
 | `js/product-detail.js` | ✅ STATIC-VERIFIED | `data-page="productDetail"` |
 | `js/information.js` | ✅ STATIC-VERIFIED | Satu controller untuk 4 information pages. |
 | `js/search.js` | 🧹 CLEANUP-CANDIDATE | Stub dan tidak dimuat application pages. |

@@ -1387,11 +1387,26 @@ const ProductsController = (() => {
                     : [];
 
             /*
-             * ProductsModel sudah menangani stockOnly untuk
-             * stok tersedia. Out-of-stock adalah kondisi invers
-             * sehingga diterapkan setelah hasil model diterima.
+             * Terapkan filter stok kembali pada hasil akhir agar
+             * perilakunya konsisten untuk semua kombinasi filter.
+             *
+             * Ini juga mencakup kondisi tanpa query/brand/category,
+             * ketika sumber data berasal langsung dari getActive().
              */
             if (
+                state.stock ===
+                "available"
+            ) {
+                results =
+                    results.filter(
+                        product =>
+                            Boolean(
+                                product.stock ??
+                                product.inventory
+                                    ?.inStock
+                            )
+                    );
+            } else if (
                 state.stock ===
                 "out-of-stock"
             ) {
