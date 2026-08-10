@@ -50,6 +50,7 @@
 | `css/home.css` | 🔎 BROWSER-QA | `index.html` |
 | `css/brand.css` | 🔎 BROWSER-QA | `pages/brand.html` |
 | `css/products.css` | 🔎 BROWSER-QA | `pages/products.html` |
+| `css/search.css` | 🔎 BROWSER-QA | `pages/search.html` |
 | `css/product-detail.css` | 🔎 BROWSER-QA | `pages/product-detail.html` |
 | `css/information.css` | 🔎 BROWSER-QA | about/contact/faq/how-to-buy |
 | `css/not-found.css` | 🔎 BROWSER-QA | `404.html` |
@@ -103,14 +104,15 @@ Seluruh JavaScript runtime pada baseline ini lolos `node --check`.
 | `js/products.js` | ✅ STATIC-VERIFIED | Search/filter/sort contract diverifikasi ulang; filter stok final konsisten untuk semua kombinasi state. |
 | `js/product-detail.js` | ✅ STATIC-VERIFIED | `data-page="productDetail"` |
 | `js/information.js` | ✅ STATIC-VERIFIED | Satu controller untuk 4 information pages. |
-| `js/search.js` | 🧹 CLEANUP-CANDIDATE | Stub dan tidak dimuat application pages. |
+| `js/search.js` | ✅ STATIC-VERIFIED | Dedicated search page controller (`data-page="search"`). |
 
 ## HTML Pages
 
 | File | Status | CSS page-specific |
 |---|---|---|
 | `pages/brand.html` | 🔎 BROWSER-QA | `../css/brand.css` |
-| `pages/products.html` | 🔎 BROWSER-QA | `../css/products.css` |
+| `pages/products.html` | 🔎 BROWSER-QA | `../css/products.css`; katalog/filter tanpa form pencarian. |
+| `pages/search.html` | 🔎 BROWSER-QA | `../css/search.css`; halaman pencarian khusus. |
 | `pages/product-detail.html` | 🔎 BROWSER-QA | `../css/product-detail.css` |
 | `pages/about.html` | 🔎 BROWSER-QA | `../css/information.css` |
 | `pages/contact.html` | 🔎 BROWSER-QA | `../css/information.css` |
@@ -127,8 +129,8 @@ Keempat JSON lolos parse validation.
 |---|---|---|
 | `data/brands.json` | ✅ STATIC-VERIFIED | 6 brand; semua logo/hero path yang direferensikan tersedia. Hero memakai asset aktual `hero.webp`. |
 | `data/products.json` | ✅ STATIC-VERIFIED | Produk terverifikasi saat ini memakai image runtime yang tersedia. |
-| `data/id.json` | ✅ STATIC-VERIFIED | 431 leaf keys. |
-| `data/zh.json` | ✅ STATIC-VERIFIED | 431 leaf keys; tree identik dengan `id.json`. |
+| `data/id.json` | ✅ STATIC-VERIFIED | 436 leaf keys. |
+| `data/zh.json` | ✅ STATIC-VERIFIED | 436 leaf keys; tree identik dengan `id.json`. |
 
 Static translation scan tidak menemukan literal UI key yang hilang. Placeholder `{{...}}` pada key paralel ID/中文 konsisten.
 
@@ -159,7 +161,7 @@ Tidak ada blocker static yang tersisa pada pemeriksaan tersebut.
 ## Remaining Work
 
 1. 🔎 Browser QA desktop/mobile untuk seluruh halaman.
-2. 🔎 Browser QA bahasa ID / 中文 dan SearchPanel.
+2. 🔎 Browser QA bahasa ID / 中文 dan dedicated Search page.
 3. 🔎 Verifikasi visual hero, brand cards, product cards, product detail, information pages, dan 404.
 4. 🧹 Setelah browser QA lolos, hapus cleanup candidates yang tetap terbukti tidak dipakai.
 5. ✅ Buat Git checkpoint setelah browser QA stabil.

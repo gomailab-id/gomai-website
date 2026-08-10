@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hasil Pencarian | Gomai</title>
+
+    <meta
+        name="description"
+        content="Cari produk dan brand yang tersedia melalui Gomai."
+    >
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+
+<body data-page="search">
+
+    <header id="site-header"></header>
+
+    <main id="search-page" class="search-page" aria-busy="false">
+
+        <section class="section search-page-header">
+            <div class="container">
+                <div class="section-title">
+                    <span
+                        class="badge badge-warning"
+                        data-lang="common.search"
+                    >
+                        Cari
+                    </span>
+
+                    <h1 data-lang="search.title">
+                        Hasil Pencarian
+                    </h1>
+
+                    <p data-lang="search.pageDescription">
+                        Cari produk dan brand yang tersedia melalui Gomai.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section search-page-content">
+            <div class="container">
+
+                <form
+                    id="search-page-form"
+                    class="search-page-form"
+                    role="search"
+                >
+                    <label
+                        for="search-page-input"
+                        class="sr-only"
+                        data-lang="common.search"
+                    >
+                        Cari
+                    </label>
+
+                    <div class="search-page-control">
+                        <input
+                            id="search-page-input"
+                            type="search"
+                            name="q"
+                            autocomplete="off"
+                            placeholder="Cari produk atau brand..."
+                            data-lang-placeholder="search.placeholder"
+                        >
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            data-lang="navigation.searchButton"
+                        >
+                            Cari
+                        </button>
+                    </div>
+                </form>
+
+                <p
+                    id="search-result-count"
+                    class="search-result-count"
+                    aria-live="polite"
+                ></p>
+
+                <div
+                    id="search-state"
+                    class="search-state"
+                    aria-live="polite"
+                >
+                    <h2 id="search-state-title" data-lang="search.startTitle">
+                        Mulai Pencarian
+                    </h2>
+
+                    <p
+                        id="search-state-description"
+                        data-lang="search.startDescription"
+                    >
+                        Masukkan nama produk atau brand yang ingin Anda cari.
+                    </p>
+                </div>
+
+                <section
+                    id="search-brands-section"
+                    class="search-results-section"
+                    hidden
+                >
+                    <div class="section-title search-results-heading">
+                        <h2 data-lang="search.brandResults">
+                            Brand
+                        </h2>
+                    </div>
+
+                    <div
+                        id="search-brands-grid"
+                        class="brand-grid search-brand-grid"
+                    ></div>
+                </section>
+
+                <section
+                    id="search-products-section"
+                    class="search-results-section"
+                    hidden
+                >
+                    <div class="section-title search-results-heading">
+                        <h2 data-lang="search.productResults">
+                            Produk
+                        </h2>
+                    </div>
+
+                    <div
+                        id="search-products-grid"
+                        class="product-grid search-product-grid"
+                    ></div>
+                </section>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/core/utils.js"></script>
+    <script src="../js/language.js"></script>
+
+    <script src="../js/core/component-core.js"></script>
+    <script src="../js/core/model-registry.js"></script>
+    <script src="../js/core/component-registry.js"></script>
+    <script src="../js/core/controller-registry.js"></script>
+
+    <script src="../js/models/brands.js"></script>
+    <script src="../js/models/products.js"></script>
+
+    <script src="../js/components/loading.js"></script>
+    <script src="../js/components/empty-state.js"></script>
+    <script src="../js/components/product-card.js"></script>
+    <script src="../js/components/brand-card.js"></script>
+    <script src="../js/components/search-panel.js"></script>
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+
+    <script src="../js/search.js"></script>
+    <script src="../js/core/gomai.js"></script>
+    <script src="../js/app.js"></script>
+
+</body>
+</html>

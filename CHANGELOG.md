@@ -1,5 +1,14 @@
 # Gomai Changelog
 
+## 2026-08-10 — Dedicated Search Page
+
+- Menambahkan `pages/search.html`, `css/search.css`, dan SearchController final di `js/search.js`.
+- Tombol pencarian shared Header sekarang menuju halaman pencarian khusus secara langsung.
+- Menghapus form pencarian dari halaman `Semua Produk`; halaman tersebut kembali fokus pada katalog dan filter.
+- Menambahkan route `search` pada config dan registrasi SearchController pada Gomai Core.
+- SearchPanel compatibility route diarahkan ke halaman search, bukan katalog products.
+
+
 Semua perubahan teknis yang memengaruhi baseline proyek dicatat di sini.
 
 ## 2026-08-08 — Phase 2 / Integration Blocker #2: Brand Hero Asset Paths

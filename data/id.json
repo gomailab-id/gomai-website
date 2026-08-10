@@ -312,9 +312,14 @@
   "search": {
     "title": "Hasil Pencarian",
     "placeholder": "Cari produk atau brand...",
-    "emptyTitle": "Produk Tidak Ditemukan",
-    "emptyDescription": "Coba gunakan kata pencarian yang berbeda.",
-    "resultCountTemplate": "{{count}} hasil ditemukan"
+    "emptyTitle": "Hasil Tidak Ditemukan",
+    "emptyDescription": "Tidak ada produk atau brand yang cocok. Coba kata pencarian lain.",
+    "resultCountTemplate": "{{count}} hasil ditemukan",
+    "pageDescription": "Cari produk dan brand yang tersedia melalui Gomai.",
+    "startTitle": "Mulai Pencarian",
+    "startDescription": "Masukkan nama produk atau brand yang ingin Anda cari.",
+    "brandResults": "Brand",
+    "productResults": "Produk"
   },
   "searchPanel": {
     "ariaLabel": "Pencarian Gomai",

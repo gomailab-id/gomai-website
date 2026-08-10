@@ -185,6 +185,9 @@
         products:
             "pages/products.html",
 
+        search:
+            "pages/search.html",
+
         productDetail:
             "pages/product-detail.html",
 

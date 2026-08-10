@@ -312,9 +312,14 @@
   "search": {
     "title": "搜索结果",
     "placeholder": "搜索产品或品牌...",
-    "emptyTitle": "未找到产品",
-    "emptyDescription": "请尝试使用其他搜索关键词。",
-    "resultCountTemplate": "找到 {{count}} 个结果"
+    "emptyTitle": "未找到结果",
+    "emptyDescription": "没有匹配的产品或品牌，请尝试其他关键词。",
+    "resultCountTemplate": "找到 {{count}} 个结果",
+    "pageDescription": "搜索 Gomai 提供的产品和品牌。",
+    "startTitle": "开始搜索",
+    "startDescription": "输入您想查找的产品名称或品牌。",
+    "brandResults": "品牌",
+    "productResults": "产品"
   },
   "searchPanel": {
     "ariaLabel": "Gomai 搜索",

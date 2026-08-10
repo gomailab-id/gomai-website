@@ -1410,6 +1410,42 @@ const Gomai = (() => {
 
 
         /* ==============================================
+           SEARCH
+        ============================================== */
+
+        const searchController =
+            window.SearchController ||
+            window.SearchPage;
+
+
+        if (
+            searchController
+        ) {
+
+            definitions.search = {
+
+                controller:
+                    searchController,
+
+                options: {
+
+                    page:
+                        "search",
+
+                    required:
+                        true,
+
+                    languageAware:
+                        true
+
+                }
+
+            };
+
+        }
+
+
+        /* ==============================================
            PRODUCT DETAIL
         ============================================== */
 

@@ -109,3 +109,11 @@ Untuk recovery proyek setelah workflow patch menjadi terlalu kompleks, satu pake
 - tidak menghapus cleanup candidates sebelum browser QA kecuali ada alasan konkret.
 
 Setelah baseline replacement dipakai, perubahan berikutnya kembali mengikuti audit → validate → checkpoint.
+
+
+## Search UX
+
+- Tombol ikon pencarian pada shared Header membuka `pages/search.html`.
+- Pencarian memiliki halaman khusus; `pages/products.html` hanya bertanggung jawab sebagai katalog semua produk dan filter katalog.
+- Query pencarian menggunakan parameter `q`.
+- Search page dapat menampilkan hasil brand dan produk melalui model + card component yang sudah ada.

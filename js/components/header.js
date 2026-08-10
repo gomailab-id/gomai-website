@@ -63,7 +63,7 @@ const HeaderComponent = (() => {
     ====================================================== */
 
     const VERSION =
-        "3.0.0";
+        "3.1.0";
 
     const DEFAULT_TARGET_ID =
         "site-header";
@@ -485,14 +485,6 @@ const HeaderComponent = (() => {
             inner,
             createMobileNavigation()
         );
-
-        if (
-            options.showSearch
-        ) {
-            fragment.append(
-                createSearchHost()
-            );
-        }
 
         return fragment;
     }
@@ -1004,35 +996,28 @@ const HeaderComponent = (() => {
     /**
      * Membuat tombol pencarian.
      *
-     * @returns {HTMLButtonElement}
+     * @returns {HTMLAnchorElement}
      */
     function createSearchOpenButton() {
-        const button =
+        const link =
             document.createElement(
-                "button"
+                "a"
             );
 
-        button.type =
-            "button";
-
-        button.id =
+        link.id =
             SEARCH_BUTTON_ID;
 
-        button.className =
+        link.className =
             "header-icon-button";
 
-        button.setAttribute(
-            "aria-controls",
-            SEARCH_HOST_ID
-        );
-
-        button.setAttribute(
-            "aria-expanded",
-            "false"
-        );
+        link.href =
+            getRoute(
+                "search",
+                "pages/search.html"
+            );
 
         setAriaTranslation(
-            button,
+            link,
             "navigation.openSearch",
             "Buka pencarian"
         );
@@ -1050,11 +1035,11 @@ const HeaderComponent = (() => {
         icon.textContent =
             "⌕";
 
-        button.append(
+        link.append(
             icon
         );
 
-        return button;
+        return link;
     }
 
     /**
@@ -1557,60 +1542,11 @@ const HeaderComponent = (() => {
      * @returns {Promise<boolean>}
      */
     async function openSearch() {
-        if (
-            !rendered ||
-            !options.showSearch
-        ) {
-            return false;
-        }
-
-        closeMobileNavigation();
-
-        const component =
-            await ensureSearchPanel();
-
-        if (!component) {
-            redirectToProductsSearch();
-
-            return false;
-        }
-
-        if (
-            elements.searchHost
-        ) {
-            elements.searchHost.hidden =
-                false;
-
-            elements.searchHost.setAttribute(
-                "aria-hidden",
-                "false"
+        window.location.href =
+            getRoute(
+                "search",
+                "pages/search.html"
             );
-        }
-
-        await component.open?.();
-
-        elements.searchOpenButton
-            ?.setAttribute(
-                "aria-expanded",
-                "true"
-            );
-
-        document.body.classList.add(
-            "header-search-open"
-        );
-
-        core?.setData(
-            "searchOpen",
-            true
-        );
-
-        dispatch(
-            "gomai:header-search-opened",
-            {
-                searchPanel:
-                    component
-            }
-        );
 
         return true;
     }
@@ -1681,8 +1617,8 @@ const HeaderComponent = (() => {
     function redirectToProductsSearch() {
         window.location.href =
             getRoute(
-                "products",
-                "pages/products.html"
+                "search",
+                "pages/search.html"
             );
     }
 
@@ -1790,16 +1726,6 @@ const HeaderComponent = (() => {
      * Memasang seluruh event Header.
      */
     function bindEvents() {
-        if (
-            elements.searchOpenButton
-        ) {
-            core.on(
-                elements.searchOpenButton,
-                "click",
-                handleSearchButtonClick
-            );
-        }
-
         if (
             elements.mobileMenuButton
         ) {

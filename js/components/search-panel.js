@@ -1054,7 +1054,7 @@ const SearchPanelComponent = (() => {
         }
 
         const destination =
-            buildProductsSearchURL(
+            buildSearchURL(
                 query
             );
 
@@ -3806,10 +3806,10 @@ const SearchPanelComponent = (() => {
 
 
     /* ======================================================
-       PRODUCTS SEARCH URL
+       SEARCH PAGE URL
     ====================================================== */
 
-    function buildProductsSearchURL(
+    function buildSearchURL(
         query
     ) {
         const queryKey =
@@ -3827,7 +3827,7 @@ const SearchPanelComponent = (() => {
             try {
                 return window.GomaiUtils
                     .buildRoute(
-                        "products",
+                        "search",
                         {
                             [queryKey]:
                                 query
@@ -3842,7 +3842,7 @@ const SearchPanelComponent = (() => {
         }
 
         return resolveProjectPath(
-            `pages/products.html?${encodeURIComponent(
+            `pages/search.html?${encodeURIComponent(
                 queryKey
             )}=${encodeURIComponent(
                 query
