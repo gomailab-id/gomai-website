@@ -14,7 +14,7 @@
     <meta
         id="page-description"
         name="description"
-        content="Hubungi Gomai untuk bantuan produk, pemesanan, informasi stok, dan layanan pengantaran."
+        content="Hubungi Gomai untuk bantuan produk, stok, pemesanan, pembayaran, dan pengantaran."
     >
 
     <link
@@ -35,7 +35,6 @@
 
     <!-- ==================================================
          SHARED HEADER
-         Dirender oleh HeaderComponent.
     ================================================== -->
 
     <header id="site-header"></header>
@@ -46,148 +45,271 @@
     ================================================== -->
 
     <main
-        class="information-page contact-page"
+        class="information-page contact-page contact-premium-page"
         data-information-page-root
     >
 
         <!-- ==============================================
-             PAGE HERO
+             PREMIUM HERO + WECHAT
         =============================================== -->
 
-        <section class="section information-hero">
-            <div class="container">
+        <section
+            class="contact-premium-hero"
+            id="wechat"
+        >
+            <div class="container contact-premium-hero-grid">
 
-                <div class="section-title">
+                <div class="contact-premium-hero-copy">
 
                     <span
-                        class="badge badge-warning"
+                        class="contact-premium-kicker"
                         data-lang="contactPage.hero.badge"
                     >
                         Hubungi Gomai
                     </span>
 
                     <h1 data-lang="contactPage.hero.title">
-                        Kami Siap Membantu Kebutuhan Belanja Anda
+                        Butuh Bantuan? Hubungi Kami
                     </h1>
 
                     <p data-lang="contactPage.hero.description">
-                        Hubungi Gomai untuk menanyakan produk,
-                        ketersediaan stok, ukuran, harga, proses
-                        pemesanan, atau pengantaran.
+                        Sampaikan kebutuhan Anda melalui kanal resmi Gomai.
+                        Kami akan membantu memeriksa detail produk dan pesanan.
                     </p>
 
+                    <div class="contact-premium-hero-note">
+                        <span aria-hidden="true">01</span>
+
+                        <p data-lang="contactPage.prepare.description">
+                            Informasi yang lengkap membantu kami melakukan
+                            konfirmasi dengan lebih cepat.
+                        </p>
+                    </div>
+
                 </div>
+
+                <aside
+                    class="contact-premium-wechat-card"
+                    aria-labelledby="contact-wechat-title"
+                >
+                    <div class="contact-premium-wechat-top">
+                        <span
+                            class="contact-premium-kicker contact-premium-kicker-dark"
+                            data-lang="contactPage.wechat.badge"
+                        >
+                            WeChat
+                        </span>
+
+                        <span
+                            class="contact-premium-channel-status"
+                            aria-hidden="true"
+                        >
+                            ONLINE
+                        </span>
+                    </div>
+
+                    <h2
+                        id="contact-wechat-title"
+                        data-lang="contactPage.wechat.title"
+                    >
+                        Hubungi Gomai melalui WeChat
+                    </h2>
+
+                    <p data-lang="contactPage.wechat.description">
+                        Gunakan WeChat untuk bertanya tentang produk, stok,
+                        ukuran, harga, pemesanan, dan pengantaran.
+                    </p>
+
+                    <div class="contact-premium-wechat-id-wrap">
+                        <span data-lang="contactPage.wechat.label">
+                            WeChat:
+                        </span>
+
+                        <strong
+                            id="contact-wechat-id"
+                            data-wechat-id
+                        >
+                            Gomai
+                        </strong>
+                    </div>
+
+                    <a
+                        href="#contact-flow"
+                        class="btn btn-primary contact-premium-wechat-button"
+                        data-lang="contactPage.wechat.button"
+                    >
+                        Hubungi via WeChat
+                    </a>
+
+                    <p class="contact-premium-wechat-footnote">
+                        <span aria-hidden="true">●</span>
+                        Official Gomai Customer Service
+                    </p>
+                </aside>
 
             </div>
         </section>
 
 
         <!-- ==============================================
-             PRIMARY CONTACT
+             PREPARE
         =============================================== -->
 
-        <section
-            class="section"
-            id="wechat"
-        >
+        <section class="information-section contact-premium-prepare-section">
             <div class="container">
 
-                <div class="grid grid-2">
-
-                    <!-- WECHAT -->
-
-                    <article class="card service-card">
-
+                <div class="contact-premium-section-heading">
+                    <div>
                         <span
-                            class="badge badge-success"
-                            data-lang="contactPage.wechat.badge"
-                        >
-                            Kontak Utama
-                        </span>
-
-                        <h2 data-lang="contactPage.wechat.title">
-                            Hubungi Gomai melalui WeChat
-                        </h2>
-
-                        <p data-lang="contactPage.wechat.description">
-                            WeChat merupakan salah satu kanal utama untuk
-                            konsultasi produk dan proses pemesanan melalui
-                            Gomai.
-                        </p>
-
-                        <div class="contact-detail">
-
-                            <span
-                                data-lang="contactPage.wechat.label"
-                            >
-                                WeChat ID
-                            </span>
-
-                            <strong>
-                                Gomai
-                            </strong>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- WHAT TO SEND -->
-
-                    <article class="card service-card">
-
-                        <span
-                            class="badge badge-warning"
+                            class="contact-premium-kicker contact-premium-kicker-soft"
                             data-lang="contactPage.prepare.badge"
                         >
-                            Agar Lebih Cepat
+                            Sebelum Menghubungi
                         </span>
 
                         <h2 data-lang="contactPage.prepare.title">
-                            Siapkan Detail Produk yang Anda Cari
+                            Siapkan Informasi yang Dibutuhkan
+                        </h2>
+                    </div>
+
+                    <p data-lang="contactPage.prepare.description">
+                        Informasi yang lengkap membantu kami melakukan
+                        konfirmasi dengan lebih cepat.
+                    </p>
+                </div>
+
+                <div class="contact-premium-prepare-grid">
+
+                    <article class="contact-premium-prepare-card">
+                        <span class="contact-premium-card-number">01</span>
+
+                        <div class="contact-premium-card-icon" aria-hidden="true">
+                            P
+                        </div>
+
+                        <h3 data-lang="contactPage.prepare.product.title">
+                            Produk
+                        </h3>
+
+                        <p data-lang="contactPage.prepare.product.description">
+                            Kirim nama produk, foto, atau tautan produk.
+                        </p>
+                    </article>
+
+                    <article class="contact-premium-prepare-card">
+                        <span class="contact-premium-card-number">02</span>
+
+                        <div class="contact-premium-card-icon" aria-hidden="true">
+                            V
+                        </div>
+
+                        <h3 data-lang="contactPage.prepare.variant.title">
+                            Varian
+                        </h3>
+
+                        <p data-lang="contactPage.prepare.variant.description">
+                            Sertakan warna, ukuran, dan jumlah yang dibutuhkan.
+                        </p>
+                    </article>
+
+                    <article class="contact-premium-prepare-card contact-premium-prepare-card-accent">
+                        <span class="contact-premium-card-number">03</span>
+
+                        <div class="contact-premium-card-icon" aria-hidden="true">
+                            D
+                        </div>
+
+                        <h3 data-lang="contactPage.prepare.delivery.title">
+                            Informasi Penerimaan
+                        </h3>
+
+                        <p data-lang="contactPage.prepare.delivery.description">
+                            Sampaikan lokasi dan waktu penerimaan yang
+                            dibutuhkan.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==============================================
+             SERVICES
+        =============================================== -->
+
+        <section class="information-section contact-premium-services-section">
+            <div class="container">
+
+                <div class="contact-premium-services-panel">
+
+                    <div class="contact-premium-services-intro">
+                        <span
+                            class="contact-premium-kicker"
+                            data-lang="contactPage.services.badge"
+                        >
+                            Bantuan Gomai
+                        </span>
+
+                        <h2 data-lang="contactPage.services.title">
+                            Apa yang Bisa Kami Bantu?
                         </h2>
 
-                        <p data-lang="contactPage.prepare.description">
-                            Semakin lengkap informasi yang dikirim,
-                            semakin mudah tim Gomai membantu memeriksa
-                            produk yang Anda butuhkan.
+                        <p data-lang="contactPage.services.description">
+                            Hubungi Gomai jika Anda membutuhkan bantuan
+                            berikut.
                         </p>
+                    </div>
 
-                        <ul class="information-list">
+                    <div class="contact-premium-services-list">
 
-                            <li>
-                                <h3 data-lang="contactPage.prepare.product.title">
-                                    Produk
+                        <article class="contact-premium-service-row">
+                            <span>01</span>
+
+                            <div>
+                                <h3 data-lang="contactPage.services.product.title">
+                                    Informasi Produk
                                 </h3>
 
-                                <p data-lang="contactPage.prepare.product.description">
-                                    Kirim nama, foto, atau tautan produk.
+                                <p data-lang="contactPage.services.product.description">
+                                    Tanyakan detail, varian, dan ketersediaan
+                                    produk.
                                 </p>
-                            </li>
+                            </div>
+                        </article>
 
-                            <li>
-                                <h3 data-lang="contactPage.prepare.variant.title">
-                                    Varian
+                        <article class="contact-premium-service-row">
+                            <span>02</span>
+
+                            <div>
+                                <h3 data-lang="contactPage.services.order.title">
+                                    Pemesanan
                                 </h3>
 
-                                <p data-lang="contactPage.prepare.variant.description">
-                                    Sertakan warna, ukuran, dan jumlah yang dibutuhkan.
+                                <p data-lang="contactPage.services.order.description">
+                                    Konfirmasikan seluruh detail sebelum
+                                    pesanan diproses.
                                 </p>
-                            </li>
+                            </div>
+                        </article>
 
-                            <li>
-                                <h3 data-lang="contactPage.prepare.delivery.title">
-                                    Penerimaan
+                        <article class="contact-premium-service-row">
+                            <span>03</span>
+
+                            <div>
+                                <h3 data-lang="contactPage.services.delivery.title">
+                                    Pengantaran
                                 </h3>
 
-                                <p data-lang="contactPage.prepare.delivery.description">
-                                    Sampaikan lokasi dan kebutuhan waktu penerimaan.
+                                <p data-lang="contactPage.services.delivery.description">
+                                    Konfirmasikan lokasi, layanan, dan waktu
+                                    penerimaan.
                                 </p>
-                            </li>
+                            </div>
+                        </article>
 
-                        </ul>
-
-                    </article>
+                    </div>
 
                 </div>
 
@@ -196,165 +318,70 @@
 
 
         <!-- ==============================================
-             WHAT WE CAN HELP
+             FLOW
         =============================================== -->
 
-        <section class="section">
+        <section
+            class="information-section contact-premium-flow-section"
+            id="contact-flow"
+        >
             <div class="container">
 
-                <div class="section-title">
-
+                <div class="contact-premium-flow-header">
                     <span
-                        class="badge badge-success"
-                        data-lang="contactPage.services.badge"
+                        class="contact-premium-kicker contact-premium-kicker-soft"
+                        data-lang="contactPage.flow.badge"
                     >
-                        Bantuan Gomai
+                        Alur Layanan
                     </span>
 
-                    <h2 data-lang="contactPage.services.title">
-                        Apa yang Bisa Kami Bantu?
-                    </h2>
-
-                    <p data-lang="contactPage.services.description">
-                        Hubungi Gomai sebelum melakukan pemesanan jika
-                        Anda memerlukan informasi tambahan.
-                    </p>
-
-                </div>
-
-
-                <div class="grid grid-3">
-
-                    <article class="card service-card">
-
-                        <span class="badge badge-warning">
-                            01
-                        </span>
-
-                        <h3 data-lang="contactPage.services.product.title">
-                            Cari Produk
-                        </h3>
-
-                        <p data-lang="contactPage.services.product.description">
-                            Tanyakan produk yang sedang Anda cari atau
-                            kirim foto sebagai referensi.
-                        </p>
-
-                    </article>
-
-
-                    <article class="card service-card">
-
-                        <span class="badge badge-warning">
-                            02
-                        </span>
-
-                        <h3 data-lang="contactPage.services.order.title">
-                            Bantuan Pemesanan
-                        </h3>
-
-                        <p data-lang="contactPage.services.order.description">
-                            Dapatkan bantuan untuk memastikan detail
-                            pesanan sebelum diproses.
-                        </p>
-
-                    </article>
-
-
-                    <article class="card service-card">
-
-                        <span class="badge badge-warning">
-                            03
-                        </span>
-
-                        <h3 data-lang="contactPage.services.delivery.title">
-                            Informasi Pengantaran
-                        </h3>
-
-                        <p data-lang="contactPage.services.delivery.description">
-                            Tanyakan pilihan layanan dan informasi
-                            pengantaran pesanan.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             CONTACT FLOW
-        =============================================== -->
-
-        <section class="section">
-            <div class="container">
-
-                <div class="section-title">
-
                     <h2 data-lang="contactPage.flow.title">
-                        Cara Menghubungi Gomai
+                        Kirim Detail, Tunggu Konfirmasi, Lalu Lanjutkan
                     </h2>
 
                     <p data-lang="contactPage.flow.description">
-                        Tiga langkah sederhana untuk mendapatkan bantuan.
+                        Kami membantu memeriksa informasi yang Anda kirimkan.
                     </p>
-
                 </div>
 
+                <div class="contact-premium-flow-grid">
 
-                <div class="grid grid-3">
-
-                    <article class="card service-card">
-
-                        <span class="badge badge-warning">
-                            01
-                        </span>
+                    <article class="contact-premium-flow-card">
+                        <div class="contact-premium-flow-number">01</div>
 
                         <h3 data-lang="contactPage.flow.step1.title">
-                            Buka WeChat
+                            Kirim Kebutuhan
                         </h3>
 
                         <p data-lang="contactPage.flow.step1.description">
-                            Buka aplikasi WeChat pada perangkat Anda.
+                            Sampaikan produk atau bantuan yang Anda butuhkan.
                         </p>
-
                     </article>
 
-
-                    <article class="card service-card">
-
-                        <span class="badge badge-warning">
-                            02
-                        </span>
+                    <article class="contact-premium-flow-card">
+                        <div class="contact-premium-flow-number">02</div>
 
                         <h3 data-lang="contactPage.flow.step2.title">
-                            Cari Gomai
+                            Kami Periksa
                         </h3>
 
                         <p data-lang="contactPage.flow.step2.description">
-                            Cari WeChat ID Gomai dan buka percakapan.
+                            Gomai memeriksa detail dan informasi yang
+                            diperlukan.
                         </p>
-
                     </article>
 
-
-                    <article class="card service-card">
-
-                        <span class="badge badge-warning">
-                            03
-                        </span>
+                    <article class="contact-premium-flow-card">
+                        <div class="contact-premium-flow-number">03</div>
 
                         <h3 data-lang="contactPage.flow.step3.title">
-                            Kirim Kebutuhan Anda
+                            Konfirmasi
                         </h3>
 
                         <p data-lang="contactPage.flow.step3.description">
-                            Kirim detail produk atau pertanyaan yang
-                            ingin Anda konsultasikan.
+                            Langkah selanjutnya dikonfirmasi sebelum pesanan
+                            diproses.
                         </p>
-
                     </article>
 
                 </div>
@@ -367,47 +394,67 @@
              USEFUL LINKS
         =============================================== -->
 
-        <section class="section">
+        <section class="contact-premium-links-section">
             <div class="container">
 
-                <div class="home-wechat-cta">
+                <div class="contact-premium-links-header">
+                    <h2 data-lang="contactPage.links.title">
+                        Informasi Berguna
+                    </h2>
 
-                    <div>
+                    <p data-lang="contactPage.links.description">
+                        Lihat panduan belanja atau jawaban untuk pertanyaan
+                        yang sering ditanyakan.
+                    </p>
+                </div>
 
-                        <h2 data-lang="contactPage.links.title">
-                            Ingin Melihat Informasi Sebelum Menghubungi Kami?
-                        </h2>
+                <div class="contact-premium-links-grid">
 
-                        <p data-lang="contactPage.links.description">
-                            Pelajari cara belanja atau lihat pertanyaan
-                            yang sering diajukan melalui halaman informasi
-                            Gomai.
-                        </p>
+                    <a
+                        href="how-to-buy.html"
+                        class="contact-premium-link-card"
+                        data-route="howToBuy"
+                    >
+                        <span class="contact-premium-link-index">01</span>
 
-                    </div>
+                        <div>
+                            <span data-lang="contactPage.links.howToBuy.title">
+                                Cara Membeli
+                            </span>
 
+                            <h3 data-lang="contactPage.links.howToBuy.description">
+                                Pelajari cara melakukan pemesanan melalui
+                                Gomai.
+                            </h3>
+                        </div>
 
-                    <div class="header-actions">
+                        <strong data-lang="contactPage.links.howToBuy.button">
+                            Lihat Cara Belanja
+                        </strong>
+                    </a>
 
-                        <a
-                            href="how-to-buy.html"
-                            class="btn btn-outline"
-                            data-route="howToBuy"
-                            data-lang="contactPage.links.howToBuy.button"
-                        >
-                            Cara Membeli
-                        </a>
+                    <a
+                        href="faq.html"
+                        class="contact-premium-link-card contact-premium-link-card-dark"
+                        data-route="faq"
+                    >
+                        <span class="contact-premium-link-index">02</span>
 
-                        <a
-                            href="faq.html"
-                            class="btn btn-primary"
-                            data-route="faq"
-                            data-lang="contactPage.links.faq.button"
-                        >
+                        <div>
+                            <span data-lang="contactPage.links.faq.title">
+                                FAQ
+                            </span>
+
+                            <h3 data-lang="contactPage.links.faq.description">
+                                Temukan jawaban untuk pertanyaan yang sering
+                                ditanyakan.
+                            </h3>
+                        </div>
+
+                        <strong data-lang="contactPage.links.faq.button">
                             Lihat FAQ
-                        </a>
-
-                    </div>
+                        </strong>
+                    </a>
 
                 </div>
 
@@ -419,7 +466,6 @@
 
     <!-- ==================================================
          SHARED FOOTER
-         Dirender oleh FooterComponent.
     ================================================== -->
 
     <footer id="site-footer"></footer>
@@ -429,69 +475,30 @@
          JAVASCRIPT — GOMAI FRAMEWORK
     ================================================== -->
 
-
-    <!-- ==================================================
-         1. FOUNDATION
-    ================================================== -->
-
     <script src="../js/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/language.js"></script>
 
-
-    <!-- ==================================================
-         2. CORE FOUNDATION
-    ================================================== -->
-
     <script src="../js/core/component-core.js"></script>
-
     <script src="../js/core/model-registry.js"></script>
     <script src="../js/core/component-registry.js"></script>
     <script src="../js/core/controller-registry.js"></script>
 
-
-    <!-- ==================================================
-         3. MODELS
-    ================================================== -->
-
     <script src="../js/models/brands.js"></script>
     <script src="../js/models/products.js"></script>
 
-
-    <!-- ==================================================
-         4. COMPONENTS
-    ================================================== -->
-
     <script src="../js/components/loading.js"></script>
     <script src="../js/components/empty-state.js"></script>
-
     <script src="../js/components/product-card.js"></script>
     <script src="../js/components/brand-card.js"></script>
     <script src="../js/components/search-panel.js"></script>
-
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
 
-
-    <!-- ==================================================
-         5. PAGE CONTROLLER
-    ================================================== -->
-
     <script src="../js/information.js"></script>
-
-
-    <!-- ==================================================
-         6. GOMAI CORE
-    ================================================== -->
-
     <script src="../js/core/gomai.js"></script>
 
-
-    <!-- ==================================================
-         7. APPLICATION BOOTSTRAPPER
-         app.js WAJIB MENJADI SCRIPT TERAKHIR.
-    ================================================== -->
-
+    <!-- app.js wajib menjadi script terakhir -->
     <script src="../js/app.js"></script>
 
 </body>

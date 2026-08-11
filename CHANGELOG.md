@@ -1,5 +1,16 @@
 # Gomai Changelog
 
+## 2026-08-11 — Replacement 4 Consolidation
+
+- Mengintegrasikan master logo Gomai ke shared Header melalui central config.
+- Menambahkan asset `assets/gomai/logo-master.png` dan `logo-header.png`.
+- Menggabungkan final hero 1600×900 WebP untuk enam brand.
+- Menggabungkan clean + optical-fit logo untuk enam brand dan satu aturan card logo global.
+- Menggabungkan Premium Pass untuk How-to-Buy, About, Contact, dan FAQ.
+- Mengonsolidasikan `information.css` untuk empat information pages.
+- Memvalidasi 26 JavaScript files, 15 CSS files, 4 JSON files, 10 HTML pages, translation parity, dan local asset references.
+
+
 ## 2026-08-10 — Dedicated Search Page
 
 - Menambahkan `pages/search.html`, `css/search.css`, dan SearchController final di `js/search.js`.

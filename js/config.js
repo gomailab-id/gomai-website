@@ -56,6 +56,16 @@
 
         },
 
+        logo: {
+
+            master:
+                "assets/gomai/logo-master.png",
+
+            header:
+                "assets/gomai/logo-header.png"
+
+        },
+
         locale: {
 
             zh:

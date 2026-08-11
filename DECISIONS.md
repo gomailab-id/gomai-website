@@ -117,3 +117,24 @@ Setelah baseline replacement dipakai, perubahan berikutnya kembali mengikuti aud
 - Pencarian memiliki halaman khusus; `pages/products.html` hanya bertanggung jawab sebagai katalog semua produk dan filter katalog.
 - Query pencarian menggunakan parameter `q`.
 - Search page dapat menampilkan hasil brand dan produk melalui model + card component yang sudah ada.
+
+## D-012 — Master Logo Gomai Dikunci untuk Replacement 4
+
+**Status:** Accepted  
+**Tanggal:** 2026-08-11
+
+Master logo Gomai final menjadi source visual resmi. Header menggunakan asset turunan master yang hanya memangkas area transparan; bentuk, warna, dan identitas master tidak boleh didesain ulang tanpa keputusan baru.
+
+## D-013 — Brand Logo Menggunakan Optical Fit Global
+
+**Status:** Accepted  
+**Tanggal:** 2026-08-11
+
+Logo brand dipersiapkan dengan tight crop dan ditampilkan menggunakan satu aturan global `object-fit: contain`. Per-brand CSS tidak digunakan agar brand baru dapat ditambahkan melalui data/assets tanpa revisi styling.
+
+## D-014 — Information Pages Premium Tetap Satu Controller
+
+**Status:** Accepted  
+**Tanggal:** 2026-08-11
+
+How-to-Buy, About, Contact, dan FAQ boleh memiliki presentation layer premium berbeda melalui scoped CSS, tetapi tetap menggunakan satu `InformationController` dan shared Header/Footer/Search architecture.

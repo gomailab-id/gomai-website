@@ -63,7 +63,7 @@ const HeaderComponent = (() => {
     ====================================================== */
 
     const VERSION =
-        "3.1.0";
+        "3.2.0";
 
     const DEFAULT_TARGET_ID =
         "site-header";
@@ -767,8 +767,9 @@ const HeaderComponent = (() => {
     /**
      * Membuat identitas Gomai.
      *
-     * Logo masih menggunakan wordmark teks sampai aset
-     * logo resmi Gomai tersedia.
+     * Source logo berasal dari GomaiConfig.site.logo.header.
+     * Wordmark teks dipertahankan hanya sebagai fallback
+     * apabila aset logo gagal dimuat.
      *
      * @returns {HTMLAnchorElement}
      */
@@ -797,13 +798,36 @@ const HeaderComponent = (() => {
             "Beranda"
         );
 
+        const logoImage =
+            document.createElement(
+                "img"
+            );
+
+        logoImage.className =
+            "shared-header-logo-image";
+
+        logoImage.src =
+            getHeaderLogoPath();
+
+        logoImage.alt =
+            window.GomaiConfig
+                ?.site
+                ?.name ||
+            "Gomai";
+
+        logoImage.decoding =
+            "async";
+
         const logoText =
             document.createElement(
                 "strong"
             );
 
         logoText.className =
-            "logo-text";
+            [
+                "logo-text",
+                "shared-header-logo-fallback"
+            ].join(" ");
 
         logoText.textContent =
             window.GomaiConfig
@@ -811,11 +835,69 @@ const HeaderComponent = (() => {
                 ?.name ||
             "Gomai";
 
+        logoText.hidden =
+            true;
+
+        logoImage.addEventListener(
+            "error",
+            () => {
+                logoImage.hidden =
+                    true;
+
+                logoText.hidden =
+                    false;
+            },
+            {
+                once:
+                    true
+            }
+        );
+
         link.append(
+            logoImage,
             logoText
         );
 
         return link;
+    }
+
+    /**
+     * Mengambil path logo Header dari konfigurasi dan
+     * menyesuaikannya dengan posisi halaman aktif.
+     *
+     * @returns {string}
+     */
+    function getHeaderLogoPath() {
+        const configuredPath =
+            normalizeText(
+                window.GomaiConfig
+                    ?.site
+                    ?.logo
+                    ?.header
+            ) ||
+            "assets/gomai/logo-header.png";
+
+        try {
+            if (
+                typeof window.GomaiUtils
+                    ?.resolveAssetPath ===
+                "function"
+            ) {
+                return window.GomaiUtils
+                    .resolveAssetPath(
+                        configuredPath
+                    );
+            }
+        } catch (error) {
+            console.warn(
+                "HeaderComponent: gagal resolve asset logo Gomai.",
+                error
+            );
+        }
+
+        return resolveFallbackPath(
+            configuredPath
+        );
     }
 
     /* ======================================================
