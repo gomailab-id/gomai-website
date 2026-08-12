@@ -1,2245 +1,434 @@
 /* ==========================================================
-   GOMAI HOMEPAGE
-   home.css
-
-   Tanggung jawab:
-   - Hero homepage
-   - Daftar brand
-   - Kategori utama
-   - Banner layanan
-   - Langkah berbelanja
-   - CTA WeChat
-
-   Tidak menangani:
-   - Promo bar
-   - Header
-   - Navigasi
-   - SearchPanel
-   - Footer
-
-   Prinsip:
-   - Mobile-first
-   - Mandarin-first
-   - Konten utama mudah dijangkau melalui handphone
-   - Tombol tidak bergantung pada hover
-   - Teks Hanzi memiliki line-height yang nyaman
+   GOMAI HOME — CATEGORY-FIRST
 ========================================================== */
 
-
-/* ==========================================================
-   HOME VARIABLES
-========================================================== */
-
-:root {
-    --home-surface:
-        var(--bg-card, #ffffff);
-
-    --home-surface-soft:
-        var(--bg-muted, #f5f5f5);
-
-    --home-surface-dark:
-        var(--bg-dark, #111111);
-
-    --home-border:
-        var(--border-color, #e5e5e5);
-
-    --home-border-strong:
-        var(--border-strong, #d4d4d4);
-
-    --home-text:
-        var(--text-primary, #111111);
-
-    --home-text-soft:
-        var(--text-secondary, #525252);
-
-    --home-hero-min-height:
-        max(
-            560px,
-            calc(
-                100vh -
-                var(--header-stack-height, 100px)
-            )
-        );
-
-    --home-card-shadow:
-        var(--shadow-md);
-
-    --home-card-shadow-hover:
-        var(--shadow-lg);
-}
-
-@supports (height: 100svh) {
-
-    :root {
-        --home-hero-min-height:
-            max(
-                560px,
-                calc(
-                    100svh -
-                    var(--header-stack-height, 100px)
-                )
-            );
-    }
-
-}
-
-
-/* ==========================================================
-   HOMEPAGE ROOT
-========================================================== */
-
-body[data-page="home"] {
-    background:
-        var(--bg-body, #fafafa);
-}
-
-body[data-page="home"]
-#main-content {
-    overflow: clip;
-}
-
-
-/* ==========================================================
-   PREMIUM HOME HERO
-========================================================== */
-
-.home-hero {
+.home-main-hero {
     position: relative;
-
-    width: 100%;
-    min-width: 0;
-    min-height:
-        var(--home-hero-min-height);
-
     overflow: hidden;
-
-    color:
-        var(--text-white, #ffffff);
-
+    color: #ffffff;
     background:
-        var(--gray-900, #171717);
-
-    isolation: isolate;
-}
-
-
-/* ==========================================================
-   HERO SLIDES
-========================================================== */
-
-.home-hero-slide {
-    position: absolute;
-    inset: 0;
-
-    z-index: 0;
-
-    min-width: 0;
-    min-height: 100%;
-
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-
-    transition:
-        opacity
-            var(--transition-slow, 0.4s ease),
-        visibility
-            var(--transition-slow, 0.4s ease);
-}
-
-.home-hero-slide.is-active,
-.home-hero-slide[aria-hidden="false"] {
-    z-index: 1;
-
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.home-hero-slide[aria-hidden="true"] {
-    pointer-events: none;
-}
-
-
-/* ==========================================================
-   HERO MEDIA
-========================================================== */
-
-.home-hero-media {
-    position: absolute;
-    inset: 0;
-
-    z-index: 0;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    background:
-        var(--gray-800, #262626);
-}
-
-.home-hero-media img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center top;
-
-    transform:
-        scale(1.01);
-
-    transition:
-        transform
-        8s
-        ease-out;
-}
-
-.home-hero-slide.is-active
-.home-hero-media img {
-    transform:
-        scale(1.045);
-}
-
-.home-hero-media.image-error {
-    background:
+        radial-gradient(
+            circle at 82% 42%,
+            rgba(245, 180, 0, 0.19),
+            transparent 28%
+        ),
         linear-gradient(
-            145deg,
-            var(--gray-900, #171717),
-            var(--gray-700, #404040)
+            135deg,
+            #090909 0%,
+            #171717 60%,
+            #0d0d0d 100%
         );
 }
 
-
-/* ==========================================================
-   HERO OVERLAY
-
-   Mobile menggunakan gradasi vertikal karena konten utama
-   berada di bagian bawah gambar.
-========================================================== */
-
-.home-hero-overlay {
+.home-main-hero::after {
     position: absolute;
-    inset: 0;
-
-    z-index: 1;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.08) 0%,
-            rgba(0, 0, 0, 0.18) 32%,
-            rgba(0, 0, 0, 0.64) 62%,
-            rgba(0, 0, 0, 0.94) 100%
-        );
-
-    pointer-events: none;
-}
-
-
-/* ==========================================================
-   HERO CONTENT
-========================================================== */
-
-.home-hero-content-wrap {
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-    align-items: flex-end;
-
-    width: 100%;
-    min-height:
-        var(--home-hero-min-height);
-
-    padding-top:
-        var(--space-12, 48px);
-
-    padding-bottom:
-        112px;
-}
-
-.home-hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    width: 100%;
-    max-width:
-        680px;
-
-    min-width: 0;
-}
-
-
-/* ==========================================================
-   HERO BRAND LOGO
-========================================================== */
-
-.home-hero-brand-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 112px;
-    min-height: 62px;
-
-    margin-bottom:
-        var(--space-4, 16px);
-
-    padding:
-        var(--space-2, 8px)
-        var(--space-3, 12px);
-
-    background:
-        rgba(255, 255, 255, 0.96);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.7);
-
-    border-radius:
-        var(--radius-md, 12px);
-
+    right: -10%;
+    bottom: -46%;
+    width: min(56vw, 720px);
+    aspect-ratio: 1;
+    content: "";
+    border: 1px solid rgba(245, 180, 0, 0.12);
+    border-radius: 50%;
     box-shadow:
-        0 12px 30px
-        rgba(0, 0, 0, 0.2);
+        0 0 0 52px rgba(245, 180, 0, 0.035),
+        0 0 0 104px rgba(245, 180, 0, 0.025);
+    pointer-events: none;
 }
 
-.home-hero-brand-logo img {
-    display: block;
-
-    width: 100%;
-    max-height: 44px;
-
-    object-fit: contain;
-}
-
-.home-hero-brand-logo.logo-error {
-    display: none;
-}
-
-
-/* ==========================================================
-   HERO EYEBROW
-
-   Tidak menggunakan uppercase atau letter-spacing besar
-   agar teks Mandarin tetap natural.
-========================================================== */
-
-.home-hero-eyebrow {
-    display: inline-flex;
+.home-main-hero-inner {
+    position: relative;
+    z-index: 1;
+    min-height: 510px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
     align-items: center;
-
-    min-height: 28px;
-
-    margin-bottom:
-        var(--space-3, 12px);
-
-    padding:
-        4px
-        10px;
-
-    color:
-        var(--on-primary, #111111);
-
-    font-size:
-        var(--text-xs, 0.75rem);
-
-    font-weight:
-        var(--font-semibold, 600);
-
-    line-height:
-        var(--line-height-compact, 1.45);
-
-    letter-spacing: 0;
-
-    background:
-        var(--primary, #f5b400);
-
-    border-radius:
-        var(--radius-full, 999px);
+    gap: 52px;
+    padding-block: 72px;
 }
 
+.home-main-hero-copy {
+    max-width: 690px;
+}
 
-/* ==========================================================
-   HERO TYPOGRAPHY
-========================================================== */
+.home-main-hero-eyebrow,
+.home-section-overline {
+    display: inline-flex;
+    color: var(--primary, #f5b400);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
 
-.home-hero-content h1 {
-    max-width:
-        18ch;
-
-    margin-bottom:
-        var(--space-4, 16px);
-
-    color:
-        var(--text-white, #ffffff);
-
-    font-size:
-        clamp(
-            2.25rem,
-            11vw,
-            3.5rem
-        );
-
-    font-weight:
-        var(--font-extrabold, 800);
-
-    line-height: 1.12;
-
-    letter-spacing:
-        var(--tracking-tight, -0.01em);
-
+.home-main-hero h1 {
+    max-width: 13ch;
+    margin: 14px 0 18px;
+    color: #ffffff;
+    font-size: clamp(3rem, 7vw, 6.1rem);
+    font-weight: 900;
+    line-height: 0.96;
+    letter-spacing: -0.055em;
     text-wrap: balance;
 }
 
-.home-hero-content p {
-    max-width:
-        38rem;
-
-    margin-bottom:
-        var(--space-6, 24px);
-
-    color:
-        rgba(255, 255, 255, 0.82);
-
-    font-size:
-        var(--text-md, 1rem);
-
-    line-height:
-        var(--line-height-relaxed, 1.8);
+.home-main-hero p {
+    max-width: 590px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.72;
 }
 
-
-/* ==========================================================
-   HERO ACTIONS
-========================================================== */
-
-.home-hero-actions {
-    display: grid;
-    grid-template-columns:
-        minmax(0, 1fr);
-
-    gap:
-        var(--space-3, 12px);
-
-    width: 100%;
-    min-width: 0;
+.home-main-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
 }
 
-.home-hero-actions .btn {
-    width: 100%;
-    min-height:
-        var(--button-height-lg, 54px);
+.home-main-hero-actions .btn {
+    min-width: 164px;
 }
 
 .btn-hero-outline {
-    color:
-        var(--text-white, #ffffff);
-
-    background:
-        rgba(255, 255, 255, 0.08);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.56);
-
-    backdrop-filter:
-        blur(10px);
-
-    -webkit-backdrop-filter:
-        blur(10px);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.32);
 }
 
-
-/* ==========================================================
-   HERO CONTROLS
-========================================================== */
-
-.home-hero-controls {
-    position: absolute;
-
-    right: auto;
-    bottom:
-        calc(
-            var(--space-4, 16px) +
-            var(--safe-area-bottom, 0px)
-        );
-
-    left: 50%;
-
-    z-index: 5;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:
-        var(--space-1, 4px);
-
-    min-height: 52px;
-
-    padding:
-        4px
-        6px;
-
-    background:
-        rgba(0, 0, 0, 0.45);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.16);
-
-    border-radius:
-        var(--radius-full, 999px);
-
-    box-shadow:
-        var(--shadow-md);
-
-    backdrop-filter:
-        blur(14px);
-
-    -webkit-backdrop-filter:
-        blur(14px);
-
-    transform:
-        translateX(-50%);
+.home-main-hero-brandmark {
+    display: grid;
+    place-items: center;
+    min-height: 300px;
 }
 
-
-/* ==========================================================
-   HERO ARROWS
-========================================================== */
-
-.home-hero-arrow {
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-
-    width:
-        var(--touch-target-min, 44px);
-
-    min-width:
-        var(--touch-target-min, 44px);
-
-    height:
-        var(--touch-target-min, 44px);
-
-    min-height:
-        var(--touch-target-min, 44px);
-
-    padding: 0;
-
-    color:
-        var(--text-white, #ffffff);
-
-    font-size:
-        1.5rem;
-
-    line-height: 1;
-
-    background:
-        transparent;
-
-    border:
-        1px solid transparent;
-
-    border-radius:
-        var(--radius-full, 999px);
-
-    transition:
-        color
-            var(--transition-fast, 0.15s ease),
-        background-color
-            var(--transition-fast, 0.15s ease),
-        border-color
-            var(--transition-fast, 0.15s ease);
+.home-main-hero-brandmark img {
+    width: min(100%, 410px);
+    max-height: 340px;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 26px 58px rgba(0, 0, 0, 0.28));
 }
 
-
-/* ==========================================================
-   HERO DOTS
-
-   Tombol memiliki area sentuh 44px, tetapi bentuk visual
-   tetap kecil agar kontrol tidak memenuhi layar.
-========================================================== */
-
-.home-hero-dots {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 0;
-}
-
-.home-hero-dot {
-    position: relative;
-
-    display: inline-flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
-
-    width:
-        var(--touch-target-min, 44px);
-
-    min-width:
-        var(--touch-target-min, 44px);
-
-    height:
-        var(--touch-target-min, 44px);
-
-    min-height:
-        var(--touch-target-min, 44px);
-
-    padding: 0;
-
-    background:
-        transparent;
-
-    border: 0;
-
-    border-radius:
-        var(--radius-full, 999px);
-}
-
-.home-hero-dot::before {
-    width: 8px;
-    height: 8px;
-
-    content: "";
-
-    background:
-        rgba(255, 255, 255, 0.48);
-
-    border-radius:
-        var(--radius-full, 999px);
-
-    transition:
-        width
-            var(--transition-normal, 0.25s ease),
-        background-color
-            var(--transition-normal, 0.25s ease);
-}
-
-.home-hero-dot.is-active::before,
-.home-hero-dot[aria-current="true"]::before {
-    width: 24px;
-
-    background:
-        var(--primary, #f5b400);
-}
-
-
-/* ==========================================================
-   HERO SCROLL LINK
-========================================================== */
-
-.home-hero-scroll {
-    display: none;
-}
-
-
-/* ==========================================================
-   HOME SECTION COMMON
-========================================================== */
-
-.home-brand-introduction,
 .home-category-section,
-.home-service-banner-section,
-.home-how-to-buy,
+.home-brand-section,
+.home-featured-products,
+.home-trust-section,
 .home-wechat-section {
     position: relative;
-
-    min-width: 0;
-
-    isolation: isolate;
 }
 
-.home-section-title {
-    max-width:
-        var(--content-width-md, 720px);
-
-    margin-inline: auto;
-
-    text-align: center;
+.home-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
 }
 
-.home-section-title > p {
-    margin-inline: auto;
+.home-section-heading h2 {
+    margin: 8px 0 0;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
 }
 
-.section-overline {
-    display: inline-flex;
-    align-items: center;
-
-    min-height: 28px;
-
-    color:
-        var(--text-link, #8a6400);
-
-    font-size:
-        var(--text-sm, 0.875rem);
-
-    font-weight:
-        var(--font-semibold, 600);
-
-    line-height:
-        var(--line-height-compact, 1.45);
-
-    letter-spacing: 0;
+.home-section-heading > a {
+    flex: 0 0 auto;
+    color: #9b7000;
+    font-weight: 800;
+    text-decoration: none;
 }
-
-
-/* ==========================================================
-   BRAND SECTION
-========================================================== */
-
-.home-brand-introduction {
-    background:
-        var(--home-surface);
-}
-
-.home-brand-introduction
-.brand-grid {
-    align-items: stretch;
-}
-
-.home-brand-introduction
-.brand-card {
-    height: 100%;
-}
-
-.home-brand-introduction
-.brand-card-image {
-    aspect-ratio:
-        16 / 9;
-}
-
-.home-brand-introduction
-.brand-card-image::after {
-    position: absolute;
-    inset: 0;
-
-    z-index: 1;
-
-    content: "";
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 54%,
-            rgba(0, 0, 0, 0.18) 100%
-        );
-
-    pointer-events: none;
-}
-
-.home-brand-introduction
-.brand-card-content {
-    position: relative;
-
-    z-index: 2;
-
-    align-items: flex-start;
-
-    padding-top: 0;
-}
-
-.home-brand-introduction
-.brand-card-logo-wrap {
-    position: relative;
-
-    z-index: 2;
-
-    width: 92px;
-    min-width: 92px;
-    height: 76px;
-    min-height: 76px;
-
-    margin-top: -38px;
-
-    padding: 6px;
-
-    background:
-        var(--bg-card, #ffffff);
-
-    border:
-        1px solid
-        var(--border-color, #e5e5e5);
-
-    border-radius:
-        16px;
-
-    box-shadow:
-        var(--shadow-sm);
-}
-
-.home-brand-introduction
-.brand-card-logo {
-    width: 100%;
-    height: 100%;
-
-    max-width: 80px;
-    max-height: 64px;
-
-    display: block;
-
-    object-fit: contain;
-    object-position: center;
-}
-
-.home-brand-introduction
-.brand-card-logo-fallback {
-    width: 72px;
-    min-height: 72px;
-}
-
-.home-brand-introduction
-.brand-card-copy {
-    width: 100%;
-}
-
-.home-brand-introduction
-.brand-card-copy h3 {
-    font-size:
-        var(--text-xl, 1.25rem);
-}
-
-.home-brand-introduction
-.brand-card-link {
-    margin-top: auto;
-
-    color:
-        var(--text-link, #8a6400);
-}
-
-.home-brand-introduction
-.brand-grid > .empty-state,
-.home-brand-introduction
-.brand-grid > .gomai-empty-state {
-    grid-column:
-        1 / -1;
-}
-
-
-/* ==========================================================
-   CATEGORY SECTION
-========================================================== */
 
 .home-category-section {
-    background:
-        var(--home-surface-soft);
+    background: #ffffff;
 }
 
 .home-category-grid {
     display: grid;
-    grid-template-columns:
-        minmax(0, 1fr);
-
-    gap:
-        var(--space-4, 16px);
-
-    width: 100%;
-    min-width: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
 }
-
-.home-category-grid > * {
-    min-width: 0;
-}
-
-
-/* ==========================================================
-   CATEGORY CARD
-========================================================== */
 
 .home-category-card {
-    position: relative;
-
-    display: flex;
-    align-items: flex-end;
-
     min-width: 0;
+    overflow: hidden;
+    color: var(--text-primary, #111111);
+    background: #ffffff;
+    border: 1px solid var(--border-color, #e7e7e2);
+    border-radius: 22px;
+    text-decoration: none;
+    box-shadow: 0 12px 34px rgba(17, 17, 17, 0.055);
+}
+
+.home-category-card-media {
+    position: relative;
+    min-height: 188px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(245, 180, 0, 0.32),
+            rgba(245, 180, 0, 0.08) 45%,
+            #f8f7f2 76%
+        );
+}
+
+.home-category-card:nth-child(even)
+.home-category-card-media {
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(17, 17, 17, 0.10),
+            rgba(245, 180, 0, 0.11) 50%,
+            #f7f6f1 78%
+        );
+}
+
+.home-category-card-media img {
+    width: 86px;
+    height: 86px;
+    object-fit: contain;
+}
+
+.home-category-card-body {
+    display: grid;
+    gap: 10px;
+    padding: 22px;
+}
+
+.home-category-card-body > strong {
+    font-size: 1.15rem;
+    line-height: 1.2;
+}
+
+.home-category-card-body > span:not(.home-category-card-action) {
+    min-height: 74px;
+    color: var(--text-secondary, #666666);
+    font-size: 0.91rem;
+    line-height: 1.62;
+}
+
+.home-category-card-action {
+    margin-top: 4px;
+    color: #9b7000;
+    font-size: 0.88rem;
+    font-weight: 850;
+}
+
+.home-brand-section {
+    background: var(--bg-muted, #f7f7f5);
+}
+
+.home-brand-grid .brand-card {
+    min-height: 0;
+}
+
+.home-featured-products {
+    background: #ffffff;
+}
+
+.home-product-grid {
     min-height: 220px;
-
-    overflow: hidden;
-
-    padding:
-        var(--space-5, 20px);
-
-    color:
-        var(--text-white, #ffffff);
-
-    background:
-        linear-gradient(
-            145deg,
-            var(--gray-900, #171717),
-            var(--gray-700, #404040)
-        );
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
-    border-radius:
-        var(--radius-xl, 20px);
-
-    box-shadow:
-        var(--shadow-sm);
-
-    transition:
-        box-shadow
-            var(--transition-normal, 0.25s ease),
-        transform
-            var(--transition-normal, 0.25s ease);
 }
 
-.home-category-card::before {
-    position: absolute;
-
-    top: -64px;
-    right: -64px;
-
-    width: 180px;
-    height: 180px;
-
-    content: "";
-
-    background:
-        rgba(255, 255, 255, 0.06);
-
-    border-radius:
-        var(--radius-full, 999px);
-
-    pointer-events: none;
+.home-trust-section {
+    padding-top: 0;
+    background: #ffffff;
 }
 
-.home-category-card:nth-child(even) {
-    color:
-        var(--on-primary, #111111);
-
-    background:
-        linear-gradient(
-            145deg,
-            var(--primary-light, #ffd54d),
-            var(--primary, #f5b400)
-        );
-
-    border-color:
-        rgba(17, 17, 17, 0.08);
-}
-
-.home-category-card:nth-child(even)::before {
-    background:
-        rgba(17, 17, 17, 0.06);
-}
-
-.home-category-number {
-    position: absolute;
-
-    top:
-        var(--space-4, 16px);
-
-    right:
-        var(--space-4, 16px);
-
-    color:
-        currentColor;
-
-    font-size:
-        var(--text-xs, 0.75rem);
-
-    font-weight:
-        var(--font-bold, 700);
-
-    line-height: 1;
-
-    opacity: 0.56;
-}
-
-.home-category-card-content {
-    position: relative;
-
-    z-index: 1;
-
-    width: 100%;
-    min-width: 0;
-}
-
-.home-category-icon {
-    display: block;
-
-    margin-bottom:
-        var(--space-5, 20px);
-
-    font-size:
-        2.5rem;
-
-    line-height: 1;
-}
-
-.home-category-card h3 {
-    margin-bottom:
-        var(--space-2, 8px);
-
-    color: inherit;
-
-    font-size:
-        var(--text-xl, 1.25rem);
-
-    font-weight:
-        var(--font-bold, 700);
-
-    line-height:
-        var(--line-height-tight, 1.3);
-}
-
-.home-category-card p {
-    max-width:
-        30rem;
-
-    color:
-        currentColor;
-
-    font-size:
-        var(--text-sm, 0.875rem);
-
-    line-height:
-        var(--line-height-body, 1.7);
-
-    opacity: 0.74;
-}
-
-
-/* ==========================================================
-   SERVICE BANNER SECTION
-========================================================== */
-
-.home-service-banner-section {
-    background:
-        var(--home-surface);
-}
-
-
-/* ==========================================================
-   SERVICE BANNER
-========================================================== */
-
-.home-service-banner {
+.home-trust-strip {
     display: grid;
-    grid-template-columns:
-        minmax(0, 1fr);
-
-    gap:
-        var(--space-8, 32px);
-
-    width: 100%;
-    min-width: 0;
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     overflow: hidden;
-
-    padding:
-        var(--space-6, 24px);
-
-    color:
-        var(--text-white, #ffffff);
-
-    background:
-        linear-gradient(
-            145deg,
-            var(--gray-900, #171717),
-            var(--gray-800, #262626)
-        );
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
-    border-radius:
-        var(--radius-xl, 20px);
-
-    box-shadow:
-        var(--home-card-shadow);
+    background: var(--bg-muted, #f7f7f5);
+    border: 1px solid var(--border-color, #e7e7e2);
+    border-radius: 20px;
 }
 
-.home-service-banner > * {
-    min-width: 0;
-}
-
-.home-service-banner-copy h2 {
-    max-width:
-        18ch;
-
-    margin-top:
-        var(--space-3, 12px);
-
-    margin-bottom:
-        var(--space-4, 16px);
-
-    color:
-        var(--text-white, #ffffff);
-
-    font-size:
-        clamp(
-            1.875rem,
-            9vw,
-            3rem
-        );
-
-    font-weight:
-        var(--font-extrabold, 800);
-
-    line-height: 1.18;
-
-    letter-spacing:
-        var(--tracking-tight, -0.01em);
-
-    text-wrap: balance;
-}
-
-.home-service-banner-copy p {
-    max-width:
-        40rem;
-
-    margin-bottom:
-        var(--space-6, 24px);
-
-    color:
-        rgba(255, 255, 255, 0.72);
-
-    font-size:
-        var(--text-md, 1rem);
-
-    line-height:
-        var(--line-height-relaxed, 1.8);
-}
-
-.home-service-banner-copy
-.section-overline {
-    color:
-        var(--primary-light, #ffd54d);
-}
-
-
-/* ==========================================================
-   SERVICE POINTS
-========================================================== */
-
-.home-service-points {
-    display: flex;
-    flex-direction: column;
-
-    min-width: 0;
-
-    border-top:
-        1px solid
-        rgba(255, 255, 255, 0.14);
-}
-
-.home-service-points article {
+.home-trust-strip article {
     display: grid;
-
-    grid-template-columns:
-        36px
-        minmax(0, 1fr);
-
-    gap:
-        var(--space-3, 12px);
-
-    min-width: 0;
-
-    padding-block:
-        var(--space-5, 20px);
-
-    border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.14);
+    gap: 6px;
+    padding: 24px 26px;
 }
 
-.home-service-points article > * {
-    min-width: 0;
+.home-trust-strip article + article {
+    border-left: 1px solid var(--border-color, #e7e7e2);
 }
 
-.home-service-points strong {
-    color:
-        var(--primary, #f5b400);
-
-    font-size:
-        var(--text-xs, 0.75rem);
-
-    font-weight:
-        var(--font-bold, 700);
-
-    line-height:
-        var(--line-height-compact, 1.45);
+.home-trust-strip strong {
+    font-size: 0.96rem;
 }
 
-.home-service-points h3 {
-    margin-bottom:
-        var(--space-2, 8px);
-
-    color:
-        var(--text-white, #ffffff);
-
-    font-size:
-        var(--text-lg, 1.125rem);
-
-    line-height:
-        var(--line-height-tight, 1.3);
+.home-trust-strip span {
+    color: var(--text-secondary, #666666);
+    font-size: 0.84rem;
+    line-height: 1.5;
 }
-
-.home-service-points p {
-    color:
-        rgba(255, 255, 255, 0.64);
-
-    font-size:
-        var(--text-sm, 0.875rem);
-
-    line-height:
-        var(--line-height-body, 1.7);
-}
-
-
-/* ==========================================================
-   HOW TO BUY SECTION
-========================================================== */
-
-.home-how-to-buy {
-    background:
-        var(--home-surface-soft);
-}
-
-
-/* ==========================================================
-   STEPS GRID
-========================================================== */
-
-.home-steps-grid {
-    display: grid;
-    grid-template-columns:
-        minmax(0, 1fr);
-
-    width: 100%;
-    min-width: 0;
-
-    overflow: hidden;
-
-    background:
-        var(--home-border);
-
-    border:
-        1px solid
-        var(--home-border);
-
-    border-radius:
-        var(--radius-xl, 20px);
-}
-
-.home-steps-grid > * {
-    min-width: 0;
-}
-
-
-/* ==========================================================
-   STEP CARD
-========================================================== */
-
-.home-step {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    min-width: 0;
-    min-height: 190px;
-
-    padding:
-        var(--space-5, 20px);
-
-    color:
-        var(--home-text);
-
-    background:
-        var(--home-surface);
-
-    transition:
-        color
-            var(--transition-normal, 0.25s ease),
-        background-color
-            var(--transition-normal, 0.25s ease);
-}
-
-.home-step-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 42px;
-    height: 42px;
-
-    margin-bottom:
-        var(--space-6, 24px);
-
-    color:
-        var(--on-primary, #111111);
-
-    font-size:
-        var(--text-xs, 0.75rem);
-
-    font-weight:
-        var(--font-bold, 700);
-
-    background:
-        var(--primary, #f5b400);
-
-    border-radius:
-        var(--radius-full, 999px);
-
-    font-variant-numeric:
-        tabular-nums;
-}
-
-.home-step h3 {
-    margin-top: auto;
-
-    margin-bottom:
-        var(--space-2, 8px);
-
-    color: inherit;
-
-    font-size:
-        var(--text-lg, 1.125rem);
-
-    font-weight:
-        var(--font-bold, 700);
-
-    line-height:
-        var(--line-height-tight, 1.3);
-}
-
-.home-step p {
-    color:
-        var(--home-text-soft);
-
-    font-size:
-        var(--text-sm, 0.875rem);
-
-    line-height:
-        var(--line-height-body, 1.7);
-
-    transition:
-        color
-        var(--transition-normal, 0.25s ease);
-}
-
-
-/* ==========================================================
-   WECHAT SECTION
-========================================================== */
 
 .home-wechat-section {
-    background:
-        var(--home-surface);
+    padding-top: 0;
+    background: #ffffff;
 }
-
-
-/* ==========================================================
-   WECHAT CTA
-========================================================== */
 
 .home-wechat-cta {
-    position: relative;
-
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap:
-        var(--space-6, 24px);
-
-    width: 100%;
-    min-width: 0;
-
-    overflow: hidden;
-
-    padding:
-        var(--space-6, 24px);
-
-    color:
-        var(--on-primary, #111111);
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary-light, #ffd54d),
-            var(--primary, #f5b400)
-        );
-
-    border:
-        1px solid
-        rgba(17, 17, 17, 0.08);
-
-    border-radius:
-        var(--radius-xl, 20px);
-
-    box-shadow:
-        var(--shadow-md);
-
-    isolation: isolate;
-}
-
-.home-wechat-cta::before {
-    position: absolute;
-
-    top: -100px;
-    right: -80px;
-
-    z-index: -1;
-
-    width: 260px;
-    height: 260px;
-
-    content: "";
-
-    background:
-        rgba(255, 255, 255, 0.24);
-
-    border-radius:
-        var(--radius-full, 999px);
-}
-
-.home-wechat-cta::after {
-    position: absolute;
-
-    bottom: -120px;
-    left: -90px;
-
-    z-index: -1;
-
-    width: 240px;
-    height: 240px;
-
-    content: "";
-
-    background:
-        rgba(17, 17, 17, 0.05);
-
-    border-radius:
-        var(--radius-full, 999px);
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 30px 34px;
+    color: #111111;
+    background: var(--primary, #f5b400);
+    border-radius: 22px;
 }
 
 .home-wechat-cta > div {
-    min-width: 0;
+    max-width: 680px;
 }
 
-.home-wechat-label {
-    display: inline-flex;
-    align-items: center;
-
-    min-height: 28px;
-
-    margin-bottom:
-        var(--space-3, 12px);
-
-    padding:
-        4px
-        10px;
-
-    color:
-        var(--on-secondary, #ffffff);
-
-    font-size:
-        var(--text-xs, 0.75rem);
-
-    font-weight:
-        var(--font-semibold, 600);
-
-    line-height:
-        var(--line-height-compact, 1.45);
-
-    background:
-        var(--secondary, #111111);
-
-    border-radius:
-        var(--radius-full, 999px);
+.home-wechat-cta > div > span {
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .home-wechat-cta h2 {
-    max-width:
-        20ch;
-
-    margin-bottom:
-        var(--space-3, 12px);
-
-    color: inherit;
-
-    font-size:
-        clamp(
-            1.75rem,
-            8vw,
-            2.75rem
-        );
-
-    font-weight:
-        var(--font-extrabold, 800);
-
-    line-height: 1.18;
-
-    letter-spacing:
-        var(--tracking-tight, -0.01em);
-
-    text-wrap: balance;
+    margin: 6px 0 8px;
+    font-size: clamp(1.55rem, 3vw, 2.3rem);
+    line-height: 1.08;
 }
 
 .home-wechat-cta p {
-    max-width:
-        42rem;
-
-    color:
-        rgba(17, 17, 17, 0.72);
-
-    font-size:
-        var(--text-md, 1rem);
-
-    line-height:
-        var(--line-height-relaxed, 1.8);
+    margin: 0;
+    color: rgba(17, 17, 17, 0.74);
+    line-height: 1.55;
 }
 
-.home-wechat-cta .btn {
-    width: 100%;
-
-    color:
-        var(--on-secondary, #ffffff);
-
-    background:
-        var(--secondary, #111111);
-
-    border-color:
-        var(--secondary, #111111);
-
-    box-shadow:
-        var(--shadow-sm);
+.home-wechat-cta > strong {
+    flex: 0 0 auto;
+    padding: 14px 20px;
+    color: #ffffff;
+    background: #111111;
+    border-radius: 12px;
 }
-
-
-/* ==========================================================
-   HOVER — POINTER HALUS SAJA
-========================================================== */
 
 @media (hover: hover) and (pointer: fine) {
-
-    .btn-hero-outline:hover {
-        color:
-            var(--text-primary, #111111);
-
-        background:
-            var(--text-white, #ffffff);
-
-        border-color:
-            var(--text-white, #ffffff);
-    }
-
-    .home-hero-arrow:hover {
-        color:
-            var(--text-primary, #111111);
-
-        background:
-            var(--text-white, #ffffff);
-
-        border-color:
-            var(--text-white, #ffffff);
-    }
-
-    .home-hero-dot:hover::before {
-        background:
-            var(--text-white, #ffffff);
+    .home-category-card {
+        transition:
+            transform 0.22s ease,
+            box-shadow 0.22s ease,
+            border-color 0.22s ease;
     }
 
     .home-category-card:hover {
-        box-shadow:
-            var(--home-card-shadow-hover);
-
-        transform:
-            translateY(-4px);
+        transform: translateY(-5px);
+        border-color: rgba(245, 180, 0, 0.58);
+        box-shadow: 0 20px 50px rgba(17, 17, 17, 0.10);
     }
 
-    .home-step:hover {
-        color:
-            var(--text-white, #ffffff);
-
-        background:
-            var(--secondary, #111111);
+    .home-category-card-media img {
+        transition: transform 0.22s ease;
     }
 
-    .home-step:hover p {
-        color:
-            rgba(255, 255, 255, 0.7);
+    .home-category-card:hover
+    .home-category-card-media img {
+        transform: scale(1.07);
     }
-
-    .home-wechat-cta .btn:hover {
-        color:
-            var(--text-primary, #111111);
-
-        background:
-            var(--text-white, #ffffff);
-
-        border-color:
-            var(--text-white, #ffffff);
-    }
-
 }
 
-
-/* ==========================================================
-   HANDPHONE SANGAT KECIL
-========================================================== */
-
-@media (max-width: 359px) {
-
-    :root {
-        --home-hero-min-height:
-            max(
-                540px,
-                calc(
-                    100vh -
-                    var(--header-stack-height, 100px)
-                )
-            );
+@media (max-width: 899px) {
+    .home-main-hero-inner {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        gap: 28px;
+        padding-block: 56px;
     }
 
-    @supports (height: 100svh) {
-
-        :root {
-            --home-hero-min-height:
-                max(
-                    540px,
-                    calc(
-                        100svh -
-                        var(--header-stack-height, 100px)
-                    )
-                );
-        }
-
-    }
-
-    .home-hero-content-wrap {
-        padding-bottom:
-            104px;
-    }
-
-    .home-hero-content h1 {
-        font-size:
-            clamp(
-                2rem,
-                11vw,
-                2.75rem
-            );
-    }
-
-    .home-hero-controls {
-        gap: 0;
-
-        padding-inline:
-            2px;
-    }
-
-    .home-hero-arrow,
-    .home-hero-dot {
-        width: 40px;
-        min-width: 40px;
-
-        height: 40px;
-        min-height: 40px;
-    }
-
-    .home-category-card,
-    .home-service-banner,
-    .home-step,
-    .home-wechat-cta {
-        padding:
-            var(--space-4, 16px);
-    }
-
-    .home-category-card {
-        min-height: 200px;
-    }
-
-}
-
-
-/* ==========================================================
-   HANDPHONE BESAR
-========================================================== */
-
-@media (min-width: 480px) {
-
-    .home-hero-content-wrap {
-        padding-bottom:
-            116px;
-    }
-
-    .home-hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-
-        width: auto;
-    }
-
-    .home-hero-actions .btn {
-        width: auto;
-        min-width: 164px;
-    }
-
-    .home-category-card {
-        min-height: 240px;
-
-        padding:
-            var(--space-6, 24px);
-    }
-
-    .home-category-card h3 {
-        font-size:
-            var(--text-2xl, 1.5rem);
-    }
-
-    .home-service-banner,
-    .home-wechat-cta {
-        padding:
-            var(--space-8, 32px);
-    }
-
-    .home-wechat-cta .btn {
-        width: auto;
-        min-width: 180px;
-
-        align-self: flex-start;
-    }
-
-}
-
-
-/* ==========================================================
-   TABLET
-========================================================== */
-
-@media (min-width: 640px) {
-
-    .home-category-grid {
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(0, 1fr)
-            );
-
-        gap:
-            var(--space-5, 20px);
-    }
-
-    .home-steps-grid {
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(0, 1fr)
-            );
-    }
-
-    .home-step {
-        min-height: 220px;
-
-        padding:
-            var(--space-6, 24px);
-    }
-
-}
-
-
-/* ==========================================================
-   TABLET BESAR
-========================================================== */
-
-@media (min-width: 768px) {
-
-    :root {
-        --home-hero-min-height:
-            max(
-                620px,
-                calc(
-                    100vh -
-                    var(--header-stack-height, 110px)
-                )
-            );
-    }
-
-    @supports (height: 100svh) {
-
-        :root {
-            --home-hero-min-height:
-                max(
-                    620px,
-                    calc(
-                        100svh -
-                        var(--header-stack-height, 110px)
-                    )
-                );
-        }
-
-    }
-
-    .home-hero-content-wrap {
-        padding-top:
-            var(--space-16, 64px);
-
-        padding-bottom:
-            124px;
-    }
-
-    .home-hero-brand-logo {
-        width: 132px;
-        min-height: 72px;
-
-        margin-bottom:
-            var(--space-5, 20px);
-
-        padding:
-            var(--space-3, 12px)
-            var(--space-4, 16px);
-    }
-
-    .home-hero-brand-logo img {
-        max-height: 50px;
-    }
-
-    .home-hero-eyebrow {
-        margin-bottom:
-            var(--space-4, 16px);
-    }
-
-    .home-hero-content h1 {
-        margin-bottom:
-            var(--space-5, 20px);
-
-        font-size:
-            clamp(
-                3rem,
-                8vw,
-                4.5rem
-            );
-    }
-
-    .home-hero-content p {
-        margin-bottom:
-            var(--space-8, 32px);
-
-        font-size:
-            var(--text-lg, 1.125rem);
-    }
-
-    .home-category-card {
-        min-height: 280px;
-    }
-
-    .home-service-banner {
-        padding:
-            var(--space-10, 40px);
-    }
-
-    .home-wechat-cta {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-
-        padding:
-            var(--space-10, 40px);
-    }
-
-    .home-wechat-cta > div {
-        flex: 1 1 auto;
-        max-width:
-            760px;
-    }
-
-    .home-wechat-cta .btn {
-        flex: 0 0 auto;
-        align-self: center;
-    }
-
-}
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width: 992px) {
-
-    .home-hero {
-        min-height: 680px;
-        height:
-            clamp(
-                680px,
-                calc(
-                    100vh -
-                    var(--header-stack-height, 120px)
-                ),
-                780px
-            );
-    }
-
-    @supports (height: 100svh) {
-
-        .home-hero {
-            height:
-                clamp(
-                    680px,
-                    calc(
-                        100svh -
-                        var(--header-stack-height, 120px)
-                    ),
-                    780px
-                );
-        }
-
-    }
-
-    .home-hero-content-wrap {
-        align-items: center;
-
-        min-height: 100%;
-
-        padding-top:
-            var(--space-12, 48px);
-
-        padding-bottom:
-            var(--space-16, 64px);
-    }
-
-    .home-hero-overlay {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(0, 0, 0, 0.82) 0%,
-                rgba(0, 0, 0, 0.58) 38%,
-                rgba(0, 0, 0, 0.18) 70%,
-                rgba(0, 0, 0, 0.04) 100%
-            );
-    }
-
-    .home-hero-media img {
-        object-position: center;
-    }
-
-    .home-hero-content {
-        max-width:
-            720px;
-    }
-
-    .home-hero-content h1 {
-        font-size:
-            clamp(
-                3.75rem,
-                6vw,
-                5.5rem
-            );
-
-        line-height: 1.05;
-    }
-
-    .home-hero-controls {
-        bottom:
-            var(--space-6, 24px);
-    }
-
-    .home-hero-scroll {
-        position: absolute;
-
-        right:
-            var(--container-gutter, 32px);
-
-        bottom:
-            var(--space-6, 24px);
-
-        z-index: 5;
-
-        display: inline-flex;
-        align-items: center;
-        gap:
-            var(--space-2, 8px);
-
-        min-height:
-            var(--touch-target-min, 44px);
-
-        color:
-            var(--text-white, #ffffff);
-
-        font-size:
-            var(--text-sm, 0.875rem);
-
-        font-weight:
-            var(--font-semibold, 600);
-
-        line-height:
-            var(--line-height-compact, 1.45);
-    }
-
-    .home-category-grid {
-        grid-template-columns:
-            repeat(
-                4,
-                minmax(0, 1fr)
-            );
-    }
-
-    .home-category-card {
-        min-height: 320px;
-    }
-
-    .home-service-banner {
-        grid-template-columns:
-            minmax(0, 1.05fr)
-            minmax(0, 0.95fr);
-
-        align-items: center;
-
-        gap:
-            var(--space-12, 48px);
-
-        padding:
-            var(--space-12, 48px);
-    }
-
-    .home-service-banner-copy h2 {
-        font-size:
-            clamp(
-                2.75rem,
-                4vw,
-                4rem
-            );
-    }
-
-    .home-service-points article {
-        grid-template-columns:
-            48px
-            minmax(0, 1fr);
-
-        gap:
-            var(--space-5, 20px);
-
-        padding-block:
-            var(--space-6, 24px);
-    }
-
-    .home-steps-grid {
-        grid-template-columns:
-            repeat(
-                4,
-                minmax(0, 1fr)
-            );
-    }
-
-    .home-step {
-        min-height: 270px;
-
-        padding:
-            var(--space-8, 32px);
-    }
-
-    .home-step-number {
-        margin-bottom:
-            var(--space-12, 48px);
-    }
-
-    .home-wechat-cta {
-        padding:
-            var(--space-12, 48px);
-    }
-
-    .home-wechat-cta h2 {
-        font-size:
-            clamp(
-                2.5rem,
-                4vw,
-                3.75rem
-            );
-    }
-
-}
-
-
-/* ==========================================================
-   DESKTOP LEBAR
-========================================================== */
-
-@media (min-width: 1200px) {
-
-    .home-hero-content {
-        max-width:
-            760px;
-    }
-
-    .home-hero-content h1 {
-        font-size:
-            clamp(
-                4rem,
-                5.6vw,
-                6rem
-            );
-    }
-
-    .home-category-grid {
-        gap:
-            var(--space-6, 24px);
-    }
-
-    .home-service-banner {
-        padding:
-            var(--space-16, 64px);
-    }
-
-    .home-wechat-cta {
-        padding:
-            var(--space-16, 64px);
-    }
-
-}
-
-
-/* ==========================================================
-   MOBILE LANDSCAPE
-========================================================== */
-
-@media (
-    max-width: 767px
-) and (
-    orientation: landscape
-) and (
-    max-height: 540px
-) {
-
-    :root {
-        --home-hero-min-height:
-            max(
-                500px,
-                calc(
-                    100vh -
-                    var(--header-height, 56px)
-                )
-            );
-    }
-
-    @supports (height: 100svh) {
-
-        :root {
-            --home-hero-min-height:
-                max(
-                    500px,
-                    calc(
-                        100svh -
-                        var(--header-height, 56px)
-                    )
-                );
-        }
-
-    }
-
-    .home-hero-content-wrap {
-        padding-top:
-            var(--space-6, 24px);
-
-        padding-bottom:
-            88px;
-    }
-
-    .home-hero-brand-logo {
+    .home-main-hero-brandmark {
         display: none;
     }
 
-    .home-hero-content h1 {
-        font-size:
-            clamp(
-                2.25rem,
-                8vw,
-                3.25rem
-            );
+    .home-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .home-hero-content p {
-        margin-bottom:
-            var(--space-4, 16px);
-
-        line-height:
-            var(--line-height-normal, 1.6);
+    .home-trust-strip {
+        grid-template-columns: 1fr;
     }
 
-    .home-hero-controls {
-        bottom:
-            calc(
-                var(--space-2, 8px) +
-                var(--safe-area-bottom, 0px)
-            );
+    .home-trust-strip article + article {
+        border-top: 1px solid var(--border-color, #e7e7e2);
+        border-left: 0;
     }
-
 }
 
+@media (max-width: 599px) {
+    .home-main-hero-inner {
+        padding-block: 44px 52px;
+    }
 
-/* ==========================================================
-   FORCED COLORS
-========================================================== */
+    .home-main-hero h1 {
+        font-size: clamp(2.7rem, 15vw, 4.4rem);
+    }
 
-@media (forced-colors: active) {
+    .home-main-hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 
-    .home-hero,
-    .home-category-card,
-    .home-service-banner,
+    .home-main-hero-actions .btn {
+        width: 100%;
+    }
+
+    .home-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .home-category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-category-card {
+        display: grid;
+        grid-template-columns: 108px minmax(0, 1fr);
+    }
+
+    .home-category-card-media {
+        min-height: 100%;
+    }
+
+    .home-category-card-media img {
+        width: 58px;
+        height: 58px;
+    }
+
+    .home-category-card-body {
+        padding: 18px;
+    }
+
+    .home-category-card-body > span:not(.home-category-card-action) {
+        min-height: 0;
+    }
+
     .home-wechat-cta {
-        border:
-            1px solid
-            CanvasText;
+        align-items: stretch;
+        flex-direction: column;
+        padding: 24px;
     }
 
-    .home-hero-overlay {
-        background:
-            transparent;
+    .home-wechat-cta > strong {
+        text-align: center;
     }
-
-    .home-hero-content {
-        padding:
-            var(--space-4, 16px);
-
-        background:
-            Canvas;
-    }
-
-    .home-hero-content h1,
-    .home-hero-content p {
-        color:
-            CanvasText;
-    }
-
 }
-
-
-/* ==========================================================
-   REDUCED MOTION
-========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
-    .home-hero-slide,
-    .home-hero-media img,
-    .home-hero-arrow,
-    .home-hero-dot::before,
     .home-category-card,
-    .home-step,
-    .home-step p {
+    .home-category-card-media img {
         transition: none;
     }
-
-    .home-hero-slide.is-active
-    .home-hero-media img {
-        transform:
-            scale(1.01);
-    }
-
 }

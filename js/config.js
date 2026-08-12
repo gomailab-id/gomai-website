@@ -125,7 +125,19 @@
     const STORAGE = {
 
         language:
-            "gomai-language"
+            "gomai-language",
+
+        cart:
+            "gomai-cart-v1",
+
+        wishlist:
+            "gomai-wishlist-v1",
+
+        checkoutDraft:
+            "gomai-checkout-draft-v1",
+
+        checkoutOrder:
+            "gomai-checkout-order-v1"
 
     };
 
@@ -169,6 +181,9 @@
         wechatId:
             "Gomai",
 
+        wechatQr:
+            "assets/gomai/wechat-qr.png",
+
         wechatAnchor:
             "wechat"
 
@@ -200,6 +215,15 @@
 
         productDetail:
             "pages/product-detail.html",
+
+        cart:
+            "pages/cart.html",
+
+        wishlist:
+            "pages/wishlist.html",
+
+        checkout:
+            "pages/checkout.html",
 
         about:
             "pages/about.html",
@@ -234,6 +258,9 @@
 
         brands:
             "data/brands.json",
+
+        categories:
+            "data/categories.json",
 
         products:
             "data/products.json",

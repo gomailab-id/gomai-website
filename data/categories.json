@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "id": "sports-outdoor",
+      "slug": "sports-outdoor",
+      "name": {
+        "id": "Olahraga & Outdoor",
+        "zh": "运动户外"
+      },
+      "description": {
+        "id": "Pakaian, sepatu, perlengkapan olahraga, running, gym, football, dan aktivitas outdoor.",
+        "zh": "运动服饰、鞋类、运动装备、跑步、健身、足球及户外活动用品。"
+      },
+      "icon": "assets/icons/categories/sports-outdoor.svg",
+      "active": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "food-beverage",
+      "slug": "food-beverage",
+      "name": {
+        "id": "Makanan & Minuman",
+        "zh": "美食饮品"
+      },
+      "description": {
+        "id": "Makanan siap saji, snack, hidangan restoran, dan berbagai minuman.",
+        "zh": "即食餐点、零食、餐厅美食及多种饮品。"
+      },
+      "icon": "assets/icons/categories/food-beverage.svg",
+      "active": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "fresh-food",
+      "slug": "fresh-food",
+      "name": {
+        "id": "Bahan Segar",
+        "zh": "生鲜食品"
+      },
+      "description": {
+        "id": "Sayur, buah, ikan, seafood, daging, telur, dan bahan makanan segar lainnya.",
+        "zh": "蔬菜、水果、鱼类、海鲜、肉类、鸡蛋及其他新鲜食材。"
+      },
+      "icon": "assets/icons/categories/fresh-food.svg",
+      "active": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "daily-supplies",
+      "slug": "daily-supplies",
+      "name": {
+        "id": "Perlengkapan Harian",
+        "zh": "日常用品"
+      },
+      "description": {
+        "id": "Kebutuhan kamar, alat rumah tangga, perlengkapan kerja atau lapangan, aksesori, dan kebutuhan sehari-hari.",
+        "zh": "宿舍用品、家用工具、工作或现场用品、配件及其他日常所需。"
+      },
+      "icon": "assets/icons/categories/daily-supplies.svg",
+      "active": true,
+      "sortOrder": 4
+    }
+  ]
+}

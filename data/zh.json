@@ -230,7 +230,7 @@
     "resultCountTemplate": "显示 {{visible}} / {{total}} 件产品",
     "meta": {
       "title": "全部产品 | Gomai",
-      "description": "通过 Gomai 探索运动、户外、时尚和日常所需的多种产品。"
+      "description": "探索 Gomai 四大主要分类中的全部商品。"
     },
     "filter": {
       "allBrands": "全部品牌",
@@ -252,13 +252,16 @@
     },
     "empty": {
       "title": "未找到产品",
-      "description": "没有符合当前搜索或筛选条件的产品。",
+      "description": "当前目录中暂时没有符合条件的商品。",
       "resetButton": "清除筛选"
     },
     "error": {
       "title": "产品数据加载失败",
       "description": "加载产品时发生错误，请重试。"
-    }
+    },
+    "catalogLabel": "商品目录",
+    "categoryLabel": "分类",
+    "simpleResultCount": "{{count}} 件商品"
   },
   "product": {
     "loading": "正在加载产品...",
@@ -306,8 +309,12 @@
     "increaseQuantity": "增加数量",
     "meta": {
       "titleTemplate": "{{product}} | Gomai",
-      "descriptionTemplate": "通过 Gomai 查看 {{product}} 的产品详情。"
-    }
+      "descriptionTemplate": "查看 {{product}} 的图片、价格、规格、库存及商品信息。"
+    },
+    "addToCart": "加入购物车",
+    "wishlistAdd": "加入心愿单",
+    "wishlistRemove": "移出心愿单",
+    "informationTitle": "商品信息"
   },
   "search": {
     "title": "搜索结果",
@@ -393,7 +400,7 @@
     "hero": {
       "badge": "关于 Gomai",
       "title": "与 Gomai 一起轻松购物",
-      "description": "Gomai 帮助您寻找产品、确认详情，并更简单地安排配送流程。"
+      "description": "Gomai 致力于让购物流程更简单、更清晰、更容易理解。"
     },
     "identity": {
       "badge": "我们是谁",
@@ -473,6 +480,11 @@
       "description": "浏览产品目录；如需帮助，可直接联系 Gomai。",
       "products": "查看产品",
       "contact": "联系 Gomai"
+    },
+    "service": {
+      "badge": "我们做什么",
+      "title": "从选择商品到配送",
+      "description": "Gomai 提供商品目录供您选择，并协助确认库存、最终价格、付款和配送信息。"
     }
   },
   "contactPage": {
@@ -482,15 +494,19 @@
     },
     "hero": {
       "badge": "联系 Gomai",
-      "title": "需要帮助？联系我们",
-      "description": "通过 Gomai 官方渠道告诉我们您的需求，我们将协助您核对产品和订单详情。"
+      "title": "通过微信联系 Gomai",
+      "description": "扫描二维码或复制微信号即可联系 Gomai。"
     },
     "wechat": {
-      "badge": "WeChat",
-      "title": "通过 WeChat 联系 Gomai",
-      "description": "可通过 WeChat 咨询产品、库存、尺码、价格、下单和配送。",
-      "label": "WeChat：",
-      "button": "通过 WeChat 联系"
+      "badge": "微信",
+      "title": "扫描 Gomai 微信二维码",
+      "description": "扫描二维码，或复制下方微信号。",
+      "label": "微信：",
+      "idLabel": "微信号",
+      "button": "通过微信联系",
+      "copy": "复制",
+      "copied": "已复制",
+      "qrAlt": "Gomai 微信二维码"
     },
     "prepare": {
       "badge": "联系前准备",
@@ -566,7 +582,7 @@
     "hero": {
       "badge": "常见问题",
       "title": "常见问题",
-      "description": "快速了解 Gomai 的产品、下单、付款和配送流程。"
+      "description": "关于 Gomai 的常见问题简要解答。"
     },
     "items": {
       "whatIsGomai": {
@@ -575,7 +591,7 @@
       },
       "howToOrder": {
         "question": "如何下单？",
-        "answer": "选择您需要的产品，准备颜色、尺码和数量等详情，然后联系 Gomai 进行确认。"
+        "answer": "选择商品并加入购物车，填写结算信息，下载订单清单，然后通过微信将图片发送给 Gomai。"
       },
       "stock": {
         "question": "网站上的产品都会一直有货吗？",
@@ -587,7 +603,7 @@
       },
       "payment": {
         "question": "如何付款？",
-        "answer": "订单处理时，付款详情会通过 Gomai 官方渠道进行确认。"
+        "answer": "Gomai 确认库存和最终价格后再进行付款。"
       },
       "delivery": {
         "question": "配送流程是怎样的？",
@@ -595,7 +611,7 @@
       },
       "contact": {
         "question": "如果我还需要帮助怎么办？",
-        "answer": "可通过 WeChat 或联系页面联系 Gomai 获取进一步帮助。"
+        "answer": "打开“联系 Gomai”页面，扫描微信二维码或复制微信号。"
       }
     },
     "links": {
@@ -620,49 +636,49 @@
       "description": "了解如何通过 Gomai 选择产品、确认订单、完成付款并接收商品。"
     },
     "hero": {
-      "badge": "购物方式",
-      "title": "通过 Gomai 四步完成购物",
-      "description": "选择所需产品，与 Gomai 确认详情，完成付款，然后等待订单处理和配送。"
+      "badge": "购买方式",
+      "title": "如何在 Gomai 购物",
+      "description": "选择商品、加入购物车、生成订单清单，然后通过微信发送给 Gomai。"
     },
     "steps": {
-      "badge": "下单流程",
+      "badge": "购买方式",
       "title": "四个简单步骤",
-      "description": "从选择产品到收到订单。",
+      "description": "从选择商品到发送订单清单。",
       "step1": {
-        "title": "选择产品",
-        "description": "浏览 Gomai 网站上的品牌和产品，确定所需产品、颜色、尺码和数量。",
-        "button": "查看产品"
+        "title": "选择商品",
+        "description": "选择所需商品、规格和数量。",
+        "button": "查看商品"
       },
       "step2": {
-        "title": "联系 Gomai",
-        "description": "通过 Gomai 官方渠道发送您的选择详情，以确认库存、规格、价格和订单信息。"
+        "title": "加入购物车",
+        "description": "将商品加入购物车并确认购买数量。"
       },
       "step3": {
-        "title": "确认并付款",
-        "description": "订单详情确认后，按照 Gomai 提供的官方付款方式完成支付。"
+        "title": "生成订单清单",
+        "description": "填写配送信息，并选择所需语言下载订单清单。"
       },
       "step4": {
-        "title": "我们送到",
-        "description": "订单将根据已确认的服务、收货地点和时间进行处理和配送。"
+        "title": "通过微信发送",
+        "description": "将订单清单图片发送给 Gomai。付款前由 Gomai 确认库存和最终价格。"
       }
     },
     "prepare": {
-      "title": "准备订单详情",
-      "description": "提供完整信息可以加快确认流程，并减少订单错误。",
+      "title": "需要准备的信息",
+      "description": "请在结算页面填写以下信息。",
       "product": {
-        "badge": "产品",
-        "title": "产品名称或链接",
-        "description": "发送您想购买的产品名称、照片或产品页面链接。"
+        "badge": "姓名",
+        "title": "姓名",
+        "description": "订单收货人姓名。"
       },
       "variant": {
-        "badge": "规格",
-        "title": "颜色、尺码和数量",
-        "description": "注明所需规格，以便 Gomai 准确确认库存。"
+        "badge": "微信",
+        "title": "微信",
+        "description": "可联系的微信号。"
       },
       "delivery": {
         "badge": "配送",
-        "title": "收货地点和时间",
-        "description": "提供收货地点和期望收货时间，以便确认配送安排。"
+        "title": "地点与时间",
+        "description": "收货地点、时间以及需要补充的备注。"
       }
     },
     "payment": {
@@ -685,22 +701,144 @@
     }
   },
   "footer": {
-    "description": "轻松购买运动、户外、时尚和日常所需商品。",
+    "description": "轻松选购运动户外、美食饮品、生鲜食品和日常用品。",
     "brandTitle": "品牌",
     "informationTitle": "信息",
     "contactTitle": "联系我们",
     "howToBuy": "购物方式",
-    "about": "关于我们",
+    "about": "关于 Gomai",
     "faq": "常见问题",
-    "contactUs": "联系我们",
+    "contactUs": "联系 Gomai",
     "wechatTemplate": "WeChat：{{wechatId}}",
-    "copyright": "© 2026 Gomai。保留所有权利。"
+    "copyright": "© 2026 Gomai。保留所有权利。",
+    "categoryTitle": "分类",
+    "wechatTitle": "Gomai 微信",
+    "scanWechat": "扫描二维码或复制微信号。",
+    "copy": "复制",
+    "copied": "已复制"
   },
   "errors": {
     "bootstrap": {
       "title": "Gomai 无法启动",
       "description": "应用启动时发生错误。请查看 Console 获取详细信息。",
       "reload": "重新加载"
+    }
+  },
+  "cart": {
+    "title": "购物车",
+    "subtitle": "请再次确认您选择的商品",
+    "add": "加入购物车",
+    "added": "已加入 ✓",
+    "chooseVariant": "选择规格",
+    "emptyTitle": "您的购物车还是空的",
+    "emptyDescription": "请先添加您需要的商品，再生成订单清单。",
+    "continueShopping": "继续购物",
+    "price": "价格",
+    "quantity": "数量",
+    "subtotal": "小计",
+    "remove": "删除",
+    "summary": "订单汇总",
+    "items": "商品",
+    "delivery": "配送",
+    "deliveryPending": "待确认",
+    "temporaryTotal": "暂计总额",
+    "checkout": "生成订单清单并下载",
+    "confirmNote": "商品库存及最终价格将由 Gomai 确认。",
+    "removeAll": "清空购物车"
+  },
+  "wishlist": {
+    "title": "心愿单",
+    "subtitle": "保存您喜欢的商品",
+    "add": "加入心愿单",
+    "remove": "移出心愿单",
+    "emptyTitle": "您的心愿单还是空的",
+    "emptyDescription": "保存感兴趣的商品，方便以后快速找到。",
+    "viewProduct": "查看商品",
+    "moveToCart": "加入购物车",
+    "clearAll": "全部删除",
+    "savedCount": "件已保存商品"
+  },
+  "checkout": {
+    "title": "订单汇总与下载",
+    "subtitle": "填写配送信息，然后下载 Gomai 订单图片。",
+    "breadcrumbCart": "购物车",
+    "informationTitle": "配送信息",
+    "name": "姓名",
+    "wechatId": "微信号",
+    "location": "配送地点",
+    "schedule": "配送时间",
+    "notes": "备注",
+    "optional": "选填",
+    "namePlaceholder": "收货人姓名",
+    "wechatPlaceholder": "客户微信号",
+    "locationPlaceholder": "例如：IMIP 员工宿舍区 C 栋",
+    "schedulePlaceholder": "例如：晚班下班后",
+    "notesPlaceholder": "给 Gomai 的补充说明",
+    "orderSummary": "订单汇总",
+    "orderCode": "订单编号",
+    "downloadTitle": "选择订单图片语言",
+    "downloadDescription": "订单图片将以 PNG 下载，可直接通过微信发送。",
+    "downloadId": "Unduh Bahasa Indonesia",
+    "downloadZh": "下载中文版",
+    "contactWechat": "联系 Gomai 微信",
+    "previewTitle": "订单预览",
+    "validation": "请先填写姓名和配送地点。",
+    "downloaded": "订单图片已成功下载。",
+    "emptyTitle": "暂无可生成清单的商品",
+    "emptyDescription": "请先将商品加入购物车。",
+    "backToCart": "返回购物车",
+    "cardTitle": "订单清单",
+    "deliveryInfo": "配送信息",
+    "temporarySubtotal": "商品小计",
+    "confirmation": "商品库存及最终价格将由 Gomai 确认。",
+    "sendWechat": "请将此订单图片发送至 Gomai 微信",
+    "generated": "生成时间",
+    "productCount": "商品"
+  },
+  "homepage": {
+    "hero": {
+      "eyebrow": "Gomai",
+      "title": "轻松购物，我们为您送达。",
+      "description": "运动户外、美食饮品、生鲜食品和日常用品，一站轻松选购。",
+      "shopNow": "立即选购",
+      "howToBuy": "购物方式"
+    },
+    "categories": {
+      "overline": "主要分类",
+      "title": "快速找到您需要的商品",
+      "allProducts": "全部产品 →",
+      "loading": "正在加载分类...",
+      "viewProducts": "查看产品 →"
+    },
+    "brands": {
+      "overline": "精选品牌",
+      "title": "Gomai 可选品牌"
+    },
+    "products": {
+      "overline": "精选产品",
+      "title": "为您推荐",
+      "viewAll": "查看全部 →",
+      "loading": "正在加载产品...",
+      "empty": "产品数据可用后将显示在这里。"
+    },
+    "trust": {
+      "trusted": {
+        "title": "放心选购",
+        "description": "精选来自已核实来源的商品。"
+      },
+      "delivery": {
+        "title": "配送到达",
+        "description": "按照服务和约定时间安排配送。"
+      },
+      "wechat": {
+        "title": "WeChat 协助",
+        "description": "需要帮助时可联系 Gomai。"
+      }
+    },
+    "wechat": {
+      "eyebrow": "Gomai 协助",
+      "title": "需要帮助或想快速下单？",
+      "description": "通过 WeChat 联系 Gomai，确认商品与配送信息。"
     }
   }
 }

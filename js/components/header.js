@@ -9,7 +9,6 @@
  * Shared Header untuk seluruh halaman Gomai.
  *
  * Tanggung jawab:
- * - Merender promo bar.
  * - Merender identitas Gomai.
  * - Merender navigasi brand dari BrandsModel.
  * - Merender navigasi desktop dan mobile.
@@ -28,7 +27,7 @@
  * - melakukan normalisasi data brand mentah.
  *
  * Sumber data navigasi:
- * BrandsModel.getNavigation()
+ * CategoriesModel.getNavigation()
  *
  * Search UI:
  * SearchPanelComponent
@@ -52,7 +51,7 @@
  * - toggleMobileNavigation()
  * - hasRendered()
  * - getElement()
- * - getNavigationBrands()
+ * - getNavigationCategories()
  * - getCore()
  * ==========================================================
  */
@@ -63,7 +62,7 @@ const HeaderComponent = (() => {
     ====================================================== */
 
     const VERSION =
-        "3.2.0";
+        "4.1.0";
 
     const DEFAULT_TARGET_ID =
         "site-header";
@@ -81,7 +80,7 @@ const HeaderComponent = (() => {
         "shared-mobile-menu-button";
 
     const DEFAULT_NAVIGATION_LIMIT =
-        6;
+        4;
 
     const DEFAULT_OPTIONS =
         Object.freeze({
@@ -89,7 +88,7 @@ const HeaderComponent = (() => {
                 DEFAULT_TARGET_ID,
 
             showPromoBar:
-                true,
+                false,
 
             showSearch:
                 true,
@@ -128,7 +127,7 @@ const HeaderComponent = (() => {
              * Array:
              * dipakai sebagai override eksplisit.
              */
-            navigationBrands:
+            navigationCategories:
                 null
         });
 
@@ -140,7 +139,7 @@ const HeaderComponent = (() => {
         ...DEFAULT_OPTIONS
     };
 
-    let navigationBrands =
+    let navigationCategories =
         [];
 
     let rootElement =
@@ -298,8 +297,8 @@ const HeaderComponent = (() => {
             /*
              * Muat data sebelum menyentuh isi Header lama.
              */
-            navigationBrands =
-                await resolveNavigationBrands(
+            navigationCategories =
+                await resolveNavigationCategories(
                     options
                 );
 
@@ -353,8 +352,8 @@ const HeaderComponent = (() => {
                     targetId:
                         options.targetId,
 
-                    navigationBrands:
-                        getNavigationBrands(),
+                    navigationCategories:
+                        getNavigationCategories(),
 
                     element:
                         rootElement
@@ -420,8 +419,8 @@ const HeaderComponent = (() => {
                     searchOpen:
                         false,
 
-                    navigationBrandCount:
-                        navigationBrands.length
+                    navigationCategoryCount:
+                        navigationCategories.length
                 }
             });
     }
@@ -497,27 +496,27 @@ const HeaderComponent = (() => {
      * Menentukan sumber data navigasi.
      *
      * Urutan prioritas:
-     * 1. customOptions.navigationBrands
-     * 2. BrandsModel.getNavigation()
+     * 1. customOptions.navigationCategories
+     * 2. CategoriesModel.getNavigation()
      *
      * @param {object} normalizedOptions
      * @returns {Promise<object[]>}
      */
-    async function resolveNavigationBrands(
+    async function resolveNavigationCategories(
         normalizedOptions
     ) {
         if (
             Array.isArray(
-                normalizedOptions.navigationBrands
+                normalizedOptions.navigationCategories
             )
         ) {
-            return normalizeNavigationBrands(
-                normalizedOptions.navigationBrands
+            return normalizeNavigationCategories(
+                normalizedOptions.navigationCategories
             );
         }
 
         const model =
-            getBrandsModel();
+            getCategoriesModel();
 
         if (
             !model ||
@@ -525,7 +524,7 @@ const HeaderComponent = (() => {
                 "function"
         ) {
             console.warn(
-                "HeaderComponent: BrandsModel.getNavigation() belum tersedia. Navigasi brand dikosongkan."
+                "HeaderComponent: CategoriesModel.getNavigation() belum tersedia. Navigasi brand dikosongkan."
             );
 
             return [];
@@ -538,7 +537,7 @@ const HeaderComponent = (() => {
                         .navigationLimit
                 );
 
-            return normalizeNavigationBrands(
+            return normalizeNavigationCategories(
                 data
             );
         } catch (error) {
@@ -566,17 +565,17 @@ const HeaderComponent = (() => {
      *
      * @returns {object|null}
      */
-    function getBrandsModel() {
+    function getCategoriesModel() {
         return (
             window.Gomai
                 ?.getModel?.(
-                    "brands"
+                    "categories"
                 ) ||
             window.ModelRegistry
                 ?.get?.(
-                    "brands"
+                    "categories"
                 ) ||
-            window.BrandsModel ||
+            window.CategoriesModel ||
             null
         );
     }
@@ -587,7 +586,7 @@ const HeaderComponent = (() => {
      * @param {unknown} values
      * @returns {{id:string,slug:string,name:string}[]}
      */
-    function normalizeNavigationBrands(
+    function normalizeNavigationCategories(
         values
     ) {
         if (
@@ -601,13 +600,12 @@ const HeaderComponent = (() => {
 
         return values
             .map(
-                normalizeNavigationBrand
+                normalizeNavigationCategory
             )
             .filter(
                 brand => {
                     if (
-                        !brand.id ||
-                        !brand.name
+                        !brand.id
                     ) {
                         return false;
                     }
@@ -634,7 +632,7 @@ const HeaderComponent = (() => {
      * @param {unknown} brand
      * @returns {{id:string,slug:string,name:string}}
      */
-    function normalizeNavigationBrand(
+    function normalizeNavigationCategory(
         brand
     ) {
         const id =
@@ -655,9 +653,16 @@ const HeaderComponent = (() => {
             slug,
 
             name:
+                brand?.name ||
+                id,
+
+            description:
+                brand?.description ||
+                "",
+
+            icon:
                 normalizeText(
-                    brand?.name ||
-                    id
+                    brand?.icon
                 )
         };
     }
@@ -681,7 +686,7 @@ const HeaderComponent = (() => {
             force:
                 true,
 
-            navigationBrands:
+            navigationCategories:
                 null
         });
     }
@@ -691,9 +696,9 @@ const HeaderComponent = (() => {
      *
      * @returns {object[]}
      */
-    function getNavigationBrands() {
+    function getNavigationCategories() {
         return cloneData(
-            navigationBrands
+            navigationCategories
         );
     }
 
@@ -928,11 +933,11 @@ const HeaderComponent = (() => {
             "Navigasi utama"
         );
 
-        navigationBrands
+        navigationCategories
             .forEach(
                 brand => {
                     navigation.append(
-                        createBrandNavigationLink(
+                        createCategoryNavigationLink(
                             brand
                         )
                     );
@@ -952,12 +957,12 @@ const HeaderComponent = (() => {
      * @param {{id:string,slug:string,name:string}} brand
      * @returns {HTMLAnchorElement}
      */
-    function createBrandNavigationLink(
-        brand
+    function createCategoryNavigationLink(
+        category
     ) {
-        const normalizedBrand =
-            normalizeNavigationBrand(
-                brand
+        const normalizedCategory =
+            normalizeNavigationCategory(
+                category
             );
 
         const link =
@@ -967,30 +972,59 @@ const HeaderComponent = (() => {
 
         link.href =
             buildRoute(
-                "brand",
+                "products",
                 {
-                    id:
-                        normalizedBrand.id
+                    category:
+                        normalizedCategory.id
                 },
-                `pages/brand.html?id=${encodeURIComponent(
-                    normalizedBrand.id
+                `pages/products.html?category=${encodeURIComponent(
+                    normalizedCategory.id
                 )}`
             );
 
         link.textContent =
-            normalizedBrand.name;
+            getNavigationCategoryName(
+                normalizedCategory
+            );
 
-        link.dataset.brandId =
-            normalizedBrand.id;
+        link.dataset.categoryId =
+            normalizedCategory.id;
 
-        link.dataset.brandSlug =
-            normalizedBrand.slug;
+        link.dataset.categorySlug =
+            normalizedCategory.slug;
 
         link.dataset.navigationRoute =
-            "brand";
+            "category";
 
         return link;
     }
+
+    function getNavigationCategoryName(
+        category
+    ) {
+        const language =
+            getCurrentLanguage();
+
+        const value =
+            category?.name;
+
+        if (
+            typeof value ===
+            "string"
+        ) {
+            return normalizeText(
+                value
+            );
+        }
+
+        return normalizeText(
+            value?.[language] ||
+            value?.zh ||
+            value?.id ||
+            category?.id
+        );
+    }
+
 
     /**
      * Membuat link semua produk.
@@ -1055,7 +1089,17 @@ const HeaderComponent = (() => {
         }
 
         actions.append(
-            createLanguageSwitch()
+            createLanguageSwitch(),
+            createShoppingLink(
+                "wishlist",
+                "wishlist",
+                "♡"
+            ),
+            createShoppingLink(
+                "cart",
+                "cart",
+                "🛒"
+            )
         );
 
         if (
@@ -1196,6 +1240,69 @@ const HeaderComponent = (() => {
         return button;
     }
 
+    /* ======================================================
+       CART / WISHLIST
+    ====================================================== */
+
+    function createShoppingLink(routeName, type, iconText) {
+        const link = document.createElement("a");
+        link.className = `header-shopping-link header-${type}-link`;
+        link.href = getRoute(routeName, `pages/${type}.html`);
+        link.dataset.shoppingType = type;
+
+        const label = translate(
+            type === "wishlist" ? "wishlist.title" : "cart.title",
+            type === "wishlist" ? "Wishlist" : "Keranjang"
+        );
+
+        link.setAttribute("aria-label", label);
+        link.title = label;
+
+        const icon = document.createElement("span");
+        icon.className = "header-shopping-icon";
+        icon.setAttribute("aria-hidden", "true");
+        icon.textContent = iconText;
+
+        const badge = document.createElement("span");
+        badge.className = "header-shopping-badge";
+        badge.dataset.shoppingBadge = type;
+        badge.setAttribute("aria-hidden", "true");
+
+        link.append(icon, badge);
+        updateShoppingBadge(link, type);
+        ensureShoppingStateBinding();
+        return link;
+    }
+
+    let shoppingStateBound = false;
+
+    function ensureShoppingStateBinding() {
+        if (shoppingStateBound) return;
+        shoppingStateBound = true;
+
+        document.addEventListener("gomai:cart-changed", refreshShoppingBadges);
+        document.addEventListener("gomai:wishlist-changed", refreshShoppingBadges);
+    }
+
+    function refreshShoppingBadges() {
+        document.querySelectorAll("[data-shopping-type]").forEach(link => {
+            updateShoppingBadge(link, link.dataset.shoppingType || "");
+        });
+    }
+
+    function updateShoppingBadge(link, type) {
+        const badge = link?.querySelector?.("[data-shopping-badge]");
+        if (!badge) return;
+
+        const store = window.GomaiShoppingState;
+        const count = type === "wishlist"
+            ? Number(store?.getWishlistCount?.() || 0)
+            : Number(store?.getCartCount?.() || 0);
+
+        badge.textContent = count > 99 ? "99+" : String(count);
+        badge.hidden = count <= 0;
+    }
+
     /**
      * Membuat tombol WeChat.
      *
@@ -1211,7 +1318,13 @@ const HeaderComponent = (() => {
             );
 
         link.href =
-            options.wechatHref;
+            options.wechatHref ===
+                "#wechat"
+                ? getRoute(
+                    "contact",
+                    "pages/contact.html"
+                )
+                : options.wechatHref;
 
         link.className =
             location === "mobile"
@@ -1336,11 +1449,11 @@ const HeaderComponent = (() => {
         inner.className =
             "container mobile-navigation-inner";
 
-        navigationBrands
+        navigationCategories
             .forEach(
                 brand => {
                     inner.append(
-                        createBrandNavigationLink(
+                        createCategoryNavigationLink(
                             brand
                         )
                     );
@@ -2127,6 +2240,28 @@ const HeaderComponent = (() => {
                 }
             );
 
+        rootElement
+            .querySelectorAll(
+                "[data-category-id]"
+            )
+            .forEach(
+                link => {
+                    const category =
+                        navigationCategories.find(
+                            item =>
+                                item.id ===
+                                link.dataset.categoryId
+                        );
+
+                    if (category) {
+                        link.textContent =
+                            getNavigationCategoryName(
+                                category
+                            );
+                    }
+                }
+            );
+
         updateLanguageButtons();
 
         updateMobileMenuLabel(
@@ -2219,14 +2354,6 @@ const HeaderComponent = (() => {
             window.location.pathname
                 .toLowerCase();
 
-        const activeBrandId =
-            getQueryParameter(
-                window.GomaiConfig
-                    ?.query
-                    ?.brandId ||
-                "id"
-            ).toLowerCase();
-
         rootElement
             .querySelectorAll(
                 "[data-navigation-route]"
@@ -2240,27 +2367,36 @@ const HeaderComponent = (() => {
                     let active =
                         false;
 
+                    const activeCategoryId =
+                        getQueryParameter(
+                            window.GomaiConfig
+                                ?.query
+                                ?.category ||
+                            "category"
+                        ).toLowerCase();
+
                     if (
                         route === "products" &&
                         pathname.includes(
                             "products.html"
-                        )
+                        ) &&
+                        !activeCategoryId
                     ) {
                         active =
                             true;
                     }
 
                     if (
-                        route === "brand" &&
+                        route === "category" &&
                         pathname.includes(
-                            "brand.html"
+                            "products.html"
                         ) &&
                         String(
                             link.dataset
-                                .brandId ||
+                                .categoryId ||
                             ""
                         ).toLowerCase() ===
-                            activeBrandId
+                            activeCategoryId
                     ) {
                         active =
                             true;
@@ -2407,7 +2543,7 @@ const HeaderComponent = (() => {
             rootElement =
                 null;
 
-            navigationBrands =
+            navigationCategories =
                 [];
         }
     }
@@ -2702,14 +2838,14 @@ const HeaderComponent = (() => {
     function normalizeOptions(
         customOptions = {}
     ) {
-        const customNavigationBrands =
+        const customNavigationCategories =
             Array.isArray(
                 customOptions
-                    .navigationBrands
+                    .navigationCategories
             )
-                ? normalizeNavigationBrands(
+                ? normalizeNavigationCategories(
                     customOptions
-                        .navigationBrands
+                        .navigationCategories
                 )
                 : null;
 
@@ -2729,8 +2865,8 @@ const HeaderComponent = (() => {
                     DEFAULT_NAVIGATION_LIMIT
                 ),
 
-            navigationBrands:
-                customNavigationBrands,
+            navigationCategories:
+                customNavigationCategories,
 
             wechatHref:
                 normalizeText(
@@ -3075,7 +3211,7 @@ const HeaderComponent = (() => {
             closeMobileNavigation,
             toggleMobileNavigation,
 
-            getNavigationBrands,
+            getNavigationCategories,
 
             hasRendered,
             getElement,

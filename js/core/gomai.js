@@ -723,6 +723,24 @@ const Gomai = (() => {
             },
 
 
+            categories: {
+
+                model:
+                    window.CategoriesModel,
+
+                options: {
+
+                    required:
+                        true,
+
+                    autoLoad:
+                        true
+
+                }
+
+            },
+
+
             products: {
 
                 model:
@@ -1478,6 +1496,23 @@ const Gomai = (() => {
 
             };
 
+        }
+
+
+        /* ==============================================
+           CART / WISHLIST / CHECKOUT
+        ============================================== */
+
+        if (window.CartController) {
+            definitions.cart = { controller: window.CartController, options: { page: "cart", required: true, languageAware: true } };
+        }
+
+        if (window.WishlistController) {
+            definitions.wishlist = { controller: window.WishlistController, options: { page: "wishlist", required: true, languageAware: true } };
+        }
+
+        if (window.CheckoutController) {
+            definitions.checkout = { controller: window.CheckoutController, options: { page: "checkout", required: true, languageAware: true } };
         }
 
 

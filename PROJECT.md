@@ -1,101 +1,60 @@
-# Gomai Project
+# Gomai Project — Replacement 6
 
-## 1. Tujuan Dokumen
+## Scope
 
-Dokumen ini adalah ringkasan scope produk Gomai yang berlaku untuk repository ini.
-Ia dipakai bersama `ARCHITECTURE.md`, `DECISIONS.md`, `FILE-MANIFEST.md`, dan `CHANGELOG.md` sebagai sumber kebenaran proyek.
+Gomai adalah website katalog dan pemesanan ringan tanpa login/backend pada baseline ini.
 
-Riwayat percakapan ChatGPT bukan sumber utama status teknis proyek. Jika ada perbedaan antara percakapan lama dan repository aktual, repository + dokumen kontrol ini harus diaudit terlebih dahulu sebelum perubahan dilakukan.
+Alur utama:
 
-## 2. Produk Saat Ini
+`Homepage → Kategori → Produk → Detail → Wishlist/Cart → Checkout → Download PNG → WeChat → Konfirmasi Gomai → Pembayaran → Pengantaran`
 
-Gomai adalah website katalog belanja statis dan data-driven.
-Website menampilkan brand dan produk, membantu pengguna menjelajahi katalog, lalu mengarahkan proses komunikasi/pemesanan melalui kanal Gomai seperti WeChat.
+## Halaman
 
-Versi repository saat ini belum merupakan aplikasi commerce dengan database, cart server-side, checkout server-side, atau payment gateway terintegrasi.
+- `index.html` — homepage category-first.
+- `pages/brand.html` — koleksi satu brand.
+- `pages/products.html` — katalog semua produk atau satu kategori utama.
+- `pages/product-detail.html` — detail produk yang fokus.
+- `pages/search.html` — hasil pencarian.
+- `pages/wishlist.html` — wishlist lokal.
+- `pages/cart.html` — cart lokal.
+- `pages/checkout.html` — data pengantaran + generator ringkasan PNG.
+- `pages/how-to-buy.html` — hanya cara membeli.
+- `pages/about.html` — hanya tentang Gomai.
+- `pages/contact.html` — WeChat QR + copyable WeChat ID.
+- `pages/faq.html` — 7 accordion FAQ.
+- `404.html` — not found.
 
-## 3. Scope MVP Repository
+## Commerce MVP
 
-### Halaman
+- Tidak ada akun/login.
+- Tidak ada backend/database.
+- Wishlist dan Cart memakai localStorage.
+- Checkout belum menarik pembayaran.
+- Kode referensi client-side berbentuk `GM-####`.
+- PNG order summary mempunyai tinggi dinamis agar seluruh produk dan informasi pengantaran tetap terlihat.
+- Harga dan ketersediaan dikonfirmasi Gomai sebelum pembayaran.
 
-- `index.html` — homepage berbasis brand.
-- `pages/brand.html` — halaman koleksi satu brand.
-- `pages/products.html` — katalog seluruh produk.
-- `pages/product-detail.html` — detail satu produk.
-- `pages/about.html` — informasi tentang Gomai.
-- `pages/contact.html` — kontak.
-- `pages/faq.html` — FAQ.
-- `pages/how-to-buy.html` — panduan pembelian.
-- `404.html` — halaman not found.
+## Bahasa
 
-### Bahasa
-
-Repository mendukung dua bahasa:
-
-- Mandarin / Simplified Chinese (`zh`)
+- Mandarin (`zh`)
 - Indonesia (`id`)
 
-Konfigurasi runtime saat ini menetapkan `zh` sebagai default dan fallback language.
+Runtime mempertahankan `zh` sebagai default/fallback saat ini.
 
-### Data
+## Definition of Done Baseline
 
-Sumber data runtime:
-
-- `data/brands.json`
-- `data/products.json`
-- `data/zh.json`
-- `data/id.json`
-
-Brand dan produk tidak boleh ditambahkan dengan mengedit markup HTML atau membuat array katalog baru di component/controller.
-
-## 4. Prinsip Produk Teknis
-
-1. **Data-driven** — brand, produk, dan konten multilingual berasal dari data.
-2. **Brand-first homepage** — homepage menjadi entry point untuk brand.
-3. **Mobile-first** — UI harus nyaman digunakan di handphone terlebih dahulu.
-4. **Mandarin-first implementation** — sesuai konfigurasi runtime saat ini, dengan Indonesia tetap setara sebagai bahasa yang didukung.
-5. **Progressive robustness** — halaman tetap memiliki struktur semantic dan error/empty state yang jelas.
-6. **Shared UI** — Header, Footer, SearchPanel, BrandCard, ProductCard, loading, dan empty state tidak diduplikasi per halaman.
-7. **Single bootstrap** — aplikasi dimulai melalui Gomai Core dan `js/app.js`.
-
-## 5. Bukan Scope Saat Ini
-
-Jangan menambahkan fitur berikut tanpa keputusan produk baru:
-
-- database backend;
-- akun/login pengguna;
-- cart server-side;
-- checkout server-side;
-- payment gateway langsung di website;
-- marketplace escrow;
-- CMS;
-- framework frontend baru.
-
-## 6. Definition of Done untuk Baseline Stabil
-
-Baseline MVP dinyatakan stabil jika:
-
-- seluruh halaman memuat CSS global + CSS khusus halaman yang benar;
-- seluruh path data dan assets valid;
-- dictionary `id` dan `zh` memiliki struktur key identik dan tidak ada key UI yang hilang;
-- seluruh script dependency termuat dalam urutan yang benar;
-- `node --check` lolos untuk seluruh JavaScript;
+Baseline static-ready jika:
 - seluruh JSON valid;
-- tidak ada error JavaScript di browser pada alur utama;
-- homepage, brand, products, product detail, information pages, search, dan 404 lolos QA desktop/mobile;
-- switching `zh` ↔ `id` bekerja tanpa teks key mentah atau bahasa campur yang tidak disengaja;
-- obsolete file sudah diklasifikasikan dan cleanup dilakukan setelah integrasi stabil;
-- Git memiliki checkpoint baseline stabil yang bersih.
+- seluruh JavaScript lolos `node --check`;
+- semua local HTML/CSS/JS/image references yang statis valid;
+- dictionary ID/ZH parity;
+- brand/category/product references valid;
+- `app.js` menjadi script terakhir;
+- Header/Footer shared;
+- 4 kategori utama tanpa subkategori;
+- Wishlist/Cart/Checkout contract tetap aktif;
+- FAQ chevron accessibility contract tetap aktif;
+- QR + copyable WeChat ID tersedia di Contact dan Footer;
+- responsive CSS tersedia untuk seluruh kelompok halaman utama.
 
-## 7. Workflow Wajib
-
-Untuk setiap perubahan:
-
-1. baca file aktual;
-2. cek dependency dan kontraknya;
-3. tentukan `SKIP`, `REVISE`, atau `CLEANUP-CANDIDATE`;
-4. hanya revisi jika ada masalah konkret;
-5. validasi syntax/static;
-6. update `FILE-MANIFEST.md` dan `CHANGELOG.md`;
-7. lock file setelah stabil;
-8. lanjut berdasarkan dependency, bukan berdasarkan tebakan.
+Visual/browser QA tetap wajib sebelum deployment production.

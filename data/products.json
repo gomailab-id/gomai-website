@@ -3,34 +3,26 @@
     {
       "id": "atalon-critical-running-tshirt",
       "slug": "atalon-critical-running-tshirt",
-
       "brandId": "atalon",
-
       "categoryIds": [
-        "running"
+        "sports-outdoor"
       ],
-
       "name": {
         "id": "Critical Running T-Shirt",
         "zh": "Critical Running T-Shirt"
       },
-
       "description": {
         "id": "",
         "zh": ""
       },
-
       "shortDescription": {
         "id": "",
         "zh": ""
       },
-
       "price": 299000,
       "compareAtPrice": null,
       "currency": "IDR",
-
       "active": true,
-
       "inventory": {
         "inStock": true,
         "quantity": 0,
@@ -38,48 +30,35 @@
         "allowBackorder": false,
         "status": "in-stock"
       },
-
       "colors": [
         {
           "id": "black",
-
           "name": {
             "id": "Hitam",
             "zh": "黑色"
           },
-
           "hex": "#000000",
-
           "images": [
             "assets/products/atalon/critical-running-tshirt/black/right.webp"
           ],
-
           "sizes": [],
-
           "quantity": 0,
           "inStock": true,
-
           "sortOrder": 1
         }
       ],
-
       "sizes": [],
-
       "display": {
         "featured": true,
         "featuredOrder": 1,
-
         "showOnHomepage": false,
         "homepageOrder": 1,
-
         "newArrival": false,
         "popular": false
       },
-
       "tags": [],
       "keywords": [],
       "specifications": [],
-
       "sortOrder": 1
     }
   ]

@@ -1,589 +1,119 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <title>Tentang Gomai | Gomai</title>
-
     <meta
-        id="page-description"
         name="description"
-        content="Kenali Gomai dan cara kami membantu proses belanja menjadi lebih mudah."
+        content="Kenali Gomai."
     >
-
-    <link
-        rel="stylesheet"
-        href="../css/styles.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../css/information.css"
-    >
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/information.css">
 </head>
-
 <body
     data-page="information"
     data-information-page="about"
 >
-
-    <!-- ==================================================
-         SHARED HEADER
-         Dirender oleh HeaderComponent.
-    ================================================== -->
-
     <header id="site-header"></header>
 
-
-    <!-- ==================================================
-         MAIN CONTENT
-    ================================================== -->
-
     <main
-        class="information-page about-page about-premium-page"
+        class="information-simple-page information-simple-about"
         data-information-page-root
     >
 
-        <!-- ==============================================
-             PREMIUM HERO
-        =============================================== -->
-
-        <section class="information-hero about-premium-hero">
-            <div class="container about-premium-hero-grid">
-
-                <div class="about-premium-hero-copy">
-
-                    <span
-                        class="about-premium-kicker"
-                        data-lang="aboutPage.hero.badge"
-                    >
-                        Tentang Gomai
-                    </span>
-
-                    <h1 data-lang="aboutPage.hero.title">
-                        Belanja Lebih Mudah bersama Gomai
-                    </h1>
-
-                    <p data-lang="aboutPage.hero.description">
-                        Gomai membantu Anda menemukan produk, mengonfirmasi
-                        detail, dan mengatur proses pengantaran dengan lebih
-                        sederhana.
-                    </p>
-
-                    <div class="about-premium-hero-actions">
-                        <a
-                            href="products.html"
-                            class="btn btn-primary"
-                            data-route="products"
-                            data-lang="aboutPage.cta.products"
-                        >
-                            Lihat Produk
-                        </a>
-
-                        <a
-                            href="contact.html"
-                            class="btn btn-outline"
-                            data-route="contact"
-                            data-lang="aboutPage.cta.contact"
-                        >
-                            Hubungi Gomai
-                        </a>
-                    </div>
-
-                </div>
-
-                <div
-                    class="about-premium-hero-mark"
-                    aria-hidden="true"
+        <section class="information-simple-hero">
+            <div class="container information-simple-hero-inner">
+                <span
+                    class="information-simple-kicker"
+                    data-lang="aboutPage.hero.badge"
                 >
-                    <div class="about-premium-hero-mark-top">
-                        <span>GOMAI</span>
-                        <span>01</span>
-                    </div>
+                    Tentang Gomai
+                </span>
 
-                    <strong>G</strong>
+                <h1 data-lang="aboutPage.hero.title">
+                    Belanja Lebih Mudah bersama Gomai
+                </h1>
 
-                    <div class="about-premium-hero-mark-bottom">
-                        <span data-lang="aboutPage.values.simple.title">
-                            Sederhana
-                        </span>
-                        <span data-lang="aboutPage.values.clear.title">
-                            Jelas
-                        </span>
-                        <span data-lang="aboutPage.values.trusted.title">
-                            Terpercaya
-                        </span>
-                    </div>
-                </div>
-
+                <p data-lang="aboutPage.hero.description">
+                    Gomai membantu membuat proses belanja menjadi lebih
+                    sederhana dan mudah dipahami.
+                </p>
             </div>
         </section>
 
+        <section class="information-simple-section">
+            <div class="container information-simple-about-grid">
 
-        <!-- ==============================================
-             IDENTITY
-        =============================================== -->
+                <article class="information-simple-about-card">
+                    <span
+                        class="information-simple-kicker"
+                        data-lang="aboutPage.identity.badge"
+                    >
+                        Siapa Kami
+                    </span>
 
-        <section class="information-section information-section-white about-premium-identity-section">
-            <div class="container">
-
-                <div class="about-premium-section-heading">
-                    <div>
-                        <span
-                            class="about-premium-kicker about-premium-kicker-soft"
-                            data-lang="aboutPage.identity.badge"
-                        >
-                            Siapa Kami
-                        </span>
-
-                        <h2 data-lang="aboutPage.identity.title">
-                            Gomai Membantu Menghubungkan Kebutuhan dengan Produk
-                        </h2>
-                    </div>
+                    <h2 data-lang="aboutPage.identity.title">
+                        Gomai Membantu Menghubungkan Kebutuhan dengan Produk
+                    </h2>
 
                     <p data-lang="aboutPage.identity.description">
                         Kami membangun pengalaman belanja yang sederhana,
                         jelas, dan mudah digunakan.
                     </p>
-                </div>
+                </article>
 
-                <div class="about-premium-identity-grid">
-
-                    <article class="about-premium-identity-card">
-                        <span class="about-premium-card-index">01</span>
-
-                        <h3 data-lang="aboutPage.identity.point1.title">
-                            Mudah Dicari
-                        </h3>
-
-                        <p data-lang="aboutPage.identity.point1.description">
-                            Brand dan produk disusun agar lebih mudah ditemukan.
-                        </p>
-                    </article>
-
-                    <article class="about-premium-identity-card">
-                        <span class="about-premium-card-index">02</span>
-
-                        <h3 data-lang="aboutPage.identity.point2.title">
-                            Mudah Dikonfirmasi
-                        </h3>
-
-                        <p data-lang="aboutPage.identity.point2.description">
-                            Detail produk dan pesanan dapat dikonfirmasi
-                            melalui kanal resmi Gomai.
-                        </p>
-                    </article>
-
-                    <article class="about-premium-identity-card about-premium-identity-card-accent">
-                        <span class="about-premium-card-index">03</span>
-
-                        <h3 data-lang="aboutPage.identity.point3.title">
-                            Mudah Diterima
-                        </h3>
-
-                        <p data-lang="aboutPage.identity.point3.description">
-                            Pengantaran disesuaikan dengan layanan, lokasi,
-                            dan jadwal yang dikonfirmasi.
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             PROMISE
-        =============================================== -->
-
-        <section class="information-section about-premium-promise-section">
-            <div class="container">
-
-                <div class="about-premium-promise-panel">
-
-                    <div class="about-premium-promise-intro">
-                        <span
-                            class="about-premium-kicker"
-                            data-lang="aboutPage.promise.badge"
-                        >
-                            Komitmen Kami
-                        </span>
-
-                        <h2 data-lang="aboutPage.promise.title">
-                            Informasi Jelas sebelum Pesanan Diproses
-                        </h2>
-
-                        <p data-lang="aboutPage.promise.description">
-                            Gomai membantu memastikan detail produk,
-                            ketersediaan, pembayaran, dan pengantaran
-                            dikonfirmasi sebelum pesanan diproses.
-                        </p>
-                    </div>
-
-                    <div class="about-premium-promise-grid">
-
-                        <article class="about-premium-promise-card">
-                            <span>01</span>
-
-                            <h3 data-lang="aboutPage.promise.product.title">
-                                Detail Produk
-                            </h3>
-
-                            <p data-lang="aboutPage.promise.product.description">
-                                Produk, warna, ukuran, dan jumlah dikonfirmasi
-                                sebelum pemesanan.
-                            </p>
-                        </article>
-
-                        <article class="about-premium-promise-card">
-                            <span>02</span>
-
-                            <h3 data-lang="aboutPage.promise.communication.title">
-                                Komunikasi Jelas
-                            </h3>
-
-                            <p data-lang="aboutPage.promise.communication.description">
-                                Informasi pesanan disampaikan melalui kanal
-                                resmi Gomai.
-                            </p>
-                        </article>
-
-                        <article class="about-premium-promise-card">
-                            <span>03</span>
-
-                            <h3 data-lang="aboutPage.promise.delivery.title">
-                                Pengantaran Terkoordinasi
-                            </h3>
-
-                            <p data-lang="aboutPage.promise.delivery.description">
-                                Lokasi dan jadwal penerimaan dikonfirmasi
-                                bersama pesanan.
-                            </p>
-                        </article>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             PROCESS
-        =============================================== -->
-
-        <section class="information-section information-section-white about-premium-process-section">
-            <div class="container">
-
-                <div class="about-premium-section-heading about-premium-section-heading-process">
-                    <div>
-                        <span
-                            class="about-premium-kicker about-premium-kicker-soft"
-                            data-lang="aboutPage.process.badge"
-                        >
-                            Cara Kami Membantu
-                        </span>
-
-                        <h2 data-lang="aboutPage.process.title">
-                            Dari Pilihan Produk hingga Pengantaran
-                        </h2>
-                    </div>
-
-                    <p data-lang="aboutPage.process.description">
-                        Proses dibuat sederhana agar Anda mengetahui langkah
-                        berikutnya.
-                    </p>
-                </div>
-
-                <div class="about-premium-process-grid">
-
-                    <article class="about-premium-process-card">
-                        <div class="about-premium-process-topline">
-                            <span>01</span>
-                            <i aria-hidden="true"></i>
-                        </div>
-
-                        <h3 data-lang="aboutPage.process.step1.title">
-                            Pilih Produk
-                        </h3>
-
-                        <p data-lang="aboutPage.process.step1.description">
-                            Jelajahi brand dan produk yang tersedia melalui
-                            Gomai.
-                        </p>
-                    </article>
-
-                    <article class="about-premium-process-card">
-                        <div class="about-premium-process-topline">
-                            <span>02</span>
-                            <i aria-hidden="true"></i>
-                        </div>
-
-                        <h3 data-lang="aboutPage.process.step2.title">
-                            Konfirmasi Detail
-                        </h3>
-
-                        <p data-lang="aboutPage.process.step2.description">
-                            Sampaikan pilihan dan kebutuhan Anda melalui kanal
-                            resmi Gomai.
-                        </p>
-                    </article>
-
-                    <article class="about-premium-process-card">
-                        <div class="about-premium-process-topline">
-                            <span>03</span>
-                            <i aria-hidden="true"></i>
-                        </div>
-
-                        <h3 data-lang="aboutPage.process.step3.title">
-                            Pesanan Diproses
-                        </h3>
-
-                        <p data-lang="aboutPage.process.step3.description">
-                            Setelah detail dan pembayaran dikonfirmasi,
-                            pesanan diproses.
-                        </p>
-                    </article>
-
-                    <article class="about-premium-process-card about-premium-process-card-final">
-                        <div class="about-premium-process-topline">
-                            <span>04</span>
-                            <i aria-hidden="true"></i>
-                        </div>
-
-                        <h3 data-lang="aboutPage.process.step4.title">
-                            Kami Antar
-                        </h3>
-
-                        <p data-lang="aboutPage.process.step4.description">
-                            Pesanan diantar sesuai layanan dan jadwal yang
-                            telah dikonfirmasi.
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             VALUES
-        =============================================== -->
-
-        <section class="information-section about-premium-values-section">
-            <div class="container">
-
-                <div class="about-premium-values-header">
+                <article class="information-simple-about-card information-simple-about-card-dark">
                     <span
-                        class="about-premium-kicker about-premium-kicker-dark"
-                        data-lang="aboutPage.values.badge"
+                        class="information-simple-kicker"
+                        data-lang="aboutPage.service.badge"
                     >
-                        Prinsip Gomai
+                        Apa yang Kami Lakukan
                     </span>
 
-                    <h2 data-lang="aboutPage.values.title">
-                        Sederhana, Jelas, dan Dapat Dipercaya
+                    <h2 data-lang="aboutPage.service.title">
+                        Dari Pilihan Produk hingga Pengantaran
                     </h2>
 
-                    <p data-lang="aboutPage.values.description">
-                        Kami memprioritaskan pengalaman yang mudah dipahami
-                        dari awal hingga pesanan diterima.
+                    <p data-lang="aboutPage.service.description">
+                        Gomai menyediakan katalog untuk memilih kebutuhan,
+                        kemudian membantu konfirmasi stok, harga akhir,
+                        pembayaran, dan pengantaran.
                     </p>
-                </div>
-
-                <div class="about-premium-values-grid">
-
-                    <article class="about-premium-value-card">
-                        <span class="about-premium-value-number">01</span>
-
-                        <div>
-                            <h3 data-lang="aboutPage.values.simple.title">
-                                Sederhana
-                            </h3>
-
-                            <p data-lang="aboutPage.values.simple.description">
-                                Alur belanja dibuat ringkas dan mudah diikuti.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="about-premium-value-card">
-                        <span class="about-premium-value-number">02</span>
-
-                        <div>
-                            <h3 data-lang="aboutPage.values.clear.title">
-                                Jelas
-                            </h3>
-
-                            <p data-lang="aboutPage.values.clear.description">
-                                Informasi penting dikonfirmasi sebelum pesanan
-                                diproses.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="about-premium-value-card">
-                        <span class="about-premium-value-number">03</span>
-
-                        <div>
-                            <h3 data-lang="aboutPage.values.trusted.title">
-                                Terpercaya
-                            </h3>
-
-                            <p data-lang="aboutPage.values.trusted.description">
-                                Komunikasi dan proses pemesanan dilakukan
-                                melalui kanal resmi Gomai.
-                            </p>
-                        </div>
-                    </article>
-
-                </div>
+                </article>
 
             </div>
         </section>
-
-
-        <!-- ==============================================
-             CTA
-        =============================================== -->
-
-        <section
-            class="about-premium-cta-section"
-            id="wechat"
-        >
-            <div class="container">
-
-                <div class="about-premium-cta">
-                    <div class="about-premium-cta-copy">
-                        <span
-                            class="about-premium-kicker"
-                            data-lang="aboutPage.cta.badge"
-                        >
-                            Mulai Belanja
-                        </span>
-
-                        <h2 data-lang="aboutPage.cta.title">
-                            Temukan Produk yang Anda Butuhkan
-                        </h2>
-
-                        <p data-lang="aboutPage.cta.description">
-                            Jelajahi katalog atau hubungi Gomai jika Anda
-                            membutuhkan bantuan.
-                        </p>
-                    </div>
-
-                    <div class="about-premium-cta-actions">
-                        <a
-                            href="products.html"
-                            class="btn btn-primary"
-                            data-route="products"
-                            data-lang="aboutPage.cta.products"
-                        >
-                            Lihat Produk
-                        </a>
-
-                        <a
-                            href="contact.html"
-                            class="btn btn-outline"
-                            data-route="contact"
-                            data-lang="aboutPage.cta.contact"
-                        >
-                            Hubungi Gomai
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-
-    <!-- ==================================================
-         SHARED FOOTER
-         Dirender oleh FooterComponent.
-    ================================================== -->
 
     <footer id="site-footer"></footer>
-
-
-    <!-- ==================================================
-         JAVASCRIPT — GOMAI FRAMEWORK
-    ================================================== -->
-
-
-    <!-- ==================================================
-         1. FOUNDATION
-    ================================================== -->
 
     <script src="../js/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/language.js"></script>
-
-
-    <!-- ==================================================
-         2. CORE FOUNDATION
-    ================================================== -->
+    <script src="../js/shopping-state.js"></script>
 
     <script src="../js/core/component-core.js"></script>
-
     <script src="../js/core/model-registry.js"></script>
     <script src="../js/core/component-registry.js"></script>
     <script src="../js/core/controller-registry.js"></script>
 
-
-    <!-- ==================================================
-         3. MODELS
-    ================================================== -->
-
     <script src="../js/models/brands.js"></script>
+    <script src="../js/models/categories.js"></script>
     <script src="../js/models/products.js"></script>
-
-
-    <!-- ==================================================
-         4. COMPONENTS
-    ================================================== -->
 
     <script src="../js/components/loading.js"></script>
     <script src="../js/components/empty-state.js"></script>
-
     <script src="../js/components/product-card.js"></script>
     <script src="../js/components/brand-card.js"></script>
     <script src="../js/components/search-panel.js"></script>
-
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
 
-
-    <!-- ==================================================
-         5. PAGE CONTROLLER
-    ================================================== -->
-
     <script src="../js/information.js"></script>
-
-
-    <!-- ==================================================
-         6. GOMAI CORE
-    ================================================== -->
-
     <script src="../js/core/gomai.js"></script>
-
-
-    <!-- ==================================================
-         7. APPLICATION BOOTSTRAPPER
-         app.js WAJIB MENJADI SCRIPT TERAKHIR.
-    ================================================== -->
-
     <script src="../js/app.js"></script>
-
 </body>
 </html>

@@ -14,33 +14,17 @@
     <meta
         id="page-description"
         name="description"
-        content="Lihat informasi lengkap produk, pilihan warna, ukuran, harga, stok, dan detail pemesanan melalui Gomai."
+        content="Lihat foto, harga, varian, stok, dan informasi produk di Gomai."
     >
 
-    <link
-        rel="stylesheet"
-        href="../css/styles.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../css/product-detail.css"
-    >
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/product-detail.css">
 </head>
 
 <body data-page="productDetail">
 
-    <!-- ==================================================
-         SHARED HEADER
-         Dirender oleh HeaderComponent.
-    ================================================== -->
-
     <header id="site-header"></header>
 
-
-    <!-- ==================================================
-         MAIN CONTENT
-    ================================================== -->
 
     <main
         id="product-detail-page"
@@ -48,18 +32,16 @@
     >
 
         <!-- ==============================================
-             BREADCRUMB
+             COMPACT BREADCRUMB
         =============================================== -->
 
-        <section class="product-breadcrumb-section">
-
+        <div class="product-breadcrumb-section">
             <div class="container">
 
                 <nav
                     class="breadcrumb"
                     aria-label="Breadcrumb"
                 >
-
                     <a
                         href="../index.html"
                         data-lang="common.home"
@@ -67,9 +49,7 @@
                         Beranda
                     </a>
 
-                    <span aria-hidden="true">
-                        /
-                    </span>
+                    <span aria-hidden="true">/</span>
 
                     <a
                         href="products.html"
@@ -78,9 +58,7 @@
                         Produk
                     </a>
 
-                    <span aria-hidden="true">
-                        /
-                    </span>
+                    <span aria-hidden="true">/</span>
 
                     <span
                         id="breadcrumb-product-name"
@@ -89,24 +67,19 @@
                     >
                         Memuat produk...
                     </span>
-
                 </nav>
 
             </div>
-
-        </section>
+        </div>
 
 
         <!-- ==============================================
-             PRODUCT DETAIL
-
-             Gallery, informasi produk, pilihan warna,
-             ukuran, quantity, stok, harga, dan tombol
-             pemesanan dibangun oleh ProductDetailController.
+             PRODUCT
+             Gallery + product essentials + cart/wishlist.
+             Dynamic content is rendered by controller.
         =============================================== -->
 
-        <section class="section product-detail-section">
-
+        <section class="product-detail-section">
             <div class="container">
 
                 <div
@@ -115,197 +88,78 @@
                     aria-live="polite"
                     aria-busy="true"
                 >
-
                     <div class="empty-state">
-
                         <p data-lang="product.loading">
                             Memuat produk...
                         </p>
-
                     </div>
-
                 </div>
 
             </div>
-
         </section>
 
 
         <!-- ==============================================
-             PRODUCT DESCRIPTION
+             PRODUCT INFORMATION ONLY
         =============================================== -->
 
         <section
-            id="product-description"
-            class="section product-description-section"
+            id="product-information-section"
+            class="product-information-section"
             hidden
         >
-
             <div class="container">
 
-                <div class="product-information-block">
+                <div class="product-information-panel">
 
-                    <div class="section-title">
+                    <h2
+                        class="product-information-heading"
+                        data-lang="productDetail.informationTitle"
+                    >
+                        Informasi Produk
+                    </h2>
 
-                        <h2
+
+                    <div
+                        id="product-description"
+                        class="product-information-part product-description-section"
+                        hidden
+                    >
+                        <h3
                             id="product-description-title"
                             data-lang="productDetail.descriptionTitle"
                         >
                             Deskripsi Produk
-                        </h2>
+                        </h3>
 
+                        <div
+                            id="product-description-text"
+                            class="product-description-text"
+                        ></div>
                     </div>
 
+
                     <div
-                        id="product-description-text"
-                        class="product-description-text"
-                    ></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             PRODUCT SPECIFICATIONS
-        =============================================== -->
-
-        <section
-            id="product-specification"
-            class="section product-specification-section"
-            hidden
-        >
-
-            <div class="container">
-
-                <div class="product-information-block">
-
-                    <div class="section-title">
-
-                        <h2
+                        id="product-specification"
+                        class="product-information-part product-specification-section"
+                        hidden
+                    >
+                        <h3
                             id="product-specification-title"
                             data-lang="productDetail.specificationTitle"
                         >
                             Spesifikasi
-                        </h2>
+                        </h3>
 
+                        <dl
+                            id="product-specification-list"
+                            class="product-specification-list"
+                        ></dl>
                     </div>
 
-                    <dl
-                        id="product-specification-list"
-                        class="product-specification-list"
-                    ></dl>
-
                 </div>
 
             </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             RELATED PRODUCTS
-
-             ProductDetailController + ProductCardComponent
-             mengisi grid ini dari ProductsModel.
-        =============================================== -->
-
-        <section
-            id="related-products"
-            class="section related-products-section"
-            hidden
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span
-                        class="badge badge-warning"
-                        data-lang="common.products"
-                    >
-                        Produk
-                    </span>
-
-                    <h2
-                        id="related-products-title"
-                        data-lang="productDetail.relatedTitle"
-                    >
-                        Produk Serupa
-                    </h2>
-
-                </div>
-
-
-                <div
-                    id="related-products-grid"
-                    class="product-grid products-grid related-products-grid"
-                    aria-live="polite"
-                ></div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             ORDER / WECHAT CTA
-
-             Tombol order produk yang dibuat controller
-             menuju #wechat.
-        =============================================== -->
-
-        <section
-            id="wechat"
-            class="section product-wechat-section"
-        >
-
-            <div class="container">
-
-                <div class="home-wechat-cta">
-
-                    <div>
-
-                        <span
-                            class="badge badge-warning"
-                            data-lang="wechat.label"
-                        >
-                            Layanan Pelanggan Gomai
-                        </span>
-
-                        <h2 data-lang="wechat.title">
-                            Butuh Bantuan sebelum Memesan?
-                        </h2>
-
-                        <p data-lang="wechat.description">
-                            Hubungi Gomai melalui WeChat untuk
-                            mengonfirmasi produk, warna, ukuran,
-                            stok, harga, dan proses pemesanan.
-                        </p>
-
-                        <p>
-                            <span data-lang="footer.wechatTemplate">
-                                WeChat: Gomai
-                            </span>
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="contact.html"
-                        class="btn btn-primary"
-                        data-lang="common.contactWechat"
-                    >
-                        Hubungi WeChat
-                    </a>
-
-                </div>
-
-            </div>
-
         </section>
 
 
@@ -315,10 +169,9 @@
 
         <section
             id="product-not-found"
-            class="section product-not-found"
+            class="product-not-found"
             hidden
         >
-
             <div class="container">
 
                 <div class="empty-state">
@@ -350,87 +203,38 @@
                 </div>
 
             </div>
-
         </section>
 
     </main>
 
 
-    <!-- ==================================================
-         SHARED FOOTER
-         Dirender oleh FooterComponent.
-    ================================================== -->
-
     <footer id="site-footer"></footer>
 
-
-    <!-- ==================================================
-         JAVASCRIPT — GOMAI FRAMEWORK
-    ================================================== -->
-
-
-    <!-- ==================================================
-         1. FOUNDATION
-    ================================================== -->
 
     <script src="../js/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/language.js"></script>
-
-
-    <!-- ==================================================
-         2. CORE FOUNDATION
-    ================================================== -->
+    <script src="../js/shopping-state.js"></script>
 
     <script src="../js/core/component-core.js"></script>
-
     <script src="../js/core/model-registry.js"></script>
     <script src="../js/core/component-registry.js"></script>
     <script src="../js/core/controller-registry.js"></script>
 
-
-    <!-- ==================================================
-         3. MODELS
-    ================================================== -->
-
     <script src="../js/models/brands.js"></script>
+    <script src="../js/models/categories.js"></script>
     <script src="../js/models/products.js"></script>
-
-
-    <!-- ==================================================
-         4. COMPONENTS
-    ================================================== -->
 
     <script src="../js/components/loading.js"></script>
     <script src="../js/components/empty-state.js"></script>
-
     <script src="../js/components/product-card.js"></script>
     <script src="../js/components/brand-card.js"></script>
     <script src="../js/components/search-panel.js"></script>
-
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
 
-
-    <!-- ==================================================
-         5. PAGE CONTROLLER
-    ================================================== -->
-
     <script src="../js/product-detail.js"></script>
-
-
-    <!-- ==================================================
-         6. GOMAI CORE
-    ================================================== -->
-
     <script src="../js/core/gomai.js"></script>
-
-
-    <!-- ==================================================
-         7. APPLICATION BOOTSTRAPPER
-         app.js WAJIB MENJADI SCRIPT TERAKHIR.
-    ================================================== -->
-
     <script src="../js/app.js"></script>
 
 </body>

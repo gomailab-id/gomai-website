@@ -24,7 +24,7 @@
  */
 
 const BrandController = (() => {
-    const VERSION = "3.0.0";
+    const VERSION = "3.1.0";
 
     const EVENTS = Object.freeze({
         INITIALIZED: "gomai:brand-controller-initialized",
@@ -77,8 +77,6 @@ const BrandController = (() => {
         brandLogo: null,
         brandName: null,
         brandDescription: null,
-        collectionTitle: null,
-        collectionDescription: null,
         productsSection: null,
         productGrid: null,
         productCount: null,
@@ -489,16 +487,6 @@ const BrandController = (() => {
                 "brand-description"
             );
 
-        elements.collectionTitle =
-            document.getElementById(
-                "brand-collection-title"
-            );
-
-        elements.collectionDescription =
-            document.getElementById(
-                "brand-collection-description"
-            );
-
         elements.productsSection =
             document.getElementById(
                 "brand-products"
@@ -820,29 +808,6 @@ const BrandController = (() => {
             description
         );
 
-        setElementText(
-            elements.collectionTitle,
-            translate(
-                "brandPage.collectionTitleTemplate",
-                "Koleksi {{brand}}",
-                {
-                    brand:
-                        brandName
-                }
-            )
-        );
-
-        setElementText(
-            elements.collectionDescription,
-            translate(
-                "brandPage.collectionDescriptionTemplate",
-                "Jelajahi produk {{brand}} yang tersedia melalui Gomai.",
-                {
-                    brand:
-                        brandName
-                }
-            )
-        );
     }
 
     /* ======================================================

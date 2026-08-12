@@ -230,7 +230,7 @@
     "resultCountTemplate": "Menampilkan {{visible}} dari {{total}} produk",
     "meta": {
       "title": "Semua Produk | Gomai",
-      "description": "Jelajahi berbagai produk olahraga, outdoor, fashion, dan kebutuhan harian melalui Gomai."
+      "description": "Jelajahi seluruh produk Gomai dari empat kategori utama."
     },
     "filter": {
       "allBrands": "Semua Brand",
@@ -252,13 +252,16 @@
     },
     "empty": {
       "title": "Produk Tidak Ditemukan",
-      "description": "Tidak ada produk yang sesuai dengan pencarian atau filter yang dipilih.",
+      "description": "Belum ada produk yang sesuai pada katalog ini.",
       "resetButton": "Hapus Filter"
     },
     "error": {
       "title": "Data Produk Gagal Dimuat",
       "description": "Terjadi kesalahan saat memuat produk. Silakan coba kembali."
-    }
+    },
+    "catalogLabel": "Katalog",
+    "categoryLabel": "Kategori",
+    "simpleResultCount": "{{count}} produk"
   },
   "product": {
     "loading": "Memuat produk...",
@@ -306,8 +309,12 @@
     "increaseQuantity": "Tambah jumlah",
     "meta": {
       "titleTemplate": "{{product}} | Gomai",
-      "descriptionTemplate": "Lihat detail produk {{product}} melalui Gomai."
-    }
+      "descriptionTemplate": "Lihat foto, harga, varian, stok, dan informasi {{product}} di Gomai."
+    },
+    "addToCart": "Tambah ke Keranjang",
+    "wishlistAdd": "Simpan ke Wishlist",
+    "wishlistRemove": "Hapus dari Wishlist",
+    "informationTitle": "Informasi Produk"
   },
   "search": {
     "title": "Hasil Pencarian",
@@ -393,7 +400,7 @@
     "hero": {
       "badge": "Tentang Gomai",
       "title": "Belanja Lebih Mudah bersama Gomai",
-      "description": "Gomai membantu Anda menemukan produk, mengonfirmasi detail, dan mengatur proses pengantaran dengan lebih sederhana."
+      "description": "Gomai membantu membuat proses belanja menjadi lebih sederhana dan mudah dipahami."
     },
     "identity": {
       "badge": "Siapa Kami",
@@ -473,6 +480,11 @@
       "description": "Jelajahi katalog atau hubungi Gomai jika Anda membutuhkan bantuan.",
       "products": "Lihat Produk",
       "contact": "Hubungi Gomai"
+    },
+    "service": {
+      "badge": "Apa yang Kami Lakukan",
+      "title": "Dari Pilihan Produk hingga Pengantaran",
+      "description": "Gomai menyediakan katalog untuk memilih kebutuhan, kemudian membantu konfirmasi stok, harga akhir, pembayaran, dan pengantaran."
     }
   },
   "contactPage": {
@@ -482,15 +494,19 @@
     },
     "hero": {
       "badge": "Hubungi Gomai",
-      "title": "Butuh Bantuan? Hubungi Kami",
-      "description": "Sampaikan kebutuhan Anda melalui kanal resmi Gomai agar kami dapat membantu memeriksa produk dan detail pemesanan."
+      "title": "Hubungi Gomai melalui WeChat",
+      "description": "Scan QR atau salin WeChat ID untuk menghubungi Gomai."
     },
     "wechat": {
       "badge": "WeChat",
-      "title": "Hubungi Gomai melalui WeChat",
-      "description": "Gunakan WeChat untuk bertanya mengenai produk, stok, ukuran, harga, pemesanan, dan pengantaran.",
+      "title": "Scan QR WeChat Gomai",
+      "description": "Gunakan QR atau salin WeChat ID di bawah ini.",
       "label": "WeChat:",
-      "button": "Hubungi via WeChat"
+      "idLabel": "WeChat ID",
+      "button": "Hubungi via WeChat",
+      "copy": "Salin",
+      "copied": "Tersalin",
+      "qrAlt": "QR WeChat Gomai"
     },
     "prepare": {
       "badge": "Sebelum Menghubungi",
@@ -566,7 +582,7 @@
     "hero": {
       "badge": "FAQ",
       "title": "Pertanyaan yang Sering Diajukan",
-      "description": "Temukan jawaban singkat mengenai produk, pemesanan, pembayaran, dan pengantaran melalui Gomai."
+      "description": "Jawaban singkat untuk pertanyaan umum mengenai Gomai."
     },
     "items": {
       "whatIsGomai": {
@@ -575,7 +591,7 @@
       },
       "howToOrder": {
         "question": "Bagaimana cara melakukan pemesanan?",
-        "answer": "Pilih produk yang Anda inginkan, siapkan detail seperti warna, ukuran, dan jumlah, lalu hubungi Gomai untuk konfirmasi."
+        "answer": "Pilih produk, masukkan ke keranjang, isi informasi checkout, unduh ringkasan pesanan, lalu kirim gambarnya melalui WeChat Gomai."
       },
       "stock": {
         "question": "Apakah semua produk di website selalu tersedia?",
@@ -587,7 +603,7 @@
       },
       "payment": {
         "question": "Bagaimana cara melakukan pembayaran?",
-        "answer": "Detail pembayaran dikonfirmasi melalui kanal resmi Gomai saat pesanan diproses."
+        "answer": "Pembayaran dilakukan setelah Gomai mengonfirmasi stok dan harga akhir pesanan."
       },
       "delivery": {
         "question": "Bagaimana proses pengantaran?",
@@ -595,7 +611,7 @@
       },
       "contact": {
         "question": "Bagaimana jika saya masih membutuhkan bantuan?",
-        "answer": "Hubungi Gomai melalui WeChat atau halaman kontak untuk mendapatkan bantuan lebih lanjut."
+        "answer": "Buka halaman Hubungi Gomai, lalu scan QR WeChat atau salin WeChat ID."
       }
     },
     "links": {
@@ -621,48 +637,48 @@
     },
     "hero": {
       "badge": "Cara Membeli",
-      "title": "Belanja melalui Gomai dalam Empat Langkah",
-      "description": "Pilih produk yang Anda butuhkan, konfirmasikan detailnya bersama Gomai, selesaikan pembayaran, lalu tunggu pesanan diproses dan diantar."
+      "title": "Cara Membeli di Gomai",
+      "description": "Pilih produk, masukkan ke keranjang, buat ringkasan pesanan, lalu kirim melalui WeChat Gomai."
     },
     "steps": {
-      "badge": "Proses Pemesanan",
+      "badge": "Cara Membeli",
       "title": "Empat Langkah Sederhana",
-      "description": "Mulai dari memilih produk hingga menerima pesanan.",
+      "description": "Dari memilih produk hingga mengirim ringkasan pesanan.",
       "step1": {
         "title": "Pilih Produk",
-        "description": "Jelajahi brand dan produk di website Gomai. Tentukan produk, warna, ukuran, serta jumlah yang Anda butuhkan.",
+        "description": "Pilih produk, varian, dan jumlah yang Anda inginkan.",
         "button": "Lihat Produk"
       },
       "step2": {
-        "title": "Hubungi Gomai",
-        "description": "Kirim detail pilihan Anda melalui kanal resmi Gomai agar stok, varian, harga, dan informasi pemesanan dapat dikonfirmasi."
+        "title": "Masukkan ke Keranjang",
+        "description": "Tambahkan produk ke keranjang dan atur jumlah pesanan."
       },
       "step3": {
-        "title": "Konfirmasi dan Bayar",
-        "description": "Setelah detail pesanan disetujui, lakukan pembayaran menggunakan metode resmi yang diinformasikan oleh Gomai."
+        "title": "Buat Ringkasan Pesanan",
+        "description": "Isi informasi pengantaran lalu unduh ringkasan pesanan dalam bahasa yang Anda pilih."
       },
       "step4": {
-        "title": "Kami Antar",
-        "description": "Pesanan diproses dan diantar sesuai layanan, lokasi, dan jadwal yang telah dikonfirmasi."
+        "title": "Kirim melalui WeChat",
+        "description": "Kirim gambar ringkasan ke WeChat Gomai. Stok dan harga akhir dikonfirmasi sebelum pembayaran."
       }
     },
     "prepare": {
-      "title": "Siapkan Detail Pesanan",
-      "description": "Informasi yang lengkap membantu proses konfirmasi menjadi lebih cepat dan mengurangi kesalahan pesanan.",
+      "title": "Informasi yang Perlu Disiapkan",
+      "description": "Lengkapi informasi berikut pada halaman checkout.",
       "product": {
-        "badge": "Produk",
-        "title": "Nama atau Tautan Produk",
-        "description": "Kirim nama, foto, atau tautan halaman produk yang ingin Anda pesan."
+        "badge": "Nama",
+        "title": "Nama",
+        "description": "Nama penerima pesanan."
       },
       "variant": {
-        "badge": "Varian",
-        "title": "Warna, Ukuran, dan Jumlah",
-        "description": "Tentukan varian yang diinginkan agar Gomai dapat memeriksa ketersediaannya dengan tepat."
+        "badge": "WeChat",
+        "title": "WeChat",
+        "description": "WeChat ID yang dapat dihubungi."
       },
       "delivery": {
         "badge": "Pengantaran",
-        "title": "Lokasi dan Waktu Penerimaan",
-        "description": "Sampaikan informasi lokasi dan kebutuhan waktu penerimaan agar pilihan pengantaran dapat dikonfirmasi."
+        "title": "Lokasi dan Jadwal",
+        "description": "Lokasi penerimaan, jadwal, dan catatan jika diperlukan."
       }
     },
     "payment": {
@@ -685,22 +701,144 @@
     }
   },
   "footer": {
-    "description": "Belanja mudah untuk kebutuhan olahraga, outdoor, fashion, dan kebutuhan harian.",
+    "description": "Belanja mudah untuk olahraga, makanan, bahan segar, dan perlengkapan harian.",
     "brandTitle": "Brand",
     "informationTitle": "Informasi",
     "contactTitle": "Kontak",
     "howToBuy": "Cara Membeli",
-    "about": "Tentang Kami",
+    "about": "Tentang Gomai",
     "faq": "FAQ",
-    "contactUs": "Hubungi Kami",
+    "contactUs": "Hubungi Gomai",
     "wechatTemplate": "WeChat: {{wechatId}}",
-    "copyright": "© 2026 Gomai. Semua Hak Dilindungi."
+    "copyright": "© 2026 Gomai. Semua Hak Dilindungi.",
+    "categoryTitle": "Kategori",
+    "wechatTitle": "WeChat Gomai",
+    "scanWechat": "Scan QR atau salin WeChat ID.",
+    "copy": "Salin",
+    "copied": "Tersalin"
   },
   "errors": {
     "bootstrap": {
       "title": "Gomai tidak dapat dimulai",
       "description": "Terjadi kesalahan saat memulai aplikasi. Periksa Console untuk informasi lengkap.",
       "reload": "Muat Ulang"
+    }
+  },
+  "cart": {
+    "title": "Keranjang",
+    "subtitle": "Periksa kembali barang pilihan Anda",
+    "add": "Tambah ke Keranjang",
+    "added": "Ditambahkan ✓",
+    "chooseVariant": "Pilih Varian",
+    "emptyTitle": "Keranjang Anda masih kosong",
+    "emptyDescription": "Tambahkan produk yang Anda inginkan sebelum membuat ringkasan pesanan.",
+    "continueShopping": "Lanjut Belanja",
+    "price": "Harga",
+    "quantity": "Jumlah",
+    "subtotal": "Subtotal",
+    "remove": "Hapus",
+    "summary": "Ringkasan Pesanan",
+    "items": "Barang",
+    "delivery": "Pengantaran",
+    "deliveryPending": "Akan dikonfirmasi",
+    "temporaryTotal": "Total Sementara",
+    "checkout": "Buat Ringkasan & Unduh",
+    "confirmNote": "Harga dan ketersediaan barang akan dikonfirmasi oleh Gomai.",
+    "removeAll": "Kosongkan Keranjang"
+  },
+  "wishlist": {
+    "title": "Wishlist",
+    "subtitle": "Simpan produk favorit Anda",
+    "add": "Simpan ke Wishlist",
+    "remove": "Hapus dari Wishlist",
+    "emptyTitle": "Wishlist Anda masih kosong",
+    "emptyDescription": "Simpan produk yang menarik agar mudah ditemukan kembali.",
+    "viewProduct": "Lihat Produk",
+    "moveToCart": "Ke Keranjang",
+    "clearAll": "Hapus Semua",
+    "savedCount": "produk tersimpan"
+  },
+  "checkout": {
+    "title": "Ringkasan & Unduh",
+    "subtitle": "Lengkapi informasi pengantaran lalu unduh kartu pesanan Gomai.",
+    "breadcrumbCart": "Keranjang",
+    "informationTitle": "Informasi Pengantaran",
+    "name": "Nama",
+    "wechatId": "WeChat ID",
+    "location": "Lokasi Pengantaran",
+    "schedule": "Waktu Pengantaran",
+    "notes": "Catatan",
+    "optional": "Opsional",
+    "namePlaceholder": "Nama penerima",
+    "wechatPlaceholder": "WeChat ID pelanggan",
+    "locationPlaceholder": "Contoh: IMIP, Dormitory Area Block C",
+    "schedulePlaceholder": "Contoh: Setelah shift sore",
+    "notesPlaceholder": "Catatan tambahan untuk Gomai",
+    "orderSummary": "Ringkasan Pesanan",
+    "orderCode": "Kode Pesanan",
+    "downloadTitle": "Pilih Bahasa Kartu Pesanan",
+    "downloadDescription": "Kartu akan diunduh sebagai PNG dan dapat langsung dikirim melalui WeChat.",
+    "downloadId": "Unduh Bahasa Indonesia",
+    "downloadZh": "下载中文版",
+    "contactWechat": "Hubungi WeChat Gomai",
+    "previewTitle": "Preview Ringkasan",
+    "validation": "Lengkapi nama dan lokasi pengantaran terlebih dahulu.",
+    "downloaded": "Kartu pesanan berhasil diunduh.",
+    "emptyTitle": "Belum ada barang untuk diringkas",
+    "emptyDescription": "Tambahkan barang ke keranjang sebelum membuka halaman ini.",
+    "backToCart": "Kembali ke Keranjang",
+    "cardTitle": "RINGKASAN PESANAN",
+    "deliveryInfo": "INFORMASI PENGANTARAN",
+    "temporarySubtotal": "SUBTOTAL SEMENTARA",
+    "confirmation": "Harga dan ketersediaan barang akan dikonfirmasi oleh Gomai.",
+    "sendWechat": "Kirim kartu ini melalui WeChat Gomai",
+    "generated": "Dibuat",
+    "productCount": "Barang"
+  },
+  "homepage": {
+    "hero": {
+      "eyebrow": "Gomai",
+      "title": "Belanja mudah, kami antar.",
+      "description": "Temukan kebutuhan olahraga, makanan, bahan segar, dan perlengkapan harian dalam satu tempat.",
+      "shopNow": "Belanja Sekarang",
+      "howToBuy": "Cara Membeli"
+    },
+    "categories": {
+      "overline": "Kategori Utama",
+      "title": "Temukan yang Anda Butuhkan",
+      "allProducts": "Semua Produk →",
+      "loading": "Memuat kategori...",
+      "viewProducts": "Lihat Produk →"
+    },
+    "brands": {
+      "overline": "Brand Pilihan",
+      "title": "Brand yang Tersedia di Gomai"
+    },
+    "products": {
+      "overline": "Produk Pilihan",
+      "title": "Pilihan untuk Anda",
+      "viewAll": "Lihat Semua →",
+      "loading": "Memuat produk...",
+      "empty": "Produk akan tampil setelah datanya tersedia."
+    },
+    "trust": {
+      "trusted": {
+        "title": "Produk Terpercaya",
+        "description": "Produk pilihan dari sumber yang diperiksa."
+      },
+      "delivery": {
+        "title": "Kami Antar",
+        "description": "Pengantaran sesuai layanan dan jadwal."
+      },
+      "wechat": {
+        "title": "Bantuan WeChat",
+        "description": "Hubungi Gomai saat membutuhkan bantuan."
+      }
+    },
+    "wechat": {
+      "eyebrow": "Bantuan Gomai",
+      "title": "Butuh bantuan atau ingin pesan cepat?",
+      "description": "Hubungi Gomai melalui WeChat untuk konfirmasi produk dan pengantaran."
     }
   }
 }

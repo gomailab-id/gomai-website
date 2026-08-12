@@ -21,7 +21,7 @@
 ========================================================== */
 
 const ProductCardComponent = (() => {
-    const VERSION = "2.0.0";
+    const VERSION = "2.1.0";
 
     const EVENTS = Object.freeze({
         CREATED: "gomai:product-card-created",
@@ -617,6 +617,11 @@ const ProductCardComponent = (() => {
                 detailUrl
             ),
 
+            createWishlistControl(
+                product,
+                displayName
+            ),
+
             createBodySection(
                 product,
                 settings,
@@ -932,7 +937,93 @@ const ProductCardComponent = (() => {
             );
         }
 
+        body.append(
+            createShoppingActions(
+                product,
+                context.detailUrl
+            )
+        );
+
         return body;
+    }
+
+    /* ======================================================
+       SHOPPING ACTIONS
+    ====================================================== */
+
+    let shoppingEventsBound = false;
+
+    function ensureShoppingEventsBound() {
+        if (shoppingEventsBound) return;
+        shoppingEventsBound = true;
+        document.addEventListener("gomai:wishlist-changed", () => refreshAll());
+    }
+
+    function createWishlistControl(product, displayName) {
+        ensureShoppingEventsBound();
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "product-wishlist-button";
+        button.dataset.productWishlist = product.id;
+
+        const active = Boolean(window.GomaiShoppingState?.isWishlisted?.(product.id));
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+        button.setAttribute(
+            "aria-label",
+            translate(active ? "wishlist.remove" : "wishlist.add", active ? "Hapus dari wishlist" : "Tambah ke wishlist") + `: ${displayName}`
+        );
+        button.textContent = active ? "♥" : "♡";
+
+        button.addEventListener("click", event => {
+            event.preventDefault();
+            event.stopPropagation();
+            window.GomaiShoppingState?.toggleWishlist?.(product.id);
+        });
+
+        return button;
+    }
+
+    function createShoppingActions(product, detailUrl) {
+        const actions = document.createElement("div");
+        actions.className = "product-card-actions product-commerce-actions";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "btn btn-primary product-card-cart-button";
+
+        const quickAdd = Boolean(window.GomaiShoppingState?.canQuickAdd?.(product));
+        button.textContent = translate(
+            quickAdd ? "cart.add" : "cart.chooseVariant",
+            quickAdd ? "Tambah ke Keranjang" : "Pilih Varian"
+        );
+
+        button.addEventListener("click", event => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (!quickAdd) {
+                window.location.href = detailUrl;
+                return;
+            }
+
+            const selection = window.GomaiShoppingState?.getDefaultSelection?.(product);
+            if (!selection) return;
+            window.GomaiShoppingState.addToCart(selection);
+
+            const original = button.textContent;
+            button.textContent = translate("cart.added", "Ditambahkan ✓");
+            button.classList.add("is-added");
+            window.setTimeout(() => {
+                if (!button.isConnected) return;
+                button.textContent = original;
+                button.classList.remove("is-added");
+            }, 1100);
+        });
+
+        actions.append(button);
+        return actions;
     }
 
     /* ======================================================

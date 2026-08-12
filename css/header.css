@@ -1666,3 +1666,64 @@ body.header-search-open {
     }
 
 }
+
+
+/* ==========================================================
+   GOMAI COMMERCE HEADER ACTIONS
+========================================================== */
+.header-shopping-link {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    color: var(--text-primary, #111111);
+    border: 1px solid var(--border-color, #e5e5e5);
+    border-radius: 999px;
+    background: var(--bg-card, #ffffff);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.header-shopping-link:hover,
+.header-shopping-link:focus-visible {
+    color: #111111;
+    border-color: var(--primary, #f5b400);
+    background: var(--primary-soft, #fff4cc);
+    transform: translateY(-1px);
+}
+.header-shopping-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+.header-shopping-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 5px;
+    color: #111111;
+    background: var(--primary, #f5b400);
+    border: 2px solid #ffffff;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 900;
+    line-height: 1;
+}
+.header-shopping-badge[hidden] { display: none; }
+
+@media (max-width: 767px) {
+    .header-shopping-link {
+        width: 40px;
+        height: 40px;
+        border-color: transparent;
+        background: transparent;
+    }
+    .shared-header-actions .header-wishlist-link {
+        display: none;
+    }
+}

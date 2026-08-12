@@ -3,7 +3,7 @@
 /**
  * ==========================================================
  * GOMAI PRODUCT DETAIL CONTROLLER
- * Version 3.0.0
+ * Version 3.2.0
  * js/product-detail.js
  * ==========================================================
  *
@@ -11,11 +11,10 @@
  * - Membaca produk dari URL.
  * - Mengambil data melalui ProductsModel dan BrandsModel.
  * - Mengelola state warna, gambar, ukuran, dan jumlah.
- * - Merender detail produk dan produk terkait.
- * - Merender related products melalui ProductCardComponent.
+ * - Merender detail produk yang dibutuhkan untuk keputusan pembelian.
  * - Mengikuti lifecycle ControllerRegistry.
  * - Memperbarui konten dinamis ketika bahasa berubah.
- * - Menyiapkan ringkasan pemesanan WeChat.
+ * - Mengelola Wishlist dan Tambah ke Keranjang.
  *
  * Controller ini tidak membaca JSON langsung, tidak membuat
  * product-card sendiri, tidak melakukan bootstrap DOMContentLoaded,
@@ -24,7 +23,7 @@
  */
 
 const ProductDetailController = (() => {
-    const VERSION = "3.0.0";
+    const VERSION = "3.2.0";
     const RELATED_LIMIT = 4;
 
     const EVENTS = Object.freeze({
@@ -112,7 +111,11 @@ const ProductDetailController = (() => {
         quantityIncrease: null,
 
         orderButton: null,
+        addCartButton: null,
+        wishlistButton: null,
         contactButton: null,
+
+        informationSection: null,
 
         descriptionSection: null,
         descriptionTitle: null,
@@ -612,9 +615,24 @@ const ProductDetailController = (() => {
                 "product-order-button"
             );
 
+        elements.addCartButton =
+            findElement(
+                "add-to-cart-button"
+            );
+
+        elements.wishlistButton =
+            findElement(
+                "wishlist-toggle-button"
+            );
+
         elements.contactButton =
             findElement(
                 "product-contact-button"
+            );
+
+        elements.informationSection =
+            findElement(
+                "product-information-section"
             );
 
         elements.descriptionSection =
@@ -1344,13 +1362,11 @@ const ProductDetailController = (() => {
 
         renderSpecifications();
 
-        renderRelatedProducts();
+        updateInformationSectionVisibility();
 
         renderGeneratedControlTranslations();
 
         updateOrderButton();
-
-        updateContactButton();
 
         updateDocumentMetadata();
 
@@ -1502,22 +1518,37 @@ const ProductDetailController = (() => {
         actions.className =
             "product-actions";
 
-        const orderButton =
+        const addCartButton =
             document.createElement(
-                "a"
+                "button"
             );
 
-        orderButton.id =
-            "wechat-order-button";
+        addCartButton.id =
+            "add-to-cart-button";
 
-        orderButton.href =
-            "#wechat";
+        addCartButton.type =
+            "button";
 
-        orderButton.className =
+        addCartButton.className =
             "btn btn-primary";
 
+        const wishlistButton =
+            document.createElement(
+                "button"
+            );
+
+        wishlistButton.id =
+            "wishlist-toggle-button";
+
+        wishlistButton.type =
+            "button";
+
+        wishlistButton.className =
+            "btn btn-secondary";
+
         actions.append(
-            orderButton
+            wishlistButton,
+            addCartButton
         );
 
         info.append(
@@ -2587,6 +2618,35 @@ const ProductDetailController = (() => {
     }
 
 
+    function updateInformationSectionVisibility() {
+        if (
+            !elements.informationSection
+        ) {
+            return false;
+        }
+
+        const hasDescription =
+            Boolean(
+                elements.descriptionSection &&
+                !elements.descriptionSection.hidden
+            );
+
+        const hasSpecifications =
+            Boolean(
+                elements.specificationSection &&
+                !elements.specificationSection.hidden
+            );
+
+        elements.informationSection.hidden =
+            !(
+                hasDescription ||
+                hasSpecifications
+            );
+
+        return !elements.informationSection.hidden;
+    }
+
+
     /* ======================================================
        RELATED PRODUCTS
     ====================================================== */
@@ -2698,29 +2758,80 @@ const ProductDetailController = (() => {
             elements.orderButton;
 
         if (
-            !button ||
-            !currentProduct
+            button &&
+            currentProduct
         ) {
-            return;
+            button.textContent =
+                translate(
+                    "productDetail.orderButton",
+                    "Pesan melalui WeChat"
+                );
+
+            button.dataset.productId =
+                currentProduct.id ||
+                "";
+
+            button.dataset.orderText =
+                buildOrderSummary();
+
+            button.href =
+                "#wechat";
         }
 
-        button.textContent =
-            translate(
-                "productDetail.orderButton",
-                "Pesan melalui WeChat"
-            );
-
-        button.dataset.productId =
-            currentProduct.id ||
-            "";
-
-        button.dataset.orderText =
-            buildOrderSummary();
-
-        button.href =
-            "#wechat";
+        updateShoppingButtons();
     }
 
+
+    function updateShoppingButtons() {
+        if (!currentProduct) return;
+
+        if (elements.addCartButton) {
+            const available = Boolean(currentProduct?.inventory?.inStock ?? currentProduct?.stock);
+            elements.addCartButton.disabled = !available;
+            elements.addCartButton.textContent = translate(
+                available ? "cart.add" : "common.outOfStock",
+                available ? "Tambah ke Keranjang" : "Stok Habis"
+            );
+        }
+
+        if (elements.wishlistButton) {
+            const active = Boolean(window.GomaiShoppingState?.isWishlisted?.(currentProduct.id));
+            elements.wishlistButton.classList.toggle("is-active", active);
+            elements.wishlistButton.setAttribute("aria-pressed", active ? "true" : "false");
+            elements.wishlistButton.textContent = translate(
+                active ? "wishlist.remove" : "wishlist.add",
+                active ? "Hapus dari Wishlist" : "Simpan ke Wishlist"
+            );
+        }
+    }
+
+    function addCurrentSelectionToCart() {
+        if (!currentProduct || !window.GomaiShoppingState) return;
+        const color = getSelectedColor();
+        window.GomaiShoppingState.addToCart({
+            productId: currentProduct.id,
+            colorId: color?.id || "",
+            sizeId: state.selectedSize || "",
+            quantity: state.quantity
+        });
+
+        if (elements.addCartButton) {
+            const original = translate("cart.add", "Tambah ke Keranjang");
+            elements.addCartButton.textContent = translate("cart.added", "Ditambahkan ✓");
+            elements.addCartButton.classList.add("is-added");
+            window.setTimeout(() => {
+                if (!elements.addCartButton?.isConnected) return;
+                elements.addCartButton.textContent = original;
+                elements.addCartButton.classList.remove("is-added");
+            }, 1200);
+        }
+    }
+
+    function toggleCurrentWishlist() {
+        if (!currentProduct || !window.GomaiShoppingState) return;
+        window.GomaiShoppingState.toggleWishlist(currentProduct.id);
+        updateShoppingButtons();
+    }
 
     function updateContactButton() {
         if (
@@ -3000,6 +3111,26 @@ const ProductDetailController = (() => {
 
         if (
             target.closest(
+                "#add-to-cart-button"
+            )
+        ) {
+            event.preventDefault();
+            addCurrentSelectionToCart();
+            return;
+        }
+
+        if (
+            target.closest(
+                "#wishlist-toggle-button"
+            )
+        ) {
+            event.preventDefault();
+            toggleCurrentWishlist();
+            return;
+        }
+
+        if (
+            target.closest(
                 "#quantity-decrease"
             )
         ) {
@@ -3140,11 +3271,9 @@ const ProductDetailController = (() => {
 
             renderSpecifications();
 
-            renderGeneratedControlTranslations();
+            updateInformationSectionVisibility();
 
-            refreshRelatedProductsLanguage(
-                context
-            );
+            renderGeneratedControlTranslations();
 
             updateOrderButton();
 
@@ -3855,6 +3984,14 @@ const ProductDetailController = (() => {
 
 
     function hideProductSubsections() {
+        if (
+            elements.informationSection
+        ) {
+            elements.informationSection
+                .hidden =
+                true;
+        }
+
         if (
             elements.descriptionSection
         ) {

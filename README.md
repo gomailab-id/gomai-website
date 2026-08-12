@@ -1,37 +1,57 @@
-# Gomai Website
+# Gomai Website — Replacement 6
 
-Gomai adalah website belanja dua bahasa (Indonesia / 中文) dengan arsitektur data-driven untuk brand, produk, komponen bersama, dan halaman informasi.
+Gomai adalah website belanja bilingual Indonesia / 中文 dengan arsitektur statis, data-driven, dan website-first.
 
 ## Menjalankan secara lokal
 
-Buka folder ini di VS Code, lalu jalankan melalui Live Server. Entry point utama adalah `index.html`.
+Buka folder `gomai-website` di VS Code lalu jalankan `index.html` melalui Live Server.
 
-## Struktur utama
+## Struktur produk saat ini
 
-- `assets/` — logo, hero brand, dan gambar produk.
-- `css/` — global stylesheet dan page-specific stylesheet.
-- `data/` — data brand, produk, serta kamus bahasa ID / 中文.
-- `js/core/` — registry, component core, utilities, dan Gomai Core.
-- `js/models/` — model data brand dan produk.
-- `js/components/` — Header, Footer, SearchPanel, cards, loading, dan empty state.
-- `js/*.js` — controller halaman dan application bootstrap.
-- `pages/` — brand, products, product detail, about, contact, FAQ, dan how-to-buy.
+- Homepage berorientasi **4 kategori utama**.
+- Brand dan produk berasal dari JSON + assets.
+- Wishlist dan Cart memakai `localStorage`.
+- Checkout menghasilkan **Ringkasan Pesanan PNG** dalam bahasa Indonesia atau 中文.
+- Ringkasan dikirim melalui WeChat; stok dan harga akhir dikonfirmasi oleh Gomai sebelum pembayaran.
+- Halaman informasi dibuat fokus: About, Contact, FAQ, dan How to Buy tidak saling mengulang konten.
+- Contact dan Footer memakai QR WeChat yang sama dan WeChat ID yang dapat disalin.
 
-## Aturan pengembangan
+## Empat kategori utama
 
-1. Brand dan produk baru ditambahkan melalui `data/` dan `assets/`, bukan dengan hardcode ke HTML/JS.
-2. `js/app.js` tetap menjadi application bootstrap terakhir pada setiap halaman yang memakai Gomai Core.
-3. Header dan Footer adalah shared components.
-4. Halaman informasi menggunakan satu `InformationController`.
-5. CSS global dimuat melalui `css/styles.css`; halaman kemudian memuat page-specific CSS masing-masing.
-6. Jangan mengubah file berstatus locked/static-verified tanpa incompatibility konkret.
+1. Olahraga & Outdoor
+2. Makanan & Minuman
+3. Bahan Segar
+4. Perlengkapan Harian
 
-## Dokumen kontrol
+Tidak ada subkategori pada baseline ini.
 
-- `PROJECT.md`
-- `ARCHITECTURE.md`
-- `DECISIONS.md`
-- `FILE-MANIFEST.md`
-- `CHANGELOG.md`
+## Aturan data-driven
 
-Dokumen di atas adalah sumber kontrol proyek untuk audit dan pengembangan berikutnya.
+Untuk menambah brand, produk, kategori, atau aset katalog, gunakan:
+- `data/brands.json`
+- `data/products.json`
+- `data/categories.json`
+- `assets/`
+
+Jangan hardcode katalog baru ke HTML / CSS / JavaScript selama schema data yang ada mencukupi.
+
+## Runtime
+
+Dependency utama:
+
+`config → utils/language → registries → models → shared components → page controller → Gomai Core → app.js`
+
+`js/app.js` wajib menjadi script runtime terakhir.
+
+## Bahasa
+
+- `zh` — Mandarin / Simplified Chinese
+- `id` — Indonesia
+
+Kedua dictionary harus memiliki struktur key yang identik.
+
+## QA
+
+Replacement 6 telah melalui static QA lintas halaman, data, asset, translation, script order, commerce state contract, category contract, FAQ contract, QR/contact contract, serta responsive CSS contract.
+
+Headless Chromium tidak dapat menyelesaikan local visual run pada environment build ini, sehingga visual QA akhir tetap dilakukan melalui VS Code Live Server pada desktop dan mobile viewport.

@@ -1,524 +1,206 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <title>Cara Membeli | Gomai</title>
-
     <meta
-        id="page-description"
         name="description"
-        content="Pelajari langkah sederhana untuk memilih produk, mengonfirmasi pesanan, melakukan pembayaran, dan menerima pesanan melalui Gomai."
+        content="Pelajari cara membeli di Gomai."
     >
-
-    <link
-        rel="stylesheet"
-        href="../css/styles.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../css/information.css"
-    >
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/information.css">
 </head>
-
 <body
     data-page="information"
     data-information-page="howToBuy"
 >
-
-    <!-- ==================================================
-         SHARED HEADER
-         Dirender oleh HeaderComponent.
-    ================================================== -->
-
     <header id="site-header"></header>
 
-
-    <!-- ==================================================
-         MAIN CONTENT
-    ================================================== -->
-
     <main
-        class="information-page how-to-buy-page"
+        class="information-simple-page information-simple-how-to-buy"
         data-information-page-root
     >
 
-        <!-- ==============================================
-             PREMIUM HERO
-        =============================================== -->
-
-        <section class="information-hero how-to-buy-hero">
-            <div class="container how-to-buy-hero-grid">
-
-                <div class="how-to-buy-hero-copy">
-
-                    <span
-                        class="how-to-buy-kicker"
-                        data-lang="howToBuyPage.hero.badge"
-                    >
-                        Cara Membeli
-                    </span>
-
-                    <h1 data-lang="howToBuyPage.hero.title">
-                        Belanja melalui Gomai dalam Empat Langkah
-                    </h1>
-
-                    <p data-lang="howToBuyPage.hero.description">
-                        Pilih produk yang Anda butuhkan, konfirmasikan
-                        detailnya bersama Gomai, selesaikan pembayaran,
-                        lalu tunggu pesanan diproses dan diantar.
-                    </p>
-
-                    <div class="how-to-buy-hero-actions">
-                        <a
-                            href="products.html"
-                            class="btn btn-primary"
-                            data-route="products"
-                            data-lang="howToBuyPage.steps.step1.button"
-                        >
-                            Lihat Produk
-                        </a>
-
-                        <a
-                            href="contact.html"
-                            class="btn btn-outline"
-                            data-route="contact"
-                            data-lang="howToBuyPage.cta.contact"
-                        >
-                            Hubungi Gomai
-                        </a>
-                    </div>
-
-                </div>
-
-                <div
-                    class="how-to-buy-hero-visual"
-                    aria-hidden="true"
+        <section class="information-simple-hero">
+            <div class="container information-simple-hero-inner">
+                <span
+                    class="information-simple-kicker"
+                    data-lang="howToBuyPage.hero.badge"
                 >
-                    <span class="how-to-buy-hero-visual-label">GOMAI</span>
-                    <strong>04</strong>
-                    <span class="how-to-buy-hero-visual-caption">STEP</span>
-                </div>
+                    Cara Membeli
+                </span>
 
+                <h1 data-lang="howToBuyPage.hero.title">
+                    Cara Membeli di Gomai
+                </h1>
+
+                <p data-lang="howToBuyPage.hero.description">
+                    Pilih produk, masukkan ke keranjang, buat ringkasan
+                    pesanan, lalu kirim melalui WeChat Gomai.
+                </p>
             </div>
         </section>
 
-
-        <!-- ==============================================
-             ORDER FLOW
-        =============================================== -->
-
-        <section class="information-section information-section-white how-to-buy-flow-section">
+        <section class="information-simple-section">
             <div class="container">
-
-                <div class="how-to-buy-section-heading">
-                    <div>
-                        <span
-                            class="how-to-buy-kicker"
-                            data-lang="howToBuyPage.steps.badge"
-                        >
-                            Proses Pemesanan
-                        </span>
-
-                        <h2 data-lang="howToBuyPage.steps.title">
-                            Empat Langkah Sederhana
-                        </h2>
-                    </div>
-
-                    <p data-lang="howToBuyPage.steps.description">
-                        Mulai dari memilih produk hingga menerima pesanan.
-                    </p>
+                <div class="information-simple-section-heading">
+                    <h2 data-lang="howToBuyPage.steps.title">
+                        Empat Langkah Sederhana
+                    </h2>
                 </div>
 
-                <div class="how-to-buy-flow">
+                <div class="information-simple-step-grid">
 
-                    <article class="how-to-buy-flow-card">
-                        <span class="how-to-buy-flow-number">01</span>
-
-                        <div class="how-to-buy-flow-content">
-                            <h3 data-lang="howToBuyPage.steps.step1.title">
-                                Pilih Produk
-                            </h3>
-
-                            <p data-lang="howToBuyPage.steps.step1.description">
-                                Jelajahi brand dan produk di website Gomai.
-                                Tentukan produk, warna, ukuran, serta jumlah
-                                yang Anda butuhkan.
-                            </p>
+                    <article class="information-simple-step">
+                        <div class="information-simple-step-top">
+                            <span class="information-simple-number">01</span>
+                            <span class="information-simple-icon-shell" aria-hidden="true">
+                                <img
+                                    src="../assets/icons/how-to-buy/select-product.svg"
+                                    alt=""
+                                >
+                            </span>
                         </div>
-
-                        <a
-                            href="products.html"
-                            class="how-to-buy-text-link"
-                            data-route="products"
-                            data-lang="howToBuyPage.steps.step1.button"
-                        >
-                            Lihat Produk
-                        </a>
+                        <h3 data-lang="howToBuyPage.steps.step1.title">
+                            Pilih Produk
+                        </h3>
+                        <p data-lang="howToBuyPage.steps.step1.description">
+                            Pilih produk dan varian yang Anda inginkan.
+                        </p>
                     </article>
 
-                    <article class="how-to-buy-flow-card">
-                        <span class="how-to-buy-flow-number">02</span>
-
-                        <div class="how-to-buy-flow-content">
-                            <h3 data-lang="howToBuyPage.steps.step2.title">
-                                Hubungi Gomai
-                            </h3>
-
-                            <p data-lang="howToBuyPage.steps.step2.description">
-                                Kirim detail pilihan Anda melalui kanal resmi
-                                Gomai agar stok, varian, harga, dan informasi
-                                pemesanan dapat dikonfirmasi.
-                            </p>
+                    <article class="information-simple-step">
+                        <div class="information-simple-step-top">
+                            <span class="information-simple-number">02</span>
+                            <span class="information-simple-icon-shell" aria-hidden="true">
+                                <img
+                                    src="../assets/icons/how-to-buy/cart.svg"
+                                    alt=""
+                                >
+                            </span>
                         </div>
+                        <h3 data-lang="howToBuyPage.steps.step2.title">
+                            Masukkan ke Keranjang
+                        </h3>
+                        <p data-lang="howToBuyPage.steps.step2.description">
+                            Tambahkan produk ke keranjang dan atur jumlahnya.
+                        </p>
                     </article>
 
-                    <article class="how-to-buy-flow-card">
-                        <span class="how-to-buy-flow-number">03</span>
-
-                        <div class="how-to-buy-flow-content">
-                            <h3 data-lang="howToBuyPage.steps.step3.title">
-                                Konfirmasi dan Bayar
-                            </h3>
-
-                            <p data-lang="howToBuyPage.steps.step3.description">
-                                Setelah detail pesanan disetujui, lakukan
-                                pembayaran menggunakan metode resmi yang
-                                diinformasikan oleh Gomai.
-                            </p>
+                    <article class="information-simple-step">
+                        <div class="information-simple-step-top">
+                            <span class="information-simple-number">03</span>
+                            <span class="information-simple-icon-shell" aria-hidden="true">
+                                <img
+                                    src="../assets/icons/how-to-buy/order-summary.svg"
+                                    alt=""
+                                >
+                            </span>
                         </div>
+                        <h3 data-lang="howToBuyPage.steps.step3.title">
+                            Buat Ringkasan Pesanan
+                        </h3>
+                        <p data-lang="howToBuyPage.steps.step3.description">
+                            Isi informasi pengantaran lalu unduh ringkasan
+                            pesanan dalam bahasa yang Anda pilih.
+                        </p>
                     </article>
 
-                    <article class="how-to-buy-flow-card how-to-buy-flow-card-accent">
-                        <span class="how-to-buy-flow-number">04</span>
-
-                        <div class="how-to-buy-flow-content">
-                            <h3 data-lang="howToBuyPage.steps.step4.title">
-                                Kami Antar
-                            </h3>
-
-                            <p data-lang="howToBuyPage.steps.step4.description">
-                                Pesanan diproses dan diantar sesuai layanan,
-                                lokasi, dan jadwal yang telah dikonfirmasi.
-                            </p>
+                    <article class="information-simple-step information-simple-step-dark">
+                        <div class="information-simple-step-top">
+                            <span class="information-simple-number">04</span>
+                            <span class="information-simple-icon-shell" aria-hidden="true">
+                                <img
+                                    src="../assets/icons/how-to-buy/wechat.svg"
+                                    alt=""
+                                >
+                            </span>
                         </div>
+                        <h3 data-lang="howToBuyPage.steps.step4.title">
+                            Kirim melalui WeChat
+                        </h3>
+                        <p data-lang="howToBuyPage.steps.step4.description">
+                            Kirim gambar ringkasan ke WeChat Gomai.
+                            Stok dan harga akhir dikonfirmasi sebelum pembayaran.
+                        </p>
                     </article>
 
                 </div>
-
             </div>
         </section>
 
-
-        <!-- ==============================================
-             PREPARE ORDER
-        =============================================== -->
-
-        <section class="information-section how-to-buy-prepare-section">
+        <section class="information-simple-section information-simple-section-soft">
             <div class="container">
-
-                <div class="how-to-buy-section-heading how-to-buy-section-heading-stacked">
-                    <div>
-                        <span class="how-to-buy-kicker">GOMAI CHECKLIST</span>
-
-                        <h2 data-lang="howToBuyPage.prepare.title">
-                            Siapkan Detail Pesanan
-                        </h2>
-                    </div>
-
+                <div class="information-simple-section-heading">
+                    <h2 data-lang="howToBuyPage.prepare.title">
+                        Informasi yang Perlu Disiapkan
+                    </h2>
                     <p data-lang="howToBuyPage.prepare.description">
-                        Informasi yang lengkap membantu proses konfirmasi
-                        menjadi lebih cepat dan mengurangi kesalahan pesanan.
+                        Lengkapi informasi berikut pada halaman checkout.
                     </p>
                 </div>
 
-                <div class="how-to-buy-prepare-grid">
-
-                    <article class="how-to-buy-prepare-card">
-                        <div class="how-to-buy-prepare-topline">
-                            <span class="how-to-buy-prepare-index">01</span>
-
-                            <span
-                                class="how-to-buy-prepare-label"
-                                data-lang="howToBuyPage.prepare.product.badge"
-                            >
-                                Produk
-                            </span>
-                        </div>
-
-                        <h3 data-lang="howToBuyPage.prepare.product.title">
-                            Nama atau Tautan Produk
-                        </h3>
-
-                        <p data-lang="howToBuyPage.prepare.product.description">
-                            Kirim nama, foto, atau tautan halaman produk
-                            yang ingin Anda pesan.
-                        </p>
-                    </article>
-
-                    <article class="how-to-buy-prepare-card">
-                        <div class="how-to-buy-prepare-topline">
-                            <span class="how-to-buy-prepare-index">02</span>
-
-                            <span
-                                class="how-to-buy-prepare-label"
-                                data-lang="howToBuyPage.prepare.variant.badge"
-                            >
-                                Varian
-                            </span>
-                        </div>
-
-                        <h3 data-lang="howToBuyPage.prepare.variant.title">
-                            Warna, Ukuran, dan Jumlah
-                        </h3>
-
-                        <p data-lang="howToBuyPage.prepare.variant.description">
-                            Tentukan varian yang diinginkan agar Gomai
-                            dapat memeriksa ketersediaannya dengan tepat.
-                        </p>
-                    </article>
-
-                    <article class="how-to-buy-prepare-card">
-                        <div class="how-to-buy-prepare-topline">
-                            <span class="how-to-buy-prepare-index">03</span>
-
-                            <span
-                                class="how-to-buy-prepare-label"
-                                data-lang="howToBuyPage.prepare.delivery.badge"
-                            >
-                                Pengantaran
-                            </span>
-                        </div>
-
-                        <h3 data-lang="howToBuyPage.prepare.delivery.title">
-                            Lokasi dan Waktu Penerimaan
-                        </h3>
-
-                        <p data-lang="howToBuyPage.prepare.delivery.description">
-                            Sampaikan informasi lokasi dan kebutuhan waktu
-                            penerimaan agar pilihan pengantaran dapat
-                            dikonfirmasi.
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             PAYMENT & DELIVERY
-        =============================================== -->
-
-        <section class="information-section information-section-white how-to-buy-confirm-section">
-            <div class="container">
-
-                <div class="how-to-buy-confirm-grid">
-
-                    <article class="how-to-buy-confirm-card">
-                        <div class="how-to-buy-confirm-meta">
-                            <span class="how-to-buy-confirm-number">01</span>
-                            <span
-                                class="how-to-buy-confirm-label"
-                                data-lang="howToBuyPage.payment.badge"
-                            >
-                                Pembayaran
-                            </span>
-                        </div>
-
-                        <h2 data-lang="howToBuyPage.payment.title">
-                            Gunakan Metode Pembayaran Resmi Gomai
-                        </h2>
-
-                        <p data-lang="howToBuyPage.payment.description">
-                            Pastikan detail harga dan metode pembayaran
-                            sudah dikonfirmasi sebelum melakukan transaksi.
-                            Ikuti informasi pembayaran yang diberikan melalui
-                            kanal resmi Gomai.
-                        </p>
-                    </article>
-
-                    <article class="how-to-buy-confirm-card how-to-buy-confirm-card-dark">
-                        <div class="how-to-buy-confirm-meta">
-                            <span class="how-to-buy-confirm-number">02</span>
-                            <span
-                                class="how-to-buy-confirm-label"
-                                data-lang="howToBuyPage.delivery.badge"
-                            >
-                                Pengantaran
-                            </span>
-                        </div>
-
-                        <h2 data-lang="howToBuyPage.delivery.title">
-                            Jadwal Pengantaran Dikonfirmasi bersama Pesanan
-                        </h2>
-
-                        <p data-lang="howToBuyPage.delivery.description">
-                            Waktu pengantaran bergantung pada jenis pesanan,
-                            lokasi, dan layanan yang dipilih. Detail akhirnya
-                            dikonfirmasi sebelum pesanan diproses.
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ==============================================
-             CTA
-        =============================================== -->
-
-        <section
-            class="information-cta-section how-to-buy-cta-section"
-            id="wechat"
-        >
-            <div class="container">
-
-                <div class="how-to-buy-cta">
-
-                    <div class="how-to-buy-cta-copy">
-                        <span
-                            class="how-to-buy-kicker how-to-buy-kicker-dark"
-                            data-lang="howToBuyPage.cta.badge"
-                        >
-                            Siap Memesan?
+                <div class="information-simple-prepare-grid">
+                    <article>
+                        <strong data-lang="howToBuyPage.prepare.product.title">
+                            Nama
+                        </strong>
+                        <span data-lang="howToBuyPage.prepare.product.description">
+                            Nama penerima pesanan.
                         </span>
+                    </article>
 
-                        <h2 data-lang="howToBuyPage.cta.title">
-                            Temukan Produk atau Hubungi Gomai
-                        </h2>
+                    <article>
+                        <strong data-lang="howToBuyPage.prepare.variant.title">
+                            WeChat
+                        </strong>
+                        <span data-lang="howToBuyPage.prepare.variant.description">
+                            WeChat ID yang dapat dihubungi.
+                        </span>
+                    </article>
 
-                        <p data-lang="howToBuyPage.cta.description">
-                            Mulai dengan menjelajahi produk. Jika Anda
-                            membutuhkan bantuan, hubungi Gomai untuk
-                            konfirmasi sebelum melakukan pemesanan.
-                        </p>
-
-                        <p class="how-to-buy-wechat-line">
-                            <span data-lang="howToBuyPage.cta.wechatLabel">
-                                WeChat:
-                            </span>
-
-                            <strong data-wechat-id>
-                                Gomai
-                            </strong>
-                        </p>
-                    </div>
-
-                    <div class="how-to-buy-cta-actions">
-                        <a
-                            href="products.html"
-                            class="btn btn-outline-light"
-                            data-route="products"
-                            data-lang="howToBuyPage.cta.products"
-                        >
-                            Lihat Produk
-                        </a>
-
-                        <a
-                            href="contact.html"
-                            class="btn btn-primary"
-                            data-route="contact"
-                            data-lang="howToBuyPage.cta.contact"
-                        >
-                            Hubungi Gomai
-                        </a>
-                    </div>
-
+                    <article>
+                        <strong data-lang="howToBuyPage.prepare.delivery.title">
+                            Pengantaran
+                        </strong>
+                        <span data-lang="howToBuyPage.prepare.delivery.description">
+                            Lokasi, jadwal, dan catatan jika diperlukan.
+                        </span>
+                    </article>
                 </div>
-
             </div>
         </section>
-
-    </main>
-
-
-    <!-- ==================================================
-         SHARED FOOTER
-         Dirender oleh FooterComponent.
-    ================================================== -->
 
     <footer id="site-footer"></footer>
-
-
-    <!-- ==================================================
-         JAVASCRIPT — GOMAI FRAMEWORK
-    ================================================== -->
-
-
-    <!-- ==================================================
-         1. FOUNDATION
-    ================================================== -->
 
     <script src="../js/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/language.js"></script>
-
-
-    <!-- ==================================================
-         2. CORE FOUNDATION
-    ================================================== -->
+    <script src="../js/shopping-state.js"></script>
 
     <script src="../js/core/component-core.js"></script>
-
     <script src="../js/core/model-registry.js"></script>
     <script src="../js/core/component-registry.js"></script>
     <script src="../js/core/controller-registry.js"></script>
 
-
-    <!-- ==================================================
-         3. MODELS
-    ================================================== -->
-
     <script src="../js/models/brands.js"></script>
+    <script src="../js/models/categories.js"></script>
     <script src="../js/models/products.js"></script>
-
-
-    <!-- ==================================================
-         4. COMPONENTS
-    ================================================== -->
 
     <script src="../js/components/loading.js"></script>
     <script src="../js/components/empty-state.js"></script>
-
     <script src="../js/components/product-card.js"></script>
     <script src="../js/components/brand-card.js"></script>
     <script src="../js/components/search-panel.js"></script>
-
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
 
-
-    <!-- ==================================================
-         5. PAGE CONTROLLER
-    ================================================== -->
-
     <script src="../js/information.js"></script>
-
-
-    <!-- ==================================================
-         6. GOMAI CORE
-    ================================================== -->
-
     <script src="../js/core/gomai.js"></script>
-
-
-    <!-- ==================================================
-         7. APPLICATION BOOTSTRAPPER
-         app.js WAJIB MENJADI SCRIPT TERAKHIR.
-    ================================================== -->
-
     <script src="../js/app.js"></script>
-
 </body>
 </html>

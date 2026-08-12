@@ -30,31 +30,19 @@
 
 <body data-page="brand">
 
-    <!-- ==================================================
-         SHARED HEADER
-         Dirender oleh HeaderComponent.
-    ================================================== -->
-
     <header id="site-header"></header>
 
-
-    <!-- ==================================================
-         MAIN CONTENT
-    ================================================== -->
-
-    <main class="brand-page">
-
-
-        <!-- ==============================================
-             BREADCRUMB
-        =============================================== -->
+    <main
+        id="brand-page"
+        class="brand-page"
+    >
 
         <section class="brand-breadcrumb-section">
 
             <div class="container">
 
                 <nav
-                    class="breadcrumb"
+                    class="breadcrumb brand-breadcrumb"
                     aria-label="Breadcrumb"
                 >
 
@@ -96,10 +84,6 @@
         </section>
 
 
-        <!-- ==============================================
-             BRAND HERO
-        =============================================== -->
-
         <section
             class="brand-hero-section"
             id="brand-hero-section"
@@ -107,9 +91,6 @@
         >
 
             <article class="brand-hero">
-
-
-                <!-- HERO MEDIA -->
 
                 <div class="brand-hero-media">
 
@@ -145,16 +126,10 @@
 
                 </div>
 
-
-                <!-- HERO OVERLAY -->
-
                 <div
                     class="brand-hero-shade"
                     aria-hidden="true"
                 ></div>
-
-
-                <!-- HERO CONTENT -->
 
                 <div class="container brand-hero-content-wrap">
 
@@ -172,19 +147,16 @@
 
                         </div>
 
-
                         <span
-                            class="badge badge-warning brand-hero-badge"
+                            class="brand-hero-eyebrow"
                             data-lang="brandPage.heroBadge"
                         >
                             Koleksi Brand Resmi
                         </span>
 
-
                         <h1 id="brand-name">
                             Brand
                         </h1>
-
 
                         <p
                             id="brand-description"
@@ -193,179 +165,22 @@
                             Silakan tunggu, informasi brand sedang dimuat.
                         </p>
 
-
-                        <div class="brand-hero-actions">
-
-                            <a
-                                href="#brand-products"
-                                class="btn btn-primary"
-                                data-lang="brandPage.exploreProducts"
-                            >
-                                Jelajahi Produk
-                            </a>
-
-                            <a
-                                href="#wechat"
-                                class="btn btn-hero-outline"
-                                data-lang="brandPage.contactWechat"
-                            >
-                                Hubungi WeChat
-                            </a>
-
-                        </div>
+                        <a
+                            href="#brand-products"
+                            class="btn btn-primary brand-hero-primary-action"
+                            data-lang="brandPage.exploreProducts"
+                        >
+                            Jelajahi Produk
+                        </a>
 
                     </div>
 
                 </div>
 
-
-                <!-- SCROLL INDICATOR -->
-
-                <a
-                    href="#brand-overview"
-                    class="brand-hero-scroll"
-                    aria-label="Lanjut ke informasi brand"
-                >
-
-                    <span data-lang="hero.explore">
-                        Jelajahi
-                    </span>
-
-                    <span aria-hidden="true">
-                        ↓
-                    </span>
-
-                </a>
-
             </article>
 
         </section>
 
-
-        <!-- ==============================================
-             BRAND HIGHLIGHTS
-        =============================================== -->
-
-        <section
-            class="brand-overview"
-            id="brand-overview"
-        >
-
-            <div class="container">
-
-                <div class="brand-overview-grid">
-
-
-                    <!-- HIGHLIGHT 1 -->
-
-                    <article class="brand-overview-item">
-
-                        <span class="brand-overview-number">
-                            01
-                        </span>
-
-                        <div>
-
-                            <h2 data-lang="brandPage.highlights.original.title">
-                                Produk Original
-                            </h2>
-
-                            <p data-lang="brandPage.highlights.original.description">
-                                Bersumber dari toko resmi atau penjual terpercaya.
-                            </p>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- HIGHLIGHT 2 -->
-
-                    <article class="brand-overview-item">
-
-                        <span class="brand-overview-number">
-                            02
-                        </span>
-
-                        <div>
-
-                            <h2 data-lang="brandPage.highlights.collection.title">
-                                Koleksi Pilihan
-                            </h2>
-
-                            <p data-lang="brandPage.highlights.collection.description">
-                                Produk dipilih berdasarkan fungsi dan kualitas.
-                            </p>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- HIGHLIGHT 3 -->
-
-                    <article class="brand-overview-item">
-
-                        <span class="brand-overview-number">
-                            03
-                        </span>
-
-                        <div>
-
-                            <h2 data-lang="brandPage.highlights.consultation.title">
-                                Konsultasi WeChat
-                            </h2>
-
-                            <p data-lang="brandPage.highlights.consultation.description">
-                                Tanyakan stok, warna, ukuran, dan detail produk.
-                            </p>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             COLLECTION INTRODUCTION
-        =============================================== -->
-
-        <section class="section brand-introduction">
-
-            <div class="container">
-
-                <div class="section-title brand-collection-heading">
-
-                    <span
-                        class="section-overline"
-                        data-lang="brandPage.collectionBadge"
-                    >
-                        Koleksi Brand
-                    </span>
-
-                    <h2 id="brand-collection-title">
-                        Koleksi Brand
-                    </h2>
-
-                    <p id="brand-collection-description">
-                        Jelajahi produk yang tersedia melalui Gomai.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             BRAND PRODUCT CATALOG
-        =============================================== -->
 
         <section
             class="section brand-products-section"
@@ -374,11 +189,6 @@
         >
 
             <div class="container">
-
-
-                <!-- ======================================
-                     CATALOG HEADER
-                ======================================= -->
 
                 <div class="brand-products-toolbar">
 
@@ -406,15 +216,7 @@
 
                     </div>
 
-
-                    <!-- ==================================
-                         PRODUCT CONTROLS
-                    =================================== -->
-
                     <div class="brand-product-controls">
-
-
-                        <!-- CATEGORY FILTER -->
 
                         <div class="filter-field">
 
@@ -441,9 +243,6 @@
                             </select>
 
                         </div>
-
-
-                        <!-- SORT -->
 
                         <div class="filter-field">
 
@@ -510,15 +309,6 @@
 
                 </div>
 
-
-                <!-- ======================================
-                     PRODUCT GRID
-
-                     Tidak ada produk hardcoded di HTML.
-                     BrandController + ProductCardComponent
-                     mengisi bagian ini dari ProductsModel.
-                ======================================= -->
-
                 <div
                     id="brand-product-grid"
                     class="product-grid products-grid brand-product-grid"
@@ -540,307 +330,6 @@
 
         </section>
 
-
-        <!-- ==============================================
-             SHOPPING FLOW
-        =============================================== -->
-
-        <section
-            class="section brand-shopping-flow"
-            id="brand-shopping-flow"
-        >
-
-            <div class="container">
-
-                <div class="section-title">
-
-                    <span
-                        class="badge badge-warning"
-                        data-lang="brandPage.shoppingFlow.badge"
-                    >
-                        Belanja melalui Gomai
-                    </span>
-
-                    <h2 data-lang="brandPage.shoppingFlow.title">
-                        Mudah dari Memilih hingga Menerima Pesanan
-                    </h2>
-
-                    <p data-lang="brandPage.shoppingFlow.description">
-                        Gomai membantu proses pencarian, konsultasi,
-                        pemesanan, hingga pengantaran produk.
-                    </p>
-
-                </div>
-
-
-                <div class="brand-shopping-steps">
-
-
-                    <!-- STEP 1 -->
-
-                    <article class="brand-shopping-step">
-
-                        <span class="brand-shopping-step-number">
-                            01
-                        </span>
-
-                        <h3 data-lang="brandPage.shoppingFlow.step1.title">
-                            Pilih Produk
-                        </h3>
-
-                        <p data-lang="brandPage.shoppingFlow.step1.description">
-                            Buka detail produk dan tentukan warna serta ukuran.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 2 -->
-
-                    <article class="brand-shopping-step">
-
-                        <span class="brand-shopping-step-number">
-                            02
-                        </span>
-
-                        <h3 data-lang="brandPage.shoppingFlow.step2.title">
-                            Periksa Stok
-                        </h3>
-
-                        <p data-lang="brandPage.shoppingFlow.step2.description">
-                            Hubungi Gomai untuk memastikan ketersediaan produk.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 3 -->
-
-                    <article class="brand-shopping-step">
-
-                        <span class="brand-shopping-step-number">
-                            03
-                        </span>
-
-                        <h3 data-lang="brandPage.shoppingFlow.step3.title">
-                            Konfirmasi Pesanan
-                        </h3>
-
-                        <p data-lang="brandPage.shoppingFlow.step3.description">
-                            Kirim detail pilihan Anda melalui WeChat.
-                        </p>
-
-                    </article>
-
-
-                    <!-- STEP 4 -->
-
-                    <article class="brand-shopping-step">
-
-                        <span class="brand-shopping-step-number">
-                            04
-                        </span>
-
-                        <h3 data-lang="brandPage.shoppingFlow.step4.title">
-                            Kami Antar
-                        </h3>
-
-                        <p data-lang="brandPage.shoppingFlow.step4.description">
-                            Pesanan diproses dan dikirim sesuai jadwal.
-                        </p>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             GOMAI SERVICE
-        =============================================== -->
-
-        <section class="section brand-service-section">
-
-            <div class="container">
-
-                <div class="brand-service-banner">
-
-
-                    <!-- SERVICE INTRO -->
-
-                    <div class="brand-service-copy">
-
-                        <span
-                            class="badge badge-warning"
-                            data-lang="services.badge"
-                        >
-                            Layanan Gomai
-                        </span>
-
-                        <h2 data-lang="services.title">
-                            Temukan Produk. Konsultasikan. Kami Antar.
-                        </h2>
-
-                        <p data-lang="services.description">
-                            Pilih produk dari brand favorit Anda,
-                            kemudian hubungi Gomai melalui WeChat untuk
-                            memeriksa stok, ukuran, harga, dan pengantaran.
-                        </p>
-
-                        <a
-                            href="#wechat"
-                            class="btn btn-primary"
-                            data-lang="common.contactWechat"
-                        >
-                            Hubungi WeChat
-                        </a>
-
-                    </div>
-
-
-                    <!-- SERVICE LIST -->
-
-                    <div class="brand-service-list">
-
-
-                        <!-- SERVICE 1 -->
-
-                        <article>
-
-                            <strong>
-                                01
-                            </strong>
-
-                            <div>
-
-                                <h3 data-lang="services.trustedProducts.title">
-                                    Produk Terpercaya
-                                </h3>
-
-                                <p data-lang="services.trustedProducts.description">
-                                    Bersumber dari toko resmi atau
-                                    penjual yang telah diperiksa.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-
-                        <!-- SERVICE 2 -->
-
-                        <article>
-
-                            <strong>
-                                02
-                            </strong>
-
-                            <div>
-
-                                <h3 data-lang="services.wechatConsultation.title">
-                                    Konsultasi WeChat
-                                </h3>
-
-                                <p data-lang="services.wechatConsultation.description">
-                                    Dapatkan bantuan sebelum melakukan pemesanan.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-
-                        <!-- SERVICE 3 -->
-
-                        <article>
-
-                            <strong>
-                                03
-                            </strong>
-
-                            <div>
-
-                                <h3 data-lang="services.delivery.title">
-                                    Kami Antar
-                                </h3>
-
-                                <p data-lang="services.delivery.description">
-                                    Pesanan diproses sesuai layanan dan
-                                    jadwal pengantaran.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             WECHAT CTA
-
-             id="wechat" menjadi target HeaderComponent.
-        =============================================== -->
-
-        <section
-            class="section brand-wechat-section"
-            id="wechat"
-        >
-
-            <div class="container">
-
-                <div class="brand-wechat-cta">
-
-                    <div>
-
-                        <span
-                            class="brand-wechat-label"
-                            data-lang="wechat.label"
-                        >
-                            Layanan Pelanggan Gomai
-                        </span>
-
-                        <h2 data-lang="wechat.title">
-                            Butuh Bantuan Menemukan Produk?
-                        </h2>
-
-                        <p data-lang="wechat.description">
-                            Kirim nama, foto, atau tautan produk melalui
-                            WeChat. Gomai akan membantu memeriksa detail
-                            dan ketersediaannya.
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        href="contact.html"
-                        class="btn btn-primary"
-                        data-route="contact"
-                        data-lang="wechat.button"
-                    >
-                        Hubungi via WeChat
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             BRAND NOT FOUND
-        =============================================== -->
 
         <section
             id="brand-not-found"
@@ -884,83 +373,35 @@
 
     </main>
 
-
-    <!-- ==================================================
-         SHARED FOOTER
-         Dirender oleh FooterComponent.
-    ================================================== -->
-
     <footer id="site-footer"></footer>
 
-
-    <!-- ==================================================
-         JAVASCRIPT — GOMAI FRAMEWORK
-    ================================================== -->
-
-
-    <!-- ==================================================
-         1. FOUNDATION
-    ================================================== -->
-
     <script src="../js/config.js"></script>
+
     <script src="../js/core/utils.js"></script>
     <script src="../js/language.js"></script>
 
-
-    <!-- ==================================================
-         2. CORE FOUNDATION
-    ================================================== -->
-
     <script src="../js/core/component-core.js"></script>
-
     <script src="../js/core/model-registry.js"></script>
     <script src="../js/core/component-registry.js"></script>
     <script src="../js/core/controller-registry.js"></script>
 
-
-    <!-- ==================================================
-         3. MODELS
-    ================================================== -->
-
     <script src="../js/models/brands.js"></script>
+    <script src="../js/models/categories.js"></script>
     <script src="../js/models/products.js"></script>
-
-
-    <!-- ==================================================
-         4. COMPONENTS
-    ================================================== -->
 
     <script src="../js/components/loading.js"></script>
     <script src="../js/components/empty-state.js"></script>
-
     <script src="../js/components/product-card.js"></script>
     <script src="../js/components/brand-card.js"></script>
     <script src="../js/components/search-panel.js"></script>
-
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
 
-
-    <!-- ==================================================
-         5. PAGE CONTROLLER
-    ================================================== -->
-
     <script src="../js/brand.js"></script>
 
-
-    <!-- ==================================================
-         6. GOMAI CORE
-    ================================================== -->
-
     <script src="../js/core/gomai.js"></script>
-
-
-    <!-- ==================================================
-         7. APPLICATION BOOTSTRAPPER
-         app.js WAJIB MENJADI SCRIPT TERAKHIR.
-    ================================================== -->
-
     <script src="../js/app.js"></script>
 
 </body>
+
 </html>

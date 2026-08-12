@@ -34,6 +34,9 @@
    brand
    products
    productDetail
+   cart
+   wishlist
+   checkout
    information
 
    Halaman berikut memakai controller information:

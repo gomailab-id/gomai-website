@@ -1,5 +1,50 @@
 # Gomai Changelog
 
+## 2026-08-12 — Replacement 6
+
+### Consolidated
+- Homepage category navigation pass.
+- Brand page simplification.
+- Information page simplification.
+- Header top utility bar removal.
+- Exact WeChat QR integration.
+- Copyable WeChat ID in Contact and Footer.
+- FAQ right/down chevrons.
+- Cart / Wishlist / Checkout local state.
+- Bilingual PNG order summary.
+- Short `GM-####` order reference.
+- Dynamic order-card height.
+- Category/product catalog simplification.
+- Product-detail simplification.
+
+### Full-site QA fixes
+- Header WeChat button now routes to Contact page after repeated `#wechat` sections were removed.
+- Removed obsolete `base-component.js` and `product.css`.
+- Removed stale project-structure snapshot and old replacement reports from live repository.
+- Removed obsolete information-page icon assets.
+- Removed invalid-format unused `left.webp` and `stretch.webp`.
+
+### Static verification
+- JavaScript syntax.
+- JSON validity.
+- HTML local references.
+- Data asset references.
+- translation tree parity.
+- application script order.
+- 4-category flat hierarchy.
+- brand/product/category referential integrity.
+- FAQ accessibility contract.
+- Header/Footer/Contact QR contract.
+- Cart/Wishlist storage functional test.
+- Short order-code functional test.
+- dynamic PNG generator contract.
+- responsive CSS contract.
+
+### Visual QA limitation
+Headless Chromium did not complete a local run in the build environment. Final visual inspection remains required through VS Code Live Server.
+
+---
+
 ## 2026-08-11 — Replacement 4 Consolidation
 
 - Mengintegrasikan master logo Gomai ke shared Header melalui central config.
@@ -144,3 +189,24 @@ Integration Blocker #1: perbaiki **CSS page wiring** di seluruh HTML secara sist
 - Search flow: static contract verified; tetap perlu satu browser click-through QA.
 - All Products: static contract verified setelah stock-filter fix; tetap perlu browser visual/interaksi QA.
 
+
+
+## Commerce Checkpoint 1 — Cart, Wishlist, Checkout
+
+- Added localStorage-backed Cart and Wishlist through `js/shopping-state.js`.
+- Added shared Header badges for Cart and Wishlist.
+- Product cards now support Wishlist and data-safe quick add.
+- Product Detail now supports Add to Cart and Wishlist without removing direct WeChat contact.
+- Added `pages/cart.html`, `pages/wishlist.html`, and `pages/checkout.html`.
+- Checkout generates a premium Gomai-branded PNG order summary in Indonesian or Chinese.
+- No account/backend/database is required for this checkpoint.
+
+## Replacement 5 — Commerce Flow & Information Icon System
+
+- Consolidated Cart, Wishlist, and Checkout into the full website package.
+- Added browser-local Cart/Wishlist state with shared Header badges.
+- Added premium Indonesian / Chinese downloadable PNG order summaries.
+- Preserved Gomai confirmation flow before final payment and delivery.
+- Added contextual local SVG icons to How-to-Buy, About, Contact, and FAQ action cards.
+- Kept FAQ accordion rows intentionally minimal to avoid visual clutter.
+- Maintained the locked Gomai master logo, six final brand heroes, and optical-fit partner logos.

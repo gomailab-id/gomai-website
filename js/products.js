@@ -22,7 +22,7 @@
  */
 
 const ProductsController = (() => {
-    const VERSION = "3.0.0";
+    const VERSION = "3.2.0";
 
     const EVENTS = Object.freeze({
         INITIALIZED: "gomai:products-controller-initialized",
@@ -67,6 +67,7 @@ const ProductsController = (() => {
     let filterGeneration = 0;
     let allProducts = [];
     let allBrands = [];
+    let allCategories = [];
     let visibleProducts = [];
     let lastError = null;
 
@@ -76,6 +77,7 @@ const ProductsController = (() => {
         pageRoot: null,
         title: null,
         description: null,
+        contextLabel: null,
         productGrid: null,
         resultCount: null,
         brandFilter: null,
@@ -166,11 +168,11 @@ const ProductsController = (() => {
 
             await loadReferenceData();
 
+            normalizePageCategory();
+
+            updatePageContext();
+
             await populateBrandFilter();
-
-            await populateCategoryFilter();
-
-            populateStockFilter();
 
             syncControls();
 
@@ -342,6 +344,30 @@ const ProductsController = (() => {
         );
     }
 
+    function getCategoriesModel() {
+        return (
+            lifecycleContext
+                ?.models
+                ?.get?.(
+                    "categories"
+                ) ||
+
+            window.Gomai
+                ?.getModel?.(
+                    "categories"
+                ) ||
+
+            window.ModelRegistry
+                ?.get?.(
+                    "categories"
+                ) ||
+
+            window.CategoriesModel ||
+
+            null
+        );
+    }
+
     function getProductCardComponent() {
         return (
             lifecycleContext
@@ -411,6 +437,11 @@ const ProductsController = (() => {
             findElement(
                 "products-description",
                 "product-list-description"
+            );
+
+        elements.contextLabel =
+            findElement(
+                "products-context-label"
             );
 
         elements.productGrid =
@@ -518,14 +549,19 @@ const ProductsController = (() => {
     async function loadReferenceData() {
         const [
             products,
-            brands
+            brands,
+            categories
         ] =
             await Promise.all([
                 getProductsModel()
                     .getActive(),
 
                 getBrandsModel()
-                    .getActive()
+                    .getActive(),
+
+                getCategoriesModel()
+                    ?.getActive?.() ||
+                    Promise.resolve([])
             ]);
 
         allProducts =
@@ -536,6 +572,11 @@ const ProductsController = (() => {
         allBrands =
             Array.isArray(brands)
                 ? brands
+                : [];
+
+        allCategories =
+            Array.isArray(categories)
+                ? categories
                 : [];
     }
 
@@ -566,11 +607,11 @@ const ProductsController = (() => {
 
             await loadReferenceData();
 
+            normalizePageCategory();
+
+            updatePageContext();
+
             await populateBrandFilter();
-
-            await populateCategoryFilter();
-
-            populateStockFilter();
 
             syncControls();
 
@@ -752,31 +793,71 @@ const ProductsController = (() => {
             )
         );
 
-        allBrands.forEach(
-            brand => {
-                const brandId =
-                    normalizeIdentifier(
-                        brand?.id ||
-                        brand?.slug
-                    );
-
-                if (!brandId) {
-                    return;
-                }
-
-                filter.append(
-                    createOption(
-                        brandId,
-
-                        getBrandName(
-                            brand,
-                            getCurrentLanguage()
-                        ) ||
-                        brandId
+        const allowedBrandIds =
+            new Set(
+                allProducts
+                    .filter(
+                        product =>
+                            state.category ===
+                                "all" ||
+                            (
+                                Array.isArray(
+                                    product.categoryIds
+                                ) &&
+                                product.categoryIds
+                                    .map(
+                                        normalizeIdentifier
+                                    )
+                                    .includes(
+                                        state.category
+                                    )
+                            )
                     )
-                );
-            }
-        );
+                    .map(
+                        product =>
+                            normalizeIdentifier(
+                                product.brandId ||
+                                product.brand
+                            )
+                    )
+                    .filter(Boolean)
+            );
+
+        allBrands
+            .filter(
+                brand =>
+                    allowedBrandIds.has(
+                        normalizeIdentifier(
+                            brand?.id ||
+                            brand?.slug
+                        )
+                    )
+            )
+            .forEach(
+                brand => {
+                    const brandId =
+                        normalizeIdentifier(
+                            brand?.id ||
+                            brand?.slug
+                        );
+
+                    if (!brandId) {
+                        return;
+                    }
+
+                    filter.append(
+                        createOption(
+                            brandId,
+
+                            getBrandName(
+                                brand,
+                                getCurrentLanguage()
+                            ) ||
+                            brandId
+                        )
+                    );
+                }
+            );
 
         state.brand =
             optionExists(
@@ -805,31 +886,12 @@ const ProductsController = (() => {
         const previousValue =
             state.category;
 
-        const productsModel =
-            getProductsModel();
-
-        let categories =
-            [];
-
-        if (
-            typeof productsModel
-                .getCategories ===
-            "function"
-        ) {
-            categories =
-                await productsModel
-                    .getCategories(
-                        state.brand ===
-                        "all"
-                            ? null
-                            : state.brand
-                    );
-        } else {
-            categories =
-                collectCategoriesLocally(
+        const categories =
+            allCategories.length > 0
+                ? allCategories
+                : collectCategoriesLocally(
                     state.brand
                 );
-        }
 
         filter.replaceChildren();
 
@@ -847,7 +909,11 @@ const ProductsController = (() => {
             category => {
                 const id =
                     normalizeIdentifier(
-                        category
+                        typeof category ===
+                        "string"
+                            ? category
+                            : category?.id ||
+                              category?.slug
                     );
 
                 if (!id) {
@@ -857,7 +923,12 @@ const ProductsController = (() => {
                 filter.append(
                     createOption(
                         id,
-                        getCategoryName(id)
+                        typeof category ===
+                            "string"
+                            ? getCategoryName(id)
+                            : getLocalizedCategoryName(
+                                category
+                            )
                     )
                 );
             }
@@ -1177,11 +1248,6 @@ const ProductsController = (() => {
                 "all"
             );
 
-        state.category =
-            "all";
-
-        await populateCategoryFilter();
-
         syncControls();
 
         await applyFilters();
@@ -1482,12 +1548,16 @@ const ProductsController = (() => {
     }
 
     async function resetFilters() {
+        const pageCategory =
+            state.category;
+
         Object.assign(
             state,
             DEFAULT_STATE
         );
 
-        await populateCategoryFilter();
+        state.category =
+            pageCategory;
 
         syncControls();
 
@@ -1501,11 +1571,6 @@ const ProductsController = (() => {
             case "brand":
                 state.brand =
                     "all";
-
-                state.category =
-                    "all";
-
-                await populateCategoryFilter();
 
                 break;
 
@@ -1699,15 +1764,11 @@ const ProductsController = (() => {
         elements.resultCount
             .textContent =
             translate(
-                "productsPage.resultCountTemplate",
-                "Menampilkan {{visible}} dari {{total}} produk",
+                "productsPage.simpleResultCount",
+                "{{count}} produk",
                 {
-                    visible:
+                    count:
                         visibleProducts
-                            .length,
-
-                    total:
-                        allProducts
                             .length
                 }
             );
@@ -1743,21 +1804,6 @@ const ProductsController = (() => {
                         state.brand
                     ) ||
                     state.brand
-            });
-        }
-
-        if (
-            state.category !==
-            "all"
-        ) {
-            filters.push({
-                type:
-                    "category",
-
-                label:
-                    getCategoryName(
-                        state.category
-                    )
             });
         }
 
@@ -2004,11 +2050,9 @@ const ProductsController = (() => {
         }
 
         try {
+            updatePageContext();
+
             await populateBrandFilter();
-
-            await populateCategoryFilter();
-
-            populateStockFilter();
 
             syncControls();
 
@@ -2055,19 +2099,36 @@ const ProductsController = (() => {
     ====================================================== */
 
     function updateDocumentMetadata() {
+        const category =
+            getActiveCategory();
+
+        const title =
+            category
+                ? `${getLocalizedCategoryName(
+                    category
+                )} | Gomai`
+                : translate(
+                    "productsPage.meta.title",
+                    "Semua Produk | Gomai"
+                );
+
+        const description =
+            category
+                ? getLocalizedCategoryDescription(
+                    category
+                )
+                : translate(
+                    "productsPage.meta.description",
+                    "Jelajahi seluruh produk Gomai dari empat kategori utama."
+                );
+
         document.title =
-            translate(
-                "productsPage.meta.title",
-                "Semua Produk | Gomai"
-            );
+            title;
 
         elements.pageDescription
             ?.setAttribute(
                 "content",
-                translate(
-                    "productsPage.meta.description",
-                    "Jelajahi berbagai produk olahraga, outdoor, dan kebutuhan harian melalui Gomai."
-                )
+                description
             );
     }
 
@@ -2118,6 +2179,9 @@ const ProductsController = (() => {
             [];
 
         allBrands =
+            [];
+
+        allCategories =
             [];
 
         visibleProducts =
@@ -2211,6 +2275,29 @@ const ProductsController = (() => {
        CATEGORY NAME
     ====================================================== */
 
+    function getLocalizedCategoryName(
+        category
+    ) {
+        const language =
+            getCurrentLanguage();
+
+        if (
+            typeof category?.name ===
+            "string"
+        ) {
+            return normalizeText(
+                category.name
+            );
+        }
+
+        return normalizeText(
+            category?.name?.[language] ||
+            category?.name?.zh ||
+            category?.name?.id ||
+            category?.id
+        );
+    }
+
     function getCategoryName(
         category
     ) {
@@ -2232,11 +2319,177 @@ const ProductsController = (() => {
                             .toUpperCase()
                 );
 
+        const categoryRecord =
+            allCategories.find(
+                item =>
+                    normalizeIdentifier(
+                        item?.id ||
+                        item?.slug
+                    ) === id
+            );
+
+        if (categoryRecord) {
+            return getLocalizedCategoryName(
+                categoryRecord
+            );
+        }
+
         return translate(
             `categories.${id}.name`,
             fallback
         );
     }
+
+    function normalizePageCategory() {
+        if (
+            state.category ===
+            "all"
+        ) {
+            return true;
+        }
+
+        const exists =
+            allCategories.some(
+                category =>
+                    normalizeIdentifier(
+                        category?.id ||
+                        category?.slug
+                    ) ===
+                    state.category
+            );
+
+        if (!exists) {
+            state.category =
+                "all";
+        }
+
+        return exists;
+    }
+
+
+    function getActiveCategory() {
+        if (
+            state.category ===
+            "all"
+        ) {
+            return null;
+        }
+
+        return (
+            allCategories.find(
+                category =>
+                    normalizeIdentifier(
+                        category?.id ||
+                        category?.slug
+                    ) ===
+                    state.category
+            ) ||
+            null
+        );
+    }
+
+
+    function getLocalizedCategoryDescription(
+        category
+    ) {
+        const language =
+            getCurrentLanguage();
+
+        if (
+            typeof category
+                ?.description ===
+            "string"
+        ) {
+            return normalizeText(
+                category.description
+            );
+        }
+
+        return normalizeText(
+            category
+                ?.description
+                ?.[language] ||
+            category
+                ?.description
+                ?.zh ||
+            category
+                ?.description
+                ?.id ||
+            ""
+        );
+    }
+
+
+    function updatePageContext() {
+        const category =
+            getActiveCategory();
+
+        const title =
+            category
+                ? getLocalizedCategoryName(
+                    category
+                )
+                : translate(
+                    "common.allProducts",
+                    "Semua Produk"
+                );
+
+        const description =
+            category
+                ? getLocalizedCategoryDescription(
+                    category
+                )
+                : translate(
+                    "productsPage.meta.description",
+                    "Jelajahi seluruh produk Gomai dari empat kategori utama."
+                );
+
+        if (
+            elements.title
+        ) {
+            elements.title.textContent =
+                title;
+
+            elements.title.removeAttribute(
+                "data-lang"
+            );
+        }
+
+        if (
+            elements.description
+        ) {
+            elements.description.textContent =
+                description;
+
+            elements.description.removeAttribute(
+                "data-lang"
+            );
+        }
+
+        if (
+            elements.contextLabel
+        ) {
+            elements.contextLabel.textContent =
+                category
+                    ? translate(
+                        "productsPage.categoryLabel",
+                        "Kategori"
+                    )
+                    : translate(
+                        "productsPage.catalogLabel",
+                        "Katalog"
+                    );
+
+            elements.contextLabel.removeAttribute(
+                "data-lang"
+            );
+        }
+
+        updateDocumentMetadata();
+
+        return true;
+    }
+
 
     /* ======================================================
        LANGUAGE HELPERS

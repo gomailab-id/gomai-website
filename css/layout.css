@@ -1196,3 +1196,192 @@ main,
     }
 
 }
+
+
+/* ==========================================================
+   GOMAI FOOTER V4 — SIMPLE + QR
+========================================================== */
+
+.footer-v4 {
+    padding-top: 0;
+    color: #ffffff;
+    background: #111111;
+}
+
+.footer-v4-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(220px, 1.25fr)
+        minmax(150px, 0.72fr)
+        minmax(150px, 0.72fr)
+        minmax(240px, 0.92fr);
+    gap: 46px;
+    padding-block: 52px 38px;
+}
+
+.footer-v4-identity p,
+.footer-v4-wechat p {
+    margin: 16px 0 0;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 0.88rem;
+    line-height: 1.62;
+}
+
+.footer-v4-logo {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 12px;
+    background: #ffffff;
+    border-radius: 13px;
+}
+
+.footer-v4-logo img {
+    display: block;
+    width: auto;
+    max-width: 150px;
+    max-height: 52px;
+    object-fit: contain;
+}
+
+.footer-v4-column h2,
+.footer-v4-wechat h2 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 0.84rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.footer-v4-column ul {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-v4-column a {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.footer-v4-wechat {
+    min-width: 0;
+}
+
+.footer-v4-qr {
+    width: 158px;
+    margin-top: 20px;
+    padding: 8px;
+    background: #ffffff;
+    border-radius: 14px;
+}
+
+.footer-v4-qr img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer-v4-id-row {
+    max-width: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 10px 10px 10px 13px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 11px;
+}
+
+.footer-v4-id-row > div {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.footer-v4-id-row > div > span {
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 0.67rem;
+}
+
+.footer-v4-id-row strong {
+    overflow: hidden;
+    color: #ffffff;
+    font-size: 0.86rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.footer-v4-id-row button {
+    flex: 0 0 auto;
+    min-width: 68px;
+    min-height: 36px;
+    padding-inline: 11px;
+    color: #111111;
+    background: var(--primary, #f5b400);
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 0.76rem;
+    font-weight: 850;
+    cursor: pointer;
+}
+
+.footer-v4-id-row button.is-copied {
+    background: #ffffff;
+}
+
+.footer-v4-bottom {
+    display: flex;
+    align-items: center;
+    min-height: 68px;
+    padding-block: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-v4-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 0.78rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .footer-v4-column a:hover {
+        color: var(--primary, #f5b400);
+    }
+}
+
+@media (max-width: 899px) {
+    .footer-v4-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 34px 26px;
+    }
+}
+
+@media (max-width: 599px) {
+    .footer-v4-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-block: 40px 30px;
+    }
+
+    .footer-v4-qr {
+        width: 146px;
+    }
+
+    .footer-v4-id-row {
+        max-width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-v4-column a {
+        transition: none;
+    }
+}

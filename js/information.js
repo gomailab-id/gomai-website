@@ -29,7 +29,7 @@
  */
 
 const InformationController = (() => {
-    const VERSION = "1.0.0";
+    const VERSION = "1.1.0";
 
     const PAGE_TYPES = Object.freeze({
         ABOUT: "about",
@@ -465,6 +465,20 @@ const InformationController = (() => {
             return;
         }
 
+        const copyWechatButton =
+            target.closest(
+                "[data-copy-wechat]"
+            );
+
+        if (copyWechatButton) {
+            handleWechatCopy(
+                copyWechatButton
+            );
+
+            return;
+        }
+
+
         const faqTrigger =
             target.closest(
                 "[data-faq-trigger], .faq-question"
@@ -479,6 +493,134 @@ const InformationController = (() => {
                 faqTrigger
             );
         }
+    }
+
+
+    async function handleWechatCopy(
+        button
+    ) {
+        const wechatId =
+            window.GomaiConfig
+                ?.contact
+                ?.wechatId ||
+            "Gomai";
+
+        const copied =
+            await copyText(
+                wechatId
+            );
+
+        if (!copied) {
+            return false;
+        }
+
+        const label =
+            button.querySelector(
+                "[data-copy-label]"
+            );
+
+        if (label) {
+            label.textContent =
+                translate(
+                    "contactPage.wechat.copied",
+                    "Tersalin"
+                );
+        }
+
+        button.classList.add(
+            "is-copied"
+        );
+
+        window.setTimeout(
+            () => {
+                if (!button.isConnected) {
+                    return;
+                }
+
+                if (label) {
+                    label.textContent =
+                        translate(
+                            "contactPage.wechat.copy",
+                            "Salin"
+                        );
+                }
+
+                button.classList.remove(
+                    "is-copied"
+                );
+            },
+            1600
+        );
+
+        return true;
+    }
+
+
+    async function copyText(
+        value
+    ) {
+        const text =
+            String(value || "");
+
+        if (!text) {
+            return false;
+        }
+
+        try {
+            if (
+                navigator.clipboard &&
+                typeof navigator.clipboard
+                    .writeText ===
+                    "function"
+            ) {
+                await navigator.clipboard
+                    .writeText(text);
+
+                return true;
+            }
+        } catch (_error) {
+            /* gunakan fallback */
+        }
+
+        const textarea =
+            document.createElement(
+                "textarea"
+            );
+
+        textarea.value =
+            text;
+
+        textarea.setAttribute(
+            "readonly",
+            ""
+        );
+
+        textarea.style.position =
+            "fixed";
+
+        textarea.style.opacity =
+            "0";
+
+        document.body.append(
+            textarea
+        );
+
+        textarea.select();
+
+        let copied = false;
+
+        try {
+            copied =
+                document.execCommand(
+                    "copy"
+                );
+        } catch (_error) {
+            copied = false;
+        }
+
+        textarea.remove();
+
+        return copied;
     }
 
 

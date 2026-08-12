@@ -1,256 +1,221 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <title>FAQ | Gomai</title>
-
     <meta
-        id="page-description"
         name="description"
-        content="Temukan jawaban untuk pertanyaan umum mengenai produk, pemesanan, pembayaran, dan pengantaran Gomai."
+        content="Pertanyaan umum mengenai Gomai."
     >
-
-    <link
-        rel="stylesheet"
-        href="../css/styles.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../css/information.css"
-    >
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/information.css">
 </head>
-
 <body
     data-page="information"
     data-information-page="faq"
 >
-
-    <!-- ==================================================
-         SHARED HEADER
-    ================================================== -->
-
     <header id="site-header"></header>
 
-
-    <!-- ==================================================
-         MAIN CONTENT
-    ================================================== -->
-
     <main
-        class="information-page faq-page faq-premium-page"
+        class="information-simple-page information-simple-faq"
         data-information-page-root
     >
 
-        <!-- ==============================================
-             PREMIUM HERO
-        =============================================== -->
-
-        <section class="faq-premium-hero">
-            <div class="container faq-premium-hero-grid">
-
-                <div class="faq-premium-hero-copy">
-
-                    <span
-                        class="faq-premium-kicker"
-                        data-lang="faqPage.hero.badge"
-                    >
-                        Pertanyaan Umum
-                    </span>
-
-                    <h1 data-lang="faqPage.hero.title">
-                        Pertanyaan yang Sering Ditanyakan
-                    </h1>
-
-                    <p data-lang="faqPage.hero.description">
-                        Temukan jawaban singkat mengenai produk,
-                        pemesanan, pembayaran, dan pengantaran Gomai.
-                    </p>
-
-                </div>
-
-                <div
-                    class="faq-premium-hero-stat"
-                    aria-hidden="true"
+        <section class="information-simple-hero">
+            <div class="container information-simple-hero-inner">
+                <span
+                    class="information-simple-kicker"
+                    data-lang="faqPage.hero.badge"
                 >
-                    <span>FAQ</span>
-                    <strong>07</strong>
-                    <small>GOMAI</small>
-                </div>
+                    FAQ
+                </span>
 
+                <h1 data-lang="faqPage.hero.title">
+                    Pertanyaan yang Sering Diajukan
+                </h1>
+
+                <p data-lang="faqPage.hero.description">
+                    Jawaban singkat untuk pertanyaan umum mengenai Gomai.
+                </p>
             </div>
         </section>
 
-
-        <!-- ==============================================
-             FAQ ACCORDION
-        =============================================== -->
-
-        <section class="faq-premium-list-section">
-            <div class="container">
-
-                <div class="faq-premium-list-heading">
-                    <div>
-                        <span class="faq-premium-section-number">
-                            01
-                        </span>
-
-                        <h2 data-lang="faqPage.hero.title">
-                            Pertanyaan yang Sering Ditanyakan
-                        </h2>
-                    </div>
-
-                    <p data-lang="faqPage.hero.description">
-                        Temukan jawaban singkat mengenai produk,
-                        pemesanan, pembayaran, dan pengantaran Gomai.
-                    </p>
-                </div>
-
-
+        <section class="information-simple-section">
+            <div class="container information-simple-faq-container">
                 <div
-                    class="faq-premium-list"
+                    id="faq-list"
+                    class="information-simple-faq-list faq-list"
                     data-faq-list
                 >
 
-                    <!-- 01 -->
                     <article
-                        class="faq-premium-item faq-item"
+                        class="information-simple-faq-item faq-item"
                         data-faq-item
                     >
                         <button
-                            class="faq-premium-question faq-question"
+                            class="information-simple-faq-question faq-question"
                             type="button"
-                            id="faq-question-what-is-gomai"
+                            id="faq-question-whatIsGomai"
                             aria-expanded="false"
-                            aria-controls="faq-answer-what-is-gomai"
+                            aria-controls="faq-answer-whatIsGomai"
                             data-faq-trigger
                         >
-                            <span class="faq-premium-item-number">
+                            <span class="information-simple-faq-number">
                                 01
                             </span>
 
                             <span
-                                class="faq-premium-question-text"
+                                class="information-simple-faq-question-text"
                                 data-lang="faqPage.items.whatIsGomai.question"
                             >
                                 Apa itu Gomai?
                             </span>
 
                             <span
-                                class="faq-premium-toggle"
+                                class="information-simple-faq-chevron"
                                 aria-hidden="true"
                             >
-                                +
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M9 5l7 7-7 7"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
                             </span>
                         </button>
 
                         <div
-                            class="faq-premium-answer faq-answer"
-                            id="faq-answer-what-is-gomai"
+                            class="information-simple-faq-answer faq-answer"
+                            id="faq-answer-whatIsGomai"
                             role="region"
-                            aria-labelledby="faq-question-what-is-gomai"
+                            aria-labelledby="faq-question-whatIsGomai"
                             data-faq-panel
                             hidden
                         >
                             <p data-lang="faqPage.items.whatIsGomai.answer">
-                                Gomai membantu Anda menemukan produk,
-                                mengonfirmasi detail pesanan, dan mengatur
-                                proses pengantaran.
+                                Gomai membantu proses belanja menjadi lebih mudah.
                             </p>
                         </div>
                     </article>
 
 
-                    <!-- 02 -->
                     <article
-                        class="faq-premium-item faq-item"
+                        class="information-simple-faq-item faq-item"
                         data-faq-item
                     >
                         <button
-                            class="faq-premium-question faq-question"
+                            class="information-simple-faq-question faq-question"
                             type="button"
-                            id="faq-question-how-to-order"
+                            id="faq-question-howToOrder"
                             aria-expanded="false"
-                            aria-controls="faq-answer-how-to-order"
+                            aria-controls="faq-answer-howToOrder"
                             data-faq-trigger
                         >
-                            <span class="faq-premium-item-number">
+                            <span class="information-simple-faq-number">
                                 02
                             </span>
 
                             <span
-                                class="faq-premium-question-text"
+                                class="information-simple-faq-question-text"
                                 data-lang="faqPage.items.howToOrder.question"
                             >
                                 Bagaimana cara melakukan pemesanan?
                             </span>
 
                             <span
-                                class="faq-premium-toggle"
+                                class="information-simple-faq-chevron"
                                 aria-hidden="true"
                             >
-                                +
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M9 5l7 7-7 7"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
                             </span>
                         </button>
 
                         <div
-                            class="faq-premium-answer faq-answer"
-                            id="faq-answer-how-to-order"
+                            class="information-simple-faq-answer faq-answer"
+                            id="faq-answer-howToOrder"
                             role="region"
-                            aria-labelledby="faq-question-how-to-order"
+                            aria-labelledby="faq-question-howToOrder"
                             data-faq-panel
                             hidden
                         >
                             <p data-lang="faqPage.items.howToOrder.answer">
-                                Pilih produk yang Anda butuhkan, siapkan
-                                detail warna, ukuran, dan jumlah, lalu
-                                hubungi Gomai untuk konfirmasi.
+                                Pilih produk, buat ringkasan pesanan, lalu kirim melalui WeChat Gomai.
                             </p>
                         </div>
                     </article>
 
 
-                    <!-- 03 -->
                     <article
-                        class="faq-premium-item faq-item"
+                        class="information-simple-faq-item faq-item"
                         data-faq-item
                     >
                         <button
-                            class="faq-premium-question faq-question"
+                            class="information-simple-faq-question faq-question"
                             type="button"
                             id="faq-question-stock"
                             aria-expanded="false"
                             aria-controls="faq-answer-stock"
                             data-faq-trigger
                         >
-                            <span class="faq-premium-item-number">
+                            <span class="information-simple-faq-number">
                                 03
                             </span>
 
                             <span
-                                class="faq-premium-question-text"
+                                class="information-simple-faq-question-text"
                                 data-lang="faqPage.items.stock.question"
                             >
-                                Apakah produk di website selalu tersedia?
+                                Apakah semua produk selalu tersedia?
                             </span>
 
                             <span
-                                class="faq-premium-toggle"
+                                class="information-simple-faq-chevron"
                                 aria-hidden="true"
                             >
-                                +
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M9 5l7 7-7 7"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
                             </span>
                         </button>
 
                         <div
-                            class="faq-premium-answer faq-answer"
+                            class="information-simple-faq-answer faq-answer"
                             id="faq-answer-stock"
                             role="region"
                             aria-labelledby="faq-question-stock"
@@ -258,97 +223,117 @@
                             hidden
                         >
                             <p data-lang="faqPage.items.stock.answer">
-                                Ketersediaan dapat berubah. Konfirmasikan
-                                stok melalui Gomai sebelum pesanan diproses.
+                                Ketersediaan dapat berubah dan dikonfirmasi oleh Gomai.
                             </p>
                         </div>
                     </article>
 
 
-                    <!-- 04 -->
                     <article
-                        class="faq-premium-item faq-item"
+                        class="information-simple-faq-item faq-item"
                         data-faq-item
                     >
                         <button
-                            class="faq-premium-question faq-question"
+                            class="information-simple-faq-question faq-question"
                             type="button"
-                            id="faq-question-request-product"
+                            id="faq-question-requestProduct"
                             aria-expanded="false"
-                            aria-controls="faq-answer-request-product"
+                            aria-controls="faq-answer-requestProduct"
                             data-faq-trigger
                         >
-                            <span class="faq-premium-item-number">
+                            <span class="information-simple-faq-number">
                                 04
                             </span>
 
                             <span
-                                class="faq-premium-question-text"
+                                class="information-simple-faq-question-text"
                                 data-lang="faqPage.items.requestProduct.question"
                             >
-                                Bagaimana jika produk yang saya cari tidak
-                                ada di website?
+                                Bagaimana jika produk belum ada di website?
                             </span>
 
                             <span
-                                class="faq-premium-toggle"
+                                class="information-simple-faq-chevron"
                                 aria-hidden="true"
                             >
-                                +
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M9 5l7 7-7 7"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
                             </span>
                         </button>
 
                         <div
-                            class="faq-premium-answer faq-answer"
-                            id="faq-answer-request-product"
+                            class="information-simple-faq-answer faq-answer"
+                            id="faq-answer-requestProduct"
                             role="region"
-                            aria-labelledby="faq-question-request-product"
+                            aria-labelledby="faq-question-requestProduct"
                             data-faq-panel
                             hidden
                         >
                             <p data-lang="faqPage.items.requestProduct.answer">
-                                Kirim nama, foto, atau tautan produk kepada
-                                Gomai. Kami akan membantu memeriksa apakah
-                                kebutuhan tersebut dapat diproses.
+                                Hubungi Gomai melalui WeChat untuk menanyakan produk tersebut.
                             </p>
                         </div>
                     </article>
 
 
-                    <!-- 05 -->
                     <article
-                        class="faq-premium-item faq-item"
+                        class="information-simple-faq-item faq-item"
                         data-faq-item
                     >
                         <button
-                            class="faq-premium-question faq-question"
+                            class="information-simple-faq-question faq-question"
                             type="button"
                             id="faq-question-payment"
                             aria-expanded="false"
                             aria-controls="faq-answer-payment"
                             data-faq-trigger
                         >
-                            <span class="faq-premium-item-number">
+                            <span class="information-simple-faq-number">
                                 05
                             </span>
 
                             <span
-                                class="faq-premium-question-text"
+                                class="information-simple-faq-question-text"
                                 data-lang="faqPage.items.payment.question"
                             >
-                                Bagaimana cara pembayaran?
+                                Bagaimana cara melakukan pembayaran?
                             </span>
 
                             <span
-                                class="faq-premium-toggle"
+                                class="information-simple-faq-chevron"
                                 aria-hidden="true"
                             >
-                                +
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M9 5l7 7-7 7"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
                             </span>
                         </button>
 
                         <div
-                            class="faq-premium-answer faq-answer"
+                            class="information-simple-faq-answer faq-answer"
                             id="faq-answer-payment"
                             role="region"
                             aria-labelledby="faq-question-payment"
@@ -356,47 +341,58 @@
                             hidden
                         >
                             <p data-lang="faqPage.items.payment.answer">
-                                Detail pembayaran dikonfirmasi melalui
-                                kanal resmi Gomai ketika pesanan diproses.
+                                Pembayaran dilakukan setelah stok dan harga akhir dikonfirmasi oleh Gomai.
                             </p>
                         </div>
                     </article>
 
 
-                    <!-- 06 -->
                     <article
-                        class="faq-premium-item faq-item"
+                        class="information-simple-faq-item faq-item"
                         data-faq-item
                     >
                         <button
-                            class="faq-premium-question faq-question"
+                            class="information-simple-faq-question faq-question"
                             type="button"
                             id="faq-question-delivery"
                             aria-expanded="false"
                             aria-controls="faq-answer-delivery"
                             data-faq-trigger
                         >
-                            <span class="faq-premium-item-number">
+                            <span class="information-simple-faq-number">
                                 06
                             </span>
 
                             <span
-                                class="faq-premium-question-text"
+                                class="information-simple-faq-question-text"
                                 data-lang="faqPage.items.delivery.question"
                             >
                                 Bagaimana proses pengantaran?
                             </span>
 
                             <span
-                                class="faq-premium-toggle"
+                                class="information-simple-faq-chevron"
                                 aria-hidden="true"
                             >
-                                +
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M9 5l7 7-7 7"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
                             </span>
                         </button>
 
                         <div
-                            class="faq-premium-answer faq-answer"
+                            class="information-simple-faq-answer faq-answer"
                             id="faq-answer-delivery"
                             role="region"
                             aria-labelledby="faq-question-delivery"
@@ -404,49 +400,58 @@
                             hidden
                         >
                             <p data-lang="faqPage.items.delivery.answer">
-                                Pengantaran diatur sesuai jenis layanan,
-                                lokasi penerimaan, dan waktu yang telah
-                                dikonfirmasi bersama pesanan.
+                                Pengantaran diatur sesuai lokasi dan waktu yang dikonfirmasi.
                             </p>
                         </div>
                     </article>
 
 
-                    <!-- 07 -->
                     <article
-                        class="faq-premium-item faq-item"
+                        class="information-simple-faq-item faq-item"
                         data-faq-item
                     >
                         <button
-                            class="faq-premium-question faq-question"
+                            class="information-simple-faq-question faq-question"
                             type="button"
                             id="faq-question-contact"
                             aria-expanded="false"
                             aria-controls="faq-answer-contact"
                             data-faq-trigger
                         >
-                            <span class="faq-premium-item-number">
+                            <span class="information-simple-faq-number">
                                 07
                             </span>
 
                             <span
-                                class="faq-premium-question-text"
+                                class="information-simple-faq-question-text"
                                 data-lang="faqPage.items.contact.question"
                             >
-                                Bagaimana jika saya masih membutuhkan
-                                bantuan?
+                                Bagaimana jika saya masih membutuhkan bantuan?
                             </span>
 
                             <span
-                                class="faq-premium-toggle"
+                                class="information-simple-faq-chevron"
                                 aria-hidden="true"
                             >
-                                +
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    focusable="false"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M9 5l7 7-7 7"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
                             </span>
                         </button>
 
                         <div
-                            class="faq-premium-answer faq-answer"
+                            class="information-simple-faq-answer faq-answer"
                             id="faq-answer-contact"
                             role="region"
                             aria-labelledby="faq-question-contact"
@@ -454,113 +459,21 @@
                             hidden
                         >
                             <p data-lang="faqPage.items.contact.answer">
-                                Hubungi Gomai melalui WeChat atau halaman
-                                kontak untuk mendapatkan bantuan lebih
-                                lanjut.
+                                Gunakan QR atau WeChat ID Gomai pada halaman Hubungi Gomai.
                             </p>
                         </div>
                     </article>
 
                 </div>
-
             </div>
         </section>
-
-
-        <!-- ==============================================
-             NEXT ACTIONS
-        =============================================== -->
-
-        <section class="faq-premium-links-section">
-            <div class="container">
-
-                <div class="faq-premium-links-grid">
-
-                    <a
-                        href="how-to-buy.html"
-                        class="faq-premium-link-card"
-                        data-route="howToBuy"
-                    >
-                        <span
-                            class="faq-premium-link-kicker"
-                            data-lang="faqPage.links.shopping.badge"
-                        >
-                            Cara Membeli
-                        </span>
-
-                        <h2 data-lang="faqPage.links.shopping.title">
-                            Pelajari Cara Belanja
-                        </h2>
-
-                        <p data-lang="faqPage.links.shopping.description">
-                            Lihat langkah lengkap dari memilih produk
-                            hingga menerima pesanan.
-                        </p>
-
-                        <strong data-lang="faqPage.links.shopping.button">
-                            Lihat Panduan
-                        </strong>
-                    </a>
-
-
-                    <a
-                        href="contact.html"
-                        class="faq-premium-link-card faq-premium-link-card-dark"
-                        data-route="contact"
-                    >
-                        <span
-                            class="faq-premium-link-kicker"
-                            data-lang="faqPage.links.contact.badge"
-                        >
-                            Butuh Bantuan?
-                        </span>
-
-                        <h2 data-lang="faqPage.links.contact.title">
-                            Hubungi Gomai
-                        </h2>
-
-                        <p data-lang="faqPage.links.contact.description">
-                            Jika pertanyaan Anda belum terjawab, hubungi
-                            Gomai melalui WeChat.
-                        </p>
-
-                        <div class="faq-premium-contact-line">
-                            <span data-lang="faqPage.links.contact.wechatLabel">
-                                WeChat:
-                            </span>
-
-                            <b data-wechat-id>
-                                Gomai
-                            </b>
-                        </div>
-
-                        <strong data-lang="faqPage.links.contact.button">
-                            Hubungi Gomai
-                        </strong>
-                    </a>
-
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-
-    <!-- ==================================================
-         SHARED FOOTER
-    ================================================== -->
 
     <footer id="site-footer"></footer>
-
-
-    <!-- ==================================================
-         JAVASCRIPT — GOMAI FRAMEWORK
-    ================================================== -->
 
     <script src="../js/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/language.js"></script>
+    <script src="../js/shopping-state.js"></script>
 
     <script src="../js/core/component-core.js"></script>
     <script src="../js/core/model-registry.js"></script>
@@ -568,6 +481,7 @@
     <script src="../js/core/controller-registry.js"></script>
 
     <script src="../js/models/brands.js"></script>
+    <script src="../js/models/categories.js"></script>
     <script src="../js/models/products.js"></script>
 
     <script src="../js/components/loading.js"></script>
@@ -580,9 +494,6 @@
 
     <script src="../js/information.js"></script>
     <script src="../js/core/gomai.js"></script>
-
-    <!-- app.js wajib menjadi script terakhir -->
     <script src="../js/app.js"></script>
-
 </body>
 </html>
