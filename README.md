@@ -1,4 +1,4 @@
-# Gomai Website — Replacement 6
+# Gomai Website V7 — Release Candidate 1
 
 Gomai adalah website belanja bilingual Indonesia / 中文 dengan arsitektur statis, data-driven, dan website-first.
 
@@ -11,6 +11,7 @@ Buka folder `gomai-website` di VS Code lalu jalankan `index.html` melalui Live S
 - Homepage berorientasi **4 kategori utama**.
 - Brand dan produk berasal dari JSON + assets.
 - Wishlist dan Cart memakai `localStorage`.
+- Keranjang dan checkout memisahkan **Gomai Express** dari **Official Order**.
 - Checkout menghasilkan **Ringkasan Pesanan PNG** dalam bahasa Indonesia atau 中文.
 - Ringkasan dikirim melalui WeChat; stok dan harga akhir dikonfirmasi oleh Gomai sebelum pembayaran.
 - Halaman informasi dibuat fokus: About, Contact, FAQ, dan How to Buy tidak saling mengulang konten.
@@ -50,8 +51,12 @@ Dependency utama:
 
 Kedua dictionary harus memiliki struktur key yang identik.
 
-## QA
+## Model layanan V7
 
-Replacement 6 telah melalui static QA lintas halaman, data, asset, translation, script order, commerce state contract, category contract, FAQ contract, QR/contact contract, serta responsive CSS contract.
+- **Gomai Express**: produk lokal Morowali; ongkir supplier tidak berlaku.
+- **Official Order**: produk dari supplier/official store; ongkir supplier ke Morowali diperiksa dan dikonfirmasi sebelum pembayaran.
+- Kedua layanan memiliki keranjang, checkout, nomor referensi, dan kartu estimasi terpisah.
 
-Headless Chromium tidak dapat menyelesaikan local visual run pada environment build ini, sehingga visual QA akhir tetap dilakukan melalui VS Code Live Server pada desktop dan mobile viewport.
+## Status QA
+
+Release Candidate 1 telah lulus pemeriksaan sintaks, JSON, referensi aset, bilingual parity, migrasi keranjang, pemisahan layanan, tier biaya, ongkir supplier unik, kontrak WeChat, dan generator kartu PNG. Visual browser QA akhir tetap wajib dilakukan melalui VS Code Live Server karena binary Chromium tidak tersedia di lingkungan build.

@@ -20,6 +20,18 @@
     "currency": "印尼盾",
     "featured": "精选"
   },
+  "orderServices": {
+    "separateCheckout": "Gomai Express 与 Official Order 分开结算，避免运费和服务时效混在一起。",
+    "express": {
+      "name": "Gomai Express",
+      "description": "Morowali 本地商品，快速处理；无需供应商寄送至 Gomai 的运费。",
+      "note": "本地订单无需供应商运费。"
+    },
+    "officialOrder": {
+      "name": "Official Order",
+      "description": "商品由供应商或官方商店订购；付款前核实供应商运费。"
+    }
+  },
   "announcement": {
     "text": "轻松购物，我们送到。",
     "link": "查看购物方式"
@@ -280,7 +292,9 @@
     "orderWechat": "通过 WeChat 下单",
     "imageUnavailable": "暂无图片",
     "notFoundTitle": "未找到产品",
-    "notFoundDescription": "您查找的产品暂未提供，或页面地址无效。"
+    "notFoundDescription": "您查找的产品暂未提供，或页面地址无效。",
+    "officialSource": "查看官方来源",
+    "sourcePending": "来源核实中"
   },
   "productDetail": {
     "breadcrumbProducts": "产品",
@@ -311,7 +325,7 @@
       "titleTemplate": "{{product}} | Gomai",
       "descriptionTemplate": "查看 {{product}} 的图片、价格、规格、库存及商品信息。"
     },
-    "addToCart": "加入购物车",
+    "addToCart": "加入代购",
     "wishlistAdd": "加入心愿单",
     "wishlistRemove": "移出心愿单",
     "informationTitle": "商品信息"
@@ -506,7 +520,10 @@
       "button": "通过微信联系",
       "copy": "复制",
       "copied": "已复制",
-      "qrAlt": "Gomai 微信二维码"
+      "qrAlt": "Gomai 微信二维码",
+      "open": "打开微信",
+      "opening": "正在打开微信…",
+      "openNote": "系统会复制 Gomai 微信号并尝试打开微信。如未打开，请使用上方二维码或微信号。"
     },
     "prepare": {
       "badge": "联系前准备",
@@ -587,15 +604,15 @@
     "items": {
       "whatIsGomai": {
         "question": "Gomai 是什么？",
-        "answer": "Gomai 帮助您寻找产品、确认订单详情，并安排配送流程。"
+        "answer": "Gomai 是独立代购服务方，协助客户从供应商或官方商店购买商品。Gomai 不是卖家、生产商、官方商店或商品库存持有人。"
       },
       "howToOrder": {
         "question": "如何下单？",
-        "answer": "选择商品并加入购物车，填写结算信息，下载订单清单，然后通过微信将图片发送给 Gomai。"
+        "answer": "选择商品并加入代购清单，填写配送信息，下载估算卡，然后通过微信发送给 Gomai。"
       },
       "stock": {
         "question": "网站上的产品都会一直有货吗？",
-        "answer": "库存可能随时变化。订单处理前请通过 Gomai 确认库存。"
+        "answer": "不会。库存由供应商或官方商店持有并可能随时变化。订单处理前，Gomai 会核实最新库存、规格和价格。"
       },
       "requestProduct": {
         "question": "如果网站上没有我想要的产品怎么办？",
@@ -608,6 +625,14 @@
       "delivery": {
         "question": "配送流程是怎样的？",
         "answer": "配送将根据订单确认的服务类型、收货地点和时间进行安排。"
+      },
+      "supplierShipping": {
+        "question": "何时能知道供应商至 Morowali 的运费？",
+        "answer": "商品确认有货后，Gomai 会根据发货城市或仓库、重量和快递核实运费，并在客户同意前将其列入付款总额明细。"
+      },
+      "approval": {
+        "question": "Gomai 会直接下单吗？",
+        "answer": "不会。Gomai 会先告知库存、价格、供应商运费和付款总额。客户同意后才会下单；如信息发生变化，Gomai 会重新征得客户同意。"
       },
       "contact": {
         "question": "如果我还需要帮助怎么办？",
@@ -637,8 +662,36 @@
     },
     "hero": {
       "badge": "购买方式",
-      "title": "如何在 Gomai 购物",
-      "description": "选择商品、加入购物车、生成订单清单，然后通过微信发送给 Gomai。"
+      "title": "如何通过 Gomai 代购",
+      "description": "选择官方来源商品、加入代购清单、生成估算卡，然后通过微信发送给 Gomai。"
+    },
+    "transparency": {
+      "badge": "服务透明",
+      "title": "Gomai 是代购服务方，不持有商品库存",
+      "description": "Gomai 作为独立第三方，协助客户从供应商或官方商店购买商品。Gomai 不是卖家、生产商或商品库存持有人。",
+      "noticeTitle": "始终先征得您的同意",
+      "noticeDescription": "只有在库存、价格、供应商至 Morowali 的运费及付款总额均已告知并获得客户同意后，Gomai 才会代为下单。",
+      "step1": {
+        "title": "提交商品需求",
+        "description": "客户可选择网站上的商品，或向 Gomai 发送官方商店链接。"
+      },
+      "step2": {
+        "title": "核实库存、规格和价格",
+        "description": "Gomai 联系供应商或查看官方商店，确认最新库存、规格和价格。"
+      },
+      "step3": {
+        "title": "估算至 Morowali 的运费",
+        "description": "商品有货后，Gomai 核实从供应商所在城市或仓库寄至 Gomai Morowali 地址的运费。"
+      },
+      "step4": {
+        "title": "发送费用明细",
+        "description": "客户会收到商品价格、供应商运费，以及 Gomai 服务与配送费的明细，以便考虑。"
+      },
+      "step5": {
+        "title": "客户同意后代为下单",
+        "description": "客户同意费用明细后，Gomai 才会下单。如库存或价格发生变化，继续处理前会重新征得客户同意。"
+      },
+      "disclaimer": "官方商店链接仅用于来源参考和提高透明度，并不表示 Gomai 与相关商店或品牌存在合作关系。"
     },
     "steps": {
       "badge": "购买方式",
@@ -650,16 +703,16 @@
         "button": "查看商品"
       },
       "step2": {
-        "title": "加入购物车",
-        "description": "将商品加入购物车并确认购买数量。"
+        "title": "加入代购清单",
+        "description": "将商品加入代购清单并确认数量。"
       },
       "step3": {
-        "title": "生成订单清单",
-        "description": "填写配送信息，并选择所需语言下载订单清单。"
+        "title": "生成估算卡",
+        "description": "填写配送信息，并选择所需语言下载预计付款总额。"
       },
       "step4": {
         "title": "通过微信发送",
-        "description": "将订单清单图片发送给 Gomai。付款前由 Gomai 确认库存和最终价格。"
+        "description": "将估算卡发送给 Gomai。付款前由 Gomai 确认库存、运费和最终价格。"
       }
     },
     "prepare": {
@@ -681,6 +734,16 @@
         "description": "收货地点、时间以及需要补充的备注。"
       }
     },
+    "fees": {
+      "badge": "费用透明",
+      "title": "Gomai 服务与配送",
+      "description": "供应商至 Morowali 的运费将根据发货城市、重量、仓库和快递核实。同一来源的商品如可合并，将按一次配送计算。",
+      "range": "商品小计",
+      "combined": "服务与配送",
+      "cny": "≈ 人民币",
+      "special": "特别确认",
+      "shippingNote": "供应商运费不包含在表格内，因为每次配送的费用不同。"
+    },
     "payment": {
       "badge": "付款",
       "title": "使用 Gomai 官方付款方式",
@@ -701,7 +764,7 @@
     }
   },
   "footer": {
-    "description": "轻松选购运动户外、美食饮品、生鲜食品和日常用品。",
+    "description": "从官方来源代购，费用明细清晰透明。",
     "brandTitle": "品牌",
     "informationTitle": "信息",
     "contactTitle": "联系我们",
@@ -715,7 +778,9 @@
     "wechatTitle": "Gomai 微信",
     "scanWechat": "扫描二维码或复制微信号。",
     "copy": "复制",
-    "copied": "已复制"
+    "copied": "已复制",
+    "openWechat": "打开微信",
+    "openingWechat": "正在打开微信…"
   },
   "errors": {
     "bootstrap": {
@@ -725,26 +790,26 @@
     }
   },
   "cart": {
-    "title": "购物车",
-    "subtitle": "请再次确认您选择的商品",
-    "add": "加入购物车",
-    "added": "已加入 ✓",
+    "title": "代购清单",
+    "subtitle": "生成估算卡前，请核对商品和官方来源",
+    "add": "加入代购",
+    "added": "已加入清单 ✓",
     "chooseVariant": "选择规格",
-    "emptyTitle": "您的购物车还是空的",
-    "emptyDescription": "请先添加您需要的商品，再生成订单清单。",
-    "continueShopping": "继续购物",
+    "emptyTitle": "您的代购清单还是空的",
+    "emptyDescription": "请先加入需要代购的商品，再生成估算卡。",
+    "continueShopping": "查找商品",
     "price": "价格",
     "quantity": "数量",
     "subtotal": "小计",
     "remove": "删除",
-    "summary": "订单汇总",
+    "summary": "代购估算",
     "items": "商品",
     "delivery": "配送",
     "deliveryPending": "待确认",
     "temporaryTotal": "暂计总额",
-    "checkout": "生成订单清单并下载",
-    "confirmNote": "商品库存及最终价格将由 Gomai 确认。",
-    "removeAll": "清空购物车"
+    "checkout": "生成估算卡",
+    "confirmNote": "付款前将再次确认估算费用。",
+    "removeAll": "清空清单"
   },
   "wishlist": {
     "title": "心愿单",
@@ -754,14 +819,14 @@
     "emptyTitle": "您的心愿单还是空的",
     "emptyDescription": "保存感兴趣的商品，方便以后快速找到。",
     "viewProduct": "查看商品",
-    "moveToCart": "加入购物车",
+    "moveToCart": "加入代购清单",
     "clearAll": "全部删除",
     "savedCount": "件已保存商品"
   },
   "checkout": {
-    "title": "订单汇总与下载",
-    "subtitle": "填写配送信息，然后下载 Gomai 订单图片。",
-    "breadcrumbCart": "购物车",
+    "title": "代购申请",
+    "subtitle": "填写配送信息，然后下载 Gomai 估算卡。",
+    "breadcrumbCart": "代购清单",
     "informationTitle": "配送信息",
     "name": "姓名",
     "wechatId": "微信号",
@@ -777,30 +842,42 @@
     "orderSummary": "订单汇总",
     "orderCode": "订单编号",
     "downloadTitle": "选择订单图片语言",
-    "downloadDescription": "订单图片将以 PNG 下载，可直接通过微信发送。",
+    "downloadDescription": "估算卡将以 PNG 下载，可直接通过微信发送。",
     "downloadId": "Unduh Bahasa Indonesia",
     "downloadZh": "下载中文版",
     "contactWechat": "联系 Gomai 微信",
     "previewTitle": "订单预览",
     "validation": "请先填写姓名和配送地点。",
-    "downloaded": "订单图片已成功下载。",
+    "downloaded": "估算卡已成功下载。",
     "emptyTitle": "暂无可生成清单的商品",
-    "emptyDescription": "请先将商品加入购物车。",
-    "backToCart": "返回购物车",
-    "cardTitle": "订单清单",
+    "emptyDescription": "请先将商品加入代购清单。",
+    "backToCart": "返回代购清单",
+    "cardTitle": "代购估算卡",
     "deliveryInfo": "配送信息",
     "temporarySubtotal": "商品小计",
-    "confirmation": "商品库存及最终价格将由 Gomai 确认。",
+    "confirmation": "此卡仅为估算，并非最终账单。付款前将确认价格、运费和库存。",
     "sendWechat": "请将此订单图片发送至 Gomai 微信",
     "generated": "生成时间",
     "productCount": "商品"
   },
+  "fees": {
+    "officialShipping": "供应商 → Morowali 运费",
+    "gomaiCombined": "Gomai 服务与配送",
+    "estimatedTotal": "预计付款总额",
+    "special": "特别确认",
+    "minimumWarning": "商品小计最低为 Rp50,000。",
+    "specialWarning": "商品小计达到 Rp2,000,000 或以上时，需要特别确认。",
+    "shippingPending": "等待核实",
+    "shippingPendingNote": "供应商运费将根据发货城市、重量、仓库和快递进行核实。",
+    "shippingEstimatedNote": "当前运费区间仍为估算，付款前将再次确认。",
+    "totalPending": "等待确认供应商运费"
+  },
   "homepage": {
     "hero": {
       "eyebrow": "Gomai",
-      "title": "轻松购物，我们为您送达。",
-      "description": "运动户外、美食饮品、生鲜食品和日常用品，一站轻松选购。",
-      "shopNow": "立即选购",
+      "title": "官方来源代购，费用更清楚。",
+      "description": "选择商品，查看官方来源和费用估算，付款前通过微信确认。",
+      "shopNow": "开始代购",
       "howToBuy": "购物方式"
     },
     "categories": {

@@ -20,6 +20,18 @@
     "currency": "Rupiah",
     "featured": "Unggulan"
   },
+  "orderServices": {
+    "separateCheckout": "Gomai Express dan Official Order diproses melalui checkout terpisah agar ongkir dan waktu layanan tidak tercampur.",
+    "express": {
+      "name": "Gomai Express",
+      "description": "Produk lokal Morowali dengan proses cepat; tanpa ongkir supplier ke Gomai.",
+      "note": "Pesanan lokal diproses tanpa ongkir supplier."
+    },
+    "officialOrder": {
+      "name": "Official Order",
+      "description": "Barang dipesan dari supplier atau official store; ongkir supplier diperiksa sebelum pembayaran."
+    }
+  },
   "announcement": {
     "text": "Belanja mudah, kami antar.",
     "link": "Lihat cara belanja"
@@ -280,7 +292,9 @@
     "orderWechat": "Pesan melalui WeChat",
     "imageUnavailable": "Gambar belum tersedia",
     "notFoundTitle": "Produk Tidak Ditemukan",
-    "notFoundDescription": "Produk yang Anda cari belum tersedia atau alamat halaman tidak valid."
+    "notFoundDescription": "Produk yang Anda cari belum tersedia atau alamat halaman tidak valid.",
+    "officialSource": "Lihat sumber resmi",
+    "sourcePending": "Sumber sedang diverifikasi"
   },
   "productDetail": {
     "breadcrumbProducts": "Produk",
@@ -311,7 +325,7 @@
       "titleTemplate": "{{product}} | Gomai",
       "descriptionTemplate": "Lihat foto, harga, varian, stok, dan informasi {{product}} di Gomai."
     },
-    "addToCart": "Tambah ke Keranjang",
+    "addToCart": "Titip Beli",
     "wishlistAdd": "Simpan ke Wishlist",
     "wishlistRemove": "Hapus dari Wishlist",
     "informationTitle": "Informasi Produk"
@@ -506,7 +520,10 @@
       "button": "Hubungi via WeChat",
       "copy": "Salin",
       "copied": "Tersalin",
-      "qrAlt": "QR WeChat Gomai"
+      "qrAlt": "QR WeChat Gomai",
+      "open": "Buka WeChat",
+      "opening": "Membuka WeChat…",
+      "openNote": "WeChat ID Gomai akan disalin lalu aplikasi WeChat akan dicoba dibuka. Jika aplikasi tidak terbuka, gunakan QR atau ID di atas."
     },
     "prepare": {
       "badge": "Sebelum Menghubungi",
@@ -587,7 +604,7 @@
     "items": {
       "whatIsGomai": {
         "question": "Apa itu Gomai?",
-        "answer": "Gomai membantu Anda menemukan produk, mengonfirmasi detail pesanan, dan mengatur proses pengantaran."
+        "answer": "Gomai adalah jasa titip independen yang membantu pelanggan membeli barang dari supplier atau official store. Gomai bukan penjual, produsen, official store, atau pemilik stok barang."
       },
       "howToOrder": {
         "question": "Bagaimana cara melakukan pemesanan?",
@@ -595,7 +612,7 @@
       },
       "stock": {
         "question": "Apakah semua produk di website selalu tersedia?",
-        "answer": "Ketersediaan dapat berubah. Konfirmasikan stok melalui Gomai sebelum pesanan diproses."
+        "answer": "Tidak. Ketersediaan berada pada supplier atau official store dan dapat berubah. Gomai memeriksa stok, varian, dan harga terbaru sebelum pesanan diproses."
       },
       "requestProduct": {
         "question": "Bagaimana jika produk yang saya cari belum ada di website?",
@@ -608,6 +625,14 @@
       "delivery": {
         "question": "Bagaimana proses pengantaran?",
         "answer": "Pengantaran disesuaikan dengan jenis layanan, lokasi, dan jadwal yang dikonfirmasi bersama pesanan."
+      },
+      "supplierShipping": {
+        "question": "Kapan ongkir supplier ke Morowali diketahui?",
+        "answer": "Setelah barang dinyatakan tersedia, Gomai memeriksa ongkir berdasarkan kota atau gudang asal, berat, dan kurir. Nilainya dimasukkan ke rincian total sebelum pelanggan memberikan persetujuan."
+      },
+      "approval": {
+        "question": "Apakah Gomai langsung memesan barang?",
+        "answer": "Tidak. Gomai terlebih dahulu menyampaikan ketersediaan, harga, ongkir supplier, dan rincian total. Barang baru dipesan setelah pelanggan menyetujuinya. Jika informasi berubah, Gomai meminta persetujuan baru."
       },
       "contact": {
         "question": "Bagaimana jika saya masih membutuhkan bantuan?",
@@ -637,8 +662,36 @@
     },
     "hero": {
       "badge": "Cara Membeli",
-      "title": "Cara Membeli di Gomai",
-      "description": "Pilih produk, masukkan ke keranjang, buat ringkasan pesanan, lalu kirim melalui WeChat Gomai."
+      "title": "Cara Titip Beli di Gomai",
+      "description": "Pilih produk dari sumber resmi, masukkan ke daftar titipan, buat kartu estimasi, lalu kirim melalui WeChat Gomai."
+    },
+    "transparency": {
+      "badge": "Transparansi Layanan",
+      "title": "Gomai adalah Jasa Titip, Bukan Pemilik Stok",
+      "description": "Gomai bertindak sebagai pihak ketiga yang membantu pelanggan membeli barang dari supplier atau official store. Gomai bukan penjual, produsen, atau pemilik stok barang.",
+      "noticeTitle": "Persetujuan Anda selalu didahulukan",
+      "noticeDescription": "Gomai baru memesan barang setelah stok, harga, ongkir supplier ke Morowali, serta total pembayaran disampaikan dan disetujui pelanggan.",
+      "step1": {
+        "title": "Kirim Permintaan",
+        "description": "Pelanggan memilih produk di website atau mengirim tautan official store kepada Gomai."
+      },
+      "step2": {
+        "title": "Cek Stok, Varian, dan Harga",
+        "description": "Gomai menghubungi supplier atau memeriksa official store untuk memastikan ketersediaan dan harga terbaru."
+      },
+      "step3": {
+        "title": "Estimasi Ongkir ke Morowali",
+        "description": "Jika barang tersedia, Gomai memeriksa ongkir dari kota atau gudang supplier ke alamat Gomai di Morowali."
+      },
+      "step4": {
+        "title": "Kirim Rincian Total",
+        "description": "Pelanggan menerima rincian harga barang, ongkir supplier, serta jasa dan pengantaran Gomai untuk dipertimbangkan."
+      },
+      "step5": {
+        "title": "Setujui, lalu Gomai Memesan",
+        "description": "Setelah pelanggan menyetujui rincian, Gomai memesan barang. Jika stok atau harga berubah, Gomai meminta persetujuan baru sebelum melanjutkan."
+      },
+      "disclaimer": "Tautan official store ditampilkan sebagai sumber referensi dan transparansi. Tautan tersebut tidak berarti Gomai berafiliasi dengan toko atau merek terkait."
     },
     "steps": {
       "badge": "Cara Membeli",
@@ -650,16 +703,16 @@
         "button": "Lihat Produk"
       },
       "step2": {
-        "title": "Masukkan ke Keranjang",
-        "description": "Tambahkan produk ke keranjang dan atur jumlah pesanan."
+        "title": "Masukkan ke Daftar Titipan",
+        "description": "Tambahkan produk ke daftar titipan dan atur jumlahnya."
       },
       "step3": {
-        "title": "Buat Ringkasan Pesanan",
-        "description": "Isi informasi pengantaran lalu unduh ringkasan pesanan dalam bahasa yang Anda pilih."
+        "title": "Buat Kartu Estimasi",
+        "description": "Isi informasi pengantaran lalu unduh estimasi total pembayaran dalam bahasa yang Anda pilih."
       },
       "step4": {
         "title": "Kirim melalui WeChat",
-        "description": "Kirim gambar ringkasan ke WeChat Gomai. Stok dan harga akhir dikonfirmasi sebelum pembayaran."
+        "description": "Kirim kartu estimasi ke WeChat Gomai. Stok, ongkir, dan harga akhir dikonfirmasi sebelum pembayaran."
       }
     },
     "prepare": {
@@ -681,6 +734,16 @@
         "description": "Lokasi penerimaan, jadwal, dan catatan jika diperlukan."
       }
     },
+    "fees": {
+      "badge": "Biaya Transparan",
+      "title": "Jasa & Pengantaran Gomai",
+      "description": "Ongkir supplier ke Morowali diperiksa berdasarkan kota asal, berat, gudang, dan kurir. Produk dari sumber yang sama dihitung sebagai satu pengiriman jika dapat digabung.",
+      "range": "Subtotal Produk",
+      "combined": "Jasa & Pengantaran",
+      "cny": "≈ CNY",
+      "special": "Konfirmasi khusus",
+      "shippingNote": "Ongkir supplier tidak termasuk dalam tabel karena nilainya berbeda untuk setiap pengiriman."
+    },
     "payment": {
       "badge": "Pembayaran",
       "title": "Gunakan Metode Pembayaran Resmi Gomai",
@@ -701,7 +764,7 @@
     }
   },
   "footer": {
-    "description": "Belanja mudah untuk olahraga, makanan, bahan segar, dan perlengkapan harian.",
+    "description": "Jasa titip produk dari sumber resmi dengan rincian biaya yang transparan.",
     "brandTitle": "Brand",
     "informationTitle": "Informasi",
     "contactTitle": "Kontak",
@@ -715,7 +778,9 @@
     "wechatTitle": "WeChat Gomai",
     "scanWechat": "Scan QR atau salin WeChat ID.",
     "copy": "Salin",
-    "copied": "Tersalin"
+    "copied": "Tersalin",
+    "openWechat": "Buka WeChat",
+    "openingWechat": "Membuka WeChat…"
   },
   "errors": {
     "bootstrap": {
@@ -725,26 +790,26 @@
     }
   },
   "cart": {
-    "title": "Keranjang",
-    "subtitle": "Periksa kembali barang pilihan Anda",
-    "add": "Tambah ke Keranjang",
-    "added": "Ditambahkan ✓",
+    "title": "Daftar Titipan",
+    "subtitle": "Periksa produk dan sumber resmi sebelum membuat kartu estimasi",
+    "add": "Titip Beli",
+    "added": "Masuk Daftar ✓",
     "chooseVariant": "Pilih Varian",
-    "emptyTitle": "Keranjang Anda masih kosong",
-    "emptyDescription": "Tambahkan produk yang Anda inginkan sebelum membuat ringkasan pesanan.",
-    "continueShopping": "Lanjut Belanja",
+    "emptyTitle": "Daftar titipan Anda masih kosong",
+    "emptyDescription": "Tambahkan produk yang ingin dititipbelikan sebelum membuat kartu estimasi.",
+    "continueShopping": "Cari Produk",
     "price": "Harga",
     "quantity": "Jumlah",
     "subtotal": "Subtotal",
     "remove": "Hapus",
-    "summary": "Ringkasan Pesanan",
+    "summary": "Estimasi Titip Beli",
     "items": "Barang",
     "delivery": "Pengantaran",
     "deliveryPending": "Akan dikonfirmasi",
     "temporaryTotal": "Total Sementara",
-    "checkout": "Buat Ringkasan & Unduh",
-    "confirmNote": "Harga dan ketersediaan barang akan dikonfirmasi oleh Gomai.",
-    "removeAll": "Kosongkan Keranjang"
+    "checkout": "Buat Kartu Estimasi",
+    "confirmNote": "Estimasi akan dikonfirmasi kembali sebelum pembayaran.",
+    "removeAll": "Kosongkan Daftar"
   },
   "wishlist": {
     "title": "Wishlist",
@@ -754,14 +819,14 @@
     "emptyTitle": "Wishlist Anda masih kosong",
     "emptyDescription": "Simpan produk yang menarik agar mudah ditemukan kembali.",
     "viewProduct": "Lihat Produk",
-    "moveToCart": "Ke Keranjang",
+    "moveToCart": "Ke Daftar Titipan",
     "clearAll": "Hapus Semua",
     "savedCount": "produk tersimpan"
   },
   "checkout": {
-    "title": "Ringkasan & Unduh",
-    "subtitle": "Lengkapi informasi pengantaran lalu unduh kartu pesanan Gomai.",
-    "breadcrumbCart": "Keranjang",
+    "title": "Permintaan Titip Beli",
+    "subtitle": "Lengkapi informasi pengantaran lalu unduh kartu estimasi Gomai.",
+    "breadcrumbCart": "Daftar Titipan",
     "informationTitle": "Informasi Pengantaran",
     "name": "Nama",
     "wechatId": "WeChat ID",
@@ -777,30 +842,42 @@
     "orderSummary": "Ringkasan Pesanan",
     "orderCode": "Kode Pesanan",
     "downloadTitle": "Pilih Bahasa Kartu Pesanan",
-    "downloadDescription": "Kartu akan diunduh sebagai PNG dan dapat langsung dikirim melalui WeChat.",
+    "downloadDescription": "Kartu estimasi akan diunduh sebagai PNG dan dapat langsung dikirim melalui WeChat.",
     "downloadId": "Unduh Bahasa Indonesia",
     "downloadZh": "下载中文版",
     "contactWechat": "Hubungi WeChat Gomai",
     "previewTitle": "Preview Ringkasan",
     "validation": "Lengkapi nama dan lokasi pengantaran terlebih dahulu.",
-    "downloaded": "Kartu pesanan berhasil diunduh.",
+    "downloaded": "Kartu estimasi berhasil diunduh.",
     "emptyTitle": "Belum ada barang untuk diringkas",
-    "emptyDescription": "Tambahkan barang ke keranjang sebelum membuka halaman ini.",
-    "backToCart": "Kembali ke Keranjang",
-    "cardTitle": "RINGKASAN PESANAN",
+    "emptyDescription": "Tambahkan barang ke daftar titipan sebelum membuka halaman ini.",
+    "backToCart": "Kembali ke Daftar Titipan",
+    "cardTitle": "KARTU ESTIMASI TITIP BELI",
     "deliveryInfo": "INFORMASI PENGANTARAN",
     "temporarySubtotal": "SUBTOTAL SEMENTARA",
-    "confirmation": "Harga dan ketersediaan barang akan dikonfirmasi oleh Gomai.",
+    "confirmation": "Ini adalah estimasi, bukan tagihan final. Harga, ongkir, dan ketersediaan dikonfirmasi sebelum pembayaran.",
     "sendWechat": "Kirim kartu ini melalui WeChat Gomai",
     "generated": "Dibuat",
     "productCount": "Barang"
   },
+  "fees": {
+    "officialShipping": "Ongkir Supplier → Morowali",
+    "gomaiCombined": "Jasa & Pengantaran Gomai",
+    "estimatedTotal": "Estimasi Total Pembayaran",
+    "special": "Konfirmasi khusus",
+    "minimumWarning": "Minimum subtotal produk adalah Rp50.000.",
+    "specialWarning": "Subtotal Rp2.000.000 atau lebih memerlukan konfirmasi khusus.",
+    "shippingPending": "Menunggu pemeriksaan",
+    "shippingPendingNote": "Ongkir supplier akan diperiksa berdasarkan kota asal, berat, gudang, dan kurir.",
+    "shippingEstimatedNote": "Rentang ongkir masih berupa estimasi dan akan dikonfirmasi sebelum pembayaran.",
+    "totalPending": "Menunggu konfirmasi ongkir supplier"
+  },
   "homepage": {
     "hero": {
       "eyebrow": "Gomai",
-      "title": "Belanja mudah, kami antar.",
-      "description": "Temukan kebutuhan olahraga, makanan, bahan segar, dan perlengkapan harian dalam satu tempat.",
-      "shopNow": "Belanja Sekarang",
+      "title": "Titip beli lebih jelas, dari sumber resmi.",
+      "description": "Pilih produk, cek sumber resmi dan estimasi biaya, lalu konsultasikan melalui WeChat sebelum pembayaran.",
+      "shopNow": "Mulai Titip Beli",
       "howToBuy": "Cara Membeli"
     },
     "categories": {

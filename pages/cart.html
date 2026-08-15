@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang | Gomai</title>
-    <meta name="description" content="Keranjang Gomai">
+    <title>Daftar Titipan | Gomai</title>
+    <meta name="description" content="Daftar produk yang ingin dititipbelikan melalui Gomai">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/commerce.css">
 </head>
@@ -13,12 +13,13 @@
     <main class="commerce-page cart-page" id="main-content">
         <div class="commerce-shell">
             <header class="commerce-heading">
-                <div><h1><span data-lang="cart.title">Keranjang</span> <span id="cart-count" class="commerce-count">0</span></h1><p data-lang="cart.subtitle">Periksa kembali barang pilihan Anda</p></div>
+                <div><h1><span data-lang="cart.title">Daftar Titipan</span> <span id="cart-count" class="commerce-count">0</span></h1><p data-lang="cart.subtitle">Periksa produk dan sumber resmi sebelum membuat kartu estimasi.</p></div>
             </header>
             <div id="cart-empty" class="commerce-empty" hidden></div>
-            <div id="cart-content" class="cart-layout" hidden>
-                <section><div id="cart-list" class="cart-list"></div><div class="cart-footer-actions"><a class="btn btn-secondary" href="products.html" data-lang="cart.continueShopping">Lanjut Belanja</a><button id="cart-clear" class="btn btn-ghost" type="button" data-lang="cart.removeAll">Kosongkan Keranjang</button></div></section>
-                <aside id="cart-summary" class="cart-summary"></aside>
+            <div id="cart-content" hidden>
+                <div class="service-separation-note" data-lang="orderServices.separateCheckout">Gomai Express dan Official Order diproses melalui checkout terpisah agar ongkir dan waktu layanan tidak tercampur.</div>
+                <div id="cart-service-groups" class="cart-service-groups"></div>
+                <div class="cart-footer-actions"><a class="btn btn-secondary" href="products.html" data-lang="cart.continueShopping">Cari Produk</a><button id="cart-clear" class="btn btn-ghost" type="button" data-lang="cart.removeAll">Kosongkan Semua</button></div>
             </div>
         </div>
     </main>
@@ -28,6 +29,7 @@
     <script src="../js/core/utils.js"></script>
     <script src="../js/language.js"></script>
     <script src="../js/shopping-state.js"></script>
+    <script src="../js/assisted-shopping.js"></script>
     <script src="../js/core/component-core.js"></script>
     <script src="../js/core/model-registry.js"></script>
     <script src="../js/core/component-registry.js"></script>

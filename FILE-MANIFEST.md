@@ -1,6 +1,8 @@
-# Gomai File Manifest — Replacement 6
+# Gomai File Manifest V7 — Release Candidate 1
 
-Status: static-verified baseline; final browser visual QA still required.
+Status: release candidate; automated contract QA passed, final browser visual QA required.
+
+Version: `7.0.0-rc.1`
 
 ## Runtime pages
 - `404.html`
@@ -31,6 +33,7 @@ Status: static-verified baseline; final browser visual QA still required.
 
 ## Commerce
 - `js/shopping-state.js`
+- `js/assisted-shopping.js`
 - `js/cart.js`
 - `js/wishlist.js`
 - `js/checkout.js`

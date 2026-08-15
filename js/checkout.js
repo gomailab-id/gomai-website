@@ -1,28 +1,33 @@
 "use strict";
 const CheckoutController = (() => {
-    const VERSION="1.1.0";
+    const VERSION="7.0.0-rc.1";
     let products=new Map(),brands=new Map(),resolved=[],orderId="",bound=false;
+    const serviceType=window.GomaiShoppingState.normalizeServiceType(new URLSearchParams(window.location.search).get("service"));
     const t=(k,f)=>window.Language?.translate?.(k,f)||f;
     const money=v=>window.GomaiUtils?.formatCurrency?.(Number(v)||0)||`Rp${Number(v||0).toLocaleString("id-ID")}`;
     const route=(n,q={})=>window.GomaiUtils?.buildRoute?.(n,q)||`${n}.html`;
     const lang=()=>window.Language?.getCurrentLanguage?.()||"zh";
     const local=(v,l=lang())=>v&&typeof v==="object"?(v[l]||v.id||v.zh||""):String(v||"");
-    async function init(){await Promise.all([window.ProductsModel.load(),window.BrandsModel.load()]);products=new Map((await window.ProductsModel.getAll()).map(p=>[p.id,p]));brands=new Map((await window.BrandsModel.getAll()).map(b=>[b.id,b]));orderId=window.GomaiShoppingState.getOrCreateCheckoutOrderId();restoreDraft();bind();render();return{version:VERSION};}
+    async function init(){await Promise.all([window.ProductsModel.load(),window.BrandsModel.load()]);products=new Map((await window.ProductsModel.getAll()).map(p=>[p.id,p]));brands=new Map((await window.BrandsModel.getAll()).map(b=>[b.id,b]));orderId=window.GomaiShoppingState.getOrCreateCheckoutOrderId(serviceType);const label=document.getElementById("checkout-service-label");if(label){label.className=`service-badge is-${serviceType}`;label.textContent=serviceType==="express"?t("orderServices.express.name","Gomai Express"):t("orderServices.officialOrder.name","Official Order");}restoreDraft();bind();render();return{version:VERSION,serviceType};}
     function bind(){if(bound)return;bound=true;document.addEventListener("input",handleInput);document.addEventListener("click",handleClick);document.addEventListener("gomai:cart-changed",render);}
     function destroy(){if(bound){document.removeEventListener("input",handleInput);document.removeEventListener("click",handleClick);}bound=false;}
     function refreshLanguage(){render();}
-    function itemData(item){const p=products.get(item.productId);if(!p)return null;const c=(Array.isArray(p.colors)?p.colors:[]).find(x=>String(x?.id||"")===String(item.colorId||""))||null;return{item,product:p,color:c};}
+    function itemData(item){const p=products.get(item.productId);if(!p)return null;const c=(Array.isArray(p.colors)?p.colors:[]).find(x=>String(x?.id||"")===String(item.colorId||""))||null;return{item,product:serviceType==="express"?{...p,source:null}:p,color:c};}
     function img(entry){return (Array.isArray(entry.color?.images)?entry.color.images:[])[0]||(Array.isArray(entry.product?.images)?entry.product.images:[])[0]||"";}
     function restoreDraft(){const d=window.GomaiShoppingState.getCheckoutDraft();for(const [id,key] of [["checkout-name","name"],["checkout-wechat","wechat"],["checkout-location","location"],["checkout-schedule","schedule"],["checkout-notes","notes"]]){const el=document.getElementById(id);if(el&&d[key])el.value=d[key];}}
     function draft(){return{name:document.getElementById("checkout-name")?.value.trim()||"",wechat:document.getElementById("checkout-wechat")?.value.trim()||"",location:document.getElementById("checkout-location")?.value.trim()||"",schedule:document.getElementById("checkout-schedule")?.value.trim()||"",notes:document.getElementById("checkout-notes")?.value.trim()||""};}
     function subtotal(){return resolved.reduce((sum,e)=>sum+Number(e.product.price||0)*e.item.quantity,0);}
-    function render(){resolved=window.GomaiShoppingState.getCart().map(itemData).filter(Boolean);const empty=document.getElementById("checkout-empty"),content=document.getElementById("checkout-content");if(!empty||!content)return;if(!resolved.length){content.hidden=true;empty.hidden=false;empty.innerHTML=`<h2>${esc(t("checkout.emptyTitle","Belum ada barang untuk diringkas"))}</h2><p>${esc(t("checkout.emptyDescription","Tambahkan barang ke keranjang."))}</p><a class="btn btn-primary" href="${esc(route("cart"))}">${esc(t("checkout.backToCart","Kembali ke Keranjang"))}</a>`;return;}empty.hidden=true;content.hidden=false;renderOrder();renderPreview();}
-    function renderOrder(){const list=document.getElementById("checkout-order-list"),total=document.getElementById("checkout-total");if(!list||!total)return;list.innerHTML=resolved.map(e=>{const src=img(e),variant=[e.color?local(e.color.name):"",e.item.sizeId].filter(Boolean).join(" · ");return `<div class="checkout-order-item">${src?`<img src="${esc(window.GomaiUtils.resolveAssetPath(src))}" alt="">`:`<span></span>`}<div><strong>${esc(local(e.product.name))}</strong><small>${esc(variant||`${e.item.quantity} × ${money(e.product.price)}`)}</small></div><div class="checkout-price">${esc(money(Number(e.product.price||0)*e.item.quantity))}</div></div>`;}).join("");total.innerHTML=`<span>${esc(t("cart.temporaryTotal","Total Sementara"))}</span><strong>${esc(money(subtotal()))}</strong>`;}
-    function renderPreview(){const root=document.getElementById("checkout-preview");if(!root)return;const d=draft();root.innerHTML=`<div class="checkout-card-preview-header"><img src="${esc(window.GomaiUtils.resolveAssetPath(window.GomaiConfig.site.logo.header))}" alt="Gomai"></div><div class="checkout-card-preview-body"><h3>${esc(t("checkout.cardTitle","RINGKASAN PESANAN"))}</h3><span class="checkout-order-code">${esc(orderId)}</span><div class="checkout-preview-total"><span>${esc(t("checkout.temporarySubtotal","SUBTOTAL SEMENTARA"))}</span><strong>${esc(money(subtotal()))}</strong></div><div class="checkout-preview-note">${esc(t("checkout.confirmation","Harga dan ketersediaan barang akan dikonfirmasi oleh Gomai."))}</div>${d.name||d.location?`<p style="margin:14px 0 0;color:#666;font-size:.84rem">${esc([d.name,d.location].filter(Boolean).join(" · "))}</p>`:""}</div>`;}
+    function feeSummary(){return window.GomaiAssistedShopping.summarize(resolved,{serviceType});}
+    function feeText(summary){return summary.special?t("fees.special","Konfirmasi khusus"):summary.gomaiCombinedFee===null?"—":money(summary.gomaiCombinedFee);}
+    function shippingText(summary){if(summary.officialShippingStatus==="not-applicable")return t("fees.notApplicable","Tidak berlaku");if(summary.officialShippingStatus==="confirmed")return money(summary.officialShipping);if(summary.officialShippingStatus==="estimated")return `${money(summary.officialShippingMinimum)}–${money(summary.officialShippingMaximum)}`;return t("fees.shippingPending","Menunggu pemeriksaan");}
+    function totalText(summary){if(summary.special)return t("fees.special","Konfirmasi khusus");if(summary.estimatedTotal!==null)return money(summary.estimatedTotal);if(summary.estimatedTotalMinimum!==null)return `${money(summary.estimatedTotalMinimum)}–${money(summary.estimatedTotalMaximum)}`;return t("fees.totalPending","Menunggu konfirmasi ongkir supplier");}
+    function render(){resolved=window.GomaiShoppingState.getCart(serviceType).map(itemData).filter(Boolean);const empty=document.getElementById("checkout-empty"),content=document.getElementById("checkout-content");if(!empty||!content)return;if(!resolved.length){content.hidden=true;empty.hidden=false;empty.innerHTML=`<h2>${esc(t("checkout.emptyTitle","Belum ada barang untuk dibuatkan estimasi"))}</h2><p>${esc(t("checkout.emptyDescription","Layanan ini belum memiliki barang."))}</p><a class="btn btn-primary" href="${esc(route("cart"))}">${esc(t("checkout.backToCart","Kembali ke Daftar Titipan"))}</a>`;return;}empty.hidden=true;content.hidden=false;renderOrder();renderPreview();}
+    function renderOrder(){const list=document.getElementById("checkout-order-list"),total=document.getElementById("checkout-total");if(!list||!total)return;const summary=feeSummary();list.innerHTML=resolved.map(e=>{const src=img(e),variant=[e.color?local(e.color.name):"",e.item.sizeId].filter(Boolean).join(" · ");const source=e.product.source;return `<div class="checkout-order-item">${src?`<img src="${esc(window.GomaiUtils.resolveAssetPath(src))}" alt="">`:`<span></span>`}<div><strong>${esc(local(e.product.name))}</strong><small>${esc(variant||`${e.item.quantity} × ${money(e.product.price)}`)}</small>${source?.url?`<a class="checkout-source-link" href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(t("product.officialSource","Sumber resmi"))} ↗</a>`:""}</div><div class="checkout-price">${esc(money(Number(e.product.price||0)*e.item.quantity))}</div></div>`;}).join("");total.innerHTML=`<div class="checkout-fee-lines"><div><span>${esc(t("cart.subtotal","Subtotal Produk"))}</span><strong>${esc(money(summary.subtotal))}</strong></div><div><span>${esc(t("fees.officialShipping","Ongkir Supplier → Morowali"))}</span><strong>${esc(shippingText(summary))}</strong></div><div><span>${esc(t("fees.gomaiCombined","Jasa & Pengantaran Gomai"))}</span><strong>${esc(feeText(summary))}</strong></div></div><span>${esc(t("fees.estimatedTotal","Estimasi Total Pembayaran"))}</span><strong>${esc(totalText(summary))}</strong>`;}
+    function renderPreview(){const root=document.getElementById("checkout-preview");if(!root)return;const d=draft(),summary=feeSummary();const notice=!summary.minimumMet?t("fees.minimumWarning",`Minimum subtotal produk adalah ${money(summary.minimumSubtotal)}.`):summary.special?t("fees.specialWarning","Subtotal Rp2.000.000 atau lebih memerlukan konfirmasi khusus."):summary.officialShippingStatus==="pending"?t("fees.shippingPendingNote","Ongkir supplier akan diperiksa berdasarkan kota asal, berat, gudang, dan kurir."):summary.officialShippingStatus==="estimated"?t("fees.shippingEstimatedNote","Rentang ongkir masih berupa estimasi dan akan dikonfirmasi sebelum pembayaran."):t("checkout.confirmation","Estimasi harga, ongkir, dan ketersediaan akan dikonfirmasi sebelum pembayaran.");root.innerHTML=`<div class="checkout-card-preview-header"><img src="${esc(window.GomaiUtils.resolveAssetPath(window.GomaiConfig.site.logo.header))}" alt="Gomai"></div><div class="checkout-card-preview-body"><h3>${esc(t("checkout.cardTitle","KARTU ESTIMASI TITIP BELI"))}</h3><span class="checkout-order-code">${esc(orderId)}</span><div class="checkout-preview-breakdown"><div><span>${esc(t("cart.subtotal","Subtotal Produk"))}</span><strong>${esc(money(summary.subtotal))}</strong></div><div><span>${esc(t("fees.officialShipping","Ongkir Supplier → Morowali"))}</span><strong>${esc(shippingText(summary))}</strong></div><div><span>${esc(t("fees.gomaiCombined","Jasa & Pengantaran Gomai"))}</span><strong>${esc(feeText(summary))}</strong></div></div><div class="checkout-preview-total"><span>${esc(t("fees.estimatedTotal","Estimasi Total Pembayaran"))}</span><strong>${esc(totalText(summary))}</strong></div><div class="checkout-preview-note">${esc(notice)}</div>${d.name||d.location?`<p style="margin:14px 0 0;color:#666;font-size:.84rem">${esc([d.name,d.location].filter(Boolean).join(" · "))}</p>`:""}</div>`;}
     function handleInput(e){if(!e.target.closest?.("#checkout-form"))return;window.GomaiShoppingState.saveCheckoutDraft(draft());renderPreview();}
     async function handleClick(e){const id=e.target.closest?.("#download-order-id");const zh=e.target.closest?.("#download-order-zh");if(!id&&!zh)return;await downloadCard(zh?"zh":"id");}
     function setMessage(message){const el=document.getElementById("checkout-message");if(el)el.textContent=message||"";}
-    async function downloadCard(cardLang){const d=draft();if(!d.name||!d.location){setMessage(t("checkout.validation","Lengkapi nama dan lokasi pengantaran terlebih dahulu."));return;}setMessage("");const canvas=await buildCanvas(cardLang,d);const link=document.createElement("a");link.download=`gomai-order-${orderId}-${cardLang}.png`;link.href=canvas.toDataURL("image/png",1);document.body.append(link);link.click();link.remove();setMessage(cardLang===lang()?t("checkout.downloaded","Kartu pesanan berhasil diunduh."):(cardLang==="zh"?"订单图片已成功下载。":"Kartu pesanan berhasil diunduh."));}
+    async function downloadCard(cardLang){const d=draft(),summary=feeSummary();if(!d.name||!d.location){setMessage(t("checkout.validation","Lengkapi nama dan lokasi pengantaran terlebih dahulu."));return;}if(!summary.minimumMet){setMessage(t("fees.minimumWarning",`Minimum subtotal produk adalah ${money(summary.minimumSubtotal)}.`));return;}setMessage("");const canvas=await buildCanvas(cardLang,d);const link=document.createElement("a");link.download=`gomai-${serviceType}-${orderId}-${cardLang}.png`;link.href=canvas.toDataURL("image/png",1);document.body.append(link);link.click();link.remove();setMessage(cardLang===lang()?t("checkout.downloaded","Kartu estimasi berhasil diunduh."):(cardLang==="zh"?"估算卡已成功下载。":"Kartu estimasi berhasil diunduh."));}
 
     async function buildCanvas(cardLang,d){
         const W=1080;
@@ -38,6 +43,25 @@ const CheckoutController = (() => {
             cardLang==="zh"
                 ?zh
                 :id;
+
+        const summary=
+            feeSummary();
+
+        const cardShippingText=
+            shipping=>{
+                if(shipping.status==="confirmed"){
+                    return money(shipping.amount||0);
+                }
+
+                if(shipping.status==="estimated"){
+                    return `${money(shipping.minimum||0)}–${money(shipping.maximum??shipping.minimum??0)}`;
+                }
+
+                return L(
+                    "Menunggu pemeriksaan",
+                    "等待核实"
+                );
+            };
 
         const measureCanvas=
             document.createElement(
@@ -93,7 +117,9 @@ const CheckoutController = (() => {
 
         const headerH=162;
         const listHeadingH=118;
-        const subtotalH=92;
+        const costSummaryH=
+            196+
+            summary.sources.length*28;
         const noticeH=78;
         const footerH=150;
 
@@ -109,7 +135,7 @@ const CheckoutController = (() => {
             headerH+
             listHeadingH+
             itemsH+
-            subtotalH+
+            costSummaryH+
             infoLayout.height+
             noticeH+
             footerH;
@@ -190,11 +216,21 @@ const CheckoutController = (() => {
 
         x.fillText(
             L(
-                "RINGKASAN PESANAN",
-                "订单清单"
+                "KARTU ESTIMASI TITIP BELI",
+                "代购估算卡"
             ),
             W-pad,
             58
+        );
+
+        x.fillStyle=yellow;
+        x.font='800 18px Arial,"Microsoft YaHei",sans-serif';
+        x.fillText(
+            serviceType==="express"
+                ?"GOMAI EXPRESS"
+                :"OFFICIAL ORDER",
+            W-pad,
+            86
         );
 
         x.fillStyle=black;
@@ -204,7 +240,7 @@ const CheckoutController = (() => {
         x.fillText(
             orderId,
             W-pad,
-            103
+            126
         );
 
         x.textAlign="left";
@@ -220,8 +256,8 @@ const CheckoutController = (() => {
 
         x.fillText(
             L(
-                "DAFTAR BELANJA",
-                "商品清单"
+                "DAFTAR TITIPAN",
+                "代购清单"
             ),
             pad,
             y
@@ -459,7 +495,7 @@ const CheckoutController = (() => {
                 16;
         }
 
-        /* SUBTOTAL */
+        /* ESTIMATED COST BREAKDOWN */
         x.strokeStyle=line;
         x.beginPath();
         x.moveTo(
@@ -480,7 +516,7 @@ const CheckoutController = (() => {
 
         x.fillText(
             L(
-                "SUBTOTAL SEMENTARA",
+                "SUBTOTAL PRODUK",
                 "商品小计"
             ),
             pad,
@@ -504,8 +540,119 @@ const CheckoutController = (() => {
         x.textAlign="left";
 
         y+=
-            subtotalH-
-            34;
+            42;
+
+        x.textAlign="left";
+        x.fillStyle=muted;
+        x.font=
+            '700 17px Arial,"Microsoft YaHei",sans-serif';
+
+        for(const source of summary.sources){
+            x.fillText(
+                `${L("Ongkir","运费")} · ${local(source.name,cardLang)}${source.originCity?` (${source.originCity})`:""}`,
+                pad,
+                y
+            );
+            x.textAlign="right";
+            x.fillStyle=black;
+            x.fillText(
+                cardShippingText(source.shipping),
+                W-pad,
+                y
+            );
+            x.textAlign="left";
+            x.fillStyle=muted;
+            y+=28;
+        }
+
+        x.fillText(
+            L(
+                "Ongkir supplier → Morowali",
+                "供应商至 Morowali 运费"
+            ),
+            pad,
+            y
+        );
+        x.textAlign="right";
+        x.fillStyle=black;
+        x.fillText(
+            summary.officialShippingStatus==="not-applicable"
+                ?L("Tidak berlaku","不适用")
+                :summary.officialShippingStatus==="confirmed"
+                ?money(summary.officialShipping)
+                :summary.officialShippingStatus==="estimated"
+                    ?`${money(summary.officialShippingMinimum)}–${money(summary.officialShippingMaximum)}`
+                    :L("Menunggu pemeriksaan","等待核实"),
+            W-pad,
+            y
+        );
+        y+=30;
+
+        x.textAlign="left";
+        x.fillStyle=muted;
+        x.fillText(
+            L(
+                "Jasa & Pengantaran Gomai",
+                "Gomai 服务与配送"
+            ),
+            pad,
+            y
+        );
+        x.textAlign="right";
+        x.fillStyle=black;
+        x.fillText(
+            summary.special
+                ?L("Konfirmasi khusus","特别确认")
+                :money(summary.gomaiCombinedFee||0),
+            W-pad,
+            y
+        );
+        y+=38;
+
+        x.strokeStyle=line;
+        x.beginPath();
+        x.moveTo(pad,y);
+        x.lineTo(W-pad,y);
+        x.stroke();
+        y+=32;
+
+        x.textAlign="left";
+        x.fillStyle=black;
+        x.font=
+            '900 21px Arial,"Microsoft YaHei",sans-serif';
+        x.fillText(
+            L(
+                "ESTIMASI TOTAL PEMBAYARAN",
+                "预计付款总额"
+            ),
+            pad,
+            y
+        );
+        x.textAlign="right";
+        x.fillStyle=yellow;
+        x.font=
+            '900 34px Arial,"Microsoft YaHei",sans-serif';
+        x.fillText(
+            summary.special
+                ?L("Konfirmasi khusus","特别确认")
+                :summary.estimatedTotal!==null
+                    ?money(summary.estimatedTotal)
+                    :summary.estimatedTotalMinimum!==null
+                        ?`${money(summary.estimatedTotalMinimum)}–${money(summary.estimatedTotalMaximum)}`
+                        :L("Menunggu ongkir supplier","等待供应商运费"),
+            W-pad,
+            y+3
+        );
+        x.textAlign="left";
+
+        y+=
+            costSummaryH-
+            34-
+            42-
+            summary.sources.length*28-
+            30-
+            38-
+            32;
 
         /* DELIVERY INFO — fully dynamic */
         rounded(
@@ -608,8 +755,8 @@ const CheckoutController = (() => {
             wrapLines(
                 x,
                 L(
-                    "Harga dan ketersediaan barang akan dikonfirmasi oleh Gomai.",
-                    "商品库存及最终价格将由 Gomai 确认。"
+                    "Ini adalah estimasi, bukan tagihan final. Ongkir supplier mengikuti kota asal, berat, gudang, dan kurir lalu dikonfirmasi sebelum pembayaran.",
+                    "此卡仅为估算，并非最终账单。供应商运费将按发货城市、重量、仓库和快递核实，并在付款前确认。"
                 ),
                 W-pad*2-36
             );

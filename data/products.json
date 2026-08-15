@@ -22,6 +22,29 @@
       "price": 299000,
       "compareAtPrice": null,
       "currency": "IDR",
+      "serviceType": "official-order",
+      "source": {
+        "id": "atalon-official-website",
+        "name": {
+          "id": "Website Resmi Atalon",
+          "zh": "Atalon 官方网站"
+        },
+        "url": "https://www.atalon.id/",
+        "type": "official-website",
+        "originCity": "Jakarta",
+        "shipping": {
+          "status": "pending",
+          "currency": "IDR",
+          "amount": null,
+          "minimum": null,
+          "maximum": null,
+          "checkedAt": null
+        },
+        "shippingNote": {
+          "id": "Ongkir diperiksa sesuai kota asal, berat, gudang, dan kurir saat konsultasi.",
+          "zh": "咨询时将根据发货城市、重量、仓库和快递核实运费。"
+        }
+      },
       "active": true,
       "inventory": {
         "inStock": true,

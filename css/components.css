@@ -3344,3 +3344,13 @@ a.btn[aria-disabled="true"] {
 }
 .product-commerce-actions { margin-top: auto; padding-top: var(--space-2, 8px); }
 .product-card-cart-button.is-added { background: #111111; color: #ffffff; }
+.product-official-source {
+    display: inline-flex;
+    width: fit-content;
+    margin: 2px 0 12px;
+    color: #8a6200;
+    font-size: 0.78rem;
+    font-weight: 850;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

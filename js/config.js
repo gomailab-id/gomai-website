@@ -31,7 +31,7 @@
     ====================================================== */
 
     const VERSION =
-        "2.0.0";
+        "7.0.0-rc.1";
 
 
     /* ======================================================
@@ -128,7 +128,7 @@
             "gomai-language",
 
         cart:
-            "gomai-cart-v1",
+            "gomai-cart-v2",
 
         wishlist:
             "gomai-wishlist-v1",
@@ -188,6 +188,59 @@
             "wechat"
 
     };
+
+
+    /* ======================================================
+       ASSISTED SHOPPING FEES — REPLACEMENT 7 TEST
+
+       Pelanggan melihat satu komponen biaya bernama
+       “Jasa & Pengantaran Gomai”. Ongkir official store ke
+       Gomai tetap dicatat terpisah per sumber unik.
+    ====================================================== */
+
+    const ASSISTED_SHOPPING = {
+
+        minimumSubtotal:
+            50000,
+
+        gomaiDelivery:
+            5000,
+
+        tiers: [
+            {
+                min: 50000,
+                max: 299999,
+                serviceFee: 15000
+            },
+            {
+                min: 300000,
+                max: 499999,
+                serviceFee: 25000
+            },
+            {
+                min: 500000,
+                max: 999999,
+                serviceFee: 35000
+            },
+            {
+                min: 1000000,
+                max: 1999999,
+                serviceFee: 50000
+            }
+        ],
+
+        specialConfirmationFrom:
+            2000000
+
+    };
+
+    const ORDER_SERVICES = Object.freeze({
+        default: "official-order",
+        supported: Object.freeze([
+            "express",
+            "official-order"
+        ])
+    });
 
 
     /* ======================================================
@@ -443,6 +496,12 @@
 
         contact:
             CONTACT,
+
+        assistedShopping:
+            ASSISTED_SHOPPING,
+
+        orderServices:
+            ORDER_SERVICES,
 
         routes:
             ROUTES,

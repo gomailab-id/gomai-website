@@ -1,5 +1,70 @@
 # Gomai Changelog
 
+## 2026-08-15 — V7 Release Candidate 1
+
+- Mengunci versi kandidat sebagai `7.0.0-rc.1`.
+- Memisahkan Gomai Express dan Official Order pada data produk, cart, checkout, nomor referensi, serta nama file kartu.
+- Memigrasikan cart V1 lama ke Official Order tanpa menghapus data pelanggan.
+- Menampilkan ongkir supplier sebagai “Tidak berlaku” pada Gomai Express.
+- Mempertahankan ongkir supplier dinamis dan deduplikasi Source ID pada Official Order.
+- Mencetak identitas layanan pada kartu PNG agar kartu Express dan Official Order tidak tertukar.
+- Menyembunyikan tautan official store dari checkout Express.
+- Memperbarui README, Project, Architecture, Manifest, Decisions, dan laporan QA.
+- Automated contract QA lulus; browser visual QA masih menunggu pengujian Live Server karena binary Chromium tidak tersedia pada environment build.
+
+## 2026-08-13 — Replacement 7.2 Test
+
+### Transparansi pihak ketiga
+- Menegaskan bahwa Gomai adalah jasa titip independen, bukan supplier, official store, produsen, atau pemilik stok.
+- Menambahkan alur setelah kartu estimasi dikirim: permintaan produk, pengecekan stok/varian/harga, estimasi ongkir ke Morowali, penyampaian rincian total, dan persetujuan pelanggan sebelum pemesanan.
+- Menjelaskan bahwa perubahan stok atau harga memerlukan persetujuan baru sebelum Gomai melanjutkan.
+- Menambahkan disclaimer bahwa tautan official store merupakan referensi sumber, bukan pernyataan afiliasi.
+- Menambahkan FAQ tentang ongkir supplier dan persetujuan sebelum pembelian.
+- Menyediakan seluruh informasi baru dalam bahasa Indonesia dan 中文.
+
+## 2026-08-13 — Replacement 7.1 Test
+
+### Dynamic supplier shipping
+- Menghapus angka ongkir supplier contoh Rp10.000.
+- Menambahkan tiga status ongkir: `pending`, `estimated`, dan `confirmed`.
+- Menyimpan kota asal pada sumber produk.
+- Menampilkan total angka hanya ketika ongkir sudah dikonfirmasi.
+- Menampilkan rentang total ketika seluruh sumber minimal memiliki rentang estimasi.
+- Menampilkan “Menunggu konfirmasi ongkir supplier” jika masih ada ongkir yang belum diperiksa.
+- Tetap menghitung satu pengiriman untuk beberapa produk dari sumber yang sama.
+
+### Verification
+- Status pending, estimated, confirmed, campuran, dan deduplikasi sumber lulus unit test.
+- Kamus Indonesia dan 中文 tetap identik.
+
+## 2026-08-13 — Replacement 7 Test
+
+### Assisted-shopping pivot
+- Mengubah istilah utama keranjang menjadi **Daftar Titipan** dan checkout menjadi **Permintaan Titip Beli**.
+- Menambahkan sumber resmi yang dapat diklik pada data produk, kartu produk, detail, daftar titipan, dan checkout.
+- Menambahkan minimum subtotal produk Rp50.000.
+
+### Estimasi biaya
+- Rp50.000–Rp299.999: jasa Rp15.000 + pengantaran Rp5.000.
+- Rp300.000–Rp499.999: jasa Rp25.000 + pengantaran Rp5.000.
+- Rp500.000–Rp999.999: jasa Rp35.000 + pengantaran Rp5.000.
+- Rp1.000.000–Rp1.999.999: jasa Rp50.000 + pengantaran Rp5.000.
+- Rp2.000.000 atau lebih: konfirmasi khusus.
+- Ongkir official store ke Gomai dijumlahkan sekali per sumber unik.
+- Kartu PNG menampilkan subtotal, rincian ongkir sumber, Jasa & Pengantaran Gomai, dan Estimasi Total Pembayaran.
+
+### WeChat
+- QR dan WeChat ID tetap tersedia pada Contact dan Footer.
+- Menambahkan tombol **Buka WeChat / 打开微信** yang menyalin ID `Gomai` lalu mencoba membuka skema `weixin://`.
+
+### QA
+- 27 JavaScript files lolos `node --check`.
+- 5 JSON runtime valid.
+- 13 HTML pages tidak memiliki referensi lokal yang hilang.
+- Kamus ID dan 中文 memiliki 566 leaf key yang identik.
+- Unit test tier, minimum, konfirmasi khusus, dan deduplikasi sumber lulus.
+- Visual browser QA belum dapat dijalankan karena binary Chromium tidak tersedia pada build environment.
+
 ## 2026-08-12 — Replacement 6
 
 ### Consolidated
@@ -210,3 +275,9 @@ Integration Blocker #1: perbaiki **CSS page wiring** di seluruh HTML secara sist
 - Added contextual local SVG icons to How-to-Buy, About, Contact, and FAQ action cards.
 - Kept FAQ accordion rows intentionally minimal to avoid visual clutter.
 - Maintained the locked Gomai master logo, six final brand heroes, and optical-fit partner logos.
+# Replacement 7.3 Test
+
+- Memisahkan Gomai Express dan Official Order pada produk, keranjang, checkout, dan kartu estimasi.
+- Menambahkan migrasi aman keranjang V1 ke Official Order.
+- Menetapkan ongkir supplier “Tidak berlaku” untuk Gomai Express dan tetap dinamis untuk Official Order.
+- Menambahkan label layanan bilingual serta checkout per layanan.

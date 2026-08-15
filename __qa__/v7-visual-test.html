@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gomai V7 RC1 — Visual Test</title>
+  <style>
+    :root{font-family:Arial,sans-serif;color:#111;background:#f5f3ed}*{box-sizing:border-box}body{margin:0}.shell{width:min(900px,calc(100% - 32px));margin:40px auto}.hero{padding:32px;border-radius:24px;background:#111;color:#fff;border-bottom:7px solid #f5b400}.eyebrow{color:#f5b400;font-weight:800;letter-spacing:.12em}.hero h1{margin:10px 0;font-size:clamp(2rem,7vw,4rem)}.hero p{color:#d7d7d7;line-height:1.6}.panel{margin-top:22px;padding:24px;border:1px solid #ddd8cb;border-radius:20px;background:#fff}.panel h2{margin-top:0}.actions,.links{display:flex;flex-wrap:wrap;gap:10px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border:1px solid #111;border-radius:12px;background:#fff;color:#111;font-weight:800;text-decoration:none;cursor:pointer}.btn.primary{background:#f5b400}.btn.dark{background:#111;color:#fff}.btn.danger{border-color:#a52a2a;color:#a52a2a}.status{min-height:24px;margin:14px 0 0;font-weight:700}.checklist{padding-left:22px;line-height:1.7}.warning{padding:14px;border-radius:12px;background:#fff6d6;line-height:1.55}.tag{display:inline-block;padding:5px 10px;border-radius:999px;background:#e7f6ef;color:#087f5b;font-weight:800}@media(max-width:560px){.shell{margin:20px auto}.hero,.panel{padding:20px}.btn{width:100%}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">GOMAI QA</div>
+      <h1>V7 RC1 Visual Test</h1>
+      <p>Alat ini mengisi dua kelompok keranjang sementara untuk menguji Gomai Express dan Official Order. Produk Atalon hanya dipakai sebagai fixture visual dan tidak mengubah katalog produksi.</p>
+    </section>
+
+    <section class="panel">
+      <h2>1. Siapkan data uji</h2>
+      <p class="warning">Data keranjang saat ini akan dicadangkan sebelum pengujian. Tekan “Pulihkan keranjang” setelah selesai.</p>
+      <div class="actions">
+        <button class="btn primary" id="seed-id" type="button">Mulai Uji — Indonesia</button>
+        <button class="btn dark" id="seed-zh" type="button">开始测试 — 中文</button>
+        <button class="btn danger" id="restore" type="button">Pulihkan Keranjang</button>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>2. Buka halaman uji</h2>
+      <div class="links">
+        <a class="btn" href="../index.html">Homepage</a>
+        <a class="btn" href="../pages/cart.html">Keranjang Dua Layanan</a>
+        <a class="btn" href="../pages/checkout.html?service=express">Checkout Express</a>
+        <a class="btn" href="../pages/checkout.html?service=official-order">Checkout Official</a>
+        <a class="btn" href="../pages/contact.html">WeChat</a>
+        <a class="btn" href="../pages/how-to-buy.html">Cara Membeli</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>3. Checklist penerimaan</h2>
+      <p><span class="tag">Desktop 1440 px</span> &nbsp; <span class="tag">Mobile 390 px</span></p>
+      <ol class="checklist">
+        <li>Tidak ada scroll horizontal atau elemen terpotong.</li>
+        <li>Keranjang menampilkan dua kelompok terpisah.</li>
+        <li>Express menampilkan ongkir supplier “Tidak berlaku”.</li>
+        <li>Official Order menampilkan ongkir supplier “Menunggu pemeriksaan”.</li>
+        <li>Masing-masing tombol checkout membuka layanan yang benar.</li>
+        <li>Lengkapi nama dan lokasi, lalu unduh kartu Indonesia dan 中文.</li>
+        <li>Kartu mencetak GOMAI EXPRESS atau OFFICIAL ORDER, GM-####, semua barang, biaya, total, dan informasi pengantaran.</li>
+        <li>Contact menampilkan QR, ID Gomai yang dapat disalin, dan tombol Buka WeChat.</li>
+      </ol>
+    </section>
+  </main>
+  <script>
+    "use strict";
+    (()=>{
+      const CART_KEY="gomai-cart-v2",BACKUP_KEY="gomai-v7-qa-cart-backup";
+      const status=document.getElementById("status");
+      const fixture={version:2,services:{
+        express:[{serviceType:"express",productId:"atalon-critical-running-tshirt",colorId:"black",sizeId:"",quantity:1}],
+        "official-order":[{serviceType:"official-order",productId:"atalon-critical-running-tshirt",colorId:"black",sizeId:"",quantity:1}]
+      }};
+      function seed(language){
+        if(localStorage.getItem(BACKUP_KEY)===null){
+          const current=localStorage.getItem(CART_KEY);
+          localStorage.setItem(BACKUP_KEY,current===null?"__EMPTY__":current);
+        }
+        localStorage.setItem(CART_KEY,JSON.stringify(fixture));
+        localStorage.setItem("gomai-language",language);
+        status.textContent=language==="zh"?"测试数据已准备好。请打开购物车。":"Data uji siap. Silakan buka Keranjang Dua Layanan.";
+      }
+      function restore(){
+        const backup=localStorage.getItem(BACKUP_KEY);
+        if(backup===null){status.textContent="Tidak ada cadangan keranjang.";return;}
+        if(backup==="__EMPTY__")localStorage.removeItem(CART_KEY);else localStorage.setItem(CART_KEY,backup);
+        localStorage.removeItem(BACKUP_KEY);
+        status.textContent="Keranjang sebelumnya berhasil dipulihkan.";
+      }
+      document.getElementById("seed-id").addEventListener("click",()=>seed("id"));
+      document.getElementById("seed-zh").addEventListener("click",()=>seed("zh"));
+      document.getElementById("restore").addEventListener("click",restore);
+    })();
+  </script>
+</body>
+</html>

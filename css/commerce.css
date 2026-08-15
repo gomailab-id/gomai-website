@@ -25,6 +25,8 @@
 .cart-item-brand { margin:0 0 4px; font-size:.72rem; font-weight:900; letter-spacing:.06em; text-transform:uppercase; color:#6a6a6a; }
 .cart-item-name { margin:0; font-size:1.05rem; line-height:1.3; }
 .cart-item-variant { margin:7px 0 0; color:#727272; font-size:.86rem; }
+.cart-item-source, .checkout-source-link { display:inline-flex; margin-top:7px; color:#8a6200; font-size:.78rem; font-weight:850; text-decoration:underline; text-underline-offset:3px; }
+.cart-item-source.is-pending { color:#777; text-decoration:none; }
 .cart-item-meta { display:flex; align-items:center; gap:16px; margin-top:14px; flex-wrap:wrap; }
 .quantity-control-mini { display:inline-grid; grid-template-columns:36px 44px 36px; align-items:center; border:1px solid #ddd; border-radius:12px; overflow:hidden; background:#fff; }
 .quantity-control-mini button { height:38px; border:0; background:transparent; cursor:pointer; font-size:1.1rem; }
@@ -72,6 +74,7 @@
 .checkout-order-item img { width:56px; height:56px; object-fit:cover; border-radius:10px; background:#f0f0ed; }
 .checkout-order-item strong { display:block; font-size:.86rem; }
 .checkout-order-item small { color:#6d6d6d; }
+.checkout-order-item .checkout-source-link { display:block; margin-top:3px; }
 .checkout-price { text-align:right; font-weight:900; white-space:nowrap; }
 .checkout-download { margin-top:18px; padding:18px; background:#111; color:#fff; border-radius:18px; }
 .checkout-download h3 { margin:0 0 6px; font-size:1rem; }
@@ -86,6 +89,12 @@
 .checkout-card-preview-body h3 { margin:0 0 8px; font-size:1.25rem; }
 .checkout-order-code { display:inline-flex; padding:7px 10px; border-radius:999px; background:#fff3c2; font-weight:900; font-variant-numeric:tabular-nums; }
 .checkout-preview-total { display:flex; justify-content:space-between; gap:16px; margin-top:16px; padding-top:15px; border-top:1px solid #e5e5df; font-weight:900; }
+.checkout-preview-breakdown, .checkout-fee-lines { display:grid; gap:8px; margin-top:16px; }
+.checkout-preview-breakdown > div, .checkout-fee-lines > div { display:flex; justify-content:space-between; gap:16px; color:#666; font-size:.83rem; }
+.checkout-preview-breakdown strong, .checkout-fee-lines strong { color:#111; white-space:nowrap; }
+.checkout-fee-lines { width:100%; padding-bottom:14px; border-bottom:1px solid #e5e5df; }
+.checkout-preview-total:has(.checkout-fee-lines) { flex-wrap:wrap; }
+.btn.is-disabled { opacity:.48; pointer-events:none; }
 .checkout-preview-note { margin-top:15px; padding:12px; background:#fff7da; border-radius:12px; font-size:.82rem; line-height:1.5; }
 
 @media (max-width: 980px) {
@@ -107,3 +116,4 @@
     .checkout-field.is-full { grid-column:auto; }
     .checkout-panel { padding:17px; border-radius:20px; }
 }
+.service-separation-note{margin:0 0 24px;padding:16px 18px;border:1px solid #eadba8;border-radius:16px;background:#fff8df;color:#55471a;line-height:1.55}.cart-service-groups{display:grid;gap:28px}.cart-service-section{padding:22px;border:1px solid #dedbd2;border-radius:22px;background:#fff}.cart-service-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:20px}.cart-service-header p{max-width:720px;margin:10px 0 0;color:#666;line-height:1.55}.service-badge{display:inline-flex;align-items:center;width:max-content;padding:7px 12px;border-radius:999px;background:#111;color:#fff;font-size:.8rem;font-weight:800;letter-spacing:.04em}.service-badge.is-express{background:#087f5b}.service-badge.is-official-order{background:#111;color:#f5b400}@media(max-width:760px){.cart-service-section{padding:15px}.cart-service-header{display:block}.cart-service-header .btn{margin-top:12px}}

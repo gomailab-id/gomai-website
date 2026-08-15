@@ -1,4 +1,4 @@
-# Gomai Architecture — Replacement 6
+# Gomai Architecture V7 — Release Candidate 1
 
 ## Dependency Direction
 
@@ -71,18 +71,25 @@ Footer menampilkan empat kategori, link informasi, QR WeChat, dan copyable WeCha
 ## Commerce State
 
 `js/shopping-state.js` menyimpan:
-- cart
+- cart V2 yang dikelompokkan menjadi `express` dan `official-order`
 - wishlist
 - checkout draft
 - checkout order reference
 
-Semua bersifat client-side.
+Semua bersifat client-side. Cart V1 dimigrasikan secara aman sebagai Official Order.
+
+## Service Boundary
+
+- `express`: produk lokal; tidak memiliki ongkir supplier ke Gomai.
+- `official-order`: sumber resmi wajib diperiksa; ongkir dihitung sekali per Source ID unik.
+- `pages/cart.html` mengelompokkan layanan.
+- `pages/checkout.html?service=...` hanya memproses satu layanan.
 
 ## Categories
 
 Empat kategori utama berasal dari `data/categories.json`.
 
-Tidak ada child/subcategory hierarchy pada baseline Replacement 6.
+Tidak ada child/subcategory hierarchy pada baseline V7.
 
 ## Checkout Card
 

@@ -478,6 +478,19 @@ const InformationController = (() => {
             return;
         }
 
+        const openWechatButton =
+            target.closest(
+                "[data-open-wechat]"
+            );
+
+        if (openWechatButton) {
+            handleWechatOpen(
+                openWechatButton
+            );
+
+            return;
+        }
+
 
         const faqTrigger =
             target.closest(
@@ -493,6 +506,41 @@ const InformationController = (() => {
                 faqTrigger
             );
         }
+    }
+
+
+    async function handleWechatOpen(button) {
+        const wechatId =
+            window.GomaiConfig
+                ?.contact
+                ?.wechatId ||
+            "Gomai";
+
+        await copyText(
+            wechatId
+        );
+
+        button.textContent =
+            translate(
+                "contactPage.wechat.opening",
+                "Membuka WeChat…"
+            );
+
+        window.location.href =
+            "weixin://";
+
+        window.setTimeout(
+            () => {
+                if (button.isConnected) {
+                    button.textContent =
+                        translate(
+                            "contactPage.wechat.open",
+                            "Buka WeChat"
+                        );
+                }
+            },
+            1800
+        );
     }
 
 

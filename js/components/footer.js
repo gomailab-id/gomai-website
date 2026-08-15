@@ -298,6 +298,15 @@ const FooterComponent = (() => {
                             </span>
                         </button>
                     </div>
+
+                    <button
+                        type="button"
+                        class="footer-v4-open-wechat"
+                        data-footer-open-wechat
+                        data-footer-text="footer.openWechat"
+                    >
+                        Buka WeChat
+                    </button>
                 </div>
 
             </div>
@@ -336,12 +345,53 @@ const FooterComponent = (() => {
                     copyWechatId(
                         button
                     );
+
+                    return;
+                }
+
+                const openButton =
+                    target?.closest(
+                        "[data-footer-open-wechat]"
+                    );
+
+                if (openButton) {
+                    openWechat(
+                        openButton
+                    );
                 }
             },
             {
                 signal:
                     eventController.signal
             }
+        );
+    }
+
+    async function openWechat(button) {
+        await copyText(
+            getWechatId()
+        );
+
+        button.textContent =
+            t(
+                "footer.openingWechat",
+                "Membuka WeChat…"
+            );
+
+        window.location.href =
+            "weixin://";
+
+        window.setTimeout(
+            () => {
+                if (button.isConnected) {
+                    button.textContent =
+                        t(
+                            "footer.openWechat",
+                            "Buka WeChat"
+                        );
+                }
+            },
+            1800
         );
     }
 

@@ -1,98 +1,20 @@
 "use strict";
-const CartController = (() => {
-    const VERSION = "1.0.0";
-    let products = new Map();
-    let brands = new Map();
-    let bound = false;
-
-    const t = (key, fallback) => window.Language?.translate?.(key, fallback) || fallback;
-    const money = value => window.GomaiUtils?.formatCurrency?.(Number(value) || 0) || `Rp${Number(value || 0).toLocaleString("id-ID")}`;
-    const route = (name, query = {}) => window.GomaiUtils?.buildRoute?.(name, query) || `${name}.html`;
-    const currentLang = () => window.Language?.getCurrentLanguage?.() || "zh";
-    const local = value => value && typeof value === "object" ? (value[currentLang()] || value.id || value.zh || "") : String(value || "");
-
-    async function init() {
-        await Promise.all([window.ProductsModel.load(), window.BrandsModel.load()]);
-        products = new Map((await window.ProductsModel.getAll()).map(p => [p.id, p]));
-        brands = new Map((await window.BrandsModel.getAll()).map(b => [b.id, b]));
-        bind(); render();
-        return { version: VERSION };
-    }
-
-    function bind() {
-        if (bound) return; bound = true;
-        document.addEventListener("click", handleClick);
-        document.addEventListener("gomai:cart-changed", render);
-    }
-
-    function destroy() {
-        if (bound) document.removeEventListener("click", handleClick);
-        bound = false;
-    }
-
-    function refreshLanguage() { render(); }
-
-    function getColor(product, id) {
-        return (Array.isArray(product?.colors) ? product.colors : []).find(c => String(c?.id || "") === String(id || "")) || null;
-    }
-    function getImage(product, color) {
-        const list = Array.isArray(color?.images) ? color.images : [];
-        const fallback = Array.isArray(product?.images) ? product.images : [];
-        return list[0] || fallback[0] || "";
-    }
-    function getBrand(product) { return brands.get(product?.brandId) || null; }
-    function itemData(item) {
-        const product = products.get(item.productId);
-        if (!product) return null;
-        const color = getColor(product, item.colorId);
-        return { item, product, color, key: window.GomaiShoppingState.itemKey(item) };
-    }
-
-    function render() {
-        const items = window.GomaiShoppingState.getCart();
-        const resolved = items.map(itemData).filter(Boolean);
-        const count = items.reduce((sum, item) => sum + item.quantity, 0);
-        const countEl = document.getElementById("cart-count"); if (countEl) countEl.textContent = String(count);
-        const empty = document.getElementById("cart-empty");
-        const content = document.getElementById("cart-content");
-        const list = document.getElementById("cart-list");
-        const summary = document.getElementById("cart-summary");
-        if (!empty || !content || !list || !summary) return;
-
-        if (!resolved.length) {
-            empty.hidden = false; content.hidden = true;
-            empty.innerHTML = `<h2>${esc(t("cart.emptyTitle","Keranjang Anda masih kosong"))}</h2><p>${esc(t("cart.emptyDescription","Tambahkan produk yang Anda inginkan."))}</p><a class="btn btn-primary" href="${esc(route("products"))}">${esc(t("cart.continueShopping","Lanjut Belanja"))}</a>`;
-            return;
-        }
-        empty.hidden = true; content.hidden = false;
-        list.innerHTML = resolved.map(renderItem).join("");
-        const subtotal = resolved.reduce((sum, entry) => sum + Number(entry.product.price || 0) * entry.item.quantity, 0);
-        summary.innerHTML = `<h2>${esc(t("cart.summary","Ringkasan Pesanan"))}</h2><div class="summary-row"><span>${esc(t("cart.subtotal","Subtotal"))} (${count} ${esc(t("cart.items","Barang"))})</span><strong>${esc(money(subtotal))}</strong></div><div class="summary-row"><span>${esc(t("cart.delivery","Pengantaran"))}</span><strong>${esc(t("cart.deliveryPending","Akan dikonfirmasi"))}</strong></div><div class="summary-total"><span>${esc(t("cart.temporaryTotal","Total Sementara"))}</span><strong>${esc(money(subtotal))}</strong></div><div class="summary-note">${esc(t("cart.confirmNote","Harga dan ketersediaan barang akan dikonfirmasi oleh Gomai."))}</div><a class="btn btn-primary" href="${esc(route("checkout"))}">${esc(t("cart.checkout","Buat Ringkasan & Unduh"))}</a>`;
-    }
-
-    function renderItem(entry) {
-        const { item, product, color, key } = entry;
-        const image = getImage(product, color);
-        const brand = getBrand(product);
-        const variant = [color ? local(color.name) : "", item.sizeId].filter(Boolean).join(" · ");
-        const subtotal = Number(product.price || 0) * item.quantity;
-        return `<article class="cart-item" data-cart-key="${esc(key)}"><a class="cart-item-image" href="${esc(route("productDetail",{id:product.id}))}">${image ? `<img src="${esc(window.GomaiUtils.resolveAssetPath(image))}" alt="${esc(local(product.name))}">` : ""}</a><div><p class="cart-item-brand">${esc(brand?.name || product.brandId || "")}</p><h2 class="cart-item-name">${esc(local(product.name))}</h2>${variant ? `<p class="cart-item-variant">${esc(variant)}</p>` : ""}<div class="cart-item-meta"><span>${esc(money(product.price))}</span><div class="quantity-control-mini"><button type="button" data-cart-action="decrease" aria-label="-">−</button><span>${item.quantity}</span><button type="button" data-cart-action="increase" aria-label="+">+</button></div><button class="cart-item-remove" type="button" data-cart-action="remove">${esc(t("cart.remove","Hapus"))}</button></div></div><div class="cart-item-total"><strong>${esc(money(subtotal))}</strong></div></article>`;
-    }
-
-    function handleClick(event) {
-        const action = event.target.closest?.("[data-cart-action]");
-        if (action) {
-            const row = action.closest("[data-cart-key]"); if (!row) return;
-            const key = row.dataset.cartKey; const item = window.GomaiShoppingState.getCart().find(x => window.GomaiShoppingState.itemKey(x) === key); if (!item) return;
-            const type = action.dataset.cartAction;
-            if (type === "remove") window.GomaiShoppingState.removeFromCart(key);
-            if (type === "increase") window.GomaiShoppingState.setQuantity(key, item.quantity + 1);
-            if (type === "decrease") item.quantity <= 1 ? window.GomaiShoppingState.removeFromCart(key) : window.GomaiShoppingState.setQuantity(key, item.quantity - 1);
-            return;
-        }
-        if (event.target.closest?.("#cart-clear")) window.GomaiShoppingState.clearCart();
-    }
-    function esc(v) { const d=document.createElement("div"); d.textContent=String(v??""); return d.innerHTML; }
-    return Object.freeze({ version: VERSION, init, destroy, refreshLanguage });
-})();
-window.CartController = CartController;
+const CartController=(()=>{
+ const VERSION="7.0.0-rc.1",SERVICES=["express","official-order"];let products=new Map(),brands=new Map(),bound=false;
+ const t=(k,f)=>window.Language?.translate?.(k,f)||f,money=v=>window.GomaiUtils?.formatCurrency?.(Number(v)||0)||`Rp${Number(v||0).toLocaleString("id-ID")}`,route=(n,q={})=>window.GomaiUtils?.buildRoute?.(n,q)||`${n}.html`,lang=()=>window.Language?.getCurrentLanguage?.()||"zh",local=v=>v&&typeof v==="object"?(v[lang()]||v.id||v.zh||""):String(v||""),esc=v=>{const d=document.createElement("div");d.textContent=String(v??"");return d.innerHTML;};
+ async function init(){await Promise.all([window.ProductsModel.load(),window.BrandsModel.load()]);products=new Map((await window.ProductsModel.getAll()).map(p=>[p.id,p]));brands=new Map((await window.BrandsModel.getAll()).map(b=>[b.id,b]));bind();render();return{version:VERSION};}
+ function bind(){if(bound)return;bound=true;document.addEventListener("click",click);document.addEventListener("gomai:cart-changed",render);}
+ function destroy(){if(bound)document.removeEventListener("click",click);bound=false;}
+ function refreshLanguage(){render();}
+ const color=(p,id)=>(Array.isArray(p?.colors)?p.colors:[]).find(c=>String(c?.id||"")===String(id||""))||null;
+ const image=(p,c)=>(Array.isArray(c?.images)?c.images:[])[0]||(Array.isArray(p?.images)?p.images:[])[0]||"";
+ function resolve(item){const product=products.get(item.productId);if(!product)return null;const c=color(product,item.colorId);return{item,product,color:c,key:window.GomaiShoppingState.itemKey(item)};}
+ function serviceMeta(service){return service==="express"?{name:t("orderServices.express.name","Gomai Express"),description:t("orderServices.express.description","Produk lokal Morowali dengan proses cepat; tanpa ongkir supplier ke Gomai.")}:{name:t("orderServices.officialOrder.name","Official Order"),description:t("orderServices.officialOrder.description","Barang dipesan dari supplier atau official store; ongkir supplier diperiksa sebelum pembayaran.")};}
+ function render(){const all=window.GomaiShoppingState.getCart(),resolved=all.map(resolve).filter(Boolean),count=all.reduce((s,i)=>s+i.quantity,0),countEl=document.getElementById("cart-count"),empty=document.getElementById("cart-empty"),content=document.getElementById("cart-content"),groups=document.getElementById("cart-service-groups");if(countEl)countEl.textContent=String(count);if(!empty||!content||!groups)return;if(!resolved.length){empty.hidden=false;content.hidden=true;empty.innerHTML=`<h2>${esc(t("cart.emptyTitle","Daftar titipan Anda masih kosong"))}</h2><p>${esc(t("cart.emptyDescription","Tambahkan produk yang ingin dipesan."))}</p><a class="btn btn-primary" href="${esc(route("products"))}">${esc(t("cart.continueShopping","Cari Produk"))}</a>`;return;}empty.hidden=true;content.hidden=false;groups.innerHTML=SERVICES.map(service=>renderService(service,resolved.filter(e=>e.item.serviceType===service))).join("");}
+ function renderService(service,entries){if(!entries.length)return"";const meta=serviceMeta(service),summary=window.GomaiAssistedShopping.summarize(entries,{serviceType:service}),count=entries.reduce((s,e)=>s+e.item.quantity,0),shipping=service==="express"?t("fees.notApplicable","Tidak berlaku"):shippingText(summary),fee=summary.special?t("fees.special","Konfirmasi khusus"):summary.gomaiCombinedFee===null?"—":money(summary.gomaiCombinedFee),total=totalText(summary),warning=!summary.minimumMet?t("fees.minimumWarning",`Minimum subtotal produk adalah ${money(summary.minimumSubtotal)}.`):summary.special?t("fees.specialWarning","Subtotal Rp2.000.000 atau lebih memerlukan konfirmasi khusus."):service==="express"?t("orderServices.express.note","Pesanan lokal diproses tanpa ongkir supplier."):summary.officialShippingStatus==="pending"?t("fees.shippingPendingNote","Ongkir supplier akan diperiksa berdasarkan kota asal, berat, gudang, dan kurir."):t("cart.confirmNote","Estimasi akan dikonfirmasi kembali sebelum pembayaran.");return `<section class="cart-service-section" data-service="${service}"><header class="cart-service-header"><div><span class="service-badge is-${service}">${esc(meta.name)}</span><p>${esc(meta.description)}</p></div><button class="btn btn-ghost" type="button" data-clear-service="${service}">${esc(t("cart.removeGroup","Kosongkan bagian ini"))}</button></header><div class="cart-layout"><div class="cart-list">${entries.map(renderItem).join("")}</div><aside class="cart-summary"><h2>${esc(t("cart.summary","Estimasi Pesanan"))}</h2><div class="summary-row"><span>${esc(t("cart.subtotal","Subtotal Produk"))} (${count})</span><strong>${esc(money(summary.subtotal))}</strong></div><div class="summary-row"><span>${esc(t("fees.officialShipping","Ongkir Supplier → Morowali"))}</span><strong>${esc(shipping)}</strong></div><div class="summary-row"><span>${esc(t("fees.gomaiCombined","Jasa & Pengantaran Gomai"))}</span><strong>${esc(fee)}</strong></div><div class="summary-total"><span>${esc(t("fees.estimatedTotal","Estimasi Total Pembayaran"))}</span><strong>${esc(total)}</strong></div><div class="summary-note">${esc(warning)}</div><a class="btn btn-primary${summary.minimumMet?"":" is-disabled"}" href="${summary.minimumMet?esc(route("checkout",{service})):"#"}" ${summary.minimumMet?"":"aria-disabled=\"true\""}>${esc(t("cart.checkout","Buat Kartu Estimasi"))}</a></aside></div></section>`;}
+ function renderItem(e){const{item,product,color:c,key}=e,img=image(product,c),brand=brands.get(product.brandId),variant=[c?local(c.name):"",item.sizeId].filter(Boolean).join(" · "),source=product.source,sourceMarkup=item.serviceType==="official-order"?(source?.url?`<a class="cart-item-source" href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(t("product.officialSource","Sumber resmi"))} ↗</a>`:`<span class="cart-item-source is-pending">${esc(t("product.sourcePending","Sumber sedang diverifikasi"))}</span>`):"";return `<article class="cart-item" data-cart-key="${esc(key)}"><a class="cart-item-image" href="${esc(route("productDetail",{id:product.id}))}">${img?`<img src="${esc(window.GomaiUtils.resolveAssetPath(img))}" alt="${esc(local(product.name))}">`:""}</a><div><p class="cart-item-brand">${esc(brand?.name||product.brandId||"")}</p><h2 class="cart-item-name">${esc(local(product.name))}</h2>${variant?`<p class="cart-item-variant">${esc(variant)}</p>`:""}${sourceMarkup}<div class="cart-item-meta"><span>${esc(money(product.price))}</span><div class="quantity-control-mini"><button type="button" data-cart-action="decrease">−</button><span>${item.quantity}</span><button type="button" data-cart-action="increase">+</button></div><button class="cart-item-remove" type="button" data-cart-action="remove">${esc(t("cart.remove","Hapus"))}</button></div></div><div class="cart-item-total"><strong>${esc(money(Number(product.price||0)*item.quantity))}</strong></div></article>`;}
+ function click(event){const action=event.target.closest?.("[data-cart-action]");if(action){const row=action.closest("[data-cart-key]"),key=row?.dataset.cartKey,item=window.GomaiShoppingState.getCart().find(x=>window.GomaiShoppingState.itemKey(x)===key);if(!item)return;const type=action.dataset.cartAction;if(type==="remove")window.GomaiShoppingState.removeFromCart(key);if(type==="increase")window.GomaiShoppingState.setQuantity(key,item.quantity+1);if(type==="decrease")item.quantity<=1?window.GomaiShoppingState.removeFromCart(key):window.GomaiShoppingState.setQuantity(key,item.quantity-1);return;}const clearService=event.target.closest?.("[data-clear-service]");if(clearService){window.GomaiShoppingState.clearCart(clearService.dataset.clearService);return;}if(event.target.closest?.("#cart-clear"))window.GomaiShoppingState.clearCart();}
+ function shippingText(s){if(s.officialShippingStatus==="confirmed")return money(s.officialShipping);if(s.officialShippingStatus==="estimated")return `${money(s.officialShippingMinimum)}–${money(s.officialShippingMaximum)}`;return t("fees.shippingPending","Menunggu pemeriksaan");}
+ function totalText(s){if(s.special)return t("fees.special","Konfirmasi khusus");if(s.estimatedTotal!==null)return money(s.estimatedTotal);if(s.estimatedTotalMinimum!==null)return `${money(s.estimatedTotalMinimum)}–${money(s.estimatedTotalMaximum)}`;return t("fees.totalPending","Menunggu konfirmasi ongkir supplier");}
+ return Object.freeze({version:VERSION,init,destroy,refreshLanguage});
+})();window.CartController=CartController;

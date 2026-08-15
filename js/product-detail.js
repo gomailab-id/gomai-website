@@ -1768,6 +1768,8 @@ const ProductDetailController = (() => {
                 )
         );
 
+        renderOfficialSource();
+
         if (
             elements.brandLink
         ) {
@@ -1801,6 +1803,55 @@ const ProductDetailController = (() => {
         );
 
         renderStockBadge();
+    }
+
+
+    function renderOfficialSource() {
+        if (!elements.productInfo) {
+            return;
+        }
+
+        elements.productInfo
+            .querySelector(
+                ".product-official-source"
+            )
+            ?.remove();
+
+        const source =
+            currentProduct?.source;
+
+        if (!source?.url) {
+            return;
+        }
+
+        const link =
+            document.createElement(
+                "a"
+            );
+
+        link.className =
+            "product-official-source";
+
+        link.href =
+            source.url;
+
+        link.target =
+            "_blank";
+
+        link.rel =
+            "noopener noreferrer";
+
+        link.textContent =
+            `${translate(
+                "product.officialSource",
+                "Lihat sumber resmi"
+            )} ↗`;
+
+        elements.productPrice
+            ?.insertAdjacentElement(
+                "afterend",
+                link
+            );
     }
 
 
@@ -2790,7 +2841,7 @@ const ProductDetailController = (() => {
             elements.addCartButton.disabled = !available;
             elements.addCartButton.textContent = translate(
                 available ? "cart.add" : "common.outOfStock",
-                available ? "Tambah ke Keranjang" : "Stok Habis"
+                available ? "Titip Beli" : "Stok Habis"
             );
         }
 
@@ -2809,6 +2860,7 @@ const ProductDetailController = (() => {
         if (!currentProduct || !window.GomaiShoppingState) return;
         const color = getSelectedColor();
         window.GomaiShoppingState.addToCart({
+            serviceType: currentProduct.serviceType,
             productId: currentProduct.id,
             colorId: color?.id || "",
             sizeId: state.selectedSize || "",
@@ -2816,7 +2868,7 @@ const ProductDetailController = (() => {
         });
 
         if (elements.addCartButton) {
-            const original = translate("cart.add", "Tambah ke Keranjang");
+            const original = translate("cart.add", "Titip Beli");
             elements.addCartButton.textContent = translate("cart.added", "Ditambahkan ✓");
             elements.addCartButton.classList.add("is-added");
             window.setTimeout(() => {

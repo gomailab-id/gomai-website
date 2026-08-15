@@ -859,6 +859,17 @@ const ProductsModel = (() => {
             );
 
 
+        const source =
+            normalizeOfficialSource(
+                product.source
+            );
+
+        const serviceType =
+            String(product.serviceType || "").trim().toLowerCase() === "express"
+                ? "express"
+                : "official-order";
+
+
         return Object.freeze({
 
             id,
@@ -969,6 +980,11 @@ const ProductsModel = (() => {
             updatedAt,
 
 
+            source,
+
+            serviceType,
+
+
             /* ==========================================
                BACKWARD COMPATIBILITY
             ========================================== */
@@ -1011,6 +1027,131 @@ const ProductsModel = (() => {
 
         });
 
+    }
+
+
+    function normalizeOfficialSource(value) {
+
+        if (!isPlainObject(value)) {
+            return null;
+        }
+
+        const id =
+            normalizeIdentifier(
+                value.id
+            );
+
+        const url =
+            String(
+                value.url || ""
+            ).trim();
+
+        if (!id || !url) {
+            return null;
+        }
+
+        return Object.freeze({
+            id,
+            name: Object.freeze({
+                ...normalizeLocalizedText(
+                    value.name,
+                    id
+                )
+            }),
+            url,
+            type: normalizeIdentifier(
+                value.type ||
+                "official-store"
+            ),
+            originCity: String(
+                value.originCity || ""
+            ).trim(),
+            shipping: normalizeSourceShipping(
+                value.shipping
+            ),
+            shippingNote: Object.freeze({
+                ...normalizeLocalizedText(
+                    value.shippingNote
+                )
+            })
+        });
+    }
+
+
+    function normalizeSourceShipping(value) {
+
+        const source =
+            isPlainObject(value)
+                ? value
+                : {};
+
+        const allowed = [
+            "pending",
+            "estimated",
+            "confirmed"
+        ];
+
+        const requestedStatus =
+            String(
+                source.status ||
+                "pending"
+            )
+                .trim()
+                .toLowerCase();
+
+        const status =
+            allowed.includes(
+                requestedStatus
+            )
+                ? requestedStatus
+                : "pending";
+
+        const amount =
+            source.amount === null ||
+            source.amount === undefined
+                ? null
+                : normalizePrice(
+                    source.amount
+                );
+
+        const minimum =
+            source.minimum === null ||
+            source.minimum === undefined
+                ? null
+                : normalizePrice(
+                    source.minimum
+                );
+
+        const maximum =
+            source.maximum === null ||
+            source.maximum === undefined
+                ? null
+                : normalizePrice(
+                    source.maximum
+                );
+
+        return Object.freeze({
+            status,
+            currency: normalizeCurrency(
+                source.currency ||
+                "IDR"
+            ),
+            amount:
+                status === "confirmed"
+                    ? amount
+                    : null,
+            minimum:
+                status === "estimated"
+                    ? minimum
+                    : null,
+            maximum:
+                status === "estimated"
+                    ? maximum
+                    : null,
+            checkedAt: normalizeDateValue(
+                source.checkedAt
+            )
+        });
     }
 
 

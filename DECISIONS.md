@@ -1,4 +1,4 @@
-# Gomai Decisions — Replacement 6
+# Gomai Decisions V7 — Release Candidate 1
 
 ## D-001 — Repository aktual adalah source of truth
 Accepted.
@@ -59,3 +59,11 @@ Related-products dan repeated WeChat CTA dihapus.
 
 ## D-016 — Browser visual QA
 Static QA tidak boleh dianggap sebagai pengganti visual QA desktop/mobile melalui Live Server.
+# Keputusan Replacement 7.3
+
+- `serviceType` adalah kontrak data wajib: `express` atau `official-order`.
+- Keranjang dua layanan tidak boleh dibayar dalam satu checkout.
+- Produk lama tanpa `serviceType` diperlakukan sebagai `official-order` untuk kompatibilitas.
+- Ongkir supplier hanya berlaku pada Official Order dan dihitung sekali per Source ID unik.
+- Kartu unduhan adalah estimasi/permintaan pesanan, bukan invoice atau bukti pembayaran.
+- IDR tetap nilai utama; CNY hanya estimasi informasi ketika ditampilkan.

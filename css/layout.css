@@ -1337,6 +1337,20 @@ main,
     background: #ffffff;
 }
 
+.footer-v4-open-wechat {
+    width: min(100%, 260px);
+    min-height: 42px;
+    margin-top: 10px;
+    color: #111111;
+    background: var(--primary, #f5b400);
+    border: 0;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 850;
+    cursor: pointer;
+}
+
 .footer-v4-bottom {
     display: flex;
     align-items: center;

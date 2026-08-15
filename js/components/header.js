@@ -1252,7 +1252,7 @@ const HeaderComponent = (() => {
 
         const label = translate(
             type === "wishlist" ? "wishlist.title" : "cart.title",
-            type === "wishlist" ? "Wishlist" : "Keranjang"
+            type === "wishlist" ? "Wishlist" : "Daftar Titipan"
         );
 
         link.setAttribute("aria-label", label);

@@ -924,6 +924,37 @@ const ProductCardComponent = (() => {
             priceGroup
         );
 
+        if (
+            product.source?.url
+        ) {
+            const sourceLink =
+                document.createElement(
+                    "a"
+                );
+
+            sourceLink.className =
+                "product-official-source";
+
+            sourceLink.href =
+                product.source.url;
+
+            sourceLink.target =
+                "_blank";
+
+            sourceLink.rel =
+                "noopener noreferrer";
+
+            sourceLink.textContent =
+                `${translate(
+                    "product.officialSource",
+                    "Sumber resmi"
+                )} ↗`;
+
+            body.append(
+                sourceLink
+            );
+        }
+
         /* ==============================================
            STOCK
         ============================================== */
@@ -996,7 +1027,7 @@ const ProductCardComponent = (() => {
         const quickAdd = Boolean(window.GomaiShoppingState?.canQuickAdd?.(product));
         button.textContent = translate(
             quickAdd ? "cart.add" : "cart.chooseVariant",
-            quickAdd ? "Tambah ke Keranjang" : "Pilih Varian"
+            quickAdd ? "Titip Beli" : "Pilih Varian"
         );
 
         button.addEventListener("click", event => {

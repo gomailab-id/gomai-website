@@ -1,4 +1,4 @@
-# Gomai Project — Replacement 6
+# Gomai Project V7 — Release Candidate 1
 
 ## Scope
 
@@ -6,7 +6,7 @@ Gomai adalah website katalog dan pemesanan ringan tanpa login/backend pada basel
 
 Alur utama:
 
-`Homepage → Kategori → Produk → Detail → Wishlist/Cart → Checkout → Download PNG → WeChat → Konfirmasi Gomai → Pembayaran → Pengantaran`
+`Homepage → Kategori → Produk → Detail → Wishlist/Cart per layanan → Checkout per layanan → Download PNG → WeChat → Konfirmasi Gomai → Pembayaran → Pengantaran`
 
 ## Halaman
 
@@ -18,10 +18,10 @@ Alur utama:
 - `pages/wishlist.html` — wishlist lokal.
 - `pages/cart.html` — cart lokal.
 - `pages/checkout.html` — data pengantaran + generator ringkasan PNG.
-- `pages/how-to-buy.html` — hanya cara membeli.
+- `pages/how-to-buy.html` — cara pelanggan mengirim permintaan dan alur transparansi Gomai sebagai jasa titip pihak ketiga.
 - `pages/about.html` — hanya tentang Gomai.
 - `pages/contact.html` — WeChat QR + copyable WeChat ID.
-- `pages/faq.html` — 7 accordion FAQ.
+- `pages/faq.html` — 9 accordion FAQ.
 - `404.html` — not found.
 
 ## Commerce MVP
@@ -32,6 +32,8 @@ Alur utama:
 - Checkout belum menarik pembayaran.
 - Kode referensi client-side berbentuk `GM-####`.
 - PNG order summary mempunyai tinggi dinamis agar seluruh produk dan informasi pengantaran tetap terlihat.
+- Gomai Express dan Official Order tidak dapat digabung dalam satu checkout.
+- Kartu PNG mencetak identitas layanan dan total estimasi pembayaran.
 - Harga dan ketersediaan dikonfirmasi Gomai sebelum pembayaran.
 
 ## Bahasa
